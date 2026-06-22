@@ -1,0 +1,176 @@
+/* WooCommerce order-screen layout */
+body.mhont-order-note-screen #poststuff {
+	display: flow-root;
+}
+
+body.mhont-order-note-screen #wpbody-content {
+	box-sizing: border-box;
+	padding-bottom: 100px;
+}
+
+#mhont_order_note_template {
+	clear: both;
+}
+
+#mhont_order_note_template .inside {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 16px;
+}
+
+.mhont-order-form {
+	box-sizing: border-box;
+	display: grid;
+	gap: 14px;
+	min-width: 0;
+	width: 100%;
+}
+
+.mhont-order-form .mhont-field,
+.mhont-order-form .mhont-favorite-field,
+.mhont-order-form .mhont-submit-field {
+	box-sizing: border-box;
+	margin: 0;
+	min-width: 0;
+}
+
+.mhont-order-form label,
+.mhont-order-form .mhont-field-label {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.mhont-order-form input,
+.mhont-order-form select,
+.mhont-order-form button {
+	box-sizing: border-box;
+}
+
+.mhont-favorite-field {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.mhont-placeholder-buttons {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	max-height: 230px;
+	overflow: auto;
+	padding: 10px;
+}
+
+.mhont-placeholder-buttons > p {
+	flex: 0 0 100%;
+	margin: 0 0 4px;
+}
+
+.mhont-placeholder-buttons .button {
+	margin: 0;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+	white-space: normal;
+}
+
+.mhont-preview {
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	min-height: 80px;
+	padding: 10px;
+	white-space: normal;
+}
+
+.mhont-order-form select,
+.mhont-order-form button,
+.mhont-order-form input[type="search"] {
+	max-width: 100%;
+}
+
+
+.mhont-sort-handle {
+	cursor: move;
+}
+
+.post-type-mhont_template table.wp-list-table tbody.ui-sortable tr {
+	background: #fff;
+}
+
+.mhont-tools-grid {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	max-width: 1100px;
+}
+
+.mhont-tool-card {
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	padding: 16px;
+}
+
+
+.mhont-editor-field {
+	margin: 1em 0;
+}
+
+.mhont-editor-field label {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.mhont-preview p {
+	margin-top: 0;
+}
+
+.mhont-placeholders ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 6px 16px;
+	margin: 8px 0 0;
+}
+
+.mhont-placeholders li {
+	margin: 0;
+}
+
+.mhont-placeholders code {
+	cursor: text;
+}
+
+
+.mhont-help-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 16px;
+	margin-top: 16px;
+}
+
+.mhont-help-card ul {
+	list-style: disc;
+	margin-left: 20px;
+}
+
+.mhont-help-card code {
+	white-space: nowrap;
+}
+
+.mhont-editable-preview {
+	cursor: text;
+}
+
+.mhont-editable-preview:focus {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+	outline: 2px solid transparent;
+}
+
+#mhont_action_message {
+	margin: 8px 0;
+	padding: 8px 10px;
+}

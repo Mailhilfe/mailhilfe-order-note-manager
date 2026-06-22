@@ -1,0 +1,633 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager for WooCommerce 2.0.5\n"
+"Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
+"POT-Creation-Date: 2026-06-19 13:45+0000\n"
+"PO-Revision-Date: 2026-06-19 13:45+0000\n"
+"Last-Translator: Mailhilfe <info@mailhilfe.de>\n"
+"Language: th\n"
+"Language-Team: Mailhilfe\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Mailhilfe Order Notes"
+msgstr "เทมเพลตบันทึกคำสั่งซื้อ"
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "เทมเพลตบันทึกคำสั่งซื้อ"
+
+msgid "Add New"
+msgstr "+"
+
+msgid "Add New Template"
+msgstr "+ เทมเพลต"
+
+msgid "Edit Template"
+msgstr "เทมเพลต ✎"
+
+msgid "New Template"
+msgstr "เทมเพลต +"
+
+msgid "View Template"
+msgstr "เทมเพลต 👁"
+
+msgid "Search Templates"
+msgstr "เทมเพลต 🔎"
+
+msgid "No templates found."
+msgstr "เทมเพลต: 0"
+
+msgid "No templates found in Trash."
+msgstr "เทมเพลต: 0"
+
+msgid "Categories"
+msgstr "หมวดหมู่"
+
+msgid "Category"
+msgstr "หมวดหมู"
+
+msgid "Search Categories"
+msgstr "หมวดหมู่ 🔎"
+
+msgid "All Categories"
+msgstr "หมวดหมู่"
+
+msgid "Edit Category"
+msgstr "หมวดหมู ✎"
+
+msgid "Update Category"
+msgstr "หมวดหมู ↻"
+
+msgid "Add New Category"
+msgstr "+ หมวดหมู"
+
+msgid "New Category Name"
+msgstr "หมวดหมู +"
+
+msgid "Template Settings"
+msgstr "การตั้งค่า"
+
+msgid "Default note type"
+msgstr "การตั้งค่า: บันทึกภายใน/บันทึกลูกค้า"
+
+msgid "Internal note"
+msgstr "บันทึกภายใน"
+
+msgid "Customer note"
+msgstr "บันทึกลูกค้า"
+
+msgid "Mark as favorite"
+msgstr "รายการโปรด"
+
+msgid "Template text"
+msgstr "เทมเพลต"
+
+msgid "Available placeholders:"
+msgstr "{order_number}, {customer}, {date}, {payment_method}, {shipping_method}"
+
+msgid "Sort"
+msgstr "เรียงลำดับ"
+
+msgid "Favorite"
+msgstr "รายการโปรด"
+
+msgid "Note type"
+msgstr "บันทึกภายใน/บันทึกลูกค้า"
+
+msgid "Usage"
+msgstr "การใช้งาน"
+
+msgid "Drag to sort"
+msgstr "เรียงลำดับ"
+
+msgid "Not favorite"
+msgstr "! รายการโปรด"
+
+msgid "You are not allowed to manage note templates."
+msgstr "เทมเพลต: !"
+
+msgid "Loading preview..."
+msgstr "ตัวอย่าง ..."
+
+msgid "Preview could not be loaded."
+msgstr "ตัวอย่าง: !"
+
+msgid "Sorting saved."
+msgstr "เรียงลำดับ: OK"
+
+msgid "Order could not be loaded."
+msgstr "เทมเพลตบันทึกคำสั่งซื้อ: !"
+
+msgid "No templates are available yet."
+msgstr "เทมเพลต: 0"
+
+msgid "Search templates"
+msgstr "เทมเพลต 🔎"
+
+msgid "Type to filter templates..."
+msgstr "เทมเพลต 🔎 ..."
+
+msgid "Template"
+msgstr "เทมเพลต"
+
+msgid "Select template"
+msgstr "เลือกเทมเพลต"
+
+msgid "Preview"
+msgstr "ตัวอย่าง"
+
+msgid "Select a template to show the preview."
+msgstr "เลือกเทมเพลต → ตัวอย่าง"
+
+msgid "Add note to order"
+msgstr "เพิ่มบันทึกในคำสั่งซื้อ"
+
+msgid "You are not allowed to use note templates."
+msgstr "เทมเพลต: !"
+
+msgid "Template or order could not be found."
+msgstr "เทมเพลต: !"
+
+msgid "Security check failed."
+msgstr "!"
+
+msgid "The selected template is empty."
+msgstr "เทมเพลต: 0"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "เทมเพลตบันทึกคำสั่งซื้อ Import/Export"
+
+msgid "Template Import/Export"
+msgstr "เทมเพลต Import/Export"
+
+msgid "Templates imported successfully."
+msgstr "เทมเพลต: OK"
+
+msgid "Demo templates installed successfully."
+msgstr "Demo เทมเพลต: OK"
+
+msgid "The JSON file could not be imported."
+msgstr "JSON: !"
+
+msgid "Export templates"
+msgstr "Export เทมเพลต"
+
+msgid "Download all published note templates, categories, favorites, sorting values and usage counters as a JSON file."
+msgstr "JSON: เทมเพลต, หมวดหมู่, รายการโปรด, เรียงลำดับ, การใช้งาน"
+
+msgid "Export JSON"
+msgstr "ส่งออก JSON"
+
+msgid "Import templates"
+msgstr "Import เทมเพลต"
+
+msgid "Import templates from a JSON export file. Existing templates with the same title will be updated."
+msgstr "JSON Import: เทมเพลต"
+
+msgid "Import JSON"
+msgstr "นำเข้า JSON"
+
+msgid "Demo templates"
+msgstr "Demo เทมเพลต"
+
+msgid "Install practical demo templates for shipping updates, payment reminders and customer service notes."
+msgstr "Demo: การจัดส่ง, การชำระเงิน, บริการลูกค้า"
+
+msgid "Install demo templates"
+msgstr "Demo เทมเพลต +"
+
+msgid "Demo: Shipping update"
+msgstr "Demo: การจัดส่ง"
+
+#, python-brace-format
+msgid "Hello {customer}, your order {order_number} is being prepared for shipping via {shipping_method}."
+msgstr "การจัดส่ง: {customer} / {order_number} / {shipping_method}"
+
+msgid "Shipping"
+msgstr "การจัดส่ง"
+
+msgid "Demo: Payment reminder"
+msgstr "Demo: การชำระเงิน"
+
+#, python-brace-format
+msgid ""
+"Payment reminder for order {order_number}. Payment method: {payment_method}. Please check payment status before "
+"processing."
+msgstr "การชำระเงิน: {order_number} / {payment_method}"
+
+msgid "Payment"
+msgstr "การชำระเงิน"
+
+msgid "Demo: Customer called"
+msgstr "Demo: บริการลูกค้า"
+
+#, python-brace-format
+msgid ""
+"Customer {customer} called on {date} regarding order {order_number}. Please review the conversation before the next "
+"update."
+msgstr "บริการลูกค้า: {customer} / {date} / {order_number}"
+
+msgid "Customer service"
+msgstr "บริการลูกค้า"
+
+msgid "Demo: Delay information"
+msgstr "Demo: เทมเพลต"
+
+#, python-brace-format
+msgid "Hello {customer}, we are sorry that order {order_number} is delayed. We will send another update as soon as possible."
+msgstr "{customer} / {order_number}: !"
+
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+msgid "Order ID"
+msgstr "Order ID"
+
+msgid "Order number"
+msgstr "Order number"
+
+msgid "Order status"
+msgstr "Order status"
+
+msgid "Order date"
+msgstr "Order date"
+
+msgid "Order time"
+msgstr "Order time"
+
+msgid "Order date and time"
+msgstr "Order date and time"
+
+msgid "Paid date"
+msgstr "Paid date"
+
+msgid "Completed date"
+msgstr "Completed date"
+
+msgid "Customer name"
+msgstr "Customer name"
+
+msgid "Customer ID"
+msgstr "Customer ID"
+
+msgid "Customer first name"
+msgstr "Customer first name"
+
+msgid "Customer last name"
+msgstr "Customer last name"
+
+msgid "Customer order note"
+msgstr "Customer order note"
+
+msgid "Billing email"
+msgstr "Billing email"
+
+msgid "Billing phone"
+msgstr "Billing phone"
+
+msgid "Billing company"
+msgstr "Billing company"
+
+msgid "Billing address"
+msgstr "Billing address"
+
+msgid "Billing city"
+msgstr "Billing city"
+
+msgid "Billing postcode"
+msgstr "Billing postcode"
+
+msgid "Billing country"
+msgstr "Billing country"
+
+msgid "Shipping first name"
+msgstr "Shipping first name"
+
+msgid "Shipping last name"
+msgstr "Shipping last name"
+
+msgid "Shipping company"
+msgstr "Shipping company"
+
+msgid "Shipping address"
+msgstr "Shipping address"
+
+msgid "Shipping city"
+msgstr "Shipping city"
+
+msgid "Shipping postcode"
+msgstr "Shipping postcode"
+
+msgid "Shipping country"
+msgstr "Shipping country"
+
+msgid "Payment method"
+msgstr "Payment method"
+
+msgid "Payment method ID"
+msgstr "Payment method ID"
+
+msgid "Shipping method"
+msgstr "Shipping method"
+
+msgid "Order total"
+msgstr "Order total"
+
+msgid "Order subtotal"
+msgstr "Order subtotal"
+
+msgid "Shipping total"
+msgstr "Shipping total"
+
+msgid "Discount total"
+msgstr "Discount total"
+
+msgid "Tax total"
+msgstr "Tax total"
+
+msgid "Currency"
+msgstr "Currency"
+
+msgid "Currency symbol"
+msgstr "Currency symbol"
+
+msgid "Item count"
+msgstr "Item count"
+
+msgid "Ordered items"
+msgstr "Ordered items"
+
+msgid "Site name"
+msgstr "Site name"
+
+msgid "Admin email"
+msgstr "Admin email"
+
+msgid "Current date"
+msgstr "Current date"
+
+msgid "Current time"
+msgstr "Current time"
+
+msgid "Current admin user"
+msgstr "Current admin user"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+msgid "Unknown user"
+msgstr "ผู้ใช้ที่ไม่รู้จัก"
+
+msgid "Customer notification sent on %1$s by %2$s using template \"%3$s\"."
+msgstr "ส่งการแจ้งเตือนลูกค้าเมื่อ %1$s โดย %2$s โดยใช้แม่แบบ \"%3$s\" แล้ว"
+
+#, python-format
+msgid "%d templates found."
+msgstr "%d เทมเพลต found."
+
+#, python-format
+msgid "%d templates will be created."
+msgstr "%d เทมเพลต will be created."
+
+#, python-format
+msgid "%d templates will be skipped."
+msgstr "%d เทมเพลต will be skipped."
+
+#, python-format
+msgid "%d templates will be updated."
+msgstr "%d เทมเพลต will be updated."
+
+msgid "Allow JSON imports"
+msgstr "Allow JSON imports (การตั้งค่า)"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Allow safe HTML formatting in notes (การตั้งค่า)"
+
+msgid "Always show and require the customer-note warning"
+msgstr "Always show customer note warning (การตั้งค่า)"
+
+msgid "Apply import now"
+msgstr "Apply import now"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr "Configure default behavior (การตั้งค่า)."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "เทมเพลต copy: %s"
+
+msgid "Create an internal log note after a customer note is sent"
+msgstr "Create internal log note after customer note"
+
+msgid "Customer custom field by meta key"
+msgstr "Customer meta field"
+
+msgid "Duplicate"
+msgstr "Duplicate"
+
+msgid "Enabled"
+msgstr "เปิดใช้"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce permission to edit orders "
+"before they can add notes to an order."
+msgstr "Grant สิทธิ์ only to trusted roles; WooCommerce order edit permission is also required."
+
+msgid "Import preview"
+msgstr "Import preview"
+
+msgid "Import usage counters from JSON files"
+msgstr "Import usage counters from JSON"
+
+msgid "Insert placeholder"
+msgstr "Insert placeholder"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Install demo templates automatically"
+
+msgid "Leave empty to show this template for all languages. WPML and Polylang order language values can be matched here."
+msgstr "Leave empty for all languages; WPML/Polylang language values can match here."
+
+msgid "Manage templates"
+msgstr "Manage เทมเพลต"
+
+msgid "Optional, for example de_DE, en_US or fr_FR"
+msgstr "Optional: de_DE, en_US or fr_FR"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Order note เทมเพลต สิทธิ์"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Order note เทมเพลต การตั้งค่า"
+
+msgid "Order custom field by meta key"
+msgstr "Order meta field"
+
+msgid "Permissions"
+msgstr "สิทธิ์"
+
+msgid "Placeholder inserted."
+msgstr "Placeholder inserted."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "Prefer order/customer language when available"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "Review the summary before import; nothing has changed yet."
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Save permissions"
+msgstr "Save สิทธิ์"
+
+msgid "Save settings"
+msgstr "Save การตั้งค่า"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Show favorites first"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Show usage counter column"
+
+msgid "Template could not be duplicated."
+msgstr "เทมเพลต could not be duplicated."
+
+msgid "Template could not be found."
+msgstr "เทมเพลต not found."
+
+msgid "Template language"
+msgstr "เทมเพลต language"
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Used when no note type is defined."
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates with the same title "
+"will be updated."
+msgstr "Upload a JSON file to preview before import. Existing templates with the same title will be updated."
+
+msgid "Use templates"
+msgstr "Use เทมเพลต"
+
+msgid "You are not allowed to manage permissions."
+msgstr "You are not allowed to manage สิทธิ์."
+
+msgid "All languages"
+msgstr "ทุกภาษา"
+
+msgid "The order note could not be saved."
+msgstr "The order note could not be saved."
+
+msgid "Last customer notification:"
+msgstr "Last customer notification:"
+
+msgid "Adding order note..."
+msgstr "กำลังเพิ่มหมายเหตุคำสั่งซื้อ…"
+
+msgid "The order note was added successfully."
+msgstr "เพิ่มหมายเหตุคำสั่งซื้อเรียบร้อยแล้ว"
+
+msgid "The order note could not be added."
+msgstr "ไม่สามารถเพิ่มหมายเหตุคำสั่งซื้อได้"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "บันทึกที่แก้ไขมีขนาดใหญ่เกินไป"
+
+msgid "The selected template is not available for this order language."
+msgstr "The selected template is not available for this order language."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "No template order was received."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "The template order could not be saved."
+
+msgid "Order note history"
+msgstr "Order note history"
+
+msgid "History"
+msgstr "History"
+
+msgid "Diagnostics"
+msgstr "Diagnostics"
+
+msgid "You are not allowed to view the history."
+msgstr "You are not allowed to view the history."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not proof that the recipient"
+" opened or received the message."
+msgstr ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not proof that the recipient"
+" opened or received the message."
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Event"
+msgstr "Event"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Order"
+msgstr "Order"
+
+msgid "User"
+msgstr "User"
+
+msgid "Recipient"
+msgstr "Recipient"
+
+msgid "No history entries found."
+msgstr "No history entries found."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "You are not allowed to view diagnostics."
+
+msgid "Template conditions"
+msgstr "Template conditions"
+
+msgid "Allowed order statuses"
+msgstr "Allowed order statuses"
+
+msgid "Allowed payment method IDs"
+msgstr "Allowed payment method IDs"
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Comma-separated, for example bacs, paypal, stripe."
+
+msgid "Allowed shipping method IDs"
+msgstr "Allowed shipping method IDs"
+
+msgid "Allowed billing countries"
+msgstr "Allowed billing countries"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Comma-separated ISO country codes, for example DE, AT, CH."
+
+msgid "Minimum order total"
+msgstr "Minimum order total"
+
+msgid "Maximum order total"
+msgstr "Maximum order total"
+
+msgid "Test order preview"
+msgstr "Test order preview"
+
+msgid "Generate test preview"
+msgstr "Generate test preview"
+
+msgid "Personal favorite"
+msgstr "Personal favorite"
+
+msgid "Personal favorite updated."
+msgstr "Personal favorite updated."
