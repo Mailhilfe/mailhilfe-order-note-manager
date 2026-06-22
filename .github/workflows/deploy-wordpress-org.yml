@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: write
-
+  
 jobs:
   deploy:
     name: Deploy plugin to WordPress.org
