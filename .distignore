@@ -1,1 +1,23 @@
+/.git
+/.github
+/.wordpress-org
+/node_modules
+/tests
+/docs
+/build
+/scripts
+
+.distignore
+.gitattributes
+.gitignore
+
+README.md
+CONTRIBUTING.md
+CHANGELOG.md
+phpcs.xml
+phpunit.xml
+composer.json
+composer.lock
+package.json
+package-lock.json
 
