@@ -4,6 +4,13 @@ on:
   release:
     types: [released]
 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Plugin version 2.0.5"
+        required: true
+        type: string
+
 permissions:
   contents: write
 
@@ -12,21 +19,26 @@ jobs:
     name: Deploy plugin to WordPress.org
     runs-on: ubuntu-latest
 
+    env:
+      VERSION: ${{ github.event.release.tag_name || inputs.version }}
+      SLUG: mailhilfe-order-note-manager
+      SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+      SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+
     steps:
-      - name: Check out release
+      - name: Check out plugin version
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || inputs.version }}
 
       - name: Deploy to WordPress.org
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         with:
           generate-zip: true
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: mailhilfe-order-note-manager
 
-      - name: Upload installable ZIP to GitHub release
+      - name: Upload installable ZIP
+        if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.deploy.outputs.zip-path }}
