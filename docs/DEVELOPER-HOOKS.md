@@ -150,11 +150,7 @@ do_action( 'mailhilfe_order_note_history_recorded', array $data, int $history_id
 add_filter(
     'mailhilfe_order_note_diagnostics',
     static function ( array $rows ): array {
-        $rows['custom_integration'] = array(
-            'label'  => 'Custom integration',
-            'value'  => 'Active',
-            'status' => 'good',
-        );
+        $rows['Custom integration'] = 'Active';
         return $rows;
     }
 );

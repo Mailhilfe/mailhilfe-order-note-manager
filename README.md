@@ -6,7 +6,7 @@
 
 Reusable, multilingual WooCommerce order-note templates with conditions, placeholders, editable previews, history, permissions and HPOS compatibility.
 
-![Version](https://img.shields.io/badge/version-2.0.5-2271b1)
+![Version](https://img.shields.io/badge/version-2.0.6-2271b1)
 ![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-21759b)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-777bb4)
 ![WooCommerce](https://img.shields.io/badge/WooCommerce-8.2%2B-96588a)

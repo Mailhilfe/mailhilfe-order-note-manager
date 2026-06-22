@@ -32,6 +32,7 @@ final class MHONT_Post_Types {
 		add_filter( 'post_row_actions', array( __CLASS__, 'row_actions' ), 10, 2 );
 		add_action( 'admin_post_mhont_duplicate_template', array( __CLASS__, 'duplicate_template_action' ) );
 		add_action( 'wp_ajax_mhont_test_template_preview', array( __CLASS__, 'ajax_test_template_preview' ) );
+		add_action( 'wp_restore_post_revision', array( __CLASS__, 'restore_revision_content' ), 10, 2 );
 	}
 
 	/**
@@ -215,7 +216,10 @@ final class MHONT_Post_Types {
 		if ( ! in_array( $note_type, array( 'private', 'customer' ), true ) ) {
 			$note_type = class_exists( 'MHONT_Settings' ) ? (string) MHONT_Settings::get( 'default_note_type' ) : 'private';
 		}
-		$content   = get_post_meta( $post->ID, '_mhont_content', true );
+		$content = get_post_meta( $post->ID, '_mhont_content', true );
+		if ( '' === $content && '' !== (string) $post->post_content ) {
+			$content = (string) $post->post_content;
+		}
 		$favorite  = get_post_meta( $post->ID, '_mhont_favorite', true );
 		$language  = self::sanitize_template_language( (string) get_post_meta( $post->ID, '_mhont_language', true ) );
 		if ( ! in_array( $note_type, array( 'private', 'customer' ), true ) ) {
@@ -328,30 +332,49 @@ final class MHONT_Post_Types {
 			$note_type = 'private';
 		}
 
-		$content  = isset( $_POST['mhont_content'] ) ? wp_kses_post( wp_unslash( $_POST['mhont_content'] ) ) : '';
+		$content = isset( $_POST['mhont_content'] ) ? wp_kses_post( wp_unslash( $_POST['mhont_content'] ) ) : '';
+		if ( function_exists( 'mb_substr' ) ) {
+			$content = mb_substr( $content, 0, 100000 );
+		} else {
+			$content = substr( $content, 0, 100000 );
+		}
 		$favorite = isset( $_POST['mhont_favorite'] ) && 'yes' === sanitize_key( wp_unslash( $_POST['mhont_favorite'] ) ) ? 'yes' : 'no';
 		$language = isset( $_POST['mhont_language'] ) ? sanitize_text_field( wp_unslash( $_POST['mhont_language'] ) ) : '';
 		$language = self::sanitize_template_language( $language );
 
 
 		$raw_conditions = isset( $_POST['mhont_conditions'] ) && is_array( $_POST['mhont_conditions'] ) ? wp_unslash( $_POST['mhont_conditions'] ) : array();
-		$sanitize_csv = static function ( $value, $uppercase = false ) {
+		$sanitize_csv = static function ( $value, $uppercase = false, $allow_instance_id = false ) {
 			$items = is_string( $value ) ? explode( ',', $value ) : ( is_array( $value ) ? $value : array() );
 			$out = array();
 			foreach ( $items as $item ) {
-				if ( ! is_scalar( $item ) ) { continue; }
-				$item = $uppercase ? strtoupper( sanitize_text_field( (string) $item ) ) : sanitize_key( (string) $item );
-				if ( '' !== $item ) { $out[] = $item; }
+				if ( ! is_scalar( $item ) ) {
+					continue;
+				}
+				if ( $uppercase ) {
+					$item = strtoupper( sanitize_text_field( (string) $item ) );
+				} elseif ( $allow_instance_id ) {
+					$item = strtolower( trim( (string) $item ) );
+					$item = preg_replace( '/[^a-z0-9_:-]/', '', $item );
+				} else {
+					$item = sanitize_key( (string) $item );
+				}
+				if ( $uppercase && 2 !== strlen( $item ) ) {
+					continue;
+				}
+				if ( '' !== $item ) {
+					$out[] = $item;
+				}
 			}
 			return array_values( array_unique( $out ) );
 		};
 		$conditions = array(
 			'statuses'         => $sanitize_csv( isset( $raw_conditions['statuses'] ) ? $raw_conditions['statuses'] : array() ),
 			'payment_methods'  => $sanitize_csv( isset( $raw_conditions['payment_methods'] ) ? $raw_conditions['payment_methods'] : '' ),
-			'shipping_methods' => $sanitize_csv( isset( $raw_conditions['shipping_methods'] ) ? $raw_conditions['shipping_methods'] : '' ),
+			'shipping_methods' => $sanitize_csv( isset( $raw_conditions['shipping_methods'] ) ? $raw_conditions['shipping_methods'] : '', false, true ),
 			'countries'        => $sanitize_csv( isset( $raw_conditions['countries'] ) ? $raw_conditions['countries'] : '', true ),
-			'min_total'        => isset( $raw_conditions['min_total'] ) && '' !== $raw_conditions['min_total'] ? (string) max( 0, (float) $raw_conditions['min_total'] ) : '',
-			'max_total'        => isset( $raw_conditions['max_total'] ) && '' !== $raw_conditions['max_total'] ? (string) max( 0, (float) $raw_conditions['max_total'] ) : '',
+			'min_total'        => isset( $raw_conditions['min_total'] ) && is_scalar( $raw_conditions['min_total'] ) && '' !== (string) $raw_conditions['min_total'] ? (string) max( 0, (float) $raw_conditions['min_total'] ) : '',
+			'max_total'        => isset( $raw_conditions['max_total'] ) && is_scalar( $raw_conditions['max_total'] ) && '' !== (string) $raw_conditions['max_total'] ? (string) max( 0, (float) $raw_conditions['max_total'] ) : '',
 		);
 		update_post_meta( $post_id, '_mhont_note_type', $note_type );
 		update_post_meta( $post_id, '_mhont_content', $content );
@@ -368,6 +391,34 @@ final class MHONT_Post_Types {
 		);
 		add_action( 'save_post_' . self::POST_TYPE, array( __CLASS__, 'save_meta' ), 10, 2 );
 	}
+
+	/**
+	 * Synchronizes restored WordPress revision content with the template meta field.
+	 *
+	 * @param int $post_id     Restored template post ID.
+	 * @param int $revision_id Revision post ID.
+	 * @return void
+	 */
+	public static function restore_revision_content( $post_id, $revision_id ) {
+		if ( self::POST_TYPE !== get_post_type( $post_id ) ) {
+			return;
+		}
+
+		$revision = get_post( $revision_id );
+		if ( ! $revision ) {
+			return;
+		}
+
+		$content = wp_kses_post( (string) $revision->post_content );
+		if ( function_exists( 'mb_substr' ) ) {
+			$content = mb_substr( $content, 0, 100000 );
+		} else {
+			$content = substr( $content, 0, 100000 );
+		}
+
+		update_post_meta( $post_id, '_mhont_content', $content );
+	}
+
 
 	/**
 	 * Adds admin columns.
@@ -473,13 +524,18 @@ final class MHONT_Post_Types {
 			wp_send_json_error( array( 'message' => __( 'No template order was received.', 'mailhilfe-order-note-manager' ) ), 400 );
 		}
 
-		$index   = 0;
-		$updated = 0;
+		$original_orders = array();
 		foreach ( $order as $post_id ) {
 			if ( ! $post_id || self::POST_TYPE !== get_post_type( $post_id ) ) {
-				continue;
+				wp_send_json_error( array( 'message' => __( 'The template order could not be saved.', 'mailhilfe-order-note-manager' ) ), 400 );
 			}
+			$original_orders[ $post_id ] = (int) get_post_field( 'menu_order', $post_id );
+		}
 
+		$index       = 0;
+		$updated     = 0;
+		$changed_ids = array();
+		foreach ( $order as $post_id ) {
 			$result = wp_update_post(
 				array(
 					'ID'         => $post_id,
@@ -488,9 +544,19 @@ final class MHONT_Post_Types {
 				true
 			);
 			if ( is_wp_error( $result ) ) {
+				// Avoid leaving a partially saved order if one update fails midway.
+				foreach ( $changed_ids as $changed_id ) {
+					wp_update_post(
+						array(
+							'ID'         => $changed_id,
+							'menu_order' => $original_orders[ $changed_id ],
+						)
+					);
+				}
 				wp_send_json_error( array( 'message' => __( 'The template order could not be saved.', 'mailhilfe-order-note-manager' ) ), 500 );
 			}
 
+			$changed_ids[] = $post_id;
 			$index += 10;
 			++$updated;
 		}
@@ -575,7 +641,12 @@ final class MHONT_Post_Types {
 			wp_set_object_terms( $new_id, array_map( 'absint', $terms ), self::TAXONOMY, false );
 		}
 
-		wp_safe_redirect( get_edit_post_link( $new_id, 'raw' ) );
+		$redirect_url = get_edit_post_link( $new_id, 'raw' );
+		if ( ! is_string( $redirect_url ) || '' === $redirect_url ) {
+			$redirect_url = admin_url( 'edit.php?post_type=' . self::POST_TYPE );
+		}
+
+		wp_safe_redirect( $redirect_url );
 		exit;
 	}
 
@@ -589,11 +660,40 @@ final class MHONT_Post_Types {
 			wp_send_json_error( array( 'message' => __( 'Security check failed.', 'mailhilfe-order-note-manager' ) ), 403 );
 		}
 		if ( ! function_exists( 'wc_get_order' ) ) { wp_send_json_error( array( 'message' => __( 'WooCommerce is required for this action.', 'mailhilfe-order-note-manager' ) ), 503 ); }
-		$order = wc_get_order( $order_id );
-		if ( ! $order || ! current_user_can( 'edit_shop_orders', $order_id ) ) { wp_send_json_error( array( 'message' => __( 'Order could not be loaded.', 'mailhilfe-order-note-manager' ) ), 404 ); }
-		$content = isset( $_POST['content'] ) && is_string( $_POST['content'] ) ? wp_kses_post( wp_unslash( $_POST['content'] ) ) : get_post_meta( $template_id, '_mhont_content', true );
-		$preview = apply_filters( 'mailhilfe_order_note_preview_content', MHONT_Placeholders::replace( $content, $order ), $order, get_post( $template_id ) );
-		wp_send_json_success( array( 'preview' => wp_kses_post( wpautop( $preview ) ) ) );
+		$template = get_post( $template_id );
+		$order    = wc_get_order( $order_id );
+		if ( ! $template || self::POST_TYPE !== $template->post_type ) {
+			wp_send_json_error( array( 'message' => __( 'Template or order could not be found.', 'mailhilfe-order-note-manager' ) ), 404 );
+		}
+		if ( ! $order || ( ! current_user_can( 'edit_shop_orders', $order_id ) && ! current_user_can( 'edit_post', $order_id ) ) ) { wp_send_json_error( array( 'message' => __( 'Order could not be loaded.', 'mailhilfe-order-note-manager' ) ), 404 ); }
+		$content = isset( $_POST['content'] ) && is_string( $_POST['content'] ) ? wp_unslash( $_POST['content'] ) : get_post_meta( $template_id, '_mhont_content', true );
+		if ( ! is_string( $content ) || strlen( $content ) > 100000 ) {
+			wp_send_json_error( array( 'message' => __( 'The edited note is too large.', 'mailhilfe-order-note-manager' ) ), 413 );
+		}
+		$preview = apply_filters( 'mailhilfe_order_note_preview_content', MHONT_Placeholders::replace( $content, $order ), $order, $template );
+		if ( ! is_scalar( $preview ) || strlen( (string) $preview ) > 100000 ) {
+			wp_send_json_error( array( 'message' => __( 'The edited note is too large.', 'mailhilfe-order-note-manager' ) ), 413 );
+		}
+		$allow_html = ! class_exists( 'MHONT_Settings' ) || MHONT_Settings::enabled( 'allow_html' );
+		$preview    = $allow_html ? wp_kses_post( wpautop( (string) $preview ) ) : self::html_to_plain_text( (string) $preview );
+		wp_send_json_success( array( 'preview' => $preview, 'preview_html' => $allow_html ) );
+	}
+
+	/**
+	 * Converts HTML or encoded HTML to readable plain text for test previews.
+	 *
+	 * @param string $value HTML or text value.
+	 * @return string
+	 */
+	private static function html_to_plain_text( $value ) {
+		$value = html_entity_decode( (string) $value, ENT_QUOTES | ENT_HTML5, get_bloginfo( 'charset' ) );
+		$value = preg_replace( '/<\s*br\s*\/?\s*>/i', "\n", $value );
+		$value = preg_replace( '/<\/\s*(?:p|div|li|h[1-6]|tr)\s*>/i', "\n", $value );
+		$value = wp_strip_all_tags( $value );
+		$value = preg_replace( "/[ \t]+\n/", "\n", $value );
+		$value = preg_replace( "/\n{3,}/", "\n\n", $value );
+
+		return sanitize_textarea_field( trim( $value ) );
 	}
 
 }

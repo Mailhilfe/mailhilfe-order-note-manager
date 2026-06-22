@@ -84,7 +84,7 @@ final class MHONT_FAQ {
 	 */
 	private static function format_answer( $answer ) {
 		$answer = (string) $answer;
-		$answer = preg_replace( '/(\{[a-z0-9_]+\})/', '<code>$1</code>', $answer );
+		$answer = preg_replace( '/(\{[a-z0-9_.:-]+\})/i', '<code>$1</code>', $answer );
 		return is_string( $answer ) ? $answer : '';
 	}
 
@@ -228,8 +228,8 @@ final class MHONT_FAQ {
         "answer": "Yes. After selecting a template, the preview contains the replaced order data and can be edited before the note is saved. The edited preview is the final note that will be added to the order."
       },
       {
-        "question": "When is a customer notification recorded?",
-        "answer": "When a template is added as a customer note, the plugin also adds an internal log note with date, time, current user and template name. This helps the shop team see when a customer-visible message was created."
+        "question": "How are customer-note creation and email processing recorded?",
+        "answer": "Customer notes can trigger WooCommerce email notifications when the corresponding email is enabled. The plugin records creation of the customer note separately from email processing. Review the editable preview before adding the note and use the History page to check the mail handler result."
       },
       {
         "question": "How do template languages work?",
@@ -380,8 +380,8 @@ final class MHONT_FAQ {
         "answer": "Ja. Nach Auswahl einer Vorlage enthält die Vorschau die ersetzten Bestelldaten und kann vor dem Speichern bearbeitet werden. Die bearbeitete Vorschau ist die endgültige Notiz, die zur Bestellung hinzugefügt wird."
       },
       {
-        "question": "Wann wird eine Kundenbenachrichtigung protokolliert?",
-        "answer": "Wenn eine Vorlage als Kundennotiz hinzugefügt wird, erstellt das Plugin zusätzlich eine interne Protokollnotiz mit Datum, Uhrzeit, aktuellem Benutzer und Vorlagenname. So sieht das Shop-Team, wann eine kunden sichtbare Nachricht erstellt wurde."
+        "question": "Wie werden die Erstellung einer Kundennotiz und die E-Mail-Verarbeitung protokolliert?",
+        "answer": "Kundennotizen können WooCommerce-E-Mail-Benachrichtigungen auslösen, wenn die entsprechende E-Mail aktiviert ist. Das Plugin protokolliert die Erstellung der Kundennotiz getrennt von der E-Mail-Verarbeitung. Prüfen Sie vor dem Hinzufügen die bearbeitbare Vorschau und kontrollieren Sie das Ergebnis der Mailverarbeitung auf der Seite „Verlauf“."
       },
       {
         "question": "Wie funktioniert die Vorlagensprache?",
@@ -521,7 +521,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "État de l’e-mail de note client",
-        "answer": "Lorsqu’une note client est sélectionnée, le plugin affiche un avertissement et tente d’indiquer si l’e-mail WooCommerce de note client est actif. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Les notes client peuvent déclencher des notifications par e-mail WooCommerce lorsque l’e-mail correspondant est activé. L’extension enregistre la création de la note séparément du traitement de l’e-mail. Vérifiez l’aperçu modifiable avant d’ajouter la note et consultez la page Historique pour contrôler le résultat du traitement."
       },
       {
         "question": "Langue du modèle et boutiques multilingues",
@@ -537,7 +537,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Page des réglages",
-        "answer": "Ouvrez <strong>Mailhilfe Order Notes → Réglages</strong> pour définir le comportement par défaut du plugin. Vous pouvez choisir le type de note par défaut, autoriser le HTML, contrôler les avertissements de notes client, l’affichage du compteur d’utilisation et les imports JSON. Utilisez les notes internes comme valeur par défaut pour un travail quotidien plus sûr. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Ouvrez <strong>Mailhilfe Order Notes → Réglages</strong> pour définir le comportement par défaut du plugin. Vous pouvez choisir le type de note par défaut, autoriser le HTML, contrôler les avertissements de notes client, l’affichage du compteur d’utilisation et les imports JSON. Utilisez les notes internes comme valeur par défaut pour un travail quotidien plus sûr."
       },
       {
         "question": "Aperçu d’importation",
@@ -649,7 +649,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Estado del correo de nota al cliente",
-        "answer": "Al seleccionar una nota al cliente, el plugin muestra una advertencia e intenta indicar si el correo WooCommerce de nota al cliente está activo. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Las notas al cliente pueden activar notificaciones por correo de WooCommerce cuando el correo correspondiente está habilitado. El plugin registra la creación de la nota por separado del procesamiento del correo. Revise la vista previa editable antes de añadirla y consulte la página Historial para comprobar el resultado."
       },
       {
         "question": "Idioma de la plantilla y tiendas multilingües",
@@ -665,7 +665,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Página de ajustes",
-        "answer": "Abre <strong>Mailhilfe Order Notes → Ajustes</strong> para definir el comportamiento predeterminado del plugin. Puedes elegir el tipo de nota predeterminado, permitir HTML, controlar avisos de notas al cliente, contadores de uso e importaciones JSON. Usa notas internas como valor predeterminado para trabajar con más seguridad. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Abre <strong>Mailhilfe Order Notes → Ajustes</strong> para definir el comportamiento predeterminado del plugin. Puedes elegir el tipo de nota predeterminado, permitir HTML, controlar avisos de notas al cliente, contadores de uso e importaciones JSON. Usa notas internas como valor predeterminado para trabajar con más seguridad."
       },
       {
         "question": "Vista previa de importación",
@@ -777,7 +777,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Stato email nota cliente",
-        "answer": "Quando viene scelta una nota cliente, il plugin mostra un avviso e prova a indicare se l’email WooCommerce della nota cliente è attiva. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Le note cliente possono attivare notifiche e-mail di WooCommerce quando l’e-mail corrispondente è abilitata. Il plugin registra la creazione della nota separatamente dall’elaborazione dell’e-mail. Controlla l’anteprima modificabile prima di aggiungerla e usa la pagina Cronologia per verificare il risultato."
       },
       {
         "question": "Lingua del modello e negozi multilingue",
@@ -793,7 +793,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Pagina impostazioni",
-        "answer": "Apri <strong>Mailhilfe Order Notes → Impostazioni</strong> per definire il comportamento predefinito del plugin. Puoi scegliere il tipo di nota predefinito, consentire HTML, gestire avvisi per note cliente, contatori d’uso e import JSON. Usa le note interne come impostazione predefinita per una maggiore sicurezza. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Apri <strong>Mailhilfe Order Notes → Impostazioni</strong> per definire il comportamento predefinito del plugin. Puoi scegliere il tipo di nota predefinito, consentire HTML, gestire avvisi per note cliente, contatori d’uso e import JSON. Usa le note interne come impostazione predefinita per una maggiore sicurezza."
       },
       {
         "question": "Anteprima importazione",
@@ -905,7 +905,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Status do e-mail de nota ao cliente",
-        "answer": "Ao selecionar uma nota ao cliente, o plugin mostra um aviso e tenta indicar se o e-mail WooCommerce de nota ao cliente está ativo. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "As notas ao cliente podem acionar notificações por e-mail do WooCommerce quando o e-mail correspondente está ativado. O plugin registra a criação da nota separadamente do processamento do e-mail. Revise a prévia editável antes de adicionar a nota e consulte a página Histórico para conferir o resultado."
       },
       {
         "question": "Idioma do modelo e lojas multilíngues",
@@ -921,7 +921,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Página de configurações",
-        "answer": "Abra <strong>Mailhilfe Order Notes → Configurações</strong> para definir o comportamento padrão do plugin. Você pode escolher o tipo de nota padrão, permitir HTML, controlar avisos de notas ao cliente, contadores de uso e importações JSON. Use notas internas como padrão para um fluxo diário mais seguro. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Abra <strong>Mailhilfe Order Notes → Configurações</strong> para definir o comportamento padrão do plugin. Você pode escolher o tipo de nota padrão, permitir HTML, controlar avisos de notas ao cliente, contadores de uso e importações JSON. Use notas internas como padrão para um fluxo diário mais seguro."
       },
       {
         "question": "Prévia de importação",
@@ -1033,7 +1033,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "E-mailstatus klantnotitie",
-        "answer": "Bij een klantnotitie toont de plugin een waarschuwing en probeert te tonen of de WooCommerce-mail voor klantnotities actief is. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Klantnotities kunnen WooCommerce-e-mailmeldingen activeren wanneer de bijbehorende e-mail is ingeschakeld. De plugin registreert het aanmaken van de klantnotitie apart van de e-mailverwerking. Controleer de bewerkbare voorbeeldweergave en bekijk het resultaat op de pagina Geschiedenis."
       },
       {
         "question": "Sjabloontaal en meertalige winkels",
@@ -1049,7 +1049,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Instellingenpagina",
-        "answer": "Open <strong>Mailhilfe Order Notes → Instellingen</strong> om het standaardgedrag van de plugin te bepalen. Je kunt het standaardnotitietype kiezen, HTML toestaan, waarschuwingen voor klantnotities, gebruikstellers en JSON-import beheren. Gebruik interne notities als standaard voor veiliger dagelijks werk. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Open <strong>Mailhilfe Order Notes → Instellingen</strong> om het standaardgedrag van de plugin te bepalen. Je kunt het standaardnotitietype kiezen, HTML toestaan, waarschuwingen voor klantnotities, gebruikstellers en JSON-import beheren. Gebruik interne notities als standaard voor veiliger dagelijks werk."
       },
       {
         "question": "Importvoorbeeld",
@@ -1161,7 +1161,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Status e-maila notatki klienta",
-        "answer": "Po wybraniu notatki klienta wtyczka pokazuje ostrzeżenie i próbuje wskazać, czy e-mail WooCommerce dla notatki klienta jest aktywny. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Notatki dla klienta mogą uruchamiać powiadomienia e-mail WooCommerce, jeśli odpowiednia wiadomość jest włączona. Wtyczka zapisuje utworzenie notatki oddzielnie od przetwarzania e-maila. Przed dodaniem sprawdź edytowalny podgląd, a wynik przetwarzania na stronie Historia."
       },
       {
         "question": "Język szablonu i sklepy wielojęzyczne",
@@ -1177,7 +1177,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Strona ustawień",
-        "answer": "Otwórz <strong>Mailhilfe Order Notes → Ustawienia</strong>, aby określić domyślne działanie wtyczki. Możesz wybrać domyślny typ notatki, zezwolić na HTML, kontrolować ostrzeżenia notatek klienta, liczniki użycia i import JSON. Dla bezpiecznej pracy używaj notatek wewnętrznych jako domyślnych. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Otwórz <strong>Mailhilfe Order Notes → Ustawienia</strong>, aby określić domyślne działanie wtyczki. Możesz wybrać domyślny typ notatki, zezwolić na HTML, kontrolować ostrzeżenia notatek klienta, liczniki użycia i import JSON. Dla bezpiecznej pracy używaj notatek wewnętrznych jako domyślnych."
       },
       {
         "question": "Podgląd importu",
@@ -1281,7 +1281,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Статус письма заметки клиенту",
-        "answer": "При выборе заметки клиенту плагин показывает предупреждение и пытается определить, активно ли письмо WooCommerce для заметок клиенту. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Заметки клиенту могут запускать уведомления WooCommerce по электронной почте, если соответствующее письмо включено. Плагин отдельно фиксирует создание заметки и обработку письма. Перед добавлением проверьте редактируемый предпросмотр, а результат обработки — на странице истории."
       },
       {
         "question": "Язык шаблона и многоязычные магазины",
@@ -1297,7 +1297,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Страница настроек",
-        "answer": "Откройте <strong>Mailhilfe Order Notes → Настройки</strong>, чтобы задать поведение плагина по умолчанию. Можно выбрать тип заметки, разрешить HTML, управлять предупреждениями для заметок клиенту, счетчиками использования и импортом JSON. Для безопасной работы используйте внутренние заметки как тип по умолчанию. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Откройте <strong>Mailhilfe Order Notes → Настройки</strong>, чтобы задать поведение плагина по умолчанию. Можно выбрать тип заметки, разрешить HTML, управлять предупреждениями для заметок клиенту, счетчиками использования и импортом JSON. Для безопасной работы используйте внутренние заметки как тип по умолчанию."
       },
       {
         "question": "Предпросмотр импорта",
@@ -1401,7 +1401,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "客户备注邮件状态",
-        "answer": "选择客户备注时，插件会显示警告，并尝试显示 WooCommerce 客户备注邮件是否启用。 If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "启用相应邮件后，客户备注可能触发 WooCommerce 邮件通知。插件会分别记录客户备注的创建和邮件处理结果。添加备注前请检查可编辑预览，并在“历史记录”页面查看邮件处理结果。"
       },
       {
         "question": "模板语言和多语言商店",
@@ -1417,7 +1417,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "设置页面",
-        "answer": "打开 <strong>Mailhilfe Order Notes → 设置</strong> 来定义插件的默认行为。您可以选择默认备注类型、是否允许 HTML、控制客户备注警告、使用计数器和 JSON 导入。 为了日常操作更安全，建议默认使用内部备注。 Review these settings after installing the plugin or changing staff roles."
+        "answer": "打开 <strong>Mailhilfe Order Notes → 设置</strong> 来定义插件的默认行为。您可以选择默认备注类型、是否允许 HTML、控制客户备注警告、使用计数器和 JSON 导入。 为了日常操作更安全，建议默认使用内部备注。"
       },
       {
         "question": "导入预览",
@@ -1521,7 +1521,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "顧客メモメールの状態",
-        "answer": "顧客メモを選択すると警告が表示され、WooCommerce の顧客メモメールが有効かどうかを表示しようとします。 If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "対応するメールが有効な場合、顧客メモによって WooCommerce のメール通知が送信されることがあります。プラグインは顧客メモの作成とメール処理を別々に記録します。追加前に編集可能なプレビューを確認し、履歴ページでメール処理結果を確認してください。"
       },
       {
         "question": "テンプレート言語と多言語ショップ",
@@ -1537,7 +1537,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "設定ページ",
-        "answer": "<strong>Mailhilfe Order Notes → 設定</strong> を開き、プラグインの既定動作を設定します。既定のメモ種類、HTML の許可、顧客メモ警告、使用回数、JSON インポートを管理できます。 安全な日常運用には内部メモを既定にすることを推奨します。 Review these settings after installing the plugin or changing staff roles."
+        "answer": "<strong>Mailhilfe Order Notes → 設定</strong> を開き、プラグインの既定動作を設定します。既定のメモ種類、HTML の許可、顧客メモ警告、使用回数、JSON インポートを管理できます。 安全な日常運用には内部メモを既定にすることを推奨します。"
       },
       {
         "question": "インポートプレビュー",
@@ -1641,7 +1641,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "고객 메모 이메일 상태",
-        "answer": "고객 메모를 선택하면 경고가 표시되고 WooCommerce 고객 메모 이메일이 활성화되어 있는지 표시하려고 합니다. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "해당 이메일이 활성화되어 있으면 고객 메모가 WooCommerce 이메일 알림을 트리거할 수 있습니다. 플러그인은 고객 메모 생성과 이메일 처리 결과를 별도로 기록합니다. 메모를 추가하기 전에 편집 가능한 미리보기를 확인하고 기록 페이지에서 처리 결과를 확인하세요."
       },
       {
         "question": "템플릿 언어와 다국어 상점",
@@ -1657,7 +1657,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "설정 페이지",
-        "answer": "<strong>Mailhilfe Order Notes → 설정</strong>을 열어 플러그인의 기본 동작을 지정합니다. 기본 메모 유형, HTML 허용, 고객 메모 경고, 사용 횟수 및 JSON 가져오기를 관리할 수 있습니다. 안전한 일상 작업을 위해 내부 메모를 기본값으로 사용하는 것이 좋습니다. Review these settings after installing the plugin or changing staff roles."
+        "answer": "<strong>Mailhilfe Order Notes → 설정</strong>을 열어 플러그인의 기본 동작을 지정합니다. 기본 메모 유형, HTML 허용, 고객 메모 경고, 사용 횟수 및 JSON 가져오기를 관리할 수 있습니다. 안전한 일상 작업을 위해 내부 메모를 기본값으로 사용하는 것이 좋습니다."
       },
       {
         "question": "가져오기 미리보기",
@@ -1761,7 +1761,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Müşteri notu e-posta durumu",
-        "answer": "Müşteri notu seçildiğinde eklenti bir uyarı gösterir ve WooCommerce müşteri notu e-postasının etkin olup olmadığını göstermeye çalışır. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "İlgili e-posta etkinse müşteri notları WooCommerce e-posta bildirimlerini tetikleyebilir. Eklenti, müşteri notunun oluşturulmasını e-posta işleme sonucundan ayrı kaydeder. Notu eklemeden önce düzenlenebilir önizlemeyi kontrol edin ve sonucu Geçmiş sayfasından inceleyin."
       },
       {
         "question": "Şablon dili ve çok dilli mağazalar",
@@ -1777,7 +1777,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Ayarlar sayfası",
-        "answer": "<strong>Mailhilfe Order Notes → Ayarlar</strong> bölümünü açarak eklentinin varsayılan davranışını belirleyin. Varsayılan not türünü, HTML iznini, müşteri notu uyarılarını, kullanım sayaçlarını ve JSON içe aktarmayı yönetebilirsiniz. Güvenli günlük kullanım için dahili notları varsayılan yapın. Review these settings after installing the plugin or changing staff roles."
+        "answer": "<strong>Mailhilfe Order Notes → Ayarlar</strong> bölümünü açarak eklentinin varsayılan davranışını belirleyin. Varsayılan not türünü, HTML iznini, müşteri notu uyarılarını, kullanım sayaçlarını ve JSON içe aktarmayı yönetebilirsiniz. Güvenli günlük kullanım için dahili notları varsayılan yapın."
       },
       {
         "question": "İçe aktarma önizlemesi",
@@ -1881,7 +1881,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "حالة بريد ملاحظة العميل",
-        "answer": "عند اختيار ملاحظة للعميل، تعرض الإضافة تحذيرًا وتحاول إظهار ما إذا كان بريد WooCommerce لملاحظات العميل مفعّلًا. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "قد تؤدي ملاحظات العملاء إلى تشغيل إشعارات WooCommerce عبر البريد الإلكتروني عند تفعيل الرسالة المقابلة. تسجل الإضافة إنشاء ملاحظة العميل بصورة منفصلة عن معالجة البريد. راجع المعاينة القابلة للتحرير قبل إضافة الملاحظة وتحقق من النتيجة في صفحة السجل."
       },
       {
         "question": "لغة القالب والمتاجر متعددة اللغات",
@@ -1897,7 +1897,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "صفحة الإعدادات",
-        "answer": "افتح <strong>Mailhilfe Order Notes → الإعدادات</strong> لتحديد السلوك الافتراضي للإضافة. يمكنك اختيار نوع الملاحظة الافتراضي، والسماح بـ HTML، والتحكم في تحذيرات ملاحظات العملاء، وعدادات الاستخدام، واستيراد JSON. لعمل يومي أكثر أمانًا اجعل الملاحظات الداخلية هي الافتراضية. Review these settings after installing the plugin or changing staff roles."
+        "answer": "افتح <strong>Mailhilfe Order Notes → الإعدادات</strong> لتحديد السلوك الافتراضي للإضافة. يمكنك اختيار نوع الملاحظة الافتراضي، والسماح بـ HTML، والتحكم في تحذيرات ملاحظات العملاء، وعدادات الاستخدام، واستيراد JSON. لعمل يومي أكثر أمانًا اجعل الملاحظات الداخلية هي الافتراضية."
       },
       {
         "question": "معاينة الاستيراد",
@@ -2001,7 +2001,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "ग्राहक नोट ईमेल स्थिति",
-        "answer": "ग्राहक नोट चुनने पर प्लगइन चेतावनी दिखाता है और WooCommerce customer note ईमेल सक्रिय है या नहीं यह बताने की कोशिश करता है। If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "यदि संबंधित ईमेल सक्षम है तो ग्राहक नोट WooCommerce ईमेल सूचना शुरू कर सकते हैं। प्लगइन ग्राहक नोट बनने और ईमेल प्रोसेसिंग के परिणाम को अलग-अलग दर्ज करता है। नोट जोड़ने से पहले संपादन योग्य पूर्वावलोकन देखें और इतिहास पृष्ठ पर परिणाम जाँचें।"
       },
       {
         "question": "टेम्पलेट भाषा और बहुभाषी दुकानें",
@@ -2017,7 +2017,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "सेटिंग पेज",
-        "answer": "<strong>Mailhilfe Order Notes → Settings</strong> खोलकर प्लगइन का डिफ़ॉल्ट व्यवहार तय करें। आप डिफ़ॉल्ट नोट प्रकार, HTML अनुमति, ग्राहक नोट चेतावनी, उपयोग काउंटर और JSON आयात नियंत्रित कर सकते हैं। सुरक्षित दैनिक कार्य के लिए आंतरिक नोट को डिफ़ॉल्ट रखें। Review these settings after installing the plugin or changing staff roles."
+        "answer": "<strong>Mailhilfe Order Notes → Settings</strong> खोलकर प्लगइन का डिफ़ॉल्ट व्यवहार तय करें। आप डिफ़ॉल्ट नोट प्रकार, HTML अनुमति, ग्राहक नोट चेतावनी, उपयोग काउंटर और JSON आयात नियंत्रित कर सकते हैं। सुरक्षित दैनिक कार्य के लिए आंतरिक नोट को डिफ़ॉल्ट रखें।"
       },
       {
         "question": "आयात पूर्वावलोकन",
@@ -2121,7 +2121,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Status email catatan pelanggan",
-        "answer": "Saat catatan pelanggan dipilih, plugin menampilkan peringatan dan mencoba menunjukkan apakah email catatan pelanggan WooCommerce aktif. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Catatan pelanggan dapat memicu pemberitahuan email WooCommerce jika email terkait diaktifkan. Plugin mencatat pembuatan catatan pelanggan secara terpisah dari pemrosesan email. Tinjau pratinjau yang dapat diedit sebelum menambahkan catatan dan periksa hasilnya di halaman Riwayat."
       },
       {
         "question": "Bahasa templat dan toko multibahasa",
@@ -2137,7 +2137,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Halaman pengaturan",
-        "answer": "Buka <strong>Mailhilfe Order Notes → Pengaturan</strong> untuk menentukan perilaku default plugin. Anda dapat memilih tipe catatan default, mengizinkan HTML, mengatur peringatan catatan pelanggan, penghitung penggunaan, dan impor JSON. Gunakan catatan internal sebagai default agar pekerjaan harian lebih aman. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Buka <strong>Mailhilfe Order Notes → Pengaturan</strong> untuk menentukan perilaku default plugin. Anda dapat memilih tipe catatan default, mengizinkan HTML, mengatur peringatan catatan pelanggan, penghitung penggunaan, dan impor JSON. Gunakan catatan internal sebagai default agar pekerjaan harian lebih aman."
       },
       {
         "question": "Pratinjau impor",
@@ -2241,7 +2241,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Trạng thái email ghi chú khách hàng",
-        "answer": "Khi chọn ghi chú khách hàng, plugin hiển thị cảnh báo và cố gắng cho biết email ghi chú khách hàng của WooCommerce có đang bật không. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Ghi chú khách hàng có thể kích hoạt email thông báo WooCommerce khi email tương ứng được bật. Plugin ghi riêng việc tạo ghi chú và kết quả xử lý email. Hãy kiểm tra bản xem trước có thể chỉnh sửa trước khi thêm và xem kết quả trên trang Lịch sử."
       },
       {
         "question": "Ngôn ngữ mẫu và cửa hàng đa ngôn ngữ",
@@ -2257,7 +2257,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Trang cài đặt",
-        "answer": "Mở <strong>Mailhilfe Order Notes → Cài đặt</strong> để đặt hành vi mặc định của plugin. Bạn có thể chọn loại ghi chú mặc định, cho phép HTML, kiểm soát cảnh báo ghi chú khách hàng, bộ đếm sử dụng và nhập JSON. Nên dùng ghi chú nội bộ làm mặc định để làm việc hằng ngày an toàn hơn. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Mở <strong>Mailhilfe Order Notes → Cài đặt</strong> để đặt hành vi mặc định của plugin. Bạn có thể chọn loại ghi chú mặc định, cho phép HTML, kiểm soát cảnh báo ghi chú khách hàng, bộ đếm sử dụng và nhập JSON. Nên dùng ghi chú nội bộ làm mặc định để làm việc hằng ngày an toàn hơn."
       },
       {
         "question": "Xem trước nhập",
@@ -2361,7 +2361,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "สถานะอีเมลบันทึกลูกค้า",
-        "answer": "เมื่อเลือกบันทึกลูกค้า ปลั๊กอินจะแสดงคำเตือนและพยายามบอกว่าอีเมลบันทึกลูกค้าของ WooCommerce เปิดใช้งานอยู่หรือไม่ If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "บันทึกลูกค้าอาจกระตุ้นการแจ้งเตือนอีเมลของ WooCommerce เมื่อเปิดใช้งานอีเมลที่เกี่ยวข้อง ปลั๊กอินบันทึกการสร้างบันทึกลูกค้าแยกจากผลการประมวลผลอีเมล ตรวจสอบตัวอย่างที่แก้ไขได้ก่อนเพิ่มบันทึกและดูผลลัพธ์ในหน้าประวัติ"
       },
       {
         "question": "ภาษาของเทมเพลตและร้านหลายภาษา",
@@ -2377,7 +2377,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "หน้าการตั้งค่า",
-        "answer": "เปิด <strong>Mailhilfe Order Notes → การตั้งค่า</strong> เพื่อกำหนดพฤติกรรมเริ่มต้นของปลั๊กอิน คุณสามารถเลือกชนิดบันทึกเริ่มต้น อนุญาต HTML ควบคุมคำเตือนบันทึกลูกค้า ตัวนับการใช้งาน และการนำเข้า JSON เพื่อความปลอดภัยในการใช้งานประจำวัน ควรใช้บันทึกภายในเป็นค่าเริ่มต้น Review these settings after installing the plugin or changing staff roles."
+        "answer": "เปิด <strong>Mailhilfe Order Notes → การตั้งค่า</strong> เพื่อกำหนดพฤติกรรมเริ่มต้นของปลั๊กอิน คุณสามารถเลือกชนิดบันทึกเริ่มต้น อนุญาต HTML ควบคุมคำเตือนบันทึกลูกค้า ตัวนับการใช้งาน และการนำเข้า JSON เพื่อความปลอดภัยในการใช้งานประจำวัน ควรใช้บันทึกภายในเป็นค่าเริ่มต้น"
       },
       {
         "question": "ตัวอย่างก่อนนำเข้า",
@@ -2481,7 +2481,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Стан e-mail нотатки клієнту",
-        "answer": "Коли вибрано нотатку клієнту, плагін показує попередження і намагається визначити, чи активний e-mail WooCommerce для нотаток клієнту. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Нотатки клієнту можуть запускати сповіщення WooCommerce електронною поштою, якщо відповідний лист увімкнено. Плагін окремо фіксує створення нотатки та обробку листа. Перед додаванням перевірте редагований попередній перегляд, а результат — на сторінці історії."
       },
       {
         "question": "Мова шаблону та багатомовні магазини",
@@ -2497,7 +2497,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Сторінка налаштувань",
-        "answer": "Відкрийте <strong>Mailhilfe Order Notes → Налаштування</strong>, щоб визначити стандартну поведінку плагіна. Можна вибрати тип нотатки, дозволити HTML, керувати попередженнями для нотаток клієнту, лічильниками використання та імпортом JSON. Для безпечної щоденної роботи використовуйте внутрішні нотатки за замовчуванням. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Відкрийте <strong>Mailhilfe Order Notes → Налаштування</strong>, щоб визначити стандартну поведінку плагіна. Можна вибрати тип нотатки, дозволити HTML, керувати попередженнями для нотаток клієнту, лічильниками використання та імпортом JSON. Для безпечної щоденної роботи використовуйте внутрішні нотатки за замовчуванням."
       },
       {
         "question": "Попередній перегляд імпорту",
@@ -2601,7 +2601,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "E-poststatus för kundnotis",
-        "answer": "När en kundnotis väljs visar pluginet en varning och försöker visa om WooCommerce-e-post för kundnotiser är aktiv. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Kundanteningar kan utlösa WooCommerce-e-postmeddelanden när motsvarande e-post är aktiverad. Pluginet registrerar att kundanteckningen skapades separat från e-postbehandlingen. Kontrollera den redigerbara förhandsvisningen och resultatet på sidan Historik."
       },
       {
         "question": "Mallens språk och flerspråkiga butiker",
@@ -2617,7 +2617,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Inställningssida",
-        "answer": "Öppna <strong>Mailhilfe Order Notes → Inställningar</strong> för att ange pluginets standardbeteende. Du kan välja standardtyp för notis, tillåta HTML, styra varningar för kundnotiser, användningsräknare och JSON-import. Använd interna notiser som standard för säkrare dagligt arbete. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Öppna <strong>Mailhilfe Order Notes → Inställningar</strong> för att ange pluginets standardbeteende. Du kan välja standardtyp för notis, tillåta HTML, styra varningar för kundnotiser, användningsräknare och JSON-import. Använd interna notiser som standard för säkrare dagligt arbete."
       },
       {
         "question": "Importförhandsvisning",
@@ -2721,7 +2721,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "E-mailstatus for kundenote",
-        "answer": "Når en kundenote vælges, viser pluginet en advarsel og forsøger at vise, om WooCommerce-e-mailen for kundenoter er aktiv. If that email is active, WooCommerce may notify the customer. The plugin can also add an internal protocol note when a customer notification is created. Always check the editable preview."
+        "answer": "Kundenoter kan udløse WooCommerce-e-mails, når den tilsvarende e-mail er aktiveret. Pluginet registrerer oprettelsen af kundenoten separat fra e-mailbehandlingen. Kontrollér den redigerbare forhåndsvisning, og se resultatet på siden Historik."
       },
       {
         "question": "Skabelonsprog og flersprogede butikker",
@@ -2737,7 +2737,7 @@ final class MHONT_FAQ {
       },
       {
         "question": "Indstillingsside",
-        "answer": "Åbn <strong>Mailhilfe Order Notes → Indstillinger</strong> for at angive pluginets standardadfærd. Du kan vælge standardnotetype, tillade HTML, styre advarsler for kundenoter, brugstællere og JSON-import. Brug interne noter som standard for et mere sikkert dagligt workflow. Review these settings after installing the plugin or changing staff roles."
+        "answer": "Åbn <strong>Mailhilfe Order Notes → Indstillinger</strong> for at angive pluginets standardadfærd. Du kan vælge standardnotetype, tillade HTML, styre advarsler for kundenoter, brugstællere og JSON-import. Brug interne noter som standard for et mere sikkert dagligt workflow."
       },
       {
         "question": "Importforhåndsvisning",

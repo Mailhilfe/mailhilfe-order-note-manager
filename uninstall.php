@@ -17,8 +17,9 @@ $template_ids = get_posts(
 		// Query every registered status so uninstall also removes trashed drafts.
 		'post_status'    => array_keys( get_post_stati() ),
 		'fields'         => 'ids',
-		'posts_per_page' => -1,
-		'no_found_rows'  => true,
+		'posts_per_page'  => -1,
+		'no_found_rows'   => true,
+		'suppress_filters' => true,
 	)
 );
 
@@ -64,14 +65,16 @@ delete_option( 'mhont_caps_installed' );
 delete_option( 'mhont_settings' );
 delete_option( 'mhont_demo_template_ids' );
 delete_transient( 'mhont_published_template_ids' );
+wp_cache_delete( 'published_template_ids', 'mailhilfe_order_note_manager' );
 
 
 // Remove the central history table and its schema version.
 global $wpdb;
 $history_table = $wpdb->prefix . 'mhont_history';
-$wpdb->query( "DROP TABLE IF EXISTS `{$history_table}`" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Internal prefixed table name.
+$wpdb->query( $wpdb->prepare( 'DROP TABLE IF EXISTS %i', $history_table ) );
 delete_option( 'mhont_history_db_version' );
 
-// Remove per-user personal favorites and recently used templates.
-$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => '_mhont_personal_favorites' ), array( '%s' ) );
-$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => '_mhont_recent_templates' ), array( '%s' ) );
+// Remove the personal favorites and recent-template data belonging to this site.
+$user_meta_suffix = is_multisite() ? '_' . get_current_blog_id() : '';
+$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => '_mhont_personal_favorites' . $user_meta_suffix ), array( '%s' ) );
+$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => '_mhont_recent_templates' . $user_meta_suffix ), array( '%s' ) );

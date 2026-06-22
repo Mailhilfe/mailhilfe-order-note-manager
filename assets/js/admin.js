@@ -42,10 +42,28 @@
 	}
 
 
+	function getTemplateEditor() {
+		if (!window.tinymce || typeof tinymce.get !== 'function') {
+			return null;
+		}
+
+		return tinymce.get('mhont_content_editor');
+	}
+
+	function getTemplateEditorContent() {
+		var editor = getTemplateEditor();
+		if (editor && (typeof editor.isHidden !== 'function' || !editor.isHidden())) {
+			return editor.getContent();
+		}
+
+		return $('#mhont_content_editor').val() || '';
+	}
+
 	function insertAtEditable(text) {
 		var $preview = $('#mhont_preview');
-		if (!$preview.length && window.tinymce && tinymce.get('mhont_content_editor')) {
-			tinymce.get('mhont_content_editor').execCommand('mceInsertContent', false, text);
+		var editor = getTemplateEditor();
+		if (!$preview.length && editor && (typeof editor.isHidden !== 'function' || !editor.isHidden())) {
+			editor.execCommand('mceInsertContent', false, text);
 			return;
 		}
 		if (!$preview.length && $('#mhont_content_editor').length) {
@@ -170,7 +188,8 @@
 	function initTemplateSorting() {
 		var params = new URLSearchParams(window.location.search || '');
 		var paged = parseInt(params.get('paged') || '1', 10);
-		if (paged > 1 || params.get('s') || params.get('orderby') || params.get('post_status') || params.get('mhont_category')) {
+		var totalPages = parseInt($('.tablenav-pages .total-pages').first().text() || '1', 10);
+		if (paged > 1 || totalPages > 1 || params.get('s') || params.get('orderby') || params.get('post_status') || params.get('mhont_category')) {
 			return;
 		}
 
@@ -295,9 +314,16 @@
 			template_id: $button.data('template-id'),
 			order_id: orderId,
 			nonce: $button.data('nonce'),
-			content: (window.tinymce && tinymce.get('mhont_content_editor')) ? tinymce.get('mhont_content_editor').getContent() : ($('#mhont_content_editor').val() || '')
+			content: getTemplateEditorContent()
 		}).done(function (response) {
-			if (response && response.success && response.data) { $result.html(response.data.preview).prop('hidden', false); }
+			if (response && response.success && response.data) {
+				if (response.data.preview_html === true) {
+					$result.html(response.data.preview);
+				} else {
+					$result.text(response.data.preview);
+				}
+				$result.prop('hidden', false);
+			}
 			else { $result.text(response && response.data && response.data.message ? response.data.message : mhontAdmin.i18n.error).prop('hidden', false); }
 		}).fail(function (xhr) {
 			$result.text(xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message ? xhr.responseJSON.data.message : mhontAdmin.i18n.error).prop('hidden', false);

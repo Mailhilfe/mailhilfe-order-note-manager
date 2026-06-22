@@ -1,7 +1,8 @@
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailhilfe Order Note Manager for WooCommerce 2.0.5\n"
+"Project-Id-Version: Mailhilfe Order Note Manager for WooCommerce 2.0.6\n"
 "Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
 "POT-Creation-Date: 2026-06-19 13:45+0000\n"
 "PO-Revision-Date: 2026-06-19 13:45+0000\n"
@@ -14,376 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-msgid "Mailhilfe Order Notes"
-msgstr "Ordrenoteskabeloner"
-
-msgid "Mailhilfe Order Note Manager"
-msgstr "Ordrenoteskabeloner"
-
-msgid "Add New"
-msgstr "+"
-
-msgid "Add New Template"
-msgstr "+ Skabelon"
-
-msgid "Edit Template"
-msgstr "Skabelon ✎"
-
-msgid "New Template"
-msgstr "Skabelon +"
-
-msgid "View Template"
-msgstr "Skabelon 👁"
-
-msgid "Search Templates"
-msgstr "Skabelon 🔎"
-
-msgid "No templates found."
-msgstr "Skabelon: 0"
-
-msgid "No templates found in Trash."
-msgstr "Skabelon: 0"
-
-msgid "Categories"
-msgstr "Kategorier"
-
-msgid "Category"
-msgstr "Kategorie"
-
-msgid "Search Categories"
-msgstr "Kategorier 🔎"
-
-msgid "All Categories"
-msgstr "Kategorier"
-
-msgid "Edit Category"
-msgstr "Kategorie ✎"
-
-msgid "Update Category"
-msgstr "Kategorie ↻"
-
-msgid "Add New Category"
-msgstr "+ Kategorie"
-
-msgid "New Category Name"
-msgstr "Kategorie +"
-
-msgid "Template Settings"
-msgstr "Indstillinger"
-
-msgid "Default note type"
-msgstr "Indstillinger: Intern note/Kundenote"
-
-msgid "Internal note"
-msgstr "Intern note"
-
-msgid "Customer note"
-msgstr "Kundenote"
-
-msgid "Mark as favorite"
-msgstr "Favorit"
-
-msgid "Template text"
-msgstr "Skabelon"
-
-msgid "Available placeholders:"
-msgstr "{order_number}, {customer}, {date}, {payment_method}, {shipping_method}"
-
-msgid "Sort"
-msgstr "Sortering"
-
-msgid "Favorite"
-msgstr "Favorit"
-
-msgid "Note type"
-msgstr "Intern note/Kundenote"
-
-msgid "Usage"
-msgstr "Brug"
-
-msgid "Drag to sort"
-msgstr "Sortering"
-
-msgid "Not favorite"
-msgstr "! Favorit"
-
-msgid "You are not allowed to manage note templates."
-msgstr "Skabelon: !"
-
-msgid "Loading preview..."
-msgstr "Forhåndsvisning ..."
-
-msgid "Preview could not be loaded."
-msgstr "Forhåndsvisning: !"
-
-msgid "Sorting saved."
-msgstr "Sortering: OK"
-
-msgid "Order could not be loaded."
-msgstr "Ordrenoteskabeloner: !"
-
-msgid "No templates are available yet."
-msgstr "Skabelon: 0"
-
-msgid "Search templates"
-msgstr "Skabelon 🔎"
-
-msgid "Type to filter templates..."
-msgstr "Skabelon 🔎 ..."
-
-msgid "Template"
-msgstr "Skabelon"
-
-msgid "Select template"
-msgstr "Vælg skabelon"
-
-msgid "Preview"
-msgstr "Forhåndsvisning"
-
-msgid "Select a template to show the preview."
-msgstr "Vælg skabelon → Forhåndsvisning"
-
-msgid "Add note to order"
-msgstr "Tilføj note til ordre"
-
-msgid "You are not allowed to use note templates."
-msgstr "Skabelon: !"
-
-msgid "Template or order could not be found."
-msgstr "Skabelon: !"
-
-msgid "Security check failed."
-msgstr "!"
-
-msgid "The selected template is empty."
-msgstr "Skabelon: 0"
-
-msgid "Mailhilfe Order Note Manager Import/Export"
-msgstr "Ordrenoteskabeloner Import/Export"
-
-msgid "Template Import/Export"
-msgstr "Skabelon Import/Export"
-
-msgid "Templates imported successfully."
-msgstr "Skabelon: OK"
-
-msgid "Demo templates installed successfully."
-msgstr "Demo Skabelon: OK"
-
-msgid "The JSON file could not be imported."
-msgstr "JSON: !"
-
-msgid "Export templates"
-msgstr "Export Skabelon"
-
-msgid "Download all published note templates, categories, favorites, sorting values and usage counters as a JSON file."
-msgstr "JSON: Skabelon, Kategorier, Favorit, Sortering, Brug"
-
-msgid "Export JSON"
-msgstr "Eksporter JSON"
-
-msgid "Import templates"
-msgstr "Import Skabelon"
-
-msgid "Import templates from a JSON export file. Existing templates with the same title will be updated."
-msgstr "JSON Import: Skabelon"
-
-msgid "Import JSON"
-msgstr "Importer JSON"
-
-msgid "Demo templates"
-msgstr "Demo Skabelon"
-
-msgid "Install practical demo templates for shipping updates, payment reminders and customer service notes."
-msgstr "Demo: Forsendelse, Betaling, Kundeservice"
-
-msgid "Install demo templates"
-msgstr "Demo Skabelon +"
-
-msgid "Demo: Shipping update"
-msgstr "Demo: Forsendelse"
-
-#, python-brace-format
-msgid "Hello {customer}, your order {order_number} is being prepared for shipping via {shipping_method}."
-msgstr "Forsendelse: {customer} / {order_number} / {shipping_method}"
-
-msgid "Shipping"
-msgstr "Forsendelse"
-
-msgid "Demo: Payment reminder"
-msgstr "Demo: Betaling"
-
-#, python-brace-format
-msgid ""
-"Payment reminder for order {order_number}. Payment method: {payment_method}. Please check payment status before "
-"processing."
-msgstr "Betaling: {order_number} / {payment_method}"
-
-msgid "Payment"
-msgstr "Betaling"
-
-msgid "Demo: Customer called"
-msgstr "Demo: Kundeservice"
-
-#, python-brace-format
-msgid ""
-"Customer {customer} called on {date} regarding order {order_number}. Please review the conversation before the next "
-"update."
-msgstr "Kundeservice: {customer} / {date} / {order_number}"
-
-msgid "Customer service"
-msgstr "Kundeservice"
-
-msgid "Demo: Delay information"
-msgstr "Demo: Skabelon"
-
-#, python-brace-format
-msgid "Hello {customer}, we are sorry that order {order_number} is delayed. We will send another update as soon as possible."
-msgstr "{customer} / {order_number}: !"
-
-msgid "Settings"
-msgstr "Indstillinger"
-
-msgid "Order ID"
-msgstr "Order ID"
-
-msgid "Order number"
-msgstr "Order number"
-
-msgid "Order status"
-msgstr "Order status"
-
-msgid "Order date"
-msgstr "Order date"
-
-msgid "Order time"
-msgstr "Order time"
-
-msgid "Order date and time"
-msgstr "Order date and time"
-
-msgid "Paid date"
-msgstr "Paid date"
-
-msgid "Completed date"
-msgstr "Completed date"
-
-msgid "Customer name"
-msgstr "Customer name"
-
-msgid "Customer ID"
-msgstr "Customer ID"
-
-msgid "Customer first name"
-msgstr "Customer first name"
-
-msgid "Customer last name"
-msgstr "Customer last name"
-
-msgid "Customer order note"
-msgstr "Customer order note"
-
-msgid "Billing email"
-msgstr "Billing email"
-
-msgid "Billing phone"
-msgstr "Billing phone"
-
-msgid "Billing company"
-msgstr "Billing company"
-
-msgid "Billing address"
-msgstr "Billing address"
-
-msgid "Billing city"
-msgstr "Billing city"
-
-msgid "Billing postcode"
-msgstr "Billing postcode"
-
-msgid "Billing country"
-msgstr "Billing country"
-
-msgid "Shipping first name"
-msgstr "Shipping first name"
-
-msgid "Shipping last name"
-msgstr "Shipping last name"
-
-msgid "Shipping company"
-msgstr "Shipping company"
-
-msgid "Shipping address"
-msgstr "Shipping address"
-
-msgid "Shipping city"
-msgstr "Shipping city"
-
-msgid "Shipping postcode"
-msgstr "Shipping postcode"
-
-msgid "Shipping country"
-msgstr "Shipping country"
-
-msgid "Payment method"
-msgstr "Payment method"
-
-msgid "Payment method ID"
-msgstr "Payment method ID"
-
-msgid "Shipping method"
-msgstr "Shipping method"
-
-msgid "Order total"
-msgstr "Order total"
-
-msgid "Order subtotal"
-msgstr "Order subtotal"
-
-msgid "Shipping total"
-msgstr "Shipping total"
-
-msgid "Discount total"
-msgstr "Discount total"
-
-msgid "Tax total"
-msgstr "Tax total"
-
-msgid "Currency"
-msgstr "Currency"
-
-msgid "Currency symbol"
-msgstr "Currency symbol"
-
-msgid "Item count"
-msgstr "Item count"
-
-msgid "Ordered items"
-msgstr "Ordered items"
-
-msgid "Site name"
-msgstr "Site name"
-
-msgid "Admin email"
-msgstr "Admin email"
-
-msgid "Current date"
-msgstr "Current date"
-
-msgid "Current time"
-msgstr "Current time"
-
-msgid "Current admin user"
-msgstr "Current admin user"
-
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
-
-msgid "Unknown user"
-msgstr "Ukendt bruger"
-
-msgid "Customer notification sent on %1$s by %2$s using template \"%3$s\"."
-msgstr "Kundemeddelelse sendt den %1$s af %2$s med skabelonen \"%3$s\"."
 
 #, python-format
 msgid "%d templates found."
@@ -401,17 +34,89 @@ msgstr "%d skabeloner will be skipped."
 msgid "%d templates will be updated."
 msgstr "%d skabeloner will be updated."
 
+msgid "Add New"
+msgstr "+"
+
+msgid "Add New Category"
+msgstr "+ Kategorie"
+
+msgid "Add New Template"
+msgstr "+ Skabelon"
+
+msgid "Add note to order"
+msgstr "Tilføj note til ordre"
+
+msgid "Adding order note..."
+msgstr "Tilføjer ordrenote…"
+
+msgid "Admin email"
+msgstr "Admin email"
+
+msgid "All Categories"
+msgstr "Kategorier"
+
+msgid "All languages"
+msgstr "Alle sprog"
+
 msgid "Allow JSON imports"
 msgstr "Allow JSON imports (Indstillinger)"
 
 msgid "Allow safe HTML formatting in notes"
 msgstr "Allow safe HTML formatting in notes (Indstillinger)"
 
-msgid "Always show and require the customer-note warning"
-msgstr "Always show customer note warning (Indstillinger)"
+msgid "Allowed billing countries"
+msgstr "Allowed billing countries"
+
+msgid "Allowed order statuses"
+msgstr "Allowed order statuses"
+
+msgid "Allowed payment method IDs"
+msgstr "Allowed payment method IDs"
+
+msgid "Allowed shipping method IDs"
+msgstr "Allowed shipping method IDs"
 
 msgid "Apply import now"
 msgstr "Apply import now"
+
+msgid "Available placeholders:"
+msgstr "{order_number}, {customer}, {date}, {payment_method}, {shipping_method}"
+
+msgid "Billing address"
+msgstr "Billing address"
+
+msgid "Billing city"
+msgstr "Billing city"
+
+msgid "Billing company"
+msgstr "Billing company"
+
+msgid "Billing country"
+msgstr "Billing country"
+
+msgid "Billing email"
+msgstr "Billing email"
+
+msgid "Billing phone"
+msgstr "Billing phone"
+
+msgid "Billing postcode"
+msgstr "Billing postcode"
+
+msgid "Categories"
+msgstr "Kategorier"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Comma-separated ISO country codes, for example DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Comma-separated, for example bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Completed date"
 
 msgid "Configure default behavior for template selection, customer notes, imports and admin display."
 msgstr "Configure default behavior (Indstillinger)."
@@ -420,25 +125,123 @@ msgstr "Configure default behavior (Indstillinger)."
 msgid "Copy of %s"
 msgstr "Skabelon copy: %s"
 
-msgid "Create an internal log note after a customer note is sent"
-msgstr "Create internal log note after customer note"
+msgid "Create an internal log note after a customer note is created"
+msgstr "Opret en intern lognote, når en kundenote er oprettet"
+
+msgid "Currency"
+msgstr "Currency"
+
+msgid "Currency symbol"
+msgstr "Currency symbol"
+
+msgid "Current admin user"
+msgstr "Current admin user"
+
+msgid "Current date"
+msgstr "Current date"
+
+msgid "Current time"
+msgstr "Current time"
+
+msgid "Customer ID"
+msgstr "Customer ID"
 
 msgid "Customer custom field by meta key"
 msgstr "Customer meta field"
 
+msgid "Customer first name"
+msgstr "Customer first name"
+
+msgid "Customer last name"
+msgstr "Customer last name"
+
+msgid "Customer name"
+msgstr "Customer name"
+
+msgid "Customer note"
+msgstr "Kundenote"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Kundenoten blev oprettet den %1$s af %2$s med skabelonen \"%3$s\"."
+
+msgid "Customer order note"
+msgstr "Customer order note"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Default note type"
+msgstr "Indstillinger: Intern note/Kundenote"
+
+msgid "Demo templates"
+msgstr "Demo Skabelon"
+
+msgid "Demo templates installed successfully."
+msgstr "Demo Skabelon: OK"
+
+msgid "Diagnostics"
+msgstr "Diagnostics"
+
+msgid "Discount total"
+msgstr "Discount total"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr "JSON: Skabelon, Kategorier, Favorit, Sortering, Brug"
+
+msgid "Drag to sort"
+msgstr "Sortering"
+
 msgid "Duplicate"
 msgstr "Duplicate"
+
+msgid "Edit Category"
+msgstr "Kategorie ✎"
+
+msgid "Edit Template"
+msgstr "Skabelon ✎"
 
 msgid "Enabled"
 msgstr "Aktiveret"
 
+msgid "Event"
+msgstr "Event"
+
+msgid "Export JSON"
+msgstr "Eksporter JSON"
+
+msgid "Export templates"
+msgstr "Export Skabelon"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Favorite"
+msgstr "Favorit"
+
+msgid "Generate test preview"
+msgstr "Generate test preview"
+
 msgid ""
-"Grant template permissions only to trusted roles. Users also need the normal WooCommerce permission to edit orders "
-"before they can add notes to an order."
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
 msgstr "Grant Tilladelser only to trusted roles; WooCommerce order edit permission is also required."
+
+msgid "Help"
+msgstr "Hjælp"
+
+msgid "History"
+msgstr "History"
+
+msgid "Import JSON"
+msgstr "Importer JSON"
 
 msgid "Import preview"
 msgstr "Import preview"
+
+msgid "Import templates"
+msgstr "Import Skabelon"
 
 msgid "Import usage counters from JSON files"
 msgstr "Import usage counters from JSON"
@@ -446,17 +249,39 @@ msgstr "Import usage counters from JSON"
 msgid "Insert placeholder"
 msgstr "Insert placeholder"
 
+msgid "Install demo templates"
+msgstr "Demo Skabelon +"
+
 msgid "Install demo templates automatically when no templates exist"
 msgstr "Install demo templates automatically"
 
-msgid "Leave empty to show this template for all languages. WPML and Polylang order language values can be matched here."
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr "Demo: Forsendelse, Betaling, Kundeservice"
+
+msgid "Internal note"
+msgstr "Intern note"
+
+msgid "Item count"
+msgstr "Item count"
+
+msgid "Last customer note:"
+msgstr "Seneste kundenote:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
 msgstr "Leave empty for all languages; WPML/Polylang language values can match here."
 
-msgid "Manage templates"
-msgstr "Manage skabeloner"
+msgid "Loading preview..."
+msgstr "Forhåndsvisning ..."
 
-msgid "Optional, for example de_DE, en_US or fr_FR"
-msgstr "Optional: de_DE, en_US or fr_FR"
+msgid "Mailhilfe Order Note Manager"
+msgstr "Ordrenoteskabeloner"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Ordrenoteskabeloner Import/Export"
 
 msgid "Mailhilfe Order Note Manager Permissions"
 msgstr "Order note Skabelon Tilladelser"
@@ -464,17 +289,120 @@ msgstr "Order note Skabelon Tilladelser"
 msgid "Mailhilfe Order Note Manager Settings"
 msgstr "Order note Skabelon Indstillinger"
 
+msgid "Mailhilfe Order Notes"
+msgstr "Ordrenoteskabeloner"
+
+msgid "Manage templates"
+msgstr "Manage skabeloner"
+
+msgid "Mark as favorite"
+msgstr "Favorit"
+
+msgid "Maximum order total"
+msgstr "Maximum order total"
+
+msgid "Minimum order total"
+msgstr "Minimum order total"
+
+msgid "New Category Name"
+msgstr "Kategorie +"
+
+msgid "New Template"
+msgstr "Skabelon +"
+
+msgid "No history entries found."
+msgstr "No history entries found."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "No template order was received."
+
+msgid "No templates are available yet."
+msgstr "Skabelon: 0"
+
+msgid "No templates found in Trash."
+msgstr "Skabelon: 0"
+
+msgid "No templates found."
+msgstr "Skabelon: 0"
+
+msgid "Not favorite"
+msgstr "! Favorit"
+
+msgid "Note type"
+msgstr "Intern note/Kundenote"
+
+msgid "Order"
+msgstr "Order"
+
+msgid "Order ID"
+msgstr "Order ID"
+
+msgid "Order could not be loaded."
+msgstr "Ordrenoteskabeloner: !"
+
 msgid "Order custom field by meta key"
 msgstr "Order meta field"
 
+msgid "Order date"
+msgstr "Order date"
+
+msgid "Order date and time"
+msgstr "Order date and time"
+
+msgid "Order note history"
+msgstr "Order note history"
+
+msgid "Order number"
+msgstr "Order number"
+
+msgid "Order status"
+msgstr "Order status"
+
+msgid "Order subtotal"
+msgstr "Order subtotal"
+
+msgid "Order time"
+msgstr "Order time"
+
+msgid "Order total"
+msgstr "Order total"
+
+msgid "Ordered items"
+msgstr "Ordered items"
+
+msgid "Paid date"
+msgstr "Paid date"
+
+msgid "Payment method"
+msgstr "Payment method"
+
+msgid "Payment method ID"
+msgstr "Payment method ID"
+
 msgid "Permissions"
 msgstr "Tilladelser"
+
+msgid "Personal favorite"
+msgstr "Personal favorite"
+
+msgid "Personal favorite updated."
+msgstr "Personal favorite updated."
 
 msgid "Placeholder inserted."
 msgstr "Placeholder inserted."
 
 msgid "Prefer the order/customer language for multilingual templates when available"
 msgstr "Prefer order/customer language when available"
+
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+msgid "Preview could not be loaded."
+msgstr "Forhåndsvisning: !"
+
+msgid "Recipient"
+msgstr "Recipient"
 
 msgid "Review the summary before applying the import. Nothing has been changed yet."
 msgstr "Review the summary before import; nothing has changed yet."
@@ -488,11 +416,86 @@ msgstr "Save Tilladelser"
 msgid "Save settings"
 msgstr "Save Indstillinger"
 
+msgid "Search Categories"
+msgstr "Kategorier 🔎"
+
+msgid "Search Templates"
+msgstr "Skabelon 🔎"
+
+msgid "Search templates"
+msgstr "Skabelon 🔎"
+
+msgid "Security check failed."
+msgstr "!"
+
+msgid "Select a template to show the preview."
+msgstr "Vælg skabelon → Forhåndsvisning"
+
+msgid "Select template"
+msgstr "Vælg skabelon"
+
+msgid "Settings"
+msgstr "Indstillinger"
+
+msgid "Shipping address"
+msgstr "Shipping address"
+
+msgid "Shipping city"
+msgstr "Shipping city"
+
+msgid "Shipping company"
+msgstr "Shipping company"
+
+msgid "Shipping country"
+msgstr "Shipping country"
+
+msgid "Shipping first name"
+msgstr "Shipping first name"
+
+msgid "Shipping last name"
+msgstr "Shipping last name"
+
+msgid "Shipping method"
+msgstr "Shipping method"
+
+msgid "Shipping postcode"
+msgstr "Shipping postcode"
+
+msgid "Shipping total"
+msgstr "Shipping total"
+
 msgid "Show favorites first in the order template selector"
 msgstr "Show favorites first"
 
 msgid "Show the usage counter column in the template list"
 msgstr "Show usage counter column"
+
+msgid "Site name"
+msgstr "Site name"
+
+msgid "Sort"
+msgstr "Sortering"
+
+msgid "Sorting saved."
+msgstr "Sortering: OK"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Tax total"
+msgstr "Tax total"
+
+msgid "Template"
+msgstr "Skabelon"
+
+msgid "Template Import/Export"
+msgstr "Skabelon Import/Export"
+
+msgid "Template Settings"
+msgstr "Indstillinger"
+
+msgid "Template conditions"
+msgstr "Template conditions"
 
 msgid "Template could not be duplicated."
 msgstr "Skabelon could not be duplicated."
@@ -503,131 +506,100 @@ msgstr "Skabelon not found."
 msgid "Template language"
 msgstr "Skabelon language"
 
-msgid "This value is used when a template does not define its own note type."
-msgstr "Used when no note type is defined."
+msgid "Template or order could not be found."
+msgstr "Skabelon: !"
 
-msgid ""
-"Upload a JSON export file to review a preview before the import is applied. Existing templates with the same title "
-"will be updated."
-msgstr "Upload a JSON file to preview before import. Existing templates with the same title will be updated."
+msgid "Template text"
+msgstr "Skabelon"
 
-msgid "Use templates"
-msgstr "Use skabeloner"
+msgid "Templates imported successfully."
+msgstr "Skabelon: OK"
 
-msgid "You are not allowed to manage permissions."
-msgstr "You are not allowed to manage Tilladelser."
+msgid "Test order preview"
+msgstr "Test order preview"
 
-msgid "All languages"
-msgstr "Alle sprog"
+msgid "The JSON file could not be exported."
+msgstr "JSON-filen kunne ikke eksporteres."
 
-msgid "The order note could not be saved."
-msgstr "The order note could not be saved."
-
-msgid "Last customer notification:"
-msgstr "Last customer notification:"
-
-msgid "Adding order note..."
-msgstr "Tilføjer ordrenote…"
-
-msgid "The order note was added successfully."
-msgstr "Ordrenoten blev tilføjet."
-
-msgid "The order note could not be added."
-msgstr "Ordrenoten kunne ikke tilføjes."
+msgid "The JSON file could not be imported."
+msgstr "JSON: !"
 
 #: includes/class-mhont-order-ui.php
 msgid "The edited note is too large."
 msgstr "Den redigerede note er for stor."
 
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+
+msgid "The order note could not be added."
+msgstr "Ordrenoten kunne ikke tilføjes."
+
+msgid "The order note could not be saved."
+msgstr "The order note could not be saved."
+
+msgid "The order note was added successfully."
+msgstr "Ordrenoten blev tilføjet."
+
+msgid "The selected template is empty."
+msgstr "Skabelon: 0"
+
 msgid "The selected template is not available for this order language."
 msgstr "The selected template is not available for this order language."
-
-#: includes/class-mhont-post-types.php:1
-msgid "No template order was received."
-msgstr "No template order was received."
 
 #: includes/class-mhont-post-types.php:1
 msgid "The template order could not be saved."
 msgstr "The template order could not be saved."
 
-msgid "Order note history"
-msgstr "Order note history"
+msgid "This value is used when a template does not define its own note type."
+msgstr "Used when no note type is defined."
 
-msgid "History"
-msgstr "History"
+msgid "Type to filter templates..."
+msgstr "Skabelon 🔎 ..."
 
-msgid "Diagnostics"
-msgstr "Diagnostics"
+msgid "Unknown user"
+msgstr "Ukendt bruger"
 
-msgid "You are not allowed to view the history."
-msgstr "You are not allowed to view the history."
+msgid "Update Category"
+msgstr "Kategorie ↻"
 
 msgid ""
-"The email status records whether WooCommerce/WordPress processed the send request. It is not proof that the recipient"
-" opened or received the message."
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
 msgstr ""
-"The email status records whether WooCommerce/WordPress processed the send request. It is not proof that the recipient"
-" opened or received the message."
+"Upload a JSON file to preview before import. Existing templates with the same title will be "
+"updated."
 
-msgid "Date"
-msgstr "Date"
+msgid "Usage"
+msgstr "Brug"
 
-msgid "Event"
-msgstr "Event"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Order"
-msgstr "Order"
+msgid "Use templates"
+msgstr "Use skabeloner"
 
 msgid "User"
 msgstr "User"
 
-msgid "Recipient"
-msgstr "Recipient"
+msgid "View Template"
+msgstr "Skabelon 👁"
 
-msgid "No history entries found."
-msgstr "No history entries found."
+msgid "WooCommerce is required for this action."
+msgstr "WooCommerce er påkrævet for denne handling."
+
+msgid "You are not allowed to manage note templates."
+msgstr "Skabelon: !"
+
+msgid "You are not allowed to manage permissions."
+msgstr "You are not allowed to manage Tilladelser."
+
+msgid "You are not allowed to use note templates."
+msgstr "Skabelon: !"
 
 msgid "You are not allowed to view diagnostics."
 msgstr "You are not allowed to view diagnostics."
 
-msgid "Template conditions"
-msgstr "Template conditions"
+msgid "You are not allowed to view the history."
+msgstr "You are not allowed to view the history."
 
-msgid "Allowed order statuses"
-msgstr "Allowed order statuses"
-
-msgid "Allowed payment method IDs"
-msgstr "Allowed payment method IDs"
-
-msgid "Comma-separated, for example bacs, paypal, stripe."
-msgstr "Comma-separated, for example bacs, paypal, stripe."
-
-msgid "Allowed shipping method IDs"
-msgstr "Allowed shipping method IDs"
-
-msgid "Allowed billing countries"
-msgstr "Allowed billing countries"
-
-msgid "Comma-separated ISO country codes, for example DE, AT, CH."
-msgstr "Comma-separated ISO country codes, for example DE, AT, CH."
-
-msgid "Minimum order total"
-msgstr "Minimum order total"
-
-msgid "Maximum order total"
-msgstr "Maximum order total"
-
-msgid "Test order preview"
-msgstr "Test order preview"
-
-msgid "Generate test preview"
-msgstr "Generate test preview"
-
-msgid "Personal favorite"
-msgstr "Personal favorite"
-
-msgid "Personal favorite updated."
-msgstr "Personal favorite updated."

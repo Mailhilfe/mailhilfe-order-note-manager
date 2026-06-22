@@ -11,11 +11,29 @@ final class MHONT_History {
 	const OPTION_DB_VERSION = 'mhont_history_db_version';
 	const DB_VERSION = '1.0';
 	private static $pending_customer_note = array();
+	private static $email_hooks_registered = false;
+	private static $mail_failure_handled = array();
 
 	public static function hooks() {
-		if ( self::DB_VERSION !== get_option( self::OPTION_DB_VERSION ) ) { self::install(); }
+		if ( self::DB_VERSION !== get_option( self::OPTION_DB_VERSION ) ) {
+			self::install();
+		}
+		self::email_hooks();
+	}
+
+	/**
+	 * Registers lightweight mail hooks on every request, including cron.
+	 *
+	 * @return void
+	 */
+	public static function email_hooks() {
+		if ( self::$email_hooks_registered ) {
+			return;
+		}
+
 		add_action( 'woocommerce_email_sent', array( __CLASS__, 'log_woocommerce_email' ), 10, 3 );
 		add_action( 'wp_mail_failed', array( __CLASS__, 'log_wp_mail_failure' ) );
+		self::$email_hooks_registered = true;
 	}
 
 	public static function table_name() {
@@ -23,6 +41,15 @@ final class MHONT_History {
 		return $wpdb->prefix . self::TABLE_SUFFIX;
 	}
 
+	/**
+	 * Creates or upgrades the history table.
+	 *
+	 * The database version is stored only after the table can be verified. This
+	 * prevents a failed dbDelta() call from permanently suppressing later repair
+	 * attempts.
+	 *
+	 * @return bool Whether the table is available.
+	 */
 	public static function install() {
 		global $wpdb;
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
@@ -45,11 +72,33 @@ final class MHONT_History {
 			KEY created_at (created_at)
 		) {$charset};";
 		dbDelta( $sql );
-		update_option( self::OPTION_DB_VERSION, self::DB_VERSION, false );
+
+		$found_table = $wpdb->get_var(
+			$wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) )
+		);
+		if ( $table === $found_table ) {
+			update_option( self::OPTION_DB_VERSION, self::DB_VERSION, false );
+			return true;
+		}
+
+		delete_option( self::OPTION_DB_VERSION );
+		return false;
 	}
 
 	public static function record( $event_type, $status, $order_id = 0, $template_id = 0, $details = array(), $recipient = '' ) {
 		global $wpdb;
+
+		if ( self::DB_VERSION !== get_option( self::OPTION_DB_VERSION ) && ! self::install() ) {
+			return 0;
+		}
+		$details_json = wp_json_encode(
+			is_array( $details ) ? $details : array( 'message' => (string) $details ),
+			JSON_INVALID_UTF8_SUBSTITUTE
+		);
+		if ( false === $details_json ) {
+			$details_json = '{}';
+		}
+
 		$data = array(
 			'created_at'  => current_time( 'mysql' ),
 			'order_id'    => absint( $order_id ),
@@ -58,38 +107,111 @@ final class MHONT_History {
 			'event_type'  => sanitize_key( $event_type ),
 			'status'      => sanitize_key( $status ),
 			'recipient'   => sanitize_email( $recipient ),
-			'details'     => wp_json_encode( is_array( $details ) ? $details : array( 'message' => (string) $details ) ),
+			'details'     => $details_json,
 		);
-		$wpdb->insert( self::table_name(), $data, array( '%s','%d','%d','%d','%s','%s','%s','%s' ) );
-		do_action( 'mailhilfe_order_note_history_recorded', $data, (int) $wpdb->insert_id );
-		return (int) $wpdb->insert_id;
+		$inserted = $wpdb->insert( self::table_name(), $data, array( '%s','%d','%d','%d','%s','%s','%s','%s' ) );
+		if ( false === $inserted ) {
+			// Retry table installation on the next event if the table was removed or
+			// could not be written after an otherwise successful activation.
+			delete_option( self::OPTION_DB_VERSION );
+			return 0;
+		}
+
+		$insert_id = (int) $wpdb->insert_id;
+		do_action( 'mailhilfe_order_note_history_recorded', $data, $insert_id );
+		return $insert_id;
 	}
 
 	public static function mark_pending_customer_note( $order_id, $template_id ) {
-		self::$pending_customer_note = array( 'order_id' => absint( $order_id ), 'template_id' => absint( $template_id ) );
+		$order_id = absint( $order_id );
+		if ( $order_id ) {
+			unset( self::$mail_failure_handled[ $order_id ] );
+		}
+		self::$pending_customer_note = array(
+			'order_id'    => $order_id,
+			'template_id' => absint( $template_id ),
+		);
+	}
+
+	/**
+	 * Clears the request-local customer-note context.
+	 *
+	 * @return void
+	 */
+	public static function clear_pending_customer_note() {
+		self::$pending_customer_note = array();
 	}
 
 	public static function log_woocommerce_email( $sent, $email_id, $email ) {
-		if ( 'customer_note' !== (string) $email_id ) { return; }
-		$order_id = 0;
+		if ( 'customer_note' !== (string) $email_id ) {
+			return;
+		}
+
+		$order_id  = 0;
 		$recipient = '';
 		if ( is_object( $email ) ) {
-			if ( isset( $email->object ) && is_a( $email->object, 'WC_Order' ) ) { $order_id = $email->object->get_id(); }
-			if ( method_exists( $email, 'get_recipient' ) ) { $recipient = (string) $email->get_recipient(); }
+			if ( isset( $email->object ) && is_a( $email->object, 'WC_Order' ) ) {
+				$order_id = absint( $email->object->get_id() );
+			}
+			if ( method_exists( $email, 'get_recipient' ) ) {
+				$recipient = (string) $email->get_recipient();
+			}
 		}
-		$template_id = ( ! empty( self::$pending_customer_note['order_id'] ) && (int) self::$pending_customer_note['order_id'] === (int) $order_id ) ? absint( self::$pending_customer_note['template_id'] ) : 0;
-		self::record( 'email', $sent ? 'processed' : 'failed', $order_id, $template_id, array( 'email_id' => (string) $email_id, 'meaning' => 'WooCommerce mail handler result; not a delivery receipt.' ), $recipient );
+
+		$template_id = 0;
+		if ( ! empty( self::$pending_customer_note['order_id'] ) && (int) self::$pending_customer_note['order_id'] === $order_id ) {
+			$template_id = absint( self::$pending_customer_note['template_id'] );
+		}
+
+		if ( $order_id && isset( self::$mail_failure_handled[ $order_id ] ) ) {
+			unset( self::$mail_failure_handled[ $order_id ] );
+			if ( ! $sent ) {
+				self::clear_pending_customer_note();
+				return;
+			}
+		}
+
+		self::record(
+			'email',
+			$sent ? 'processed' : 'failed',
+			$order_id,
+			$template_id,
+			array(
+				'email_id' => (string) $email_id,
+				'meaning'  => 'WooCommerce mail handler result; not a delivery receipt.',
+			),
+			$recipient
+		);
+
+		self::clear_pending_customer_note();
 	}
 
 	public static function log_wp_mail_failure( $error ) {
-		if ( ! is_wp_error( $error ) ) { return; }
-		$data = $error->get_error_data();
+		if ( ! is_wp_error( $error ) || empty( self::$pending_customer_note['order_id'] ) ) {
+			return;
+		}
+
+		$data      = $error->get_error_data();
 		$recipient = '';
 		if ( is_array( $data ) && ! empty( $data['to'] ) ) {
-			$to = is_array( $data['to'] ) ? reset( $data['to'] ) : $data['to'];
+			$to        = is_array( $data['to'] ) ? reset( $data['to'] ) : $data['to'];
 			$recipient = is_string( $to ) ? $to : '';
 		}
-		self::record( 'mail_error', 'failed', 0, 0, array( 'message' => $error->get_error_message() ), $recipient );
+
+		$order_id    = absint( self::$pending_customer_note['order_id'] );
+		$template_id = absint( self::$pending_customer_note['template_id'] );
+
+		self::record(
+			'mail_error',
+			'failed',
+			$order_id,
+			$template_id,
+			array( 'message' => $error->get_error_message() ),
+			$recipient
+		);
+
+		self::$mail_failure_handled[ $order_id ] = true;
+		self::clear_pending_customer_note();
 	}
 
 	/**
@@ -124,7 +246,7 @@ final class MHONT_History {
 						$data['label'] = '#' . $order_number;
 					}
 
-					if ( current_user_can( 'edit_shop_orders' ) && method_exists( $order, 'get_edit_order_url' ) ) {
+					if ( ( current_user_can( 'edit_shop_orders', $order_id ) || current_user_can( 'edit_post', $order_id ) ) && method_exists( $order, 'get_edit_order_url' ) ) {
 						$data['url'] = (string) $order->get_edit_order_url();
 					}
 				}
@@ -141,7 +263,20 @@ final class MHONT_History {
 		if ( ! current_user_can( MHONT_Capabilities::MANAGE_TEMPLATES ) ) { wp_die( esc_html__( 'You are not allowed to view the history.', 'mailhilfe-order-note-manager' ), '', array( 'response' => 403 ) ); }
 		global $wpdb;
 		$table = self::table_name();
-		$rows = $wpdb->get_results( "SELECT * FROM {$table} ORDER BY id DESC LIMIT 250" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Internal table name only.
+		$rows  = $wpdb->get_results(
+			$wpdb->prepare( 'SELECT * FROM %i ORDER BY id DESC LIMIT %d', $table, 250 )
+		);
+
+		if ( $rows ) {
+			$user_ids     = array_values( array_unique( array_filter( array_map( 'absint', wp_list_pluck( $rows, 'user_id' ) ) ) ) );
+			$template_ids = array_values( array_unique( array_filter( array_map( 'absint', wp_list_pluck( $rows, 'template_id' ) ) ) ) );
+			if ( $user_ids ) {
+				cache_users( $user_ids );
+			}
+			if ( $template_ids ) {
+				_prime_post_caches( $template_ids, false, false );
+			}
+		}
 		?>
 		<div class="wrap"><h1><?php esc_html_e( 'Order note history', 'mailhilfe-order-note-manager' ); ?></h1>
 		<p><?php esc_html_e( 'The email status records whether WooCommerce/WordPress processed the send request. It is not proof that the recipient opened or received the message.', 'mailhilfe-order-note-manager' ); ?></p>

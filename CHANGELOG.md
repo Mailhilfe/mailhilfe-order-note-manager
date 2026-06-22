@@ -2,6 +2,20 @@
 
 All notable user-facing changes are documented here. The complete historical changelog is available in `readme.txt`.
 
+## 2.0.6
+
+- Fixed WordPress revision restoration and synchronized restored content with template metadata.
+- Hardened placeholder, preview, note-content and diagnostics extension filters against invalid return values.
+- Corrected the combined order date/time placeholder and custom placeholder value validation.
+- Prevented duplicate email-failure history entries, verified history-table creation and optimized history lookups.
+- Added rollback protection to drag-and-drop sorting when a database update fails midway.
+- Fixed Visual/Text editor handling for placeholder insertion and test-order previews.
+- Corrected zero-value maximum-total conditions and shipping-method instance IDs such as `flat_rate:1`.
+- Hardened JSON import/export for malformed values, invalid UTF-8 and failed export encoding.
+- Improved duplicate-template redirects and template content limits.
+- Corrected multisite user-data cleanup, language-filter cleanup and cache cleanup during uninstall.
+- Synchronized all POT, PO and MO catalogs with the current source and rechecked multilingual help and FAQ content.
+
 ## 2.0.5
 
 - Prepared a GitHub-ready repository with screenshots, branding assets and project documentation.

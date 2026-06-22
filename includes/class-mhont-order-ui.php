@@ -220,7 +220,7 @@ final class MHONT_Order_UI {
 
 			<div class="mhont-field">
 				<label for="mhont_template_id"><strong><?php esc_html_e( 'Template', 'mailhilfe-order-note-manager' ); ?></strong></label>
-				<?php $personal_favorite_ids = array_map( 'absint', (array) get_user_meta( get_current_user_id(), '_mhont_personal_favorites', true ) ); ?>
+				<?php $personal_favorite_ids = self::get_user_template_ids( 'favorites' ); ?>
 				<select id="mhont_template_id" class="widefat" data-order-id="<?php echo esc_attr( $order->get_id() ); ?>">
 					<option value=""><?php esc_html_e( 'Select template', 'mailhilfe-order-note-manager' ); ?></option>
 					<?php foreach ( $templates as $template ) : ?>
@@ -242,7 +242,7 @@ final class MHONT_Order_UI {
 				</select>
 			</div>
 
-			<?php self::render_last_customer_notification( $order ); ?>
+			<?php self::render_last_customer_note( $order ); ?>
 
 			<div class="mhont-field mhont-preview-field">
 				<strong class="mhont-field-label"><?php esc_html_e( 'Preview', 'mailhilfe-order-note-manager' ); ?></strong>
@@ -306,9 +306,18 @@ final class MHONT_Order_UI {
 		}
 
 
-		$personal_favorites = array_map( 'absint', (array) get_user_meta( get_current_user_id(), '_mhont_personal_favorites', true ) );
-		$recent = array_map( 'absint', (array) get_user_meta( get_current_user_id(), '_mhont_recent_templates', true ) );
+		$personal_favorites = self::get_user_template_ids( 'favorites' );
+		$recent = self::get_user_template_ids( 'recent' );
 		$templates = apply_filters( 'mailhilfe_order_note_template_results', $templates, $order, get_current_user_id() );
+		$templates = is_array( $templates ) ? array_values( array_filter( $templates, static function ( $template ) use ( $order, $order_language ) {
+			if ( ! is_a( $template, 'WP_Post' ) || MHONT_Post_Types::POST_TYPE !== $template->post_type || 'publish' !== $template->post_status ) {
+				return false;
+			}
+			if ( $order && ! self::template_matches_conditions( $template, $order ) ) {
+				return false;
+			}
+			return '' === $order_language || self::template_matches_language( $template, $order_language );
+		} ) ) : array();
 		$recent_rank = array_flip( $recent );
 		$personal_map = array_fill_keys( $personal_favorites, 1 );
 		$global_favorites_enabled = ! class_exists( 'MHONT_Settings' ) || MHONT_Settings::enabled( 'favorites_first' );
@@ -463,12 +472,14 @@ final class MHONT_Order_UI {
 			wp_send_json_error( array( 'message' => __( 'The selected template is not available for this order language.', 'mailhilfe-order-note-manager' ) ), 400 );
 		}
 
-		$content = get_post_meta( $template_id, '_mhont_content', true );
+		$content    = get_post_meta( $template_id, '_mhont_content', true );
 		$allow_html = ! class_exists( 'MHONT_Settings' ) || MHONT_Settings::enabled( 'allow_html' );
-		$preview    = wp_kses_post( wpautop( MHONT_Placeholders::replace( $content, $order ) ) );
-		if ( ! $allow_html ) {
-			$preview = self::html_to_plain_text( $preview );
+		$preview    = MHONT_Placeholders::replace( $content, $order );
+		$preview    = apply_filters( 'mailhilfe_order_note_preview_content', $preview, $order, $template );
+		if ( ! is_scalar( $preview ) || strlen( (string) $preview ) > 100000 ) {
+			wp_send_json_error( array( 'message' => __( 'The edited note is too large.', 'mailhilfe-order-note-manager' ) ), 413 );
 		}
+		$preview = $allow_html ? wp_kses_post( wpautop( (string) $preview ) ) : self::html_to_plain_text( (string) $preview );
 		$note_type = get_post_meta( $template_id, '_mhont_note_type', true );
 		if ( ! in_array( $note_type, array( 'private', 'customer' ), true ) ) {
 			$note_type = class_exists( 'MHONT_Settings' ) ? (string) MHONT_Settings::get( 'default_note_type' ) : 'private';
@@ -570,9 +581,10 @@ final class MHONT_Order_UI {
 			$edited_note = ( class_exists( 'MHONT_Settings' ) && ! MHONT_Settings::enabled( 'allow_html' ) )
 				? self::html_to_plain_text( $raw_edited_note )
 				: wp_kses_post( $raw_edited_note );
-			if ( '' !== trim( wp_strip_all_tags( $edited_note ) ) ) {
-				$note = $edited_note;
-			}
+			// The editable preview is authoritative when it is submitted. If the user
+			// deliberately clears it, the normal empty-note validation below must stop
+			// the request instead of silently sending the original template content.
+			$note = $edited_note;
 		}
 
 		if ( '' === trim( wp_strip_all_tags( $note ) ) ) {
@@ -581,6 +593,15 @@ final class MHONT_Order_UI {
 
 		$is_customer_note = 'customer' === $note_type;
 		$note = apply_filters( 'mailhilfe_order_note_content', $note, $order, $template, $note_type );
+		if ( ! is_scalar( $note ) || strlen( (string) $note ) > 100000 ) {
+			return new WP_Error( 'mhont_filtered_note_invalid', __( 'The edited note is too large.', 'mailhilfe-order-note-manager' ), array( 'status' => 413 ) );
+		}
+		$note = ( class_exists( 'MHONT_Settings' ) && ! MHONT_Settings::enabled( 'allow_html' ) )
+			? self::html_to_plain_text( (string) $note )
+			: wp_kses_post( (string) $note );
+		if ( '' === trim( wp_strip_all_tags( $note ) ) ) {
+			return new WP_Error( 'mhont_empty_filtered_note', __( 'The selected template is empty.', 'mailhilfe-order-note-manager' ), array( 'status' => 400 ) );
+		}
 		do_action( 'mailhilfe_order_note_before_add', $order, $template, $note, $note_type );
 		if ( $is_customer_note && class_exists( 'MHONT_History' ) ) { MHONT_History::mark_pending_customer_note( $order_id, $template_id ); }
 		try {
@@ -590,16 +611,26 @@ final class MHONT_Order_UI {
 		}
 
 		if ( ! $note_id ) {
+			if ( $is_customer_note && class_exists( 'MHONT_History' ) ) {
+				MHONT_History::clear_pending_customer_note();
+			}
 			return new WP_Error( 'mhont_save_failed', __( 'The order note could not be saved.', 'mailhilfe-order-note-manager' ), array( 'status' => 500 ) );
 		}
 
 		$note_ids = array( absint( $note_id ) );
 
+		// WooCommerce normally processes customer-note email hooks synchronously
+		// during add_order_note(). Clear any leftover context so an unrelated mail
+		// failure later in the same request cannot be attributed to this template.
+		if ( $is_customer_note && class_exists( 'MHONT_History' ) ) {
+			MHONT_History::clear_pending_customer_note();
+		}
+
 		if ( $is_customer_note ) {
 			try {
-				self::store_customer_notification_timestamp( $order, $template );
+				self::store_customer_note_timestamp( $order, $template );
 				if ( ! class_exists( 'MHONT_Settings' ) || MHONT_Settings::enabled( 'log_customer_notes' ) ) {
-					$log_note_id = self::add_customer_notification_log_note( $order, $template );
+					$log_note_id = self::add_customer_note_log_note( $order, $template );
 					if ( $log_note_id ) {
 						$note_ids[] = absint( $log_note_id );
 					}
@@ -610,8 +641,8 @@ final class MHONT_Order_UI {
 		}
 
 
-		$recent = array_values( array_unique( array_merge( array( $template_id ), array_map( 'absint', (array) get_user_meta( get_current_user_id(), '_mhont_recent_templates', true ) ) ) ) );
-		update_user_meta( get_current_user_id(), '_mhont_recent_templates', array_slice( $recent, 0, 10 ) );
+		$recent = array_values( array_unique( array_merge( array( $template_id ), self::get_user_template_ids( 'recent' ) ) ) );
+		self::update_user_template_ids( 'recent', array_slice( $recent, 0, 10 ) );
 		if ( class_exists( 'MHONT_History' ) ) {
 			MHONT_History::record( 'note', 'created', $order_id, $template_id, array( 'note_type' => $note_type, 'note_id' => absint( $note_id ) ), $is_customer_note ? $order->get_billing_email() : '' );
 		}
@@ -644,38 +675,48 @@ final class MHONT_Order_UI {
 	}
 
 	/**
-	 * Stores the latest customer-notification details on the order.
+	 * Stores the latest customer-note details on the order.
 	 *
 	 * @param WC_Order $order    WooCommerce order.
 	 * @param WP_Post  $template Used note template.
 	 * @return void
 	 */
-	private static function store_customer_notification_timestamp( $order, $template ) {
+	private static function store_customer_note_timestamp( $order, $template ) {
 		$current_user = wp_get_current_user();
-		$order->update_meta_data( '_mhont_last_customer_notification_time', current_time( 'mysql', true ) );
-		$order->update_meta_data( '_mhont_last_customer_notification_user', ( $current_user && $current_user->exists() ) ? $current_user->display_name : '' );
-		$order->update_meta_data( '_mhont_last_customer_notification_template', is_a( $template, 'WP_Post' ) ? get_the_title( $template ) : '' );
+		$order->update_meta_data( '_mhont_last_customer_note_time', current_time( 'mysql', true ) );
+		$order->update_meta_data( '_mhont_last_customer_note_user', ( $current_user && $current_user->exists() ) ? $current_user->display_name : '' );
+		$order->update_meta_data( '_mhont_last_customer_note_template', is_a( $template, 'WP_Post' ) ? get_the_title( $template ) : '' );
 		$order->save();
 	}
 
 	/**
-	 * Displays the most recently recorded customer notification.
+	 * Displays the most recently created customer note.
 	 *
 	 * @param WC_Order $order WooCommerce order.
 	 * @return void
 	 */
-	private static function render_last_customer_notification( $order ) {
-		$stored_time = $order->get_meta( '_mhont_last_customer_notification_time', true );
+	private static function render_last_customer_note( $order ) {
+		$stored_time = $order->get_meta( '_mhont_last_customer_note_time', true );
+		if ( ! is_string( $stored_time ) || '' === $stored_time ) {
+			// Backward-compatible fallback for orders written by versions before 2.0.6.
+			$stored_time = $order->get_meta( '_mhont_last_customer_notification_time', true );
+		}
 		if ( ! is_string( $stored_time ) || '' === $stored_time ) {
 			return;
 		}
 
 		$timestamp = strtotime( $stored_time . ' UTC' );
 		$display_time = $timestamp ? wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $timestamp ) : $stored_time;
-		$user_name = (string) $order->get_meta( '_mhont_last_customer_notification_user', true );
-		$template_title = (string) $order->get_meta( '_mhont_last_customer_notification_template', true );
+		$user_name = (string) $order->get_meta( '_mhont_last_customer_note_user', true );
+		$template_title = (string) $order->get_meta( '_mhont_last_customer_note_template', true );
+		if ( '' === $user_name ) {
+			$user_name = (string) $order->get_meta( '_mhont_last_customer_notification_user', true );
+		}
+		if ( '' === $template_title ) {
+			$template_title = (string) $order->get_meta( '_mhont_last_customer_notification_template', true );
+		}
 
-		echo '<div class="notice inline notice-success mhont-last-notification"><p><strong>' . esc_html__( 'Last customer notification:', 'mailhilfe-order-note-manager' ) . '</strong> ';
+		echo '<div class="notice inline notice-success mhont-last-notification"><p><strong>' . esc_html__( 'Last customer note:', 'mailhilfe-order-note-manager' ) . '</strong> ';
 		echo esc_html( $display_time );
 		if ( '' !== $user_name ) {
 			echo ' &ndash; ' . esc_html( $user_name );
@@ -690,15 +731,14 @@ final class MHONT_Order_UI {
 	/**
 	 * Adds an internal audit note after a customer note has been created.
 	 *
-	 * WooCommerce sends the customer note notification when customer note emails
-	 * are enabled. This internal note records when the notification was triggered
-	 * from this template action.
+	 * The audit note deliberately records creation of the customer note, not email
+	 * delivery. Email processing results are available on the central history page.
 	 *
 	 * @param WC_Order $order    WooCommerce order.
 	 * @param WP_Post  $template Used note template.
 	 * @return int Order note ID, or 0 on failure.
 	 */
-	private static function add_customer_notification_log_note( $order, $template ) {
+	private static function add_customer_note_log_note( $order, $template ) {
 		$current_user = wp_get_current_user();
 		$user_name    = ( $current_user && $current_user->exists() ) ? $current_user->display_name : __( 'Unknown user', 'mailhilfe-order-note-manager' );
 		$timestamp    = current_time( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) );
@@ -706,7 +746,7 @@ final class MHONT_Order_UI {
 
 		$log_note = sprintf(
 			/* translators: 1: date and time, 2: WordPress user display name, 3: template title. */
-			__( 'Customer notification sent on %1$s by %2$s using template "%3$s".', 'mailhilfe-order-note-manager' ),
+			__( 'Customer note created on %1$s by %2$s using template "%3$s".', 'mailhilfe-order-note-manager' ),
 			$timestamp,
 			$user_name,
 			$template_title
@@ -770,6 +810,74 @@ final class MHONT_Order_UI {
 	}
 
 	/**
+	 * Returns a site-scoped user-meta key for personal template preferences.
+	 *
+	 * WordPress user meta is global across a multisite network. Adding the blog ID
+	 * prevents template IDs from one shop being interpreted as templates on another.
+	 * Single-site installations retain the established keys for compatibility.
+	 *
+	 * @param string $type Preference type: favorites or recent.
+	 * @return string
+	 */
+	private static function get_user_storage_key( $type ) {
+		$base = 'favorites' === $type ? '_mhont_personal_favorites' : '_mhont_recent_templates';
+		return is_multisite() ? $base . '_' . get_current_blog_id() : $base;
+	}
+
+	/**
+	 * Gets validated template IDs from the current user's preference storage.
+	 *
+	 * @param string $type Preference type: favorites or recent.
+	 * @return int[]
+	 */
+	private static function get_user_template_ids( $type ) {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return array();
+		}
+
+		$key = self::get_user_storage_key( $type );
+		$ids = array_values( array_unique( array_filter( array_map( 'absint', (array) get_user_meta( $user_id, $key, true ) ) ) ) );
+
+		// Migrate legacy network-global values once, but only retain IDs that belong
+		// to this site's template post type.
+		if ( is_multisite() && ! metadata_exists( 'user', $user_id, $key ) ) {
+			$legacy_key = 'favorites' === $type ? '_mhont_personal_favorites' : '_mhont_recent_templates';
+			$legacy_ids = array_values( array_unique( array_filter( array_map( 'absint', (array) get_user_meta( $user_id, $legacy_key, true ) ) ) ) );
+			$ids = array_values(
+				array_filter(
+					$legacy_ids,
+					static function ( $template_id ) {
+						return MHONT_Post_Types::POST_TYPE === get_post_type( $template_id );
+					}
+				)
+			);
+			update_user_meta( $user_id, $key, $ids );
+		}
+
+		$limit = 'favorites' === $type ? 100 : 10;
+		return array_slice( $ids, 0, $limit );
+	}
+
+	/**
+	 * Stores validated, site-scoped user template preferences.
+	 *
+	 * @param string $type Preference type: favorites or recent.
+	 * @param int[]  $ids  Template IDs.
+	 * @return void
+	 */
+	private static function update_user_template_ids( $type, $ids ) {
+		$user_id = get_current_user_id();
+		if ( ! $user_id ) {
+			return;
+		}
+
+		$limit = 'favorites' === $type ? 100 : 10;
+		$ids   = array_slice( array_values( array_unique( array_filter( array_map( 'absint', (array) $ids ) ) ) ), 0, $limit );
+		update_user_meta( $user_id, self::get_user_storage_key( $type ), $ids );
+	}
+
+	/**
 	 * Checks whether the current user is allowed to edit the given order.
 	 *
 	 * The plugin capability only controls access to template functionality.
@@ -798,14 +906,30 @@ final class MHONT_Order_UI {
 	/** Checks configured template conditions against an order. */
 	private static function template_matches_conditions( $template, $order ) {
 		$conditions = get_post_meta( $template->ID, '_mhont_conditions', true );
-		if ( ! is_array( $conditions ) || empty( array_filter( $conditions ) ) ) { return (bool) apply_filters( 'mailhilfe_order_note_conditions_match', true, $template, $order, $conditions ); }
+		if ( ! is_array( $conditions ) ) {
+			$conditions = array();
+		}
 		$match = true;
 		if ( ! empty( $conditions['statuses'] ) && ! in_array( $order->get_status(), (array) $conditions['statuses'], true ) ) { $match = false; }
 		if ( $match && ! empty( $conditions['payment_methods'] ) && ! in_array( $order->get_payment_method(), (array) $conditions['payment_methods'], true ) ) { $match = false; }
 		if ( $match && ! empty( $conditions['countries'] ) && ! in_array( strtoupper( $order->get_billing_country() ), (array) $conditions['countries'], true ) ) { $match = false; }
 		if ( $match && ! empty( $conditions['shipping_methods'] ) ) {
-			$ids = array(); foreach ( $order->get_shipping_methods() as $item ) { if ( method_exists( $item, 'get_method_id' ) ) { $ids[] = $item->get_method_id(); } }
-			if ( ! array_intersect( $ids, (array) $conditions['shipping_methods'] ) ) { $match = false; }
+			$ids = array();
+			foreach ( $order->get_shipping_methods() as $item ) {
+				if ( ! method_exists( $item, 'get_method_id' ) ) {
+					continue;
+				}
+				$method_id = (string) $item->get_method_id();
+				if ( '' !== $method_id ) {
+					$ids[] = $method_id;
+					if ( method_exists( $item, 'get_instance_id' ) && absint( $item->get_instance_id() ) ) {
+						$ids[] = $method_id . ':' . absint( $item->get_instance_id() );
+					}
+				}
+			}
+			if ( ! array_intersect( array_values( array_unique( $ids ) ), (array) $conditions['shipping_methods'] ) ) {
+				$match = false;
+			}
 		}
 		$total = (float) $order->get_total();
 		if ( $match && isset( $conditions['min_total'] ) && '' !== $conditions['min_total'] && $total < (float) $conditions['min_total'] ) { $match = false; }
@@ -818,10 +942,11 @@ final class MHONT_Order_UI {
 		check_ajax_referer( 'mhont_toggle_personal_favorite', 'nonce' );
 		if ( ! current_user_can( MHONT_Capabilities::USE_TEMPLATES ) ) { wp_send_json_error( array( 'message' => __( 'You are not allowed to use note templates.', 'mailhilfe-order-note-manager' ) ), 403 ); }
 		$template_id = isset( $_POST['template_id'] ) ? absint( $_POST['template_id'] ) : 0;
-		if ( MHONT_Post_Types::POST_TYPE !== get_post_type( $template_id ) ) { wp_send_json_error( array( 'message' => __( 'Template could not be found.', 'mailhilfe-order-note-manager' ) ), 404 ); }
-		$favorites = array_map( 'absint', (array) get_user_meta( get_current_user_id(), '_mhont_personal_favorites', true ) );
+		$template = get_post( $template_id );
+		if ( ! $template || MHONT_Post_Types::POST_TYPE !== $template->post_type || 'publish' !== $template->post_status ) { wp_send_json_error( array( 'message' => __( 'Template could not be found.', 'mailhilfe-order-note-manager' ) ), 404 ); }
+		$favorites = self::get_user_template_ids( 'favorites' );
 		if ( in_array( $template_id, $favorites, true ) ) { $favorites = array_values( array_diff( $favorites, array( $template_id ) ) ); $active = false; } else { array_unshift( $favorites, $template_id ); $favorites = array_slice( array_values( array_unique( $favorites ) ), 0, 100 ); $active = true; }
-		update_user_meta( get_current_user_id(), '_mhont_personal_favorites', $favorites );
+		self::update_user_template_ids( 'favorites', $favorites );
 		wp_send_json_success( array( 'active' => $active ) );
 	}
 

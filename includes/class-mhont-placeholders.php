@@ -20,60 +20,71 @@ final class MHONT_Placeholders {
 	 * @return array<string,string>
 	 */
 	public static function get_definitions() {
-		static $definitions = null;
-		if ( null !== $definitions ) {
-			$definitions = apply_filters( 'mailhilfe_order_note_placeholders', $definitions );
-		return is_array( $definitions ) ? $definitions : array();
+		static $base_definitions = null;
+
+		if ( null === $base_definitions ) {
+			$base_definitions = array(
+				'{order_id}'              => __( 'Order ID', 'mailhilfe-order-note-manager' ),
+				'{order_number}'          => __( 'Order number', 'mailhilfe-order-note-manager' ),
+				'{order_status}'          => __( 'Order status', 'mailhilfe-order-note-manager' ),
+				'{order_date}'            => __( 'Order date', 'mailhilfe-order-note-manager' ),
+				'{order_time}'            => __( 'Order time', 'mailhilfe-order-note-manager' ),
+				'{date}'                  => __( 'Order date and time', 'mailhilfe-order-note-manager' ),
+				'{paid_date}'             => __( 'Paid date', 'mailhilfe-order-note-manager' ),
+				'{completed_date}'        => __( 'Completed date', 'mailhilfe-order-note-manager' ),
+				'{customer}'              => __( 'Customer name', 'mailhilfe-order-note-manager' ),
+				'{customer_id}'           => __( 'Customer ID', 'mailhilfe-order-note-manager' ),
+				'{customer_first_name}'   => __( 'Customer first name', 'mailhilfe-order-note-manager' ),
+				'{customer_last_name}'    => __( 'Customer last name', 'mailhilfe-order-note-manager' ),
+				'{customer_note}'         => __( 'Customer order note', 'mailhilfe-order-note-manager' ),
+				'{billing_email}'         => __( 'Billing email', 'mailhilfe-order-note-manager' ),
+				'{billing_phone}'         => __( 'Billing phone', 'mailhilfe-order-note-manager' ),
+				'{billing_company}'       => __( 'Billing company', 'mailhilfe-order-note-manager' ),
+				'{billing_address}'       => __( 'Billing address', 'mailhilfe-order-note-manager' ),
+				'{billing_city}'          => __( 'Billing city', 'mailhilfe-order-note-manager' ),
+				'{billing_postcode}'      => __( 'Billing postcode', 'mailhilfe-order-note-manager' ),
+				'{billing_country}'       => __( 'Billing country', 'mailhilfe-order-note-manager' ),
+				'{shipping_first_name}'   => __( 'Shipping first name', 'mailhilfe-order-note-manager' ),
+				'{shipping_last_name}'    => __( 'Shipping last name', 'mailhilfe-order-note-manager' ),
+				'{shipping_company}'      => __( 'Shipping company', 'mailhilfe-order-note-manager' ),
+				'{shipping_address}'      => __( 'Shipping address', 'mailhilfe-order-note-manager' ),
+				'{shipping_city}'         => __( 'Shipping city', 'mailhilfe-order-note-manager' ),
+				'{shipping_postcode}'     => __( 'Shipping postcode', 'mailhilfe-order-note-manager' ),
+				'{shipping_country}'      => __( 'Shipping country', 'mailhilfe-order-note-manager' ),
+				'{payment_method}'        => __( 'Payment method', 'mailhilfe-order-note-manager' ),
+				'{payment_method_id}'     => __( 'Payment method ID', 'mailhilfe-order-note-manager' ),
+				'{shipping_method}'       => __( 'Shipping method', 'mailhilfe-order-note-manager' ),
+				'{order_total}'           => __( 'Order total', 'mailhilfe-order-note-manager' ),
+				'{order_subtotal}'        => __( 'Order subtotal', 'mailhilfe-order-note-manager' ),
+				'{shipping_total}'        => __( 'Shipping total', 'mailhilfe-order-note-manager' ),
+				'{discount_total}'        => __( 'Discount total', 'mailhilfe-order-note-manager' ),
+				'{tax_total}'             => __( 'Tax total', 'mailhilfe-order-note-manager' ),
+				'{currency}'              => __( 'Currency', 'mailhilfe-order-note-manager' ),
+				'{currency_symbol}'       => __( 'Currency symbol', 'mailhilfe-order-note-manager' ),
+				'{item_count}'            => __( 'Item count', 'mailhilfe-order-note-manager' ),
+				'{items}'                 => __( 'Ordered items', 'mailhilfe-order-note-manager' ),
+				'{site_name}'             => __( 'Site name', 'mailhilfe-order-note-manager' ),
+				'{admin_email}'           => __( 'Admin email', 'mailhilfe-order-note-manager' ),
+				'{current_date}'          => __( 'Current date', 'mailhilfe-order-note-manager' ),
+				'{current_time}'          => __( 'Current time', 'mailhilfe-order-note-manager' ),
+				'{current_user}'          => __( 'Current admin user', 'mailhilfe-order-note-manager' ),
+				'{order_meta:meta_key}'   => __( 'Order custom field by meta key', 'mailhilfe-order-note-manager' ),
+				'{customer_meta:meta_key}' => __( 'Customer custom field by meta key', 'mailhilfe-order-note-manager' ),
+			);
 		}
 
-		$definitions = array(
-			'{order_id}'            => __( 'Order ID', 'mailhilfe-order-note-manager' ),
-			'{order_number}'        => __( 'Order number', 'mailhilfe-order-note-manager' ),
-			'{order_status}'        => __( 'Order status', 'mailhilfe-order-note-manager' ),
-			'{order_date}'          => __( 'Order date', 'mailhilfe-order-note-manager' ),
-			'{order_time}'          => __( 'Order time', 'mailhilfe-order-note-manager' ),
-			'{date}'                => __( 'Order date and time', 'mailhilfe-order-note-manager' ),
-			'{paid_date}'           => __( 'Paid date', 'mailhilfe-order-note-manager' ),
-			'{completed_date}'      => __( 'Completed date', 'mailhilfe-order-note-manager' ),
-			'{customer}'            => __( 'Customer name', 'mailhilfe-order-note-manager' ),
-			'{customer_id}'         => __( 'Customer ID', 'mailhilfe-order-note-manager' ),
-			'{customer_first_name}' => __( 'Customer first name', 'mailhilfe-order-note-manager' ),
-			'{customer_last_name}'  => __( 'Customer last name', 'mailhilfe-order-note-manager' ),
-			'{customer_note}'       => __( 'Customer order note', 'mailhilfe-order-note-manager' ),
-			'{billing_email}'       => __( 'Billing email', 'mailhilfe-order-note-manager' ),
-			'{billing_phone}'       => __( 'Billing phone', 'mailhilfe-order-note-manager' ),
-			'{billing_company}'     => __( 'Billing company', 'mailhilfe-order-note-manager' ),
-			'{billing_address}'     => __( 'Billing address', 'mailhilfe-order-note-manager' ),
-			'{billing_city}'        => __( 'Billing city', 'mailhilfe-order-note-manager' ),
-			'{billing_postcode}'    => __( 'Billing postcode', 'mailhilfe-order-note-manager' ),
-			'{billing_country}'     => __( 'Billing country', 'mailhilfe-order-note-manager' ),
-			'{shipping_first_name}' => __( 'Shipping first name', 'mailhilfe-order-note-manager' ),
-			'{shipping_last_name}'  => __( 'Shipping last name', 'mailhilfe-order-note-manager' ),
-			'{shipping_company}'    => __( 'Shipping company', 'mailhilfe-order-note-manager' ),
-			'{shipping_address}'    => __( 'Shipping address', 'mailhilfe-order-note-manager' ),
-			'{shipping_city}'       => __( 'Shipping city', 'mailhilfe-order-note-manager' ),
-			'{shipping_postcode}'   => __( 'Shipping postcode', 'mailhilfe-order-note-manager' ),
-			'{shipping_country}'    => __( 'Shipping country', 'mailhilfe-order-note-manager' ),
-			'{payment_method}'      => __( 'Payment method', 'mailhilfe-order-note-manager' ),
-			'{payment_method_id}'   => __( 'Payment method ID', 'mailhilfe-order-note-manager' ),
-			'{shipping_method}'     => __( 'Shipping method', 'mailhilfe-order-note-manager' ),
-			'{order_total}'         => __( 'Order total', 'mailhilfe-order-note-manager' ),
-			'{order_subtotal}'      => __( 'Order subtotal', 'mailhilfe-order-note-manager' ),
-			'{shipping_total}'      => __( 'Shipping total', 'mailhilfe-order-note-manager' ),
-			'{discount_total}'      => __( 'Discount total', 'mailhilfe-order-note-manager' ),
-			'{tax_total}'           => __( 'Tax total', 'mailhilfe-order-note-manager' ),
-			'{currency}'            => __( 'Currency', 'mailhilfe-order-note-manager' ),
-			'{currency_symbol}'     => __( 'Currency symbol', 'mailhilfe-order-note-manager' ),
-			'{item_count}'          => __( 'Item count', 'mailhilfe-order-note-manager' ),
-			'{items}'               => __( 'Ordered items', 'mailhilfe-order-note-manager' ),
-			'{site_name}'           => __( 'Site name', 'mailhilfe-order-note-manager' ),
-			'{admin_email}'         => __( 'Admin email', 'mailhilfe-order-note-manager' ),
-			'{current_date}'        => __( 'Current date', 'mailhilfe-order-note-manager' ),
-			'{current_time}'        => __( 'Current time', 'mailhilfe-order-note-manager' ),
-			'{current_user}'        => __( 'Current admin user', 'mailhilfe-order-note-manager' ),
-			'{order_meta:meta_key}'  => __( 'Order custom field by meta key', 'mailhilfe-order-note-manager' ),
-			'{customer_meta:meta_key}' => __( 'Customer custom field by meta key', 'mailhilfe-order-note-manager' ),
-		);
+		$filtered = apply_filters( 'mailhilfe_order_note_placeholders', $base_definitions );
+		if ( ! is_array( $filtered ) ) {
+			return $base_definitions;
+		}
+
+		$definitions = array();
+		foreach ( $filtered as $placeholder => $label ) {
+			if ( ! is_string( $placeholder ) || ! preg_match( '/^\{[A-Za-z0-9_.:-]+\}$/', $placeholder ) || ! is_scalar( $label ) ) {
+				continue;
+			}
+			$definitions[ $placeholder ] = (string) $label;
+		}
 
 		return $definitions;
 	}
@@ -98,10 +109,25 @@ final class MHONT_Placeholders {
 		 * @param array    $values Placeholder map.
 		 * @param WC_Order $order  WooCommerce order.
 		 */
-		$values = apply_filters( 'mhont_placeholder_values', $values, $order );
-		$values = apply_filters( 'mailhilfe_order_note_placeholder_values', $values, $order );
+		$legacy_values = apply_filters( 'mhont_placeholder_values', $values, $order );
+		if ( is_array( $legacy_values ) ) {
+			$values = $legacy_values;
+		}
 
-		$text = strtr( (string) $text, array_map( array( __CLASS__, 'clean_value' ), $values ) );
+		$filtered_values = apply_filters( 'mailhilfe_order_note_placeholder_values', $values, $order );
+		if ( is_array( $filtered_values ) ) {
+			$values = $filtered_values;
+		}
+
+		$clean_values = array();
+		foreach ( $values as $placeholder => $value ) {
+			if ( ! is_string( $placeholder ) || ! preg_match( '/^\{[A-Za-z0-9_.:-]+\}$/', $placeholder ) ) {
+				continue;
+			}
+			$clean_values[ $placeholder ] = self::clean_value( $value );
+		}
+
+		$text = strtr( (string) $text, $clean_values );
 
 		$text = preg_replace_callback(
 			'/\{order_meta:([A-Za-z0-9_\-:.]+)\}/',
@@ -218,7 +244,10 @@ final class MHONT_Placeholders {
 			return wc_format_datetime( $date, get_option( 'time_format' ) );
 		}
 
-		return wc_format_datetime( $date );
+		$date_format = (string) get_option( 'date_format' );
+		$time_format = (string) get_option( 'time_format' );
+
+		return wc_format_datetime( $date, trim( $date_format . ' ' . $time_format ) );
 	}
 
 	/**

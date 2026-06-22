@@ -4,7 +4,7 @@ Tags: woocommerce, order notes, templates, hpos, admin
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ Features:
 * Create, edit and delete note templates.
 * Select templates directly in WooCommerce orders.
 * Choose internal note or customer note.
-* Automatically add an internal timestamp log when a customer notification is created from a template.
+* Automatically add an internal timestamp log when a customer note is created from a template.
 * Organize templates with categories.
 * Use many placeholders for order data, customer data, billing/shipping details, totals, items and shop information.
 * Preview notes with replaced placeholders before adding them.
@@ -205,7 +205,7 @@ Deactivate and delete the plugin from the WordPress plugin screen. The included 
 
 Yes. After selecting a template, the preview contains the replaced order data and can be edited before the note is saved. The edited preview is the final note that will be added to the order.
 
-= When is a customer notification recorded? =
+= How are customer-note creation and email processing recorded? =
 
 When a template is added as a customer note, the plugin also adds an internal log note with date, time, current user and template name. This helps the shop team see when a customer-visible message was created.
 
@@ -303,6 +303,19 @@ The plugin provides extension points for placeholders, placeholder values, allow
 6. Diagnostics page with WordPress, WooCommerce, HPOS, email and cache status.
 
 == Changelog ==
+
+= 2.0.6 =
+* Fixed template revision restoration so restored text is used by the plugin.
+* Hardened placeholder, preview, note-content and diagnostics extension filters against invalid return values.
+* Corrected the combined order date/time placeholder and custom placeholder value validation.
+* Prevented duplicate email-failure history entries, verified history-table creation and improved history-query performance.
+* Improved drag-and-drop validation with rollback protection if a database update fails midway.
+* Fixed Visual/Text editor handling for placeholder insertion and test-order previews.
+* Corrected zero-value maximum-total conditions and shipping-method instance IDs such as `flat_rate:1`.
+* Hardened JSON import/export for malformed values, invalid UTF-8 and failed export encoding.
+* Improved duplicate-template redirects, template-content limits and revision synchronization.
+* Corrected multisite cleanup, language-filter cleanup and persistent object-cache removal during uninstall.
+* Synchronized the POT, PO and MO catalogs with all current source strings and corrected multilingual help/FAQ documentation.
 
 = 2.0.5 =
 * Prepared a GitHub-ready development repository with documentation, screenshots, contribution guides, security policy, issue templates, automated lint checks and a reproducible release-build script.
@@ -534,8 +547,8 @@ The plugin provides extension points for placeholders, placeholder values, allow
 * Security hardening: Strengthened JSON import validation with upload error checks, WordPress file extension/type verification, JSON depth limiting and category-count limiting.
 
 = 1.3.0 =
-* Added an automatic internal order log note for customer notifications created from templates.
-* The log records the date, time, user and template used for the customer notification.
+* Added an automatic internal order log note for customer notes created from templates.
+* The log records the date, time, user and template used for the customer note.
 
 = 1.2.9 =
 * Made the replaced order note preview editable before adding the note.

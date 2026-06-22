@@ -172,7 +172,7 @@ final class MHONT_Settings {
 					<?php
 					$checkboxes = array(
 						'install_demo_on_activation' => __( 'Install demo templates automatically when no templates exist', 'mailhilfe-order-note-manager' ),
-						'log_customer_notes'         => __( 'Create an internal log note after a customer note is sent', 'mailhilfe-order-note-manager' ),
+						'log_customer_notes'         => __( 'Create an internal log note after a customer note is created', 'mailhilfe-order-note-manager' ),
 						'allow_html'                 => __( 'Allow safe HTML formatting in notes', 'mailhilfe-order-note-manager' ),
 						'show_usage_count'           => __( 'Show the usage counter column in the template list', 'mailhilfe-order-note-manager' ),
 						'favorites_first'            => __( 'Show favorites first in the order template selector', 'mailhilfe-order-note-manager' ),

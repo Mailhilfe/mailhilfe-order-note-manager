@@ -144,12 +144,17 @@ final class MHONT_Import_Export {
 			);
 		}
 
+		$json = wp_json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE );
+		if ( false === $json ) {
+			wp_die( esc_html__( 'The JSON file could not be exported.', 'mailhilfe-order-note-manager' ), '', array( 'response' => 500 ) );
+		}
+
 		$filename = 'mailhilfe-order-note-manager-' . gmdate( 'Y-m-d-H-i-s' ) . '.json';
 		nocache_headers();
 		header( 'Content-Type: application/json; charset=' . get_option( 'blog_charset' ) );
 		header( 'Content-Disposition: attachment; filename=' . $filename );
 		header( 'X-Content-Type-Options: nosniff' );
-		echo wp_json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON download is encoded by wp_json_encode().
+		echo $json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON output is encoded by wp_json_encode().
 		exit;
 	}
 
@@ -253,8 +258,8 @@ final class MHONT_Import_Export {
 		}
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce was verified; each file field is validated before use.
-		$file  = wp_unslash( $_FILES['mhont_json_file'] );
-		$name  = isset( $file['name'] ) ? sanitize_file_name( $file['name'] ) : '';
+		$file  = $_FILES['mhont_json_file']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Individual upload fields are validated below; temporary paths must not be unslashed.
+		$name  = isset( $file['name'] ) ? sanitize_file_name( wp_unslash( (string) $file['name'] ) ) : '';
 		$tmp   = isset( $file['tmp_name'] ) ? (string) $file['tmp_name'] : '';
 		$size  = isset( $file['size'] ) ? absint( $file['size'] ) : 0;
 		$error = isset( $file['error'] ) ? absint( $file['error'] ) : UPLOAD_ERR_NO_FILE;
@@ -290,14 +295,19 @@ final class MHONT_Import_Export {
 		$summary = array( 'total' => 0, 'create' => 0, 'update' => 0, 'skip' => 0 );
 		foreach ( $templates as $template_data ) {
 			$summary['total']++;
-			$title = is_array( $template_data ) && array_key_exists( 'title', $template_data ) ? substr( self::sanitize_scalar_text( $template_data['title'] ), 0, 200 ) : '';
+			$title = is_array( $template_data ) && array_key_exists( 'title', $template_data ) ? self::truncate_string( self::sanitize_scalar_text( $template_data['title'] ), 200 ) : '';
 			if ( '' === $title ) {
 				$summary['skip']++;
 				continue;
 			}
 			$demo_key     = is_array( $template_data ) && array_key_exists( 'demo_key', $template_data ) ? self::sanitize_scalar_key( $template_data['demo_key'] ) : '';
 			$legacy_title = is_array( $template_data ) && array_key_exists( 'legacy_title', $template_data ) ? self::sanitize_scalar_text( $template_data['legacy_title'] ) : '';
-			$language     = is_array( $template_data ) && array_key_exists( 'language', $template_data ) ? MHONT_Post_Types::sanitize_template_language( self::scalar_to_string( $template_data['language'] ) ) : '';
+			$raw_language = is_array( $template_data ) && array_key_exists( 'language', $template_data ) ? trim( self::scalar_to_string( $template_data['language'] ) ) : '';
+			$language     = '' !== $raw_language ? MHONT_Post_Types::sanitize_template_language( $raw_language ) : '';
+			if ( '' !== $raw_language && '' === $language ) {
+				$summary['skip']++;
+				continue;
+			}
 			$demo_locale  = is_array( $template_data ) && array_key_exists( 'demo_locale', $template_data ) ? self::sanitize_scalar_key( str_replace( '_', '-', self::scalar_to_string( $template_data['demo_locale'] ) ) ) : '';
 			if ( '' === $language && '' !== $demo_locale ) {
 				$language = MHONT_Post_Types::sanitize_template_language( str_replace( '-', '_', $demo_locale ) );
@@ -629,7 +639,7 @@ final class MHONT_Import_Export {
 	 * @return int
 	 */
 	private static function upsert_template_from_array( $template_data ) {
-		$title = array_key_exists( 'title', $template_data ) ? substr( self::sanitize_scalar_text( $template_data['title'] ), 0, 200 ) : '';
+		$title = array_key_exists( 'title', $template_data ) ? self::truncate_string( self::sanitize_scalar_text( $template_data['title'] ), 200 ) : '';
 		if ( '' === $title ) {
 			return 0;
 		}
@@ -640,9 +650,13 @@ final class MHONT_Import_Export {
 		$has_menu_order = array_key_exists( 'menu_order', $template_data );
 		$has_language   = array_key_exists( 'language', $template_data );
 
-		$demo_key    = array_key_exists( 'demo_key', $template_data ) ? self::sanitize_scalar_key( $template_data['demo_key'] ) : '';
-		$demo_locale = array_key_exists( 'demo_locale', $template_data ) ? self::sanitize_scalar_key( str_replace( '_', '-', self::scalar_to_string( $template_data['demo_locale'] ) ) ) : '';
-		$language    = $has_language ? MHONT_Post_Types::sanitize_template_language( self::scalar_to_string( $template_data['language'] ) ) : '';
+		$demo_key     = array_key_exists( 'demo_key', $template_data ) ? self::sanitize_scalar_key( $template_data['demo_key'] ) : '';
+		$demo_locale  = array_key_exists( 'demo_locale', $template_data ) ? self::sanitize_scalar_key( str_replace( '_', '-', self::scalar_to_string( $template_data['demo_locale'] ) ) ) : '';
+		$raw_language = $has_language ? trim( self::scalar_to_string( $template_data['language'] ) ) : '';
+		$language     = '' !== $raw_language ? MHONT_Post_Types::sanitize_template_language( $raw_language ) : '';
+		if ( $has_language && '' !== $raw_language && '' === $language ) {
+			return 0;
+		}
 		if ( ! $has_language && '' !== $demo_locale ) {
 			$language = MHONT_Post_Types::sanitize_template_language( str_replace( '-', '_', $demo_locale ) );
 			$has_language = true;
@@ -662,7 +676,7 @@ final class MHONT_Import_Export {
 		}
 
 		$existing_post = $existing_id ? get_post( $existing_id ) : null;
-		$content       = $has_content ? wp_kses_post( substr( self::scalar_to_string( $template_data['content'] ), 0, 50000 ) ) : '';
+		$content       = $has_content ? wp_kses_post( self::truncate_string( self::scalar_to_string( $template_data['content'] ), 50000 ) ) : '';
 		$note_type     = $has_note_type ? self::normalize_note_type( self::sanitize_scalar_key( $template_data['note_type'] ) ) : 'private';
 		$favorite      = $has_favorite && self::normalize_boolean( $template_data['favorite'] ) ? 'yes' : 'no';
 		$menu_order    = 0;
@@ -736,13 +750,43 @@ final class MHONT_Import_Export {
 		if ( isset( $template_data['conditions'] ) && is_array( $template_data['conditions'] ) ) {
 			$raw_conditions = $template_data['conditions'];
 			foreach ( array( 'statuses', 'payment_methods', 'shipping_methods', 'countries' ) as $condition_key ) {
-				if ( isset( $raw_conditions[ $condition_key ] ) && is_array( $raw_conditions[ $condition_key ] ) ) {
-					if ( 'countries' === $condition_key ) {
-					$conditions[ $condition_key ] = array_values( array_unique( array_filter( array_map( static function ( $value ) { return is_scalar( $value ) ? strtoupper( sanitize_text_field( (string) $value ) ) : ''; }, $raw_conditions[ $condition_key ] ) ) ) );
+				if ( ! isset( $raw_conditions[ $condition_key ] ) || ! is_array( $raw_conditions[ $condition_key ] ) ) {
+					continue;
+				}
+
+				$condition_values = array_slice( $raw_conditions[ $condition_key ], 0, 100 );
+				if ( 'countries' === $condition_key ) {
+					$condition_values = array_map(
+						static function ( $value ) {
+							if ( ! is_scalar( $value ) ) {
+								return '';
+							}
+							$country = strtoupper( sanitize_text_field( (string) $value ) );
+							return 2 === strlen( $country ) ? $country : '';
+						},
+						$condition_values
+					);
+				} elseif ( 'shipping_methods' === $condition_key ) {
+					$condition_values = array_map(
+						static function ( $value ) {
+							if ( ! is_scalar( $value ) ) {
+								return '';
+							}
+							$value = strtolower( trim( (string) $value ) );
+							return preg_replace( '/[^a-z0-9_:-]/', '', $value );
+						},
+						$condition_values
+					);
 				} else {
-					$conditions[ $condition_key ] = array_values( array_unique( array_filter( array_map( 'sanitize_key', $raw_conditions[ $condition_key ] ) ) ) );
+					$condition_values = array_map(
+						static function ( $value ) {
+							return is_scalar( $value ) ? sanitize_key( (string) $value ) : '';
+						},
+						$condition_values
+					);
 				}
-				}
+
+				$conditions[ $condition_key ] = array_values( array_unique( array_filter( $condition_values ) ) );
 			}
 			$conditions['min_total'] = isset( $raw_conditions['min_total'] ) && is_scalar( $raw_conditions['min_total'] ) ? (string) max( 0, (float) $raw_conditions['min_total'] ) : '';
 			$conditions['max_total'] = isset( $raw_conditions['max_total'] ) && is_scalar( $raw_conditions['max_total'] ) ? (string) max( 0, (float) $raw_conditions['max_total'] ) : '';
@@ -892,6 +936,25 @@ final class MHONT_Import_Export {
 
 		return 0;
 	}
+
+	/**
+	 * Truncates imported text without breaking multibyte characters.
+	 *
+	 * @param string $value  Text value.
+	 * @param int    $length Maximum character count.
+	 * @return string
+	 */
+	private static function truncate_string( $value, $length ) {
+		$value  = (string) $value;
+		$length = max( 0, absint( $length ) );
+
+		if ( function_exists( 'mb_substr' ) ) {
+			return mb_substr( $value, 0, $length );
+		}
+
+		return substr( $value, 0, $length );
+	}
+
 
 	/**
 	 * Converts an imported scalar value to a string without PHP warnings.
