@@ -1,0 +1,632 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
+"POT-Creation-Date: 2026-06-19 13:45+0000\n"
+"PO-Revision-Date: 2026-06-23 00:00+0200\n"
+"Last-Translator: Mailhilfe <info@mailhilfe.de>\n"
+"Language: es_ES\n"
+"Language-Team: Spanish\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "Se ha encontrado %d plantilla."
+msgstr[1] "Se han encontrado %d plantillas."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "Se creará %d plantilla."
+msgstr[1] "Se crearán %d plantillas."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "Se omitirá %d plantilla."
+msgstr[1] "Se omitirán %d plantillas."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "Se actualizará %d plantilla."
+msgstr[1] "Se actualizarán %d plantillas."
+
+msgid "Add New"
+msgstr "Añadir nueva"
+
+msgid "Add New Category"
+msgstr "Añadir nueva categoría"
+
+msgid "Add New Template"
+msgstr "Añadir nueva plantilla"
+
+msgid "Add note to order"
+msgstr "Añadir nota al pedido"
+
+msgid "Adding order note..."
+msgstr "Añadiendo la nota al pedido..."
+
+msgid "Admin email"
+msgstr "Correo electrónico del administrador"
+
+msgid "All Categories"
+msgstr "Todas las categorías"
+
+msgid "All languages"
+msgstr "Todos los idiomas"
+
+msgid "Allow JSON imports"
+msgstr "Permitir importaciones JSON"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Permitir formato HTML seguro en las notas"
+
+msgid "Allowed billing countries"
+msgstr "Países de facturación permitidos"
+
+msgid "Allowed order statuses"
+msgstr "Estados de pedido permitidos"
+
+msgid "Allowed payment method IDs"
+msgstr "ID de métodos de pago permitidos"
+
+msgid "Allowed shipping method IDs"
+msgstr "ID de métodos de envío permitidos"
+
+msgid "Apply import now"
+msgstr "Aplicar la importación ahora"
+
+msgid "Available placeholders:"
+msgstr "Marcadores de posición disponibles:"
+
+msgid "Billing address"
+msgstr "Dirección de facturación"
+
+msgid "Billing city"
+msgstr "Ciudad de facturación"
+
+msgid "Billing company"
+msgstr "Empresa de facturación"
+
+msgid "Billing country"
+msgstr "País de facturación"
+
+msgid "Billing email"
+msgstr "Correo electrónico de facturación"
+
+msgid "Billing phone"
+msgstr "Teléfono de facturación"
+
+msgid "Billing postcode"
+msgstr "Código postal de facturación"
+
+msgid "Categories"
+msgstr "Categorías"
+
+msgid "Category"
+msgstr "Categoría"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Códigos ISO de país separados por comas, por ejemplo, DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Separados por comas, por ejemplo, bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Fecha de finalización"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Configure el comportamiento predeterminado de la selección de plantillas, las notas para "
+"clientes, las importaciones y la visualización en la administración."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "Copia de %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Crear una nota de registro interna después de crear una nota para el cliente"
+
+msgid "Currency"
+msgstr "Moneda"
+
+msgid "Currency symbol"
+msgstr "Símbolo de moneda"
+
+msgid "Current admin user"
+msgstr "Usuario administrador actual"
+
+msgid "Current date"
+msgstr "Fecha actual"
+
+msgid "Current time"
+msgstr "Hora actual"
+
+msgid "Customer custom field by meta key"
+msgstr "Campo personalizado del cliente por clave meta"
+
+msgid "Customer first name"
+msgstr "Nombre del cliente"
+
+msgid "Customer ID"
+msgstr "ID del cliente"
+
+msgid "Customer last name"
+msgstr "Apellidos del cliente"
+
+msgid "Customer name"
+msgstr "Nombre completo del cliente"
+
+msgid "Customer note"
+msgstr "Nota para el cliente"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Nota para el cliente creada el %1$s por %2$s usando la plantilla «%3$s»."
+
+msgid "Customer order note"
+msgstr "Nota de pedido para el cliente"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "Default note type"
+msgstr "Tipo de nota predeterminado"
+
+msgid "Demo templates"
+msgstr "Plantillas de demostración"
+
+msgid "Demo templates installed successfully."
+msgstr "Las plantillas de demostración se han instalado correctamente."
+
+msgid "Diagnostics"
+msgstr "Diagnóstico"
+
+msgid "Discount total"
+msgstr "Descuento total"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Descargue todas las plantillas de notas publicadas, las categorías, los favoritos, los valores de"
+" ordenación y los contadores de uso como un archivo JSON."
+
+msgid "Drag to sort"
+msgstr "Arrastrar para ordenar"
+
+msgid "Duplicate"
+msgstr "Duplicar"
+
+msgid "Edit Category"
+msgstr "Editar categoría"
+
+msgid "Edit Template"
+msgstr "Editar plantilla"
+
+msgid "Enabled"
+msgstr "Activado"
+
+msgid "Event"
+msgstr "Evento"
+
+msgid "Export JSON"
+msgstr "Exportar JSON"
+
+msgid "Export templates"
+msgstr "Exportar plantillas"
+
+msgid "FAQ"
+msgstr "Preguntas frecuentes"
+
+msgid "Favorite"
+msgstr "Favorito"
+
+msgid "Generate test preview"
+msgstr "Generar vista previa de prueba"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"Conceda permisos de plantillas únicamente a roles de confianza. Los usuarios también necesitan el"
+" permiso normal de WooCommerce para editar pedidos antes de poder añadir notas a un pedido."
+
+msgid "Help"
+msgstr "Ayuda"
+
+msgid "History"
+msgstr "Historial"
+
+msgid "Import JSON"
+msgstr "Importar JSON"
+
+msgid "Import preview"
+msgstr "Vista previa de la importación"
+
+msgid "Import templates"
+msgstr "Importar plantillas"
+
+msgid "Import usage counters from JSON files"
+msgstr "Importar contadores de uso desde archivos JSON"
+
+msgid "Insert placeholder"
+msgstr "Insertar marcador de posición"
+
+msgid "Install demo templates"
+msgstr "Instalar plantillas de demostración"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Instalar automáticamente plantillas de demostración cuando no existan plantillas"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Instale plantillas prácticas de demostración para actualizaciones de envío, recordatorios de pago"
+" y notas de atención al cliente."
+
+msgid "Internal note"
+msgstr "Nota interna"
+
+msgid "Item count"
+msgstr "Cantidad de artículos"
+
+msgid "Last customer note:"
+msgstr "Última nota para el cliente:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Déjelo vacío para mostrar esta plantilla en todos los idiomas. Aquí pueden coincidir los valores "
+"de idioma de los pedidos de WPML y Polylang."
+
+msgid "Loading preview..."
+msgstr "Cargando la vista previa..."
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Importación/exportación de Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Permisos de Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Ajustes de Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Notas de pedido de Mailhilfe"
+
+msgid "Manage templates"
+msgstr "Gestionar plantillas"
+
+msgid "Mark as favorite"
+msgstr "Marcar como favorito"
+
+msgid "Maximum order total"
+msgstr "Total máximo del pedido"
+
+msgid "Minimum order total"
+msgstr "Total mínimo del pedido"
+
+msgid "New Category Name"
+msgstr "Nombre de la nueva categoría"
+
+msgid "New Template"
+msgstr "Nueva plantilla"
+
+msgid "No history entries found."
+msgstr "No se encontraron entradas en el historial."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "No se recibió el orden de las plantillas."
+
+msgid "No templates are available yet."
+msgstr "Aún no hay plantillas disponibles."
+
+msgid "No templates found in Trash."
+msgstr "No se encontraron plantillas en la papelera."
+
+msgid "No templates found."
+msgstr "No se encontraron plantillas."
+
+msgid "Not favorite"
+msgstr "No favorito"
+
+msgid "Note type"
+msgstr "Tipo de nota"
+
+msgid "Order"
+msgstr "Pedido"
+
+msgid "Order could not be loaded."
+msgstr "No se pudo cargar el pedido."
+
+msgid "Order custom field by meta key"
+msgstr "Campo personalizado del pedido por clave meta"
+
+msgid "Order date"
+msgstr "Fecha del pedido"
+
+msgid "Order date and time"
+msgstr "Fecha y hora del pedido"
+
+msgid "Order ID"
+msgstr "ID del pedido"
+
+msgid "Order note history"
+msgstr "Historial de notas del pedido"
+
+msgid "Order number"
+msgstr "Número del pedido"
+
+msgid "Order status"
+msgstr "Estado del pedido"
+
+msgid "Order subtotal"
+msgstr "Subtotal del pedido"
+
+msgid "Order time"
+msgstr "Hora del pedido"
+
+msgid "Order total"
+msgstr "Total del pedido"
+
+msgid "Ordered items"
+msgstr "Artículos del pedido"
+
+msgid "Paid date"
+msgstr "Fecha de pago"
+
+msgid "Payment method"
+msgstr "Método de pago"
+
+msgid "Payment method ID"
+msgstr "ID del método de pago"
+
+msgid "Permissions"
+msgstr "Permisos"
+
+msgid "Personal favorite"
+msgstr "Favorito personal"
+
+msgid "Personal favorite updated."
+msgstr "Favorito personal actualizado."
+
+msgid "Placeholder inserted."
+msgstr "Marcador de posición insertado."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr ""
+"Dar preferencia al idioma del pedido o del cliente para las plantillas multilingües cuando esté "
+"disponible"
+
+msgid "Preview"
+msgstr "Vista previa"
+
+msgid "Preview could not be loaded."
+msgstr "No se pudo cargar la vista previa."
+
+msgid "Recipient"
+msgstr "Destinatario"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "Revise el resumen antes de aplicar la importación. Aún no se ha cambiado nada."
+
+msgid "Role"
+msgstr "Rol"
+
+msgid "Save permissions"
+msgstr "Guardar permisos"
+
+msgid "Save settings"
+msgstr "Guardar ajustes"
+
+msgid "Search Categories"
+msgstr "Buscar categorías"
+
+msgid "Search Templates"
+msgstr "Buscar plantillas"
+
+msgid "Search templates"
+msgstr "Buscar plantillas"
+
+msgid "Security check failed."
+msgstr "La comprobación de seguridad ha fallado."
+
+msgid "Select a template to show the preview."
+msgstr "Seleccione una plantilla para mostrar la vista previa."
+
+msgid "Select template"
+msgstr "Seleccionar plantilla"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "Shipping address"
+msgstr "Dirección de envío"
+
+msgid "Shipping city"
+msgstr "Ciudad de envío"
+
+msgid "Shipping company"
+msgstr "Empresa de envío"
+
+msgid "Shipping country"
+msgstr "País de envío"
+
+msgid "Shipping first name"
+msgstr "Nombre del destinatario"
+
+msgid "Shipping last name"
+msgstr "Apellidos del destinatario"
+
+msgid "Shipping method"
+msgstr "Método de envío"
+
+msgid "Shipping postcode"
+msgstr "Código postal de envío"
+
+msgid "Shipping total"
+msgstr "Total del envío"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Mostrar primero los favoritos en el selector de plantillas del pedido"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Mostrar la columna del contador de uso en la lista de plantillas"
+
+msgid "Site name"
+msgstr "Nombre del sitio"
+
+msgid "Sort"
+msgstr "Orden"
+
+msgid "Sorting saved."
+msgstr "Ordenación guardada."
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "Tax total"
+msgstr "Total de impuestos"
+
+msgid "Template"
+msgstr "Plantilla"
+
+msgid "Template conditions"
+msgstr "Condiciones de la plantilla"
+
+msgid "Template could not be duplicated."
+msgstr "No se pudo duplicar la plantilla."
+
+msgid "Template could not be found."
+msgstr "No se pudo encontrar la plantilla."
+
+msgid "Template Import/Export"
+msgstr "Importación/exportación de plantillas"
+
+msgid "Template language"
+msgstr "Idioma de la plantilla"
+
+msgid "Template or order could not be found."
+msgstr "No se pudo encontrar la plantilla o el pedido."
+
+msgid "Template Settings"
+msgstr "Ajustes de las plantillas"
+
+msgid "Template text"
+msgstr "Texto de la plantilla"
+
+msgid "Templates imported successfully."
+msgstr "Las plantillas se han importado correctamente."
+
+msgid "Test order preview"
+msgstr "Vista previa con pedido de prueba"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "La nota editada es demasiado grande."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"El estado del correo electrónico registra si WooCommerce/WordPress procesó la solicitud de envío."
+" No demuestra que el destinatario haya abierto o recibido el mensaje."
+
+msgid "The JSON file could not be exported."
+msgstr "No se pudo exportar el archivo JSON."
+
+msgid "The JSON file could not be imported."
+msgstr "No se pudo importar el archivo JSON."
+
+msgid "The order note could not be added."
+msgstr "No se pudo añadir la nota al pedido."
+
+msgid "The order note could not be saved."
+msgstr "No se pudo guardar la nota del pedido."
+
+msgid "The order note was added successfully."
+msgstr "La nota se ha añadido correctamente al pedido."
+
+msgid "The selected template is empty."
+msgstr "La plantilla seleccionada está vacía."
+
+msgid "The selected template is not available for this order language."
+msgstr "La plantilla seleccionada no está disponible para el idioma de este pedido."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "No se pudo guardar el orden de las plantillas."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Este valor se utiliza cuando una plantilla no define su propio tipo de nota."
+
+msgid "Type to filter templates..."
+msgstr "Escriba para filtrar las plantillas..."
+
+msgid "Unknown user"
+msgstr "Usuario desconocido"
+
+msgid "Update Category"
+msgstr "Actualizar categoría"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"Suba un archivo de exportación JSON para revisar una vista previa antes de aplicar la "
+"importación. Las plantillas existentes con el mismo título se actualizarán."
+
+msgid "Usage"
+msgstr "Uso"
+
+msgid "Use templates"
+msgstr "Utilizar plantillas"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "View Template"
+msgstr "Ver plantilla"
+
+msgid "WooCommerce is required for this action."
+msgstr "Se necesita WooCommerce para realizar esta acción."
+
+msgid "You are not allowed to manage note templates."
+msgstr "No tiene permisos para gestionar plantillas de notas."
+
+msgid "You are not allowed to manage permissions."
+msgstr "No tiene permisos para gestionar permisos."
+
+msgid "You are not allowed to use note templates."
+msgstr "No tiene permisos para utilizar plantillas de notas."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "No tiene permisos para ver el diagnóstico."
+
+msgid "You are not allowed to view the history."
+msgstr "No tiene permisos para ver el historial."
+

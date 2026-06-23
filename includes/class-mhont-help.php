@@ -1,6 +1,6 @@
 <?php
 /**
- * Multilingual detailed help page.
+ * Detailed help page in English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech.
  *
  * @package Mailhilfe_Order_Note_Manager
  */
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Renders built-in multilingual help.
+ * Renders built-in help in English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech.
  */
 final class MHONT_Help {
 
@@ -49,7 +49,7 @@ final class MHONT_Help {
 	}
 
 	/**
-	 * Renders the multilingual help page.
+	 * Renders the help page.
 	 *
 	 * @return void
 	 */
@@ -118,12 +118,6 @@ final class MHONT_Help {
 	 */
 	private static function get_help_locale() {
 		$locales = array( determine_locale(), get_user_locale(), get_locale() );
-		$map     = array(
-			'de' => 'de_DE', 'fr' => 'fr_FR', 'es' => 'es_ES', 'it' => 'it_IT', 'pt' => 'pt_BR',
-			'nl' => 'nl_NL', 'pl' => 'pl_PL', 'ru' => 'ru_RU', 'zh' => 'zh_CN', 'ja' => 'ja',
-			'ko' => 'ko_KR', 'tr' => 'tr_TR', 'ar' => 'ar', 'hi' => 'hi_IN', 'id' => 'id_ID',
-			'vi' => 'vi', 'th' => 'th', 'uk' => 'uk', 'sv' => 'sv_SE', 'da' => 'da_DK',
-		);
 
 		foreach ( $locales as $locale ) {
 			if ( ! is_string( $locale ) || '' === $locale ) {
@@ -131,13 +125,54 @@ final class MHONT_Help {
 			}
 
 			$normalized = str_replace( '-', '_', $locale );
-			if ( 'de_DE_formal' === $normalized ) {
+			$language   = strtolower( strtok( $normalized, '_' ) );
+			if ( 'de' === $language && false !== stripos( $normalized, 'formal' ) ) {
+				return 'de_DE_formal';
+			}
+			if ( 'de' === $language ) {
 				return 'de_DE';
 			}
-
-			$language = strtolower( strtok( $normalized, '_' ) );
-			if ( isset( $map[ $language ] ) ) {
-				return $map[ $language ];
+			if ( 'es' === $language ) {
+				return 'es_ES';
+			}
+			if ( 'fr' === $language ) {
+				return 'fr_FR';
+			}
+			if ( 'it' === $language ) {
+				return 'it_IT';
+			}
+			if ( 'hi' === $language ) {
+				return 'hi_IN';
+			}
+			if ( 'zh' === $language && in_array( strtolower( $normalized ), array( 'zh', 'zh_cn', 'zh_sg', 'zh_hans' ), true ) ) {
+				return 'zh_CN';
+			}
+			if ( 'ja' === $language ) {
+				return 'ja';
+			}
+			if ( 'nl' === $language ) {
+				return 'nl_NL';
+			}
+			if ( 'pl' === $language ) {
+				return 'pl_PL';
+			}
+			if ( 'tr' === $language ) {
+				return 'tr_TR';
+			}
+			if ( 'fa' === $language ) {
+				return 'fa_IR';
+			}
+			if ( 'vi' === $language ) {
+				return 'vi';
+			}
+			if ( 'cs' === $language ) {
+				return 'cs_CZ';
+			}
+			if ( 'ru' === $language ) {
+				return 'ru_RU';
+			}
+			if ( 'pt' === $language ) {
+				return 'pt_BR';
 			}
 		}
 
@@ -152,111 +187,91 @@ final class MHONT_Help {
 	private static function get_texts() {
 		$json = <<<'JSON'
 {
-	"en_US": {
-		"page_title": "Mailhilfe Order Note Manager Help",
-		"menu_title": "Help",
-		"permission_error": "You are not allowed to manage note templates."
-	},
-	"de_DE": {
-		"page_title": "Hilfe zu Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Hilfe",
-		"permission_error": "Sie sind nicht berechtigt, Notizvorlagen zu verwalten."
-	},
-	"fr_FR": {
-		"page_title": "Aide de Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Aide",
-		"permission_error": "Vous n’êtes pas autorisé à gérer les modèles de notes."
-	},
-	"es_ES": {
-		"page_title": "Ayuda de Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Ayuda",
-		"permission_error": "No tienes permiso para gestionar las plantillas de notas."
-	},
-	"it_IT": {
-		"page_title": "Guida di Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Aiuto",
-		"permission_error": "Non hai il permesso di gestire i modelli di note."
-	},
-	"pt_BR": {
-		"page_title": "Ajuda do Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Ajuda",
-		"permission_error": "Você não tem permissão para gerenciar modelos de notas."
-	},
-	"nl_NL": {
-		"page_title": "Hulp voor Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Hulp",
-		"permission_error": "Je mag geen notitiesjablonen beheren."
-	},
-	"pl_PL": {
-		"page_title": "Pomoc Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Pomoc",
-		"permission_error": "Nie masz uprawnień do zarządzania szablonami notatek."
-	},
-	"ru_RU": {
-		"page_title": "Справка Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Справка",
-		"permission_error": "У вас нет прав для управления шаблонами заметок."
-	},
-	"zh_CN": {
-		"page_title": "Mailhilfe Order Note Manager for WooCommerce 帮助",
-		"menu_title": "帮助",
-		"permission_error": "您无权管理备注模板。"
-	},
-	"ja": {
-		"page_title": "Mailhilfe Order Note Manager for WooCommerce ヘルプ",
-		"menu_title": "ヘルプ",
-		"permission_error": "メモテンプレートを管理する権限がありません。"
-	},
-	"ko_KR": {
-		"page_title": "Mailhilfe Order Note Manager for WooCommerce 도움말",
-		"menu_title": "도움말",
-		"permission_error": "메모 템플릿을 관리할 권한이 없습니다."
-	},
-	"tr_TR": {
-		"page_title": "Mailhilfe Order Note Manager for WooCommerce yardımı",
-		"menu_title": "Yardım",
-		"permission_error": "Not şablonlarını yönetme izniniz yok."
-	},
-	"ar": {
-		"page_title": "مساعدة Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "المساعدة",
-		"permission_error": "ليست لديك صلاحية إدارة قوالب الملاحظات."
-	},
-	"hi_IN": {
-		"page_title": "Mailhilfe Order Note Manager for WooCommerce सहायता",
-		"menu_title": "सहायता",
-		"permission_error": "आपको नोट टेम्पलेट प्रबंधित करने की अनुमति नहीं है।"
-	},
-	"id_ID": {
-		"page_title": "Bantuan Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Bantuan",
-		"permission_error": "Anda tidak diizinkan mengelola templat catatan."
-	},
-	"vi": {
-		"page_title": "Trợ giúp Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Trợ giúp",
-		"permission_error": "Bạn không được phép quản lý mẫu ghi chú."
-	},
-	"th": {
-		"page_title": "วิธีใช้ Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "วิธีใช้",
-		"permission_error": "คุณไม่มีสิทธิ์จัดการเทมเพลตบันทึก"
-	},
-	"uk": {
-		"page_title": "Довідка Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Довідка",
-		"permission_error": "У вас немає прав для керування шаблонами нотаток."
-	},
-	"sv_SE": {
-		"page_title": "Hjälp för Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Hjälp",
-		"permission_error": "Du har inte behörighet att hantera notismallar."
-	},
-	"da_DK": {
-		"page_title": "Hjælp til Mailhilfe Order Note Manager for WooCommerce",
-		"menu_title": "Hjælp",
-		"permission_error": "Du har ikke tilladelse til at administrere noteskabeloner."
-	}
+  "en_US": {
+    "page_title": "Mailhilfe Order Note Manager Help",
+    "menu_title": "Help",
+    "permission_error": "You are not allowed to manage note templates."
+  },
+  "de_DE": {
+    "page_title": "Hilfe zu Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Hilfe",
+    "permission_error": "Du bist nicht berechtigt, Notizvorlagen zu verwalten."
+  },
+  "de_DE_formal": {
+    "page_title": "Hilfe zu Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Hilfe",
+    "permission_error": "Sie sind nicht berechtigt, Notizvorlagen zu verwalten."
+  },
+  "es_ES": {
+    "page_title": "Ayuda de Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Ayuda",
+    "permission_error": "No tiene permisos para gestionar plantillas de notas."
+  },
+  "fr_FR": {
+    "page_title": "Aide de Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Aide",
+    "permission_error": "Vous n’avez pas l’autorisation de gérer les modèles de notes."
+  },
+  "ru_RU": {
+    "page_title": "Справка по Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Справка",
+    "permission_error": "У вас нет прав на управление шаблонами примечаний."
+  },
+  "pt_BR": {
+    "page_title": "Ajuda do Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Ajuda",
+    "permission_error": "Você não tem permissão para gerenciar modelos de notas."
+  },
+  "it_IT": {
+    "page_title": "Guida di Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Aiuto",
+    "permission_error": "Non disponi dei permessi per gestire i modelli di nota."
+  },
+  "hi_IN": {
+    "page_title": "Mailhilfe Order Note Manager for WooCommerce सहायता",
+    "menu_title": "सहायता",
+    "permission_error": "आपको नोट टेम्पलेट प्रबंधित करने की अनुमति नहीं है।"
+  },
+  "zh_CN": {
+    "page_title": "Mailhilfe 订单备注管理器帮助",
+    "menu_title": "帮助",
+    "permission_error": "您无权管理备注模板。"
+  },
+  "ja": {
+    "page_title": "Mailhilfe Order Note Manager for WooCommerce ヘルプ",
+    "menu_title": "ヘルプ",
+    "permission_error": "メモテンプレートを管理する権限がありません。"
+  },
+  "nl_NL": {
+    "page_title": "Hulp voor Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Hulp",
+    "permission_error": "Je hebt geen toestemming om notitiesjablonen te beheren."
+  },
+  "pl_PL": {
+    "page_title": "Pomoc dotycząca Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Pomoc",
+    "permission_error": "Nie masz uprawnień do zarządzania szablonami notatek."
+  },
+  "tr_TR": {
+    "page_title": "Mailhilfe Order Note Manager for WooCommerce Yardımı",
+    "menu_title": "Yardım",
+    "permission_error": "Not şablonlarını yönetme yetkiniz yok."
+  },
+  "fa_IR": {
+    "page_title": "راهنمای Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "راهنما",
+    "permission_error": "شما اجازه مدیریت الگوهای یادداشت را ندارید."
+  },
+  "vi": {
+    "page_title": "Trợ giúp Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Trợ giúp",
+    "permission_error": "Bạn không được phép quản lý mẫu ghi chú."
+  },
+  "cs_CZ": {
+    "page_title": "Nápověda k Mailhilfe Order Note Manager for WooCommerce",
+    "menu_title": "Nápověda",
+    "permission_error": "Nemáte oprávnění spravovat šablony poznámek."
+  }
 }
 JSON;
 		$texts = json_decode( $json, true );
@@ -264,7 +279,7 @@ JSON;
 	}
 
 	/**
-	 * Returns all localized help content sets.
+	 * Returns the bundled English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech help content sets.
 	 *
 	 * @return array<string,array<string,mixed>>
 	 */
@@ -399,7 +414,7 @@ JSON;
         "title": "11. Troubleshooting",
         "paragraphs": [
           "If templates do not appear in an order, check that WooCommerce is active, the template is published and the current user has the permission to use templates.",
-          "If translations do not appear, check the site language and user language in WordPress. The plugin includes built-in fallback files for the supported languages."
+          "If translations do not appear, check the site language and user language in WordPress. The plugin includes reviewed bundled fallback files for all supported languages, including Persian, Vietnamese and Czech. Other languages should be supplied through reviewed WordPress.org language packs."
         ],
         "items": [
           "After an update, clear object/cache plugins if the old admin screen is still shown.",
@@ -579,6 +594,307 @@ JSON;
       {
         "title": "1. Wofür das Plugin gedacht ist",
         "paragraphs": [
+          "Mit Mailhilfe Order Note Manager for WooCommerce speicherst du häufig verwendete WooCommerce-Bestellnotizen als wiederverwendbare Vorlagen. Dadurch müssen gleiche Texte nicht immer wieder neu geschrieben werden und die Kommunikation in der Bestellhistorie bleibt einheitlich.",
+          "Eine Vorlage kann als interne Notiz für Mitarbeiter oder als Kundennotiz vorbereitet werden. Beim Verwenden in der Bestellung kann der Notiztyp trotzdem noch geändert werden."
+        ],
+        "items": [
+          "Typische Beispiele: Zahlungserinnerungen, Lieferverzögerungen, Telefonnotizen, Adressprüfungen und Serviceantworten.",
+          "Vorlagen unterstützen Kategorien, Favoriten, Sortierung, Nutzungszähler und JSON-Sicherung."
+        ]
+      },
+      {
+        "title": "2. Neue Vorlage erstellen",
+        "paragraphs": [
+          "Öffne <strong>Bestellnotiz-Vorlagen → Erstellen</strong>. Trage einen klaren Titel ein, schreibe den Notiztext im Editor und wähle, ob die Vorlage standardmäßig als interne Notiz oder als Kundennotiz verwendet werden soll.",
+          "Verwende als Titel eine kurze Beschreibung des Zwecks, zum Beispiel „Zahlungserinnerung“ oder „Kunde wegen Lieferung angerufen“. So findest du die Vorlage später schneller in der Bestellung."
+        ],
+        "items": [
+          "Ordne Kategorien zu, wenn viele Vorlagen vorhanden sind.",
+          "Markiere häufig verwendete Vorlagen als Favoriten.",
+          "Veröffentliche die Vorlage, damit sie in Bestellungen verfügbar ist."
+        ]
+      },
+      {
+        "title": "3. Vorlagentexte formatieren",
+        "paragraphs": [
+          "Der Vorlagentext wird mit dem WordPress-Editor bearbeitet. Du kannst Absätze, Fettschrift, Kursivschrift, Listen und Links verwenden. Die Formatierung bleibt beim Erstellen der Notiz erhalten, wird aber mit WordPress-sicheren HTML-Regeln bereinigt.",
+          "Bei Kundennotizen sollte die Formatierung sparsam verwendet werden. Ein kurzer Absatz oder eine übersichtliche Liste ist meist besser lesbar als ein langer Fließtext."
+        ],
+        "items": [
+          "Gutes Muster: kurze Anrede, klare Erklärung und nächster Schritt.",
+          "Interne Abkürzungen sollten in Kundennotizen vermieden werden.",
+          "Private Mitarbeiterhinweise gehören nicht in Vorlagen, die als Kundennotiz verwendet werden können."
+        ]
+      },
+      {
+        "title": "4. Platzhalter verwenden",
+        "paragraphs": [
+          "Platzhalter sind Begriffe in geschweiften Klammern. Sie werden in der Vorschau und beim Hinzufügen der Notiz automatisch durch echte Bestelldaten ersetzt.",
+          "Du kannst normalen Text und Platzhalter kombinieren. Beispiel: <code>Hallo {customer}, wir haben deine Bestellung {order_number} erhalten.</code>"
+        ],
+        "items": [
+          "Bestellung: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Kunde: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Versand und Zahlung: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Artikel und Shop: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
+        ]
+      },
+      {
+        "title": "5. Vorschau vor dem Einfügen prüfen",
+        "paragraphs": [
+          "Öffne eine WooCommerce-Bestellung und wähle eine Vorlage aus. Die Vorschau zeigt die Notiz bereits mit den ersetzten Platzhaltern der jeweiligen Bestellung.",
+          "Prüfe die Vorschau immer vor dem Erstellen der Notiz. Das ist besonders wichtig, wenn ein Platzhalter in der Bestellung keinen Wert hat, zum Beispiel wenn Versandart oder Telefonnummer fehlen."
+        ],
+        "items": [
+          "Prüfe Namen, Beträge, Versandart und Artikelliste.",
+          "Kontrolliere, ob der richtige Notiztyp ausgewählt ist.",
+          "Verbessere die Vorlage selbst, wenn derselbe Text künftig immer geändert werden soll."
+        ]
+      },
+      {
+        "title": "6. Interne Notizen und Kundennotizen",
+        "paragraphs": [
+          "Interne Notizen sind für Shop-Mitarbeiter gedacht und eignen sich für Dokumentation, Nachverfolgung und Servicehistorie. Kundennotizen können für den Kunden sichtbar sein und je nach WooCommerce-Einstellungen E-Mail-Benachrichtigungen auslösen.",
+          "Prüfe die bearbeitbare Vorschau und den ausgewählten Notiztyp sorgfältig. Verwende Kundennotizen nur für Texte, die der Kunde wirklich lesen darf."
+        ],
+        "items": [
+          "Interne Notiz: „Kunde hat angerufen, Lieferadresse bestätigt.“",
+          "Kundennotiz: „Deine Bestellung wird vorbereitet und in Kürze versendet.“",
+          "Passwörter, private Kommentare oder lieferanteninterne Informationen dürfen nicht in Kundennotizen stehen."
+        ]
+      },
+      {
+        "title": "7. Favoriten, Suche und Sortierung",
+        "paragraphs": [
+          "Favoriten sorgen dafür, dass wichtige Vorlagen in der Auswahl weiter oben erscheinen. Das Suchfeld in der Bestellung hilft, Vorlagen nach Titel, Kategorie oder Inhalt schneller zu finden.",
+          "In der Vorlagenliste kann die Reihenfolge per Drag-and-Drop geändert werden. Die gespeicherte Sortierung wird anschließend bei der Anzeige in Bestellungen verwendet."
+        ],
+        "items": [
+          "Nutze Favoriten für tägliche Standardtexte.",
+          "Nutze Kategorien für Themen wie Zahlung, Versand, Rückgabe und Support.",
+          "Halte Titel kurz, damit Suchergebnisse übersichtlich bleiben."
+        ]
+      },
+      {
+        "title": "8. Import, Export und Demo-Vorlagen",
+        "paragraphs": [
+          "Der JSON-Export erstellt eine Sicherung deiner Vorlagen. Das ist sinnvoll vor größeren Änderungen oder wenn Vorlagen in einen anderen Shop übertragen werden sollen.",
+          "Der JSON-Import kann Vorlagen neu anlegen oder vorhandene Vorlagen mit gleichem Titel beziehungsweise internem Demo-Schlüssel aktualisieren. Demo-Vorlagen dienen als schneller Einstieg und werden in der aktiven Sprache erstellt."
+        ],
+        "items": [
+          "Exportiere vor größeren Änderungen eine Sicherung.",
+          "Importiere nur JSON-Dateien aus vertrauenswürdigen Quellen.",
+          "Öffne nach dem Import einige Vorlagen und prüfe Formatierung und Platzhalter."
+        ]
+      },
+      {
+        "title": "9. Rollenrechte",
+        "paragraphs": [
+          "Das Plugin verwendet getrennte Rechte für das Verwalten von Vorlagen und das Verwenden von Vorlagen in Bestellungen. Administratoren und Shop-Manager erhalten diese Rechte bei der Aktivierung automatisch.",
+          "Wenn du ein Rollen-Plugin verwendest, können diese Rechte auch benutzerdefinierten Rollen zugewiesen oder entzogen werden."
+        ],
+        "items": [
+          "<code>manage_mh_order_note_templates</code>: Vorlagen erstellen, bearbeiten, löschen sowie Import/Export nutzen.",
+          "<code>use_mh_order_note_templates</code>: Vorlagen in WooCommerce-Bestellungen verwenden.",
+          "Benutzer ohne passende Berechtigung sehen die entsprechenden Admin-Funktionen nicht."
+        ]
+      },
+      {
+        "title": "10. Sicherheit und HPOS-Kompatibilität",
+        "paragraphs": [
+          "Das Plugin verwendet WordPress-Nonces, Rechteprüfungen, Sanitizing und Escaping für Admin-Aktionen. Vorlageninhalte werden vor dem Speichern und Verwenden mit WordPress-sicheren HTML-Regeln bereinigt.",
+          "Bestelldaten werden über WooCommerce-Bestell-APIs gelesen und nicht direkt aus alten Datenbanktabellen abgefragt. Dadurch bleibt das Plugin mit WooCommerce HPOS und klassischer Bestellspeicherung kompatibel."
+        ],
+        "items": [
+          "Halte WordPress und WooCommerce aktuell.",
+          "Teste Kundennotizen nach Änderungen an WooCommerce-E-Mail-Einstellungen.",
+          "Nutze vor großen Importen möglichst eine Testumgebung."
+        ]
+      },
+      {
+        "title": "11. Fehlerbehebung",
+        "paragraphs": [
+          "Wenn Vorlagen in einer Bestellung nicht erscheinen, prüfe, ob WooCommerce aktiv ist, die Vorlage veröffentlicht wurde und der aktuelle Benutzer das Recht zur Verwendung von Vorlagen besitzt.",
+          "Wenn Übersetzungen nicht erscheinen, prüfe die Website-Sprache und die Benutzersprache in WordPress. Das Plugin enthält geprüfte Fallback-Dateien für alle unterstützten Sprachen, einschließlich Persisch. Weitere Sprachen werden über geprüfte WordPress.org-Sprachpakete bereitgestellt."
+        ],
+        "items": [
+          "Leere nach Updates den Cache, wenn noch alte Adminseiten angezeigt werden.",
+          "Wenn ein Platzhalter unverändert bleibt, prüfe die exakte Schreibweise inklusive geschweifter Klammern.",
+          "Wenn Kundennotizen nicht per E-Mail versendet werden, prüfe die WooCommerce-E-Mail-Einstellung für Kundennotizen."
+        ]
+      },
+      {
+        "title": "12. Einstellungen",
+        "paragraphs": [
+          "Öffne <strong>Mailhilfe Order Notes → Einstellungen</strong>, um Standard-Notiztyp, sichere HTML-Formatierung, Nutzungsanzeige, Favoriten, JSON-Import und Sprachzuordnung festzulegen. Verwende für die tägliche Arbeit vorzugsweise interne Notizen."
+        ],
+        "items": []
+      },
+      {
+        "title": "13. Vorlagensprache und mehrsprachige Shops",
+        "paragraphs": [
+          "Jede Vorlage kann eine Vorlagensprache erhalten. Wähle <strong>Alle Sprachen</strong>, wenn der Text für jede Bestellung verwendet werden darf, oder wähle eine konkrete Sprache für übersetzte Kundentexte.",
+          "Wenn möglich, bevorzugt das Plugin Vorlagen, die zur Bestellsprache, Benutzersprache oder zu Sprachinformationen von Mehrsprachen-Plugins passen."
+        ],
+        "items": [
+          "Nutze eine neutrale Vorlage für interne Mitarbeiternotizen.",
+          "Erstelle eigene Kundenvorlagen für Deutsch, Englisch oder andere Shop-Sprachen.",
+          "Teste bei WPML- oder Polylang-Shops die Spracherkennung mit einer echten Testbestellung."
+        ]
+      },
+      {
+        "title": "14. Eigene Felder und Meta-Platzhalter",
+        "paragraphs": [
+          "Erweiterte Platzhalter können ausgewählte Bestell- oder Kundendaten aus Meta-Feldern auslesen. Verwende <code>{order_meta:meta_key}</code> für Bestelldaten und <code>{customer_meta:meta_key}</code> für Benutzer-Metadaten.",
+          "Aus Sicherheitsgründen werden sensible Schlüssel wie password, token, secret, session, auth und hash blockiert. Verwende Meta-Platzhalter nur, wenn du genau weißt, welche Daten das Feld enthält."
+        ],
+        "items": [
+          "Beispiel: <code>{order_meta:_tracking_number}</code> für eine Sendungsnummer aus einem Versandplugin.",
+          "Beispiel: <code>{order_meta:_billing_vat_id}</code> für eine Umsatzsteuer-ID.",
+          "Gib interne oder sensible Felder niemals in Kundennotizen aus."
+        ]
+      },
+      {
+        "title": "15. Vorlagen duplizieren und Versionen",
+        "paragraphs": [
+          "Nutze die Aktion „Duplizieren“, wenn du eine ähnliche Vorlage mit kleinen Änderungen benötigst. Die Kopie wird als Entwurf erstellt und kann vor der Veröffentlichung geprüft werden.",
+          "Über WordPress-Revisionen können frühere Texte verglichen und bei Bedarf wiederhergestellt werden."
+        ],
+        "items": [
+          "Dupliziere z. B. eine allgemeine Versandvorlage für DHL, UPS oder Abholung.",
+          "Prüfe die Versionen nach größeren Textänderungen.",
+          "Verwende klare Titel, damit ähnliche Vorlagen nicht verwechselt werden."
+        ]
+      },
+      {
+        "title": "16. Berechtigungen",
+        "paragraphs": [
+          "Öffne <strong>Bestellnotiz-Vorlagen → Berechtigungen</strong>, um festzulegen, welche WordPress-Rollen Vorlagen verwalten und welche Rollen Vorlagen in Bestellungen verwenden dürfen.",
+          "Administratoren behalten die notwendigen Rechte. Bei anderen Rollen sollten nur die Rechte vergeben werden, die für die tägliche Arbeit wirklich benötigt werden."
+        ],
+        "items": [
+          "Vorlagen verwalten: erstellen, bearbeiten, löschen, importieren und exportieren.",
+          "Vorlagen verwenden: Vorlage auswählen und Notiz in einer WooCommerce-Bestellung hinzufügen.",
+          "Import/Export sollte nur vertrauenswürdigen Benutzern erlaubt werden."
+        ]
+      },
+      {
+        "title": "17. Import-Vorschau",
+        "paragraphs": [
+          "JSON-Importe zeigen vor der Übernahme eine Vorschau. Dort siehst du, wie viele Vorlagen neu erstellt, aktualisiert oder übersprungen werden.",
+          "Bestätige den Import erst nach Prüfung der Vorschau. So wird ein versehentliches Überschreiben vorhandener Vorlagen vermieden."
+        ],
+        "items": [
+          "Erstelle vor größeren Importen immer einen Export als Sicherung.",
+          "Importiere nur JSON-Dateien aus vertrauenswürdigen Quellen.",
+          "Teste nach dem Import mindestens eine Kundennotiz und eine interne Notiz."
+        ]
+      },
+      {
+        "title": "18. E-Mail-Verhalten bei Kundennotizen",
+        "paragraphs": [
+          "Kundennotizen können WooCommerce-E-Mail-Benachrichtigungen auslösen, wenn die entsprechende E-Mail aktiviert ist. Das Plugin protokolliert die Erstellung der Kundennotiz getrennt von der E-Mail-Verarbeitung. Prüfe vor dem Hinzufügen die bearbeitbare Vorschau und kontrolliere das Ergebnis der Mailverarbeitung auf der Seite „Verlauf“."
+        ],
+        "items": []
+      },
+      {
+        "title": "19. Empfohlener Arbeitsablauf",
+        "paragraphs": [
+          "Ein sicherer Ablauf ist: Vorlage auswählen, ersetzte Vorschau prüfen, Vorschau bei Bedarf bearbeiten, Notiztyp kontrollieren und erst dann die Notiz hinzufügen.",
+          "Neue Vorlagen sollten zuerst in einer unkritischen Bestellung oder in einer Testumgebung geprüft werden, bevor sie für echte Kunden genutzt werden."
+        ],
+        "items": [
+          "Verwende interne Notizen für rein interne Informationen.",
+          "Verwende Kundennotizen nur für Texte, die der Kunde lesen darf.",
+          "Prüfe Platzhalter nach jeder Änderung einer Vorlage."
+        ]
+      },
+      {
+        "title": "20. Bedingungen für Vorlagen",
+        "paragraphs": [
+          "Vorlagenbedingungen bestimmen, ob eine Vorlage für eine bestimmte Bestellung verfügbar ist. Vorlagen können nach Bestellstatus, Zahlungsart, Versandart, Rechnungsland sowie Mindest- und Höchstbestellwert eingeschränkt werden. Alle eingetragenen Bedingungen müssen erfüllt sein."
+        ],
+        "items": [
+          "Lass ein Feld leer, wenn diese Bedingung die Vorlage nicht einschränken soll.",
+          "Verwende bei Zahlungs- und Versandarten die technischen IDs.",
+          "Die Bedingungen werden in der Oberfläche und vor dem Erstellen der Notiz erneut serverseitig geprüft."
+        ]
+      },
+      {
+        "title": "21. Protokollierung der E-Mail-Verarbeitung",
+        "paragraphs": [
+          "Bei Kundennotizen protokolliert das Plugin, wenn WooCommerce die Kundennotiz-E-Mail als verarbeitet meldet. Technische Fehler von wp_mail werden ebenfalls erfasst. „Verarbeitet“ bestätigt nur die Übergabe an das E-Mail-System und nicht die endgültige Zustellung oder das Lesen durch den Kunden."
+        ],
+        "items": [
+          "Prüfe auf der Seite „Verlauf“ verarbeitete und fehlgeschlagene E-Mail-Ereignisse.",
+          "Für verbindliche Zustellinformationen ist ein SMTP-Anbieter oder E-Mail-Protokolldienst erforderlich.",
+          "Interne Notizen lösen keine Kundennotiz-E-Mail aus."
+        ]
+      },
+      {
+        "title": "22. Zentraler Verlauf",
+        "paragraphs": [
+          "Öffne <strong>Bestellnotiz-Vorlagen → Verlauf</strong>, um das Erstellen von Notizen, die Vorlagennutzung, verarbeitete E-Mails und E-Mail-Fehler zentral einzusehen. Soweit vorhanden werden Bestellung, Vorlage, Benutzer, Empfänger, Ereignistyp und Zeitpunkt angezeigt."
+        ],
+        "items": [
+          "Nutze den Verlauf für Support, Nachvollziehbarkeit und Fehlersuche.",
+          "Der Verlauf ist von den WooCommerce-Bestellnotizen getrennt.",
+          "Angezeigt werden die neuesten 250 Einträge."
+        ]
+      },
+      {
+        "title": "23. Vorschau mit Testbestellung",
+        "paragraphs": [
+          "Gib im Vorlageneditor im Bereich für die Testvorschau eine WooCommerce-Bestell-ID ein. Der aktuelle Editorinhalt einschließlich noch nicht gespeicherter Änderungen wird mit den Daten dieser Bestellung dargestellt, ohne eine Notiz anzulegen oder eine E-Mail zu senden."
+        ],
+        "items": [
+          "Verwende eine Testbestellung oder eine unkritische Bestellung in einer Staging-Umgebung.",
+          "Prüfe fehlende Werte, Formatierung, Bedingungen und eigene Meta-Platzhalter.",
+          "Du musst die ausgewählte Bestellung bearbeiten dürfen."
+        ]
+      },
+      {
+        "title": "24. Persönliche Favoriten und zuletzt verwendete Vorlagen",
+        "paragraphs": [
+          "Jeder Benutzer kann in der Bestellansicht persönliche Favoriten markieren. Zusätzlich speichert das Plugin pro Benutzer die zehn zuletzt erfolgreich verwendeten Vorlagen und zeigt sie weiter oben an. Globale Favoriten bleiben weiterhin für alle Benutzer gemeinsam."
+        ],
+        "items": [
+          "Persönliche Favoriten verändern die Auswahl anderer Mitarbeiter nicht.",
+          "Die Liste „zuletzt verwendet“ wird erst nach erfolgreichem Hinzufügen einer Notiz aktualisiert.",
+          "Die persönlichen Angaben werden als WordPress-Benutzermetadaten gespeichert."
+        ]
+      },
+      {
+        "title": "25. Diagnose-Seite",
+        "paragraphs": [
+          "Unter <strong>Bestellnotiz-Vorlagen → Diagnose</strong> findest du technische Angaben wie WordPress-, PHP- und WooCommerce-Version, HPOS-Status, Status der Kundennotiz-E-Mail, Sprache, Anzahl veröffentlichter Vorlagen, Cache-Status und WP_DEBUG."
+        ],
+        "items": [
+          "Gib diese Werte bei Supportanfragen mit an.",
+          "Die Seite zeigt keine Notizinhalte, Kundenadressen oder Bestellpositionen an.",
+          "Entwickler können die Diagnose über einen Filter erweitern."
+        ]
+      },
+      {
+        "title": "26. Hooks und Filter für Entwickler",
+        "paragraphs": [
+          "Das Plugin bietet Hooks und Filter für Platzhalter, Platzhalterwerte, erlaubte Meta-Schlüssel, Vorlagenergebnisse, Bedingungen, Vorschauinhalt, endgültigen Notizinhalt, Aktionen vor und nach dem Hinzufügen, Verlaufseinträge und Diagnosewerte. Namen und Parameter sind in der readme.txt dokumentiert."
+        ],
+        "items": [
+          "Validiere, bereinige und maskiere alle eigenen Daten.",
+          "Verwende WooCommerce-Bestell-APIs statt direkter Zugriffe auf Bestelltabellen.",
+          "Achte bei Erweiterungen auf HPOS und die klassische Bestellspeicherung."
+        ]
+      }
+    ]
+  },
+  "de_DE_formal": {
+    "title": "Ausführliche Hilfe für Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Diese aktualisierte Hilfe beschreibt den vollständigen Ablauf mit dem neuen Namen Mailhilfe Order Note Manager for WooCommerce: Vorlagen erstellen, formatieren, sprachabhängig verwenden, Platzhalter und Meta-Platzhalter nutzen, Vorschauen bearbeiten, Kundennotizen sicher versenden, Einstellungen, Berechtigungen, Import-Vorschau und HPOS-Kompatibilität verstehen.",
+    "sections": [
+      {
+        "title": "1. Wofür das Plugin gedacht ist",
+        "paragraphs": [
           "Mit Mailhilfe Order Note Manager for WooCommerce speichern Sie häufig verwendete WooCommerce-Bestellnotizen als wiederverwendbare Vorlagen. Dadurch müssen gleiche Texte nicht immer wieder neu geschrieben werden und die Kommunikation in der Bestellhistorie bleibt einheitlich.",
           "Eine Vorlage kann als interne Notiz für Mitarbeiter oder als Kundennotiz vorbereitet werden. Beim Verwenden in der Bestellung kann der Notiztyp trotzdem noch geändert werden."
         ],
@@ -688,7 +1004,7 @@ JSON;
         "title": "10. Sicherheit und HPOS-Kompatibilität",
         "paragraphs": [
           "Das Plugin verwendet WordPress-Nonces, Rechteprüfungen, Sanitizing und Escaping für Admin-Aktionen. Vorlageninhalte werden vor dem Speichern und Verwenden mit WordPress-sicheren HTML-Regeln bereinigt.",
-          "Bestelldaten werden über WooCommerce-Order-APIs gelesen und nicht direkt aus alten Datenbanktabellen abgefragt. Dadurch bleibt das Plugin mit WooCommerce HPOS und klassischer Bestellspeicherung kompatibel."
+          "Bestelldaten werden über WooCommerce-Bestell-APIs gelesen und nicht direkt aus alten Datenbanktabellen abgefragt. Dadurch bleibt das Plugin mit WooCommerce HPOS und klassischer Bestellspeicherung kompatibel."
         ],
         "items": [
           "Halten Sie WordPress und WooCommerce aktuell.",
@@ -700,7 +1016,7 @@ JSON;
         "title": "11. Fehlerbehebung",
         "paragraphs": [
           "Wenn Vorlagen in einer Bestellung nicht erscheinen, prüfen Sie, ob WooCommerce aktiv ist, die Vorlage veröffentlicht wurde und der aktuelle Benutzer das Recht zur Verwendung von Vorlagen besitzt.",
-          "Wenn Übersetzungen nicht erscheinen, prüfen Sie die Website-Sprache und die Benutzersprache in WordPress. Das Plugin enthält Fallback-Dateien für die unterstützten Sprachen."
+          "Wenn Übersetzungen nicht erscheinen, prüfen Sie die Website-Sprache und die Benutzersprache in WordPress. Das Plugin enthält geprüfte Fallback-Dateien für alle unterstützten Sprachen, einschließlich Persisch. Weitere Sprachen werden über geprüfte WordPress.org-Sprachpakete bereitgestellt."
         ],
         "items": [
           "Leeren Sie nach Updates den Cache, wenn noch alte Adminseiten angezeigt werden.",
@@ -743,7 +1059,7 @@ JSON;
         "title": "15. Vorlagen duplizieren und Versionen",
         "paragraphs": [
           "Nutzen Sie die Aktion „Duplizieren“, wenn Sie eine ähnliche Vorlage mit kleinen Änderungen benötigen. Die Kopie wird als Entwurf erstellt und kann vor der Veröffentlichung geprüft werden.",
-          "Über WordPress-Versionen können frühere Texte verglichen und bei Bedarf wiederhergestellt werden."
+          "Über WordPress-Revisionen können frühere Texte verglichen und bei Bedarf wiederhergestellt werden."
         ],
         "items": [
           "Duplizieren Sie z. B. eine allgemeine Versandvorlage für DHL, UPS oder Abholung.",
@@ -867,3229 +1183,3251 @@ JSON;
         ],
         "items": [
           "Validieren, bereinigen und maskieren Sie alle eigenen Daten.",
-          "Verwenden Sie WooCommerce-Order-APIs statt direkter Zugriffe auf Bestelltabellen.",
+          "Verwenden Sie WooCommerce-Bestell-APIs statt direkter Zugriffe auf Bestelltabellen.",
           "Achten Sie bei Erweiterungen auf HPOS und die klassische Bestellspeicherung."
-        ]
-      }
-    ]
-  },
-  "fr_FR": {
-    "title": "Aide détaillée pour Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Cette aide explique le flux complet : créer des modèles formatés, utiliser les variables, ajouter des notes dans les commandes WooCommerce, importer/exporter en JSON, gérer les droits, utiliser HPOS et travailler en sécurité. Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. Ce que fait le plugin",
-        "paragraphs": [
-          "Enregistrez les textes utilisés souvent comme modèles réutilisables afin de garder l’historique des commandes cohérent.",
-          "Cette aide explique le flux complet : créer des modèles formatés, utiliser les variables, ajouter des notes dans les commandes WooCommerce, importer/exporter en JSON, gérer les droits, utiliser HPOS et travailler en sécurité."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. Créer un modèle",
-        "paragraphs": [
-          "Ouvrez le menu des modèles, ajoutez un titre clair, choisissez le type de note et publiez le modèle.",
-          "Ouvrez le menu des modèles, ajoutez un titre clair, choisissez le type de note et publiez le modèle."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. Mettre en forme le texte",
-        "paragraphs": [
-          "Utilisez l’éditeur WordPress pour les paragraphes, listes, gras, italique et liens. Le HTML est nettoyé avant l’enregistrement.",
-          "Utilisez l’éditeur WordPress pour les paragraphes, listes, gras, italique et liens. Le HTML est nettoyé avant l’enregistrement."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. Utiliser les variables",
-        "paragraphs": [
-          "Les variables entre accolades sont remplacées par les données réelles de la commande dans l’aperçu et dans la note.",
-          "Les variables entre accolades sont remplacées par les données réelles de la commande dans l’aperçu et dans la note."
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. Vérifier l’aperçu",
-        "paragraphs": [
-          "Vérifiez toujours le nom, le total, les articles et le type de note avant d’ajouter la note.",
-          "Vérifiez toujours le nom, le total, les articles et le type de note avant d’ajouter la note."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. Notes internes et notes client",
-        "paragraphs": [
-          "Les notes internes sont réservées au personnel. Les notes client peuvent être visibles et déclencher des e-mails WooCommerce.",
-          "Les notes internes sont réservées au personnel. Les notes client peuvent être visibles et déclencher des e-mails WooCommerce."
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. Favoris, recherche et tri",
-        "paragraphs": [
-          "Utilisez les favoris pour les modèles quotidiens, la recherche pour retrouver rapidement un texte et le glisser-déposer pour définir l’ordre.",
-          "Utilisez les favoris pour les modèles quotidiens, la recherche pour retrouver rapidement un texte et le glisser-déposer pour définir l’ordre."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. Import, export et modèles de démonstration",
-        "paragraphs": [
-          "Exportez un fichier JSON comme sauvegarde. Importez uniquement des fichiers de confiance. Les modèles de démonstration sont créés dans la langue active.",
-          "Exportez un fichier JSON comme sauvegarde. Importez uniquement des fichiers de confiance. Les modèles de démonstration sont créés dans la langue active."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. Rôles et droits",
-        "paragraphs": [
-          "Les administrateurs et responsables de boutique obtiennent les droits automatiquement. Les rôles personnalisés peuvent être adaptés.",
-          "Les administrateurs et responsables de boutique obtiennent les droits automatiquement. Les rôles personnalisés peuvent être adaptés."
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. Sécurité et compatibilité HPOS",
-        "paragraphs": [
-          "Les actions utilisent nonces, contrôles de droits, nettoyage et échappement. Les commandes sont lues via les API WooCommerce pour HPOS.",
-          "Les actions utilisent nonces, contrôles de droits, nettoyage et échappement. Les commandes sont lues via les API WooCommerce pour HPOS."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. Dépannage",
-        "paragraphs": [
-          "Si un élément ne fonctionne pas, vérifiez WooCommerce, le statut publié, les droits utilisateur, la langue du site et le cache.",
-          "Cette aide explique le flux complet : créer des modèles formatés, utiliser les variables, ajouter des notes dans les commandes WooCommerce, importer/exporter en JSON, gérer les droits, utiliser HPOS et travailler en sécurité."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. Page des réglages",
-        "paragraphs": [
-          "Ouvrez <strong>Mailhilfe Order Notes → Réglages</strong> pour choisir le type de note par défaut, le HTML sécurisé, l’affichage de l’utilisation, les favoris, l’import JSON et la correspondance des langues. Utilisez de préférence les notes internes au quotidien."
-        ],
-        "items": []
-      },
-      {
-        "title": "13. Langue du modèle et boutiques multilingues",
-        "paragraphs": [
-          "Chaque modèle peut recevoir une langue. Choisissez <strong>Toutes les langues</strong> pour un texte utilisable partout, ou une langue précise pour les messages client traduits.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. Champs personnalisés et métadonnées",
-        "paragraphs": [
-          "Les espaces réservés <code>{order_meta:meta_key}</code> et <code>{customer_meta:meta_key}</code> peuvent insérer des métadonnées sélectionnées. Les clés sensibles comme password, token ou secret sont bloquées.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. Dupliquer et révisions",
-        "paragraphs": [
-          "L’action de duplication crée une copie en brouillon. Les révisions WordPress aident à comparer et restaurer d’anciennes versions.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. Autorisations",
-        "paragraphs": [
-          "La page <strong>Permissions</strong> permet de définir quelles rôles gèrent les modèles et quelles rôles les utilisent dans les commandes.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. Aperçu d’importation",
-        "paragraphs": [
-          "L’import JSON affiche un aperçu avec les modèles créés, mis à jour ou ignorés avant l’application définitive.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. État de l’e-mail de note client",
-        "paragraphs": [
-          "Les notes client peuvent déclencher des notifications par e-mail WooCommerce lorsque l’e-mail correspondant est activé. L’extension enregistre la création de la note séparément du traitement de l’e-mail. Vérifiez l’aperçu modifiable avant d’ajouter la note et consultez la page Historique pour contrôler le résultat du traitement."
-        ],
-        "items": []
-      },
-      {
-        "title": "19. Flux de travail recommandé",
-        "paragraphs": [
-          "Sélectionnez un modèle, vérifiez l’aperçu remplacé, modifiez-le si nécessaire, contrôlez le type de note puis ajoutez la note.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
-        ],
-        "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
-        ]
-      },
-      {
-        "title": "20. Conditions des modèles",
-        "paragraphs": [
-          "Les conditions déterminent si un modèle est disponible pour une commande. Vous pouvez limiter un modèle selon l’état de la commande, le moyen de paiement, le mode de livraison, le pays de facturation et un montant minimal ou maximal. Toutes les conditions renseignées doivent être remplies."
-        ],
-        "items": [
-          "Laissez un champ vide pour ne pas appliquer cette restriction.",
-          "Utilisez les identifiants techniques des moyens de paiement et de livraison.",
-          "Les conditions sont vérifiées dans l’interface puis à nouveau côté serveur."
-        ]
-      },
-      {
-        "title": "21. Journal du traitement des e-mails",
-        "paragraphs": [
-          "Pour les notes client, l’extension enregistre le traitement signalé par WooCommerce et les erreurs techniques de wp_mail. Un état « traité » confirme la remise au système de messagerie, mais pas la livraison finale ni la lecture par le client."
-        ],
-        "items": [
-          "Consultez la page Historique pour les événements traités ou échoués.",
-          "Utilisez un fournisseur SMTP pour obtenir des informations de livraison plus précises.",
-          "Les notes internes ne déclenchent pas l’e-mail de note client."
-        ]
-      },
-      {
-        "title": "22. Historique central",
-        "paragraphs": [
-          "Ouvrez <strong>Mailhilfe Order Notes → Historique</strong> pour voir les notes créées, l’utilisation des modèles, le traitement des e-mails et les erreurs. La commande, le modèle, l’utilisateur, le destinataire, le type d’événement et l’heure sont affichés lorsqu’ils sont disponibles."
-        ],
-        "items": [
-          "Utilisez l’historique pour l’assistance, l’audit et le dépannage.",
-          "Cet historique est séparé des notes de commande WooCommerce.",
-          "Les 250 entrées les plus récentes sont affichées."
-        ]
-      },
-      {
-        "title": "23. Aperçu avec une commande de test",
-        "paragraphs": [
-          "Dans l’éditeur du modèle, saisissez l’identifiant d’une commande WooCommerce. Le contenu actuel, même non enregistré, est affiché avec les données de cette commande sans créer de note ni envoyer d’e-mail."
-        ],
-        "items": [
-          "Utilisez une commande de test ou un site de préproduction.",
-          "Contrôlez les valeurs manquantes, la mise en forme, les conditions et les métadonnées.",
-          "Vous devez être autorisé à modifier la commande choisie."
-        ]
-      },
-      {
-        "title": "24. Favoris personnels et modèles récents",
-        "paragraphs": [
-          "Chaque utilisateur peut marquer ses favoris personnels dans la commande. L’extension mémorise aussi les dix derniers modèles utilisés avec succès par utilisateur et les place plus haut. Les favoris globaux restent communs à tous."
-        ],
-        "items": [
-          "Les favoris personnels n’affectent pas les autres utilisateurs.",
-          "La liste récente est actualisée uniquement après l’ajout réussi d’une note.",
-          "Ces données sont stockées dans les métadonnées utilisateur WordPress."
-        ]
-      },
-      {
-        "title": "25. Page de diagnostic",
-        "paragraphs": [
-          "Ouvrez <strong>Mailhilfe Order Notes → Diagnostic</strong> pour voir les versions WordPress, PHP et WooCommerce, l’état HPOS, l’e-mail de note client, la langue, le nombre de modèles publiés, le cache et WP_DEBUG."
-        ],
-        "items": [
-          "Communiquez ces informations lors d’une demande d’assistance.",
-          "Aucun contenu de note ni adresse client n’est affiché.",
-          "Les développeurs peuvent ajouter des lignes avec le filtre de diagnostic."
-        ]
-      },
-      {
-        "title": "26. Actions et filtres pour développeurs",
-        "paragraphs": [
-          "Des actions et filtres permettent d’étendre les variables, leurs valeurs, les clés de métadonnées autorisées, les résultats de modèles, les conditions, l’aperçu, le contenu final, les actions avant/après ajout, l’historique et le diagnostic. Les noms sont documentés dans readme.txt."
-        ],
-        "items": [
-          "Validez, nettoyez et échappez toutes les données personnalisées.",
-          "Utilisez les API de commande WooCommerce plutôt que les tables directement.",
-          "Préservez la compatibilité HPOS et le stockage classique."
         ]
       }
     ]
   },
   "es_ES": {
     "title": "Ayuda detallada de Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Esta ayuda explica el flujo completo: crear plantillas con formato, usar marcadores, añadir notas en pedidos de WooCommerce, importar/exportar JSON, gestionar permisos, usar HPOS y trabajar de forma segura. Mailhilfe Order Note Manager for WooCommerce.",
+    "intro": "Esta ayuda actualizada explica el flujo de trabajo completo de Mailhilfe Order Note Manager for WooCommerce: crear y dar formato a plantillas, utilizar idiomas de plantilla, marcadores de posición y campos meta, editar vistas previas, enviar notas para clientes de forma segura, configurar ajustes y permisos, revisar importaciones y mantener la compatibilidad con HPOS.",
     "sections": [
       {
         "title": "1. Qué hace el plugin",
         "paragraphs": [
-          "Guarde textos frecuentes como plantillas reutilizables para mantener coherente el historial de pedidos.",
-          "Esta ayuda explica el flujo completo: crear plantillas con formato, usar marcadores, añadir notas en pedidos de WooCommerce, importar/exportar JSON, gestionar permisos, usar HPOS y trabajar de forma segura."
+          "Mailhilfe Order Note Manager for WooCommerce permite guardar como plantillas reutilizables las notas de pedido de WooCommerce que se utilizan con frecuencia. Esto evita escribir repetidamente el mismo texto y mantiene coherente la comunicación dentro del historial del pedido.",
+          "Una plantilla puede prepararse como nota interna para el personal o como nota para el cliente. El tipo de nota todavía puede cambiarse al utilizar la plantilla dentro de un pedido."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Ejemplos habituales: recordatorios de pago, retrasos en la entrega, registros de llamadas, comprobaciones de direcciones y respuestas de atención al cliente.",
+          "Las plantillas admiten categorías, favoritos, ordenación, contador de uso y copias de seguridad en JSON."
         ]
       },
       {
-        "title": "2. Crear una plantilla",
+        "title": "2. Crear una plantilla nueva",
         "paragraphs": [
-          "Abra el menú de plantillas, añada un título claro, elija el tipo de nota y publique la plantilla.",
-          "Abra el menú de plantillas, añada un título claro, elija el tipo de nota y publique la plantilla."
+          "Abra <strong>Notas de pedido de Mailhilfe → Añadir nueva</strong>. Introduzca un título claro, escriba el texto de la nota en el editor y elija si el tipo de nota predeterminado debe ser interno o visible para el cliente.",
+          "Utilice el título como una descripción breve de la finalidad, por ejemplo, «Recordatorio de pago» o «El cliente llamó por la entrega». Así será más fácil encontrar la plantilla en la pantalla del pedido."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Asigne una o varias categorías cuando tenga muchas plantillas.",
+          "Marque como favoritas las plantillas que utiliza con frecuencia.",
+          "Publique la plantilla para que esté disponible en los pedidos."
         ]
       },
       {
-        "title": "3. Formatear el texto",
+        "title": "3. Dar formato al texto de la plantilla",
         "paragraphs": [
-          "Use el editor de WordPress para párrafos, listas, negrita, cursiva y enlaces. El HTML se limpia antes de guardar.",
-          "Use el editor de WordPress para párrafos, listas, negrita, cursiva y enlaces. El HTML se limpia antes de guardar."
+          "El texto de la plantilla utiliza el editor de WordPress. Puede aplicar párrafos, negrita, cursiva, listas y enlaces. El formato se conserva al crear la nota, pero el contenido se limpia de acuerdo con las reglas de HTML seguro de WordPress.",
+          "Utilice el formato con moderación en las notas para clientes. Un párrafo breve o una lista con viñetas suele ser más fácil de leer que un texto largo sin estructura."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Buen ejemplo: un saludo breve, una explicación clara y el siguiente paso.",
+          "Evite abreviaturas internas en las notas para clientes.",
+          "No incluya comentarios privados del personal en plantillas que puedan utilizarse como notas para clientes."
         ]
       },
       {
-        "title": "4. Usar marcadores",
+        "title": "4. Marcadores de posición",
         "paragraphs": [
-          "Los marcadores entre llaves se sustituyen por datos reales del pedido en la vista previa y en la nota.",
-          "Los marcadores entre llaves se sustituyen por datos reales del pedido en la vista previa y en la nota."
+          "Los marcadores de posición son palabras entre llaves. Se sustituyen por datos reales del pedido en la vista previa y al añadir la nota al pedido.",
+          "Puede combinar texto normal y marcadores de posición. Ejemplo: <code>Hola {customer}, hemos recibido su pedido {order_number}.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Pedido: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Cliente: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Envío y pago: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Artículos y tienda: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Comprobar la vista previa",
+        "title": "5. Vista previa antes de añadir una nota",
         "paragraphs": [
-          "Compruebe siempre nombre, total, artículos y tipo de nota antes de añadirla.",
-          "Compruebe siempre nombre, total, artículos y tipo de nota antes de añadirla."
+          "Abra un pedido de WooCommerce y seleccione una plantilla. La vista previa muestra la nota con los marcadores de posición ya sustituidos por los datos del pedido seleccionado.",
+          "Compruebe siempre la vista previa antes de crear la nota. Esto es especialmente importante cuando un marcador de posición no tiene ningún valor en el pedido, por ejemplo, si falta la empresa de envío o el número de teléfono."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Compruebe los nombres, importes, método de envío y lista de artículos.",
+          "Compruebe que el tipo de nota seleccionado sea correcto.",
+          "Edite primero la plantilla si el mismo texto debe mejorarse para todos los pedidos futuros."
         ]
       },
       {
-        "title": "6. Notas internas y notas de cliente",
+        "title": "6. Notas internas y notas para clientes",
         "paragraphs": [
-          "Las notas internas son para el personal. Las notas de cliente pueden ser visibles y activar correos de WooCommerce.",
-          "Las notas internas son para el personal. Las notas de cliente pueden ser visibles y activar correos de WooCommerce."
+          "Las notas internas están destinadas al personal de la tienda y suelen utilizarse para documentación, tareas de seguimiento o historial de servicio. Las notas para clientes pueden ser visibles para el cliente y activar notificaciones por correo electrónico de WooCommerce, según los ajustes de WooCommerce.",
+          "Revise cuidadosamente la vista previa editable y el tipo de nota seleccionado. Utilice notas para clientes únicamente con textos que el cliente pueda leer."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Nota interna: «El cliente llamó y confirmó la dirección de entrega».",
+          "Nota para el cliente: «Su pedido se está preparando y se enviará en breve».",
+          "No incluya nunca contraseñas, comentarios privados ni información exclusiva para proveedores en notas para clientes."
         ]
       },
       {
         "title": "7. Favoritos, búsqueda y ordenación",
         "paragraphs": [
-          "Use favoritos para plantillas diarias, búsqueda para encontrar textos y arrastrar y soltar para ordenar.",
-          "Use favoritos para plantillas diarias, búsqueda para encontrar textos y arrastrar y soltar para ordenar."
+          "Los favoritos ayudan a colocar las plantillas más importantes al principio de la selección. El campo de búsqueda de la pantalla del pedido permite encontrar una plantilla por título, categoría o contenido.",
+          "En la lista de plantillas puede cambiar el orden mediante arrastrar y soltar. El orden guardado se utiliza cuando las plantillas se muestran en la pantalla del pedido."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Utilice favoritos para las plantillas de uso diario.",
+          "Utilice categorías para grupos temáticos como Pago, Envío, Devoluciones y Soporte.",
+          "Mantenga los títulos breves para que los resultados de búsqueda sigan siendo legibles."
         ]
       },
       {
-        "title": "8. Importación, exportación y plantillas demo",
+        "title": "8. Importación, exportación y plantillas de demostración",
         "paragraphs": [
-          "Exporte JSON como copia de seguridad. Importe solo archivos de confianza. Las plantillas demo se crean en el idioma activo.",
-          "Exporte JSON como copia de seguridad. Importe solo archivos de confianza. Las plantillas demo se crean en el idioma activo."
+          "La exportación JSON crea una copia de seguridad de sus plantillas. Puede utilizarla antes de realizar cambios importantes o para transferir plantillas a otra tienda.",
+          "La importación JSON puede crear plantillas y actualizar plantillas existentes con el mismo título o la misma clave interna de demostración. Las plantillas de demostración ofrecen un punto de partida rápido y se crean en el idioma activo."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Exporte las plantillas antes de realizar cambios masivos.",
+          "Importe únicamente archivos JSON de una fuente de confianza.",
+          "Después de importar, abra varias plantillas y compruebe el formato y los marcadores de posición."
         ]
       },
       {
-        "title": "9. Roles y permisos",
+        "title": "9. Permisos y roles",
         "paragraphs": [
-          "Administradores y gestores de tienda reciben permisos automáticamente. Los roles personalizados pueden ajustarse.",
-          "Administradores y gestores de tienda reciben permisos automáticamente. Los roles personalizados pueden ajustarse."
+          "El plugin utiliza capacidades separadas para gestionar plantillas y para utilizar plantillas en pedidos. Los administradores y gestores de tienda reciben automáticamente estos permisos durante la activación.",
+          "Si utiliza un plugin para editar roles, puede conceder o retirar estos permisos a roles personalizados."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: crear, editar, eliminar e importar/exportar plantillas.",
+          "<code>use_mh_order_note_templates</code>: utilizar plantillas en pedidos de WooCommerce.",
+          "Los usuarios sin el permiso necesario no ven las funciones de administración relacionadas."
         ]
       },
       {
-        "title": "10. Seguridad y compatibilidad HPOS",
+        "title": "10. Seguridad y compatibilidad con HPOS",
         "paragraphs": [
-          "Las acciones usan nonces, permisos, saneamiento y escape. Los pedidos se leen mediante APIs de WooCommerce para HPOS.",
-          "Las acciones usan nonces, permisos, saneamiento y escape. Los pedidos se leen mediante APIs de WooCommerce para HPOS."
+          "El plugin utiliza nonces de WordPress, comprobaciones de capacidades, saneamiento y escape para las acciones de administración. El contenido de las plantillas se limpia con HTML seguro de WordPress antes de guardarse o utilizarse.",
+          "Los datos del pedido se leen mediante las API de pedidos de WooCommerce, en lugar de acceder directamente a las tablas de la base de datos. Esto mantiene la compatibilidad del plugin con HPOS de WooCommerce y con el almacenamiento clásico de pedidos."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Mantenga WooCommerce y WordPress actualizados.",
+          "Pruebe el flujo de las notas para clientes después de cambiar los ajustes de correo electrónico de WooCommerce.",
+          "Utilice un sitio de pruebas antes de importar un conjunto grande de plantillas."
         ]
       },
       {
         "title": "11. Solución de problemas",
         "paragraphs": [
-          "Si algo falla, revise WooCommerce, publicación, permisos, idioma del sitio y caché.",
-          "Esta ayuda explica el flujo completo: crear plantillas con formato, usar marcadores, añadir notas en pedidos de WooCommerce, importar/exportar JSON, gestionar permisos, usar HPOS y trabajar de forma segura."
+          "Si las plantillas no aparecen en un pedido, compruebe que WooCommerce esté activo, que la plantilla esté publicada y que el usuario actual tenga permiso para utilizar plantillas.",
+          "Si las traducciones no aparecen, compruebe el idioma del sitio y el idioma del usuario en WordPress. El plugin incluye archivos de traducción revisados para todos los idiomas compatibles, incluido el persa. Los demás idiomas deben proporcionarse mediante paquetes de idioma revisados de WordPress.org."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Después de una actualización, vacíe la caché de objetos o de los plugins de caché si todavía se muestra la pantalla de administración anterior.",
+          "Si un marcador de posición no cambia, compruebe que esté escrito exactamente como aparece en la lista, incluidas las llaves.",
+          "Si las notas para clientes no se envían por correo electrónico, compruebe los ajustes de correo electrónico de WooCommerce para las notificaciones de notas para clientes."
         ]
       },
       {
         "title": "12. Página de ajustes",
         "paragraphs": [
-          "Abra <strong>Mailhilfe Order Notes → Ajustes</strong> para elegir el tipo de nota predeterminado, el HTML seguro, la visualización de uso, los favoritos, la importación JSON y la coincidencia de idioma. Use notas internas como opción predeterminada para el trabajo diario."
+          "Abra <strong>Notas de pedido de Mailhilfe → Ajustes</strong> para elegir el tipo de nota predeterminado, el comportamiento del HTML seguro, la visualización del uso, los favoritos, las opciones de importación JSON y la coincidencia de idiomas. Utilice notas internas como valor predeterminado para trabajar de forma más segura a diario."
         ],
         "items": []
       },
       {
         "title": "13. Idioma de la plantilla y tiendas multilingües",
         "paragraphs": [
-          "Cada plantilla puede tener un idioma. Elige <strong>Todos los idiomas</strong> para textos generales o un idioma concreto para mensajes traducidos al cliente.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Cada plantilla puede tener un idioma. Elija <strong>Todos los idiomas</strong> si el mismo texto puede utilizarse en todos los pedidos o seleccione un idioma específico para los textos localizados.",
+          "Cuando sea posible, el plugin puede dar preferencia a las plantillas que coincidan con el idioma del pedido, el idioma del usuario o los datos de idioma habituales de plugins multilingües."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Utilice una plantilla neutra para las notas internas del personal.",
+          "Cree plantillas separadas para clientes en español, alemán, inglés u otros idiomas de la tienda.",
+          "En tiendas con WPML o Polylang, pruebe la detección del idioma del pedido con un pedido de prueba real."
         ]
       },
       {
-        "title": "14. Campos personalizados y metadatos",
+        "title": "14. Campos personalizados y marcadores de posición meta",
         "paragraphs": [
-          "Los marcadores <code>{order_meta:meta_key}</code> y <code>{customer_meta:meta_key}</code> insertan metadatos seleccionados. Se bloquean claves sensibles como password, token o secret.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Los marcadores de posición avanzados pueden leer determinados campos meta del pedido o del cliente. Utilice <code>{order_meta:meta_key}</code> para los datos del pedido y <code>{customer_meta:meta_key}</code> para los datos de usuario del cliente.",
+          "Por seguridad, se bloquean nombres de clave sensibles que contienen términos como password, token, secret, session, auth y hash. Utilice marcadores meta únicamente cuando sepa qué contiene el campo."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Ejemplo: <code>{order_meta:_tracking_number}</code> para un número de seguimiento guardado por un plugin de envío.",
+          "Ejemplo: <code>{order_meta:_billing_vat_id}</code> para un campo de identificación fiscal.",
+          "No exponga campos internos o sensibles en notas para clientes."
         ]
       },
       {
-        "title": "15. Duplicar y revisiones",
+        "title": "15. Duplicar plantillas y revisiones",
         "paragraphs": [
-          "La acción de duplicar crea una copia como borrador. Las revisiones de WordPress permiten comparar y restaurar versiones anteriores.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Utilice la acción de duplicar cuando necesite una plantilla similar con pequeños cambios. La copia se crea como borrador para que pueda revisarse antes de publicarla.",
+          "Las revisiones de plantillas permiten comparar versiones anteriores y restaurar un texto previo cuando se ha realizado un cambio por error."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Duplique una plantilla general de envío antes de crear variantes para DHL, UPS o recogida.",
+          "Compruebe las revisiones después de realizar cambios importantes en el texto.",
+          "Utilice títulos claros para no confundir plantillas similares."
         ]
       },
       {
-        "title": "16. Permisos",
+        "title": "16. Página de permisos",
         "paragraphs": [
-          "La página <strong>Permisos</strong> define qué roles gestionan plantillas y qué roles las usan en pedidos.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Abra <strong>Notas de pedido de Mailhilfe → Permisos</strong> para decidir qué roles de WordPress pueden gestionar plantillas y qué roles pueden utilizarlas en los pedidos.",
+          "Los administradores conservan los permisos necesarios. Para los demás roles, conceda únicamente los permisos que requieran para su trabajo diario."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Gestionar plantillas: crear, editar, eliminar, importar y exportar plantillas.",
+          "Utilizar plantillas: seleccionar una plantilla y añadir una nota en un pedido de WooCommerce.",
+          "Conceda permisos de importación y exportación únicamente a usuarios de confianza."
         ]
       },
       {
-        "title": "17. Vista previa de importación",
+        "title": "17. Vista previa de la importación",
         "paragraphs": [
-          "La importación JSON muestra una vista previa con plantillas creadas, actualizadas u omitidas antes de aplicar cambios.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "Las importaciones JSON muestran ahora una vista previa antes de aplicar los cambios. La vista previa indica cuántas plantillas se crearán, actualizarán u omitirán.",
+          "Confirme la importación únicamente después de comprobar la vista previa. Esto evita sobrescribir accidentalmente plantillas existentes."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Cree una copia de seguridad mediante exportación antes de importar un conjunto grande.",
+          "Importe únicamente archivos JSON de una fuente de confianza.",
+          "Después de importar, pruebe al menos una nota para el cliente y una nota interna."
         ]
       },
       {
-        "title": "18. Estado del correo de nota al cliente",
+        "title": "18. Comportamiento del correo electrónico de las notas para clientes",
         "paragraphs": [
-          "Las notas al cliente pueden activar notificaciones por correo de WooCommerce cuando el correo correspondiente está habilitado. El plugin registra la creación de la nota por separado del procesamiento del correo. Revise la vista previa editable antes de añadirla y consulte la página Historial para comprobar el resultado."
+          "Las notas para clientes pueden activar notificaciones por correo electrónico de WooCommerce cuando el correo correspondiente está activado. El plugin registra la creación de la nota para el cliente por separado del procesamiento del correo electrónico. Revise la vista previa editable antes de añadir la nota y utilice la página Historial para comprobar el resultado del gestor de correo."
         ],
         "items": []
       },
       {
-        "title": "19. Flujo recomendado",
+        "title": "19. Flujo de trabajo recomendado",
         "paragraphs": [
-          "Selecciona una plantilla, revisa la vista previa, edítala si hace falta, confirma el tipo de nota y añade la nota.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Un flujo de trabajo diario seguro consiste en seleccionar una plantilla, revisar la vista previa con los datos sustituidos, editarla si es necesario, verificar el tipo de nota y, por último, añadir la nota.",
+          "Pruebe primero las plantillas nuevas en un pedido no crítico o en una tienda de pruebas antes de utilizarlas con clientes reales."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Utilice notas internas para información destinada únicamente al personal.",
+          "Utilice notas para clientes únicamente con mensajes que puedan enviarse al cliente.",
+          "Revise los marcadores de posición cada vez que cambie una plantilla."
         ]
       },
       {
         "title": "20. Condiciones de las plantillas",
         "paragraphs": [
-          "Las condiciones determinan si una plantilla está disponible para un pedido. Se puede limitar por estado, método de pago, método de envío, país de facturación y total mínimo o máximo. Todas las condiciones configuradas deben cumplirse."
+          "Las condiciones de una plantilla determinan si está disponible para un pedido concreto. Puede restringir las plantillas por estado del pedido, método de pago, método de envío, país de facturación y total mínimo o máximo del pedido. Todas las condiciones configuradas deben cumplirse."
         ],
         "items": [
-          "Deja un campo vacío si no debe limitar la plantilla.",
-          "Usa los identificadores técnicos de pago y envío.",
-          "Las condiciones se comprueban en la interfaz y de nuevo en el servidor."
+          "Deje un campo vacío cuando esa condición no deba restringir la plantilla.",
+          "Utilice los identificadores técnicos de los métodos de pago y de envío.",
+          "Las condiciones se comprueban en la interfaz y de nuevo en el servidor antes de crear una nota."
         ]
       },
       {
-        "title": "21. Registro del procesamiento del correo",
+        "title": "21. Registro del procesamiento de correo electrónico",
         "paragraphs": [
-          "Para las notas de cliente, el plugin registra cuando WooCommerce informa que el correo se ha procesado y también los errores técnicos de wp_mail. «Procesado» confirma la entrega al sistema de correo, no la recepción final ni la lectura."
+          "Para las notas para clientes, el plugin registra cuándo WooCommerce informa de que el correo electrónico de la nota se ha procesado y también registra errores técnicos de wp_mail. Un evento procesado confirma que WordPress/WooCommerce entregó el mensaje al sistema de correo, pero no demuestra la entrega final ni que el cliente lo haya leído."
         ],
         "items": [
-          "Consulta Historial para ver eventos procesados y fallidos.",
-          "Usa un proveedor SMTP para obtener información de entrega más precisa.",
-          "Las notas internas no generan correos de nota al cliente."
+          "Consulte la página Historial para ver los eventos de correo procesados y fallidos.",
+          "Utilice un proveedor SMTP o un servicio de registro de correo cuando necesite información definitiva sobre la entrega.",
+          "Las notas internas no activan un correo electrónico de nota para el cliente."
         ]
       },
       {
         "title": "22. Historial central",
         "paragraphs": [
-          "Abre <strong>Mailhilfe Order Notes → Historial</strong> para revisar notas creadas, uso de plantillas, procesamiento y fallos de correo. Cuando están disponibles se muestran pedido, plantilla, usuario, destinatario, tipo de evento y fecha."
+          "Abra <strong>Notas de pedido de Mailhilfe → Historial</strong> para revisar la creación reciente de notas, el uso de plantillas, el procesamiento de correos y los fallos de envío. Cuando están disponibles, las entradas incluyen el pedido, la plantilla, el usuario, el destinatario, el tipo de evento y la hora."
         ],
         "items": [
-          "Úsalo para soporte, auditoría y diagnóstico.",
-          "El historial es independiente de las notas de pedido de WooCommerce.",
-          "Se muestran las 250 entradas más recientes."
+          "Utilice el historial para soporte, auditoría y solución de problemas.",
+          "El historial está separado de las notas de pedido de WooCommerce.",
+          "La página muestra las 250 entradas más recientes."
         ]
       },
       {
         "title": "23. Vista previa con pedido de prueba",
         "paragraphs": [
-          "En el editor introduce el ID de un pedido de WooCommerce. El contenido actual, incluso sin guardar, se previsualiza con los datos de ese pedido sin crear una nota ni enviar un correo."
+          "En el editor de plantillas, introduzca un ID de pedido de WooCommerce en el área de vista previa de prueba. El contenido actual del editor, incluidos los cambios sin guardar, se muestra con los datos de ese pedido sin crear una nota ni enviar un correo electrónico."
         ],
         "items": [
-          "Usa un pedido de prueba o un sitio de staging.",
-          "Comprueba valores vacíos, formato, condiciones y metadatos personalizados.",
-          "Debes tener permiso para editar el pedido seleccionado."
+          "Utilice un pedido de un sitio de pruebas o un pedido de prueba no crítico.",
+          "Compruebe valores ausentes, formato, condiciones y marcadores de posición meta personalizados.",
+          "Debe tener permiso para editar el pedido seleccionado."
         ]
       },
       {
-        "title": "24. Favoritos personales y plantillas recientes",
+        "title": "24. Favoritos personales y plantillas utilizadas recientemente",
         "paragraphs": [
-          "Cada usuario puede marcar favoritos personales en el pedido. El plugin también guarda las diez últimas plantillas usadas correctamente por cada usuario y las coloca más arriba. Los favoritos globales siguen siendo compartidos."
+          "Cada administrador puede marcar favoritos personales en la pantalla del pedido. El plugin también guarda las diez plantillas utilizadas más recientemente por cada usuario y las sitúa en una posición superior de la selección. Los favoritos globales siguen compartiéndose con todos los usuarios."
         ],
         "items": [
-          "Los favoritos personales no afectan a otros usuarios.",
-          "La lista reciente solo se actualiza después de añadir una nota correctamente.",
-          "Los datos se guardan como metadatos de usuario de WordPress."
+          "Los favoritos personales no modifican la lista de otros usuarios.",
+          "La lista reciente se actualiza únicamente después de añadir una nota correctamente.",
+          "Los datos personales se guardan como metadatos de usuario de WordPress."
         ]
       },
       {
         "title": "25. Página de diagnóstico",
         "paragraphs": [
-          "Abre <strong>Mailhilfe Order Notes → Diagnóstico</strong> para ver versiones de WordPress, PHP y WooCommerce, estado de HPOS, correo de nota al cliente, idioma, número de plantillas, caché y WP_DEBUG."
+          "Abra <strong>Notas de pedido de Mailhilfe → Diagnóstico</strong> para ver información técnica como las versiones de WordPress, PHP y WooCommerce, el estado de HPOS, el estado del correo de notas para clientes, la configuración regional, el número de plantillas publicadas, el estado de la caché y WP_DEBUG."
         ],
         "items": [
-          "Incluye estos datos al solicitar soporte.",
-          "No se muestran contenidos de notas ni direcciones de clientes.",
-          "Los desarrolladores pueden ampliar las filas mediante un filtro."
+          "Copie los valores de diagnóstico cuando solicite soporte.",
+          "La página no muestra el contenido de las notas de pedido ni las direcciones de los clientes.",
+          "Los desarrolladores pueden añadir filas mediante el filtro de diagnóstico."
         ]
       },
       {
         "title": "26. Acciones y filtros para desarrolladores",
         "paragraphs": [
-          "El plugin ofrece acciones y filtros para marcadores, valores, claves meta permitidas, resultados, condiciones, vista previa, contenido final, acciones antes y después de añadir, historial y diagnóstico. Los nombres están documentados en readme.txt."
+          "El plugin proporciona acciones y filtros para marcadores de posición, valores de marcadores, claves meta permitidas, resultados de plantillas, condiciones, contenido de la vista previa, contenido final de la nota, acciones antes y después de añadir una nota, registros del historial y diagnóstico. Los nombres y parámetros están documentados en readme.txt."
         ],
         "items": [
-          "Valida, sanea y escapa todos los datos personalizados.",
-          "Usa las API de pedidos de WooCommerce y no las tablas directamente.",
-          "Mantén la compatibilidad con HPOS y el almacenamiento clásico."
+          "Valide, sanee y escape todos los datos personalizados.",
+          "Utilice las API de pedidos de WooCommerce en lugar de acceder directamente a las tablas de pedidos.",
+          "Mantenga las extensiones personalizadas compatibles tanto con HPOS como con el almacenamiento clásico de pedidos."
         ]
       }
     ]
   },
-  "it_IT": {
-    "title": "Guida dettagliata per Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza. Mailhilfe Order Note Manager for WooCommerce.",
+  "fr_FR": {
+    "title": "Aide détaillée de Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Cette aide mise à jour décrit l’ensemble du fonctionnement de Mailhilfe Order Note Manager for WooCommerce : création et mise en forme des modèles, langues des modèles, variables et métavariables, modification des aperçus, envoi sécurisé des notes au client, réglages, droits, aperçu des importations et compatibilité HPOS.",
     "sections": [
       {
-        "title": "1. Cosa fa il plugin",
+        "title": "1. Fonctionnement de l’extension",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Mailhilfe Order Note Manager for WooCommerce vous permet d’enregistrer les notes de commande WooCommerce fréquemment utilisées sous forme de modèles réutilisables. Vous évitez ainsi de saisir plusieurs fois le même texte et conservez une communication cohérente dans l’historique de la commande.",
+          "Un modèle peut être préparé comme note interne destinée à l’équipe ou comme note au client. Vous pouvez encore modifier le type de note lorsque vous utilisez le modèle dans une commande."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Exemples courants : rappels de paiement, retards de livraison, comptes rendus d’appels, vérifications d’adresse et réponses du service client.",
+          "Les modèles prennent en charge les catégories, les favoris, le tri, un compteur d’utilisation et la sauvegarde au format JSON."
         ]
       },
       {
-        "title": "2. Creare un modello",
+        "title": "2. Créer un nouveau modèle",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Ouvrez <strong>Notes de commande Mailhilfe → Ajouter</strong>. Saisissez un titre explicite, rédigez le texte de la note dans l’éditeur et choisissez si le type de note par défaut doit être interne ou destiné au client.",
+          "Utilisez le titre comme une brève description de l’objectif, par exemple « Rappel de paiement » ou « Appel du client au sujet de la livraison ». Le modèle sera ainsi plus facile à retrouver dans l’écran de commande."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Attribuez une ou plusieurs catégories si vous utilisez de nombreux modèles.",
+          "Ajoutez aux favoris les modèles que vous utilisez souvent.",
+          "Publiez le modèle pour le rendre disponible dans les commandes."
         ]
       },
       {
-        "title": "3. Formattare il testo",
+        "title": "3. Mettre en forme le texte du modèle",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Le texte du modèle utilise l’éditeur WordPress. Vous pouvez mettre le texte en paragraphes, en gras ou en italique, créer des listes et ajouter des liens. La mise en forme est conservée lors de la création de la note, mais le contenu est nettoyé selon les règles HTML sécurisées de WordPress.",
+          "Utilisez la mise en forme avec modération dans les notes au client. Un court paragraphe ou une liste à puces est généralement plus lisible qu’un long texte non structuré."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Bon exemple : une courte formule d’accueil, une explication claire et l’étape suivante.",
+          "Évitez les abréviations internes dans les notes au client.",
+          "N’insérez pas de commentaires privés de l’équipe dans des modèles susceptibles d’être utilisés comme notes au client."
         ]
       },
       {
-        "title": "4. Usare i segnaposto",
+        "title": "4. Variables",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Les variables sont des mots placés entre accolades. Elles sont remplacées par les données réelles de la commande dans l’aperçu et lors de l’ajout de la note à la commande.",
+          "Vous pouvez combiner du texte normal et des variables. Exemple : <code>Bonjour {customer}, nous avons bien reçu votre commande {order_number}.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Commande : <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Client : <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Livraison et paiement : <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Articles et boutique : <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Controllare l’anteprima",
+        "title": "5. Vérifier l’aperçu avant d’ajouter une note",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Ouvrez une commande WooCommerce et sélectionnez un modèle. L’aperçu affiche la note après remplacement des variables par les données de la commande sélectionnée.",
+          "Vérifiez toujours l’aperçu avant de créer la note. Cette vérification est particulièrement importante lorsqu’une variable ne possède aucune valeur dans la commande, par exemple si la société de livraison ou le numéro de téléphone est manquant."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Vérifiez les noms, les montants, le mode de livraison et la liste des articles.",
+          "Vérifiez que le type de note sélectionné est correct.",
+          "Modifiez d’abord le modèle si le même texte doit être amélioré pour toutes les commandes futures."
         ]
       },
       {
-        "title": "6. Note interne e note cliente",
+        "title": "6. Notes internes et notes au client",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Les notes internes sont destinées à l’équipe de la boutique et servent généralement à la documentation, aux tâches de suivi ou à l’historique du service client. Les notes au client peuvent être visibles par le client et déclencher des notifications par e-mail de WooCommerce, selon vos réglages WooCommerce.",
+          "Vérifiez soigneusement l’aperçu modifiable et le type de note sélectionné. N’utilisez une note au client que pour un texte que le client est autorisé à lire."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Note interne : « Le client a appelé, l’adresse de livraison a été confirmée. »",
+          "Note au client : « Votre commande est en cours de préparation et sera bientôt expédiée. »",
+          "Ne placez jamais de mots de passe, de commentaires privés ou d’informations réservées aux fournisseurs dans une note au client."
         ]
       },
       {
-        "title": "7. Preferiti, ricerca e ordinamento",
+        "title": "7. Favoris, recherche et tri",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Les favoris permettent de placer les modèles les plus importants en haut de la sélection. Le champ de recherche de l’écran de commande permet de retrouver un modèle selon son titre, sa catégorie ou son contenu.",
+          "Dans la liste des modèles, vous pouvez modifier l’ordre par glisser-déposer. L’ordre enregistré est utilisé lors de l’affichage des modèles dans l’écran de commande."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Utilisez les favoris pour les modèles employés quotidiennement.",
+          "Utilisez les catégories pour regrouper les sujets comme Paiement, Livraison, Retours et Assistance.",
+          "Conservez des titres courts afin que les résultats de recherche restent lisibles."
         ]
       },
       {
-        "title": "8. Importazione, esportazione e modelli demo",
+        "title": "8. Importation, exportation et modèles de démonstration",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "L’exportation JSON crée une sauvegarde de vos modèles. Vous pouvez l’utiliser avant des modifications importantes ou pour transférer les modèles vers une autre boutique.",
+          "L’importation JSON peut créer des modèles et mettre à jour les modèles existants portant le même titre ou la même clé interne de démonstration. Les modèles de démonstration constituent un point de départ rapide et sont créés dans la langue active."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Effectuez une exportation avant toute modification en masse.",
+          "Importez uniquement des fichiers JSON provenant d’une source fiable.",
+          "Après l’importation, ouvrez quelques modèles et vérifiez la mise en forme ainsi que les variables."
         ]
       },
       {
-        "title": "9. Ruoli e permessi",
+        "title": "9. Droits et rôles",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "L’extension utilise des capacités distinctes pour gérer les modèles et pour les utiliser dans les commandes. Les administrateurs et les responsables de boutique reçoivent automatiquement ces droits lors de l’activation.",
+          "Si vous utilisez une extension de gestion des rôles, vous pouvez accorder ou retirer ces droits aux rôles personnalisés."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code> : créer, modifier, supprimer, importer et exporter les modèles.",
+          "<code>use_mh_order_note_templates</code> : utiliser les modèles dans les commandes WooCommerce.",
+          "Les utilisateurs qui ne disposent pas du droit nécessaire ne voient pas les fonctions d’administration correspondantes."
         ]
       },
       {
-        "title": "10. Sicurezza e compatibilità HPOS",
+        "title": "10. Sécurité et compatibilité HPOS",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "L’extension utilise les nonces WordPress, la vérification des capacités, le nettoyage et l’échappement pour les actions d’administration. Le contenu des modèles est nettoyé avec le HTML sécurisé de WordPress avant d’être enregistré ou utilisé.",
+          "Les données de commande sont lues au moyen des API de commande WooCommerce et non par un accès direct aux tables de la base de données. L’extension reste ainsi compatible avec HPOS de WooCommerce et le stockage classique des commandes."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Maintenez WooCommerce et WordPress à jour.",
+          "Testez le fonctionnement des notes au client après toute modification des réglages d’e-mail de WooCommerce.",
+          "Utilisez un site de préproduction avant d’importer un grand ensemble de modèles."
         ]
       },
       {
-        "title": "11. Risoluzione dei problemi",
+        "title": "11. Dépannage",
         "paragraphs": [
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza.",
-          "Questa guida spiega il flusso completo: creare modelli formattati, usare segnaposto, aggiungere note agli ordini WooCommerce, importare/esportare JSON, gestire i permessi, usare HPOS e lavorare in sicurezza."
+          "Si les modèles n’apparaissent pas dans une commande, vérifiez que WooCommerce est actif, que le modèle est publié et que l’utilisateur actuel possède le droit d’utiliser les modèles.",
+          "Si les traductions n’apparaissent pas, vérifiez la langue du site et la langue de l’utilisateur dans WordPress. L’extension contient des fichiers de remplacement vérifiés pour toutes les langues prises en charge, y compris le persan. Les autres langues doivent être fournies par des packs linguistiques WordPress.org vérifiés."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Après une mise à jour, videz les caches d’objets ou des extensions de cache si l’ancien écran d’administration reste affiché.",
+          "Si une variable reste inchangée, vérifiez qu’elle est écrite exactement comme dans la liste, accolades comprises.",
+          "Si les notes au client ne sont pas envoyées par e-mail, vérifiez les réglages d’e-mail WooCommerce relatifs aux notifications de note au client."
         ]
       },
       {
-        "title": "12. Pagina impostazioni",
+        "title": "12. Page des réglages",
         "paragraphs": [
-          "Apri <strong>Mailhilfe Order Notes → Impostazioni</strong> per scegliere il tipo di nota predefinito, l’HTML sicuro, la visualizzazione dell’utilizzo, i preferiti, l’importazione JSON e la corrispondenza della lingua. Usa le note interne come impostazione predefinita."
+          "Ouvrez <strong>Notes de commande Mailhilfe → Réglages</strong> pour choisir le type de note par défaut, le comportement du HTML sécurisé, l’affichage de l’utilisation, les favoris, les options d’importation JSON et la correspondance des langues. Utilisez les notes internes comme valeur par défaut pour un travail quotidien plus sûr."
         ],
         "items": []
       },
       {
-        "title": "13. Lingua del modello e negozi multilingue",
+        "title": "13. Langue des modèles et boutiques multilingues",
         "paragraphs": [
-          "Ogni modello può avere una lingua. Scegli <strong>Tutte le lingue</strong> per testi generali o una lingua specifica per messaggi cliente tradotti.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Chaque modèle peut posséder une langue. Choisissez <strong>Toutes les langues</strong> si le même texte peut être utilisé pour toutes les commandes, ou sélectionnez une langue précise pour les textes localisés.",
+          "Lorsque les informations sont disponibles, l’extension peut privilégier les modèles correspondant à la langue de la commande, à la langue de l’utilisateur ou aux données linguistiques courantes fournies par les extensions multilingues."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Utilisez un modèle neutre pour les notes internes de l’équipe.",
+          "Créez des modèles distincts destinés au client pour le français, l’allemand, l’anglais ou les autres langues de la boutique.",
+          "Pour les boutiques WPML ou Polylang, testez la détection de la langue de la commande avec une véritable commande de test."
         ]
       },
       {
-        "title": "14. Campi personalizzati e metadati",
+        "title": "14. Champs personnalisés et métavariables",
         "paragraphs": [
-          "I segnaposto <code>{order_meta:meta_key}</code> e <code>{customer_meta:meta_key}</code> inseriscono metadati selezionati. Chiavi sensibili come password, token o secret sono bloccate.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Les variables avancées peuvent lire certains champs de métadonnées de la commande ou du client. Utilisez <code>{order_meta:meta_key}</code> pour les données de commande et <code>{customer_meta:meta_key}</code> pour les données utilisateur du client.",
+          "Pour des raisons de sécurité, les noms de clés sensibles contenant notamment password, token, secret, session, auth ou hash sont bloqués. Utilisez des métavariables uniquement lorsque vous connaissez le contenu du champ."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Exemple : <code>{order_meta:_tracking_number}</code> pour un numéro de suivi enregistré par une extension de livraison.",
+          "Exemple : <code>{order_meta:_billing_vat_id}</code> pour un champ de numéro de TVA.",
+          "N’affichez pas de champs internes ou sensibles dans les notes au client."
         ]
       },
       {
-        "title": "15. Duplicazione e revisioni",
+        "title": "15. Dupliquer les modèles et utiliser les révisions",
         "paragraphs": [
-          "La duplicazione crea una copia in bozza. Le revisioni di WordPress aiutano a confrontare e ripristinare versioni precedenti.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Utilisez l’action de duplication lorsqu’un nouveau modèle doit reprendre un modèle existant avec quelques modifications. La copie est créée comme brouillon afin de pouvoir être vérifiée avant sa publication.",
+          "Les révisions de modèles vous permettent de comparer les versions antérieures et de restaurer un ancien texte lorsqu’une modification a été effectuée par erreur."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Dupliquez un modèle de livraison général avant de créer des variantes pour DHL, UPS ou le retrait sur place.",
+          "Consultez les révisions après des modifications importantes du texte.",
+          "Utilisez des titres explicites pour éviter de confondre des modèles similaires."
         ]
       },
       {
-        "title": "16. Permessi",
+        "title": "16. Page des droits",
         "paragraphs": [
-          "La pagina <strong>Permessi</strong> stabilisce quali ruoli gestiscono i modelli e quali li usano negli ordini.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Ouvrez <strong>Notes de commande Mailhilfe → Droits</strong> pour définir quels rôles WordPress peuvent gérer les modèles et quels rôles peuvent les utiliser dans les commandes.",
+          "Les administrateurs conservent les droits nécessaires. Pour les autres rôles, accordez uniquement les droits requis pour les tâches quotidiennes."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Gérer les modèles : créer, modifier, supprimer, importer et exporter les modèles.",
+          "Utiliser les modèles : sélectionner un modèle et ajouter une note dans une commande WooCommerce.",
+          "N’accordez les droits d’importation et d’exportation qu’aux utilisateurs de confiance."
         ]
       },
       {
-        "title": "17. Anteprima importazione",
+        "title": "17. Aperçu de l’importation",
         "paragraphs": [
-          "L’import JSON mostra un’anteprima dei modelli creati, aggiornati o saltati prima di applicare le modifiche.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "Les importations JSON affichent désormais un aperçu avant l’application des modifications. L’aperçu indique combien de modèles seront créés, mis à jour ou ignorés.",
+          "Ne confirmez l’importation qu’après avoir vérifié l’aperçu. Vous évitez ainsi d’écraser involontairement des modèles existants."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Créez une sauvegarde par exportation avant d’importer un ensemble important.",
+          "Importez uniquement des fichiers JSON provenant d’une source fiable.",
+          "Après l’importation, testez au moins une note au client et une note interne."
         ]
       },
       {
-        "title": "18. Stato email nota cliente",
+        "title": "18. Envoi des e-mails de notes au client",
         "paragraphs": [
-          "Le note cliente possono attivare notifiche e-mail di WooCommerce quando l’e-mail corrispondente è abilitata. Il plugin registra la creazione della nota separatamente dall’elaborazione dell’e-mail. Controlla l’anteprima modificabile prima di aggiungerla e usa la pagina Cronologia per verificare il risultato."
+          "Les notes au client peuvent déclencher des notifications par e-mail de WooCommerce lorsque l’e-mail correspondant est activé. L’extension enregistre la création de la note au client séparément du traitement de l’e-mail. Vérifiez l’aperçu modifiable avant d’ajouter la note et utilisez la page Historique pour contrôler le résultat du gestionnaire d’e-mails."
         ],
         "items": []
       },
       {
-        "title": "19. Flusso consigliato",
+        "title": "19. Méthode de travail recommandée",
         "paragraphs": [
-          "Seleziona un modello, controlla l’anteprima, modificala se necessario, verifica il tipo di nota e aggiungi la nota.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Une méthode de travail quotidienne sûre consiste à sélectionner un modèle, vérifier l’aperçu après remplacement des variables, modifier l’aperçu si nécessaire, contrôler le type de note, puis ajouter la note.",
+          "Pour les nouveaux modèles, effectuez d’abord un test dans une commande sans importance ou sur une boutique de préproduction avant de les utiliser avec de véritables clients."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Utilisez les notes internes pour les informations réservées à l’équipe.",
+          "Utilisez les notes au client uniquement pour les messages susceptibles d’être envoyés au client.",
+          "Vérifiez les variables chaque fois qu’un modèle est modifié."
         ]
       },
       {
-        "title": "20. Condizioni dei modelli",
+        "title": "20. Conditions des modèles",
         "paragraphs": [
-          "Le condizioni stabiliscono se un modello è disponibile per un ordine. È possibile limitarlo per stato dell’ordine, metodo di pagamento, metodo di spedizione, paese di fatturazione e totale minimo o massimo. Tutte le condizioni impostate devono corrispondere."
+          "Les conditions d’un modèle déterminent s’il est disponible pour une commande donnée. Vous pouvez limiter les modèles selon l’état de la commande, le mode de paiement, le mode de livraison, le pays de facturation ainsi que le montant minimal ou maximal de la commande. Toutes les conditions définies doivent être remplies."
         ],
         "items": [
-          "Lascia un campo vuoto se non deve limitare il modello.",
-          "Usa gli ID tecnici dei metodi di pagamento e spedizione.",
-          "Le condizioni vengono controllate nell’interfaccia e di nuovo sul server."
+          "Laissez un champ vide si cette condition ne doit pas limiter le modèle.",
+          "Utilisez les identifiants techniques des modes de paiement et de livraison.",
+          "Les conditions sont vérifiées dans l’interface, puis de nouveau sur le serveur avant la création d’une note."
         ]
       },
       {
-        "title": "21. Registro dell’elaborazione e-mail",
+        "title": "21. Journal du traitement des e-mails",
         "paragraphs": [
-          "Per le note cliente il plugin registra quando WooCommerce segnala l’e-mail come elaborata e gli errori tecnici di wp_mail. «Elaborata» indica il passaggio al sistema di posta, non la consegna finale o la lettura."
+          "Pour les notes au client, l’extension enregistre le moment où WooCommerce indique que l’e-mail de note au client a été traité, ainsi que les erreurs techniques de wp_mail. Un événement traité confirme que WordPress/WooCommerce a transmis le message au système de messagerie ; il ne prouve ni la livraison finale ni la lecture du message par le client."
         ],
         "items": [
-          "Controlla la pagina Cronologia per gli eventi elaborati o non riusciti.",
-          "Usa un servizio SMTP per informazioni di consegna più precise.",
-          "Le note interne non attivano l’e-mail della nota cliente."
+          "Consultez la page Historique pour connaître les événements d’e-mail traités et échoués.",
+          "Utilisez un fournisseur SMTP ou un service de journalisation des e-mails si vous avez besoin d’informations fiables sur la livraison.",
+          "Les notes internes ne déclenchent pas d’e-mail de note au client."
         ]
       },
       {
-        "title": "22. Cronologia centrale",
+        "title": "22. Historique central",
         "paragraphs": [
-          "Apri <strong>Mailhilfe Order Notes → Cronologia</strong> per vedere note create, utilizzo dei modelli, elaborazione e errori e-mail. Quando disponibili vengono mostrati ordine, modello, utente, destinatario, tipo di evento e ora."
+          "Ouvrez <strong>Notes de commande Mailhilfe → Historique</strong> pour consulter les créations récentes de notes, l’utilisation des modèles, le traitement des e-mails et les échecs d’envoi. Lorsque les informations sont disponibles, les entrées indiquent la commande, le modèle, l’utilisateur, le destinataire, le type d’événement et l’heure."
         ],
         "items": [
-          "Usa la cronologia per assistenza, controllo e risoluzione dei problemi.",
-          "È separata dalle note ordine di WooCommerce.",
-          "Sono visualizzate le 250 voci più recenti."
+          "Utilisez l’historique pour l’assistance, l’audit et le dépannage.",
+          "L’historique est distinct des notes de commande WooCommerce.",
+          "La page affiche les 250 entrées les plus récentes."
         ]
       },
       {
-        "title": "23. Anteprima con ordine di prova",
+        "title": "23. Aperçu avec une commande de test",
         "paragraphs": [
-          "Nell’editor inserisci l’ID di un ordine WooCommerce. Il contenuto corrente, anche non salvato, viene mostrato con i dati dell’ordine senza creare note o inviare e-mail."
+          "Dans l’éditeur de modèle, saisissez l’identifiant d’une commande WooCommerce dans la zone d’aperçu de test. Le contenu actuel de l’éditeur, y compris les modifications non enregistrées, est rendu avec les données de cette commande sans créer de note ni envoyer d’e-mail."
         ],
         "items": [
-          "Usa un ordine di prova o un sito di staging.",
-          "Controlla valori mancanti, formattazione, condizioni e metadati personalizzati.",
-          "Devi poter modificare l’ordine selezionato."
+          "Utilisez une commande de préproduction ou une commande de test sans importance.",
+          "Vérifiez les valeurs manquantes, la mise en forme, les conditions et les variables de métadonnées personnalisées.",
+          "Vous devez disposer du droit de modifier la commande sélectionnée."
         ]
       },
       {
-        "title": "24. Preferiti personali e modelli recenti",
+        "title": "24. Favoris personnels et modèles récemment utilisés",
         "paragraphs": [
-          "Ogni utente può impostare preferiti personali nella schermata ordine. Il plugin memorizza anche gli ultimi dieci modelli usati con successo e li mostra più in alto. I preferiti globali restano condivisi."
+          "Chaque administrateur peut ajouter des favoris personnels dans l’écran de commande. L’extension mémorise également les dix modèles les plus récemment utilisés par chaque utilisateur et les place plus haut dans la sélection. Les favoris globaux restent partagés entre tous les utilisateurs."
         ],
         "items": [
-          "I preferiti personali non modificano l’elenco degli altri utenti.",
-          "L’elenco recente si aggiorna solo dopo l’aggiunta riuscita di una nota.",
-          "I dati sono salvati come metadati utente WordPress."
+          "Les favoris personnels ne modifient pas la liste d’un autre utilisateur.",
+          "La liste récente est mise à jour uniquement après l’ajout réussi d’une note.",
+          "Les données personnelles sont enregistrées comme métadonnées utilisateur WordPress."
         ]
       },
       {
-        "title": "25. Pagina diagnostica",
+        "title": "25. Page de diagnostic",
         "paragraphs": [
-          "Apri <strong>Mailhilfe Order Notes → Diagnostica</strong> per vedere versioni WordPress, PHP e WooCommerce, stato HPOS, e-mail nota cliente, lingua, numero di modelli pubblicati, cache e WP_DEBUG."
+          "Ouvrez <strong>Notes de commande Mailhilfe → Diagnostic</strong> pour consulter des informations techniques telles que les versions de WordPress, PHP et WooCommerce, l’état HPOS, l’état de l’e-mail de note au client, les paramètres régionaux, le nombre de modèles publiés, l’état du cache et WP_DEBUG."
         ],
         "items": [
-          "Fornisci questi dati nelle richieste di assistenza.",
-          "Non vengono mostrati contenuti delle note o indirizzi dei clienti.",
-          "Gli sviluppatori possono aggiungere righe con il filtro diagnostico."
+          "Copiez les valeurs de diagnostic lorsque vous demandez de l’aide.",
+          "La page n’affiche ni le contenu des notes de commande ni les adresses des clients.",
+          "Les développeurs peuvent ajouter des lignes à l’aide du filtre de diagnostic."
         ]
       },
       {
-        "title": "26. Hook e filtri per sviluppatori",
+        "title": "26. Actions et filtres pour les développeurs",
         "paragraphs": [
-          "Sono disponibili hook e filtri per segnaposto, valori, chiavi meta consentite, risultati dei modelli, condizioni, anteprima, contenuto finale, azioni prima/dopo l’aggiunta, cronologia e diagnostica. I nomi sono documentati in readme.txt."
+          "L’extension fournit des actions et des filtres pour les variables, leurs valeurs, les clés de métadonnées autorisées, les résultats des modèles, les conditions, le contenu de l’aperçu, le contenu final de la note, les actions avant et après l’ajout d’une note, les entrées d’historique et le diagnostic. Les noms des points d’accroche et leurs paramètres sont documentés dans readme.txt."
         ],
         "items": [
-          "Valida, sanifica ed esegui l’escape dei dati personalizzati.",
-          "Usa le API ordini WooCommerce invece delle tabelle dirette.",
-          "Mantieni la compatibilità con HPOS e archiviazione classica."
+          "Validez, nettoyez et échappez toutes les données personnalisées.",
+          "Utilisez les API de commande WooCommerce plutôt qu’un accès direct aux tables de commandes.",
+          "Maintenez la compatibilité de vos extensions personnalisées avec HPOS et le stockage classique des commandes."
+        ]
+      }
+    ]
+  },
+  "ru_RU": {
+    "title": "Подробная справка по Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "В этой обновлённой справке описан полный рабочий процесс Mailhilfe Order Note Manager for WooCommerce: создание и форматирование шаблонов, языки шаблонов, заполнители и метазаполнители, редактирование предпросмотра, безопасное добавление примечаний для клиентов, настройки, права доступа, предпросмотр импорта и совместимость с HPOS.",
+    "sections": [
+      {
+        "title": "1. Назначение плагина",
+        "paragraphs": [
+          "Mailhilfe Order Note Manager for WooCommerce позволяет сохранять часто используемые примечания к заказам WooCommerce в виде повторно используемых шаблонов. Это избавляет от многократного ввода одинакового текста и помогает поддерживать единообразную коммуникацию в истории заказа.",
+          "Шаблон можно подготовить как внутреннее примечание для сотрудников или как примечание для клиента. При использовании шаблона в заказе тип примечания можно изменить."
+        ],
+        "items": [
+          "Типичные примеры: напоминания об оплате, задержки доставки, записи о телефонных разговорах, проверка адреса и ответы службы поддержки.",
+          "Шаблоны поддерживают категории, избранное, сортировку, счётчик использования и резервное копирование в JSON."
+        ]
+      },
+      {
+        "title": "2. Создание нового шаблона",
+        "paragraphs": [
+          "Откройте <strong>Примечания Mailhilfe → Добавить</strong>. Введите понятный заголовок, напишите текст примечания в редакторе и выберите, должен ли тип по умолчанию быть внутренним или предназначенным для клиента.",
+          "Используйте заголовок как краткое описание назначения, например «Напоминание об оплате» или «Клиент звонил по поводу доставки». Так шаблон будет проще найти на экране заказа."
+        ],
+        "items": [
+          "Если шаблонов много, назначьте одну или несколько категорий.",
+          "Добавьте часто используемые шаблоны в избранное.",
+          "Опубликуйте шаблон, чтобы он стал доступен в заказах."
+        ]
+      },
+      {
+        "title": "3. Форматирование текста шаблона",
+        "paragraphs": [
+          "Для текста шаблона используется редактор WordPress. Можно создавать абзацы, использовать полужирное и курсивное начертание, списки и ссылки. Форматирование сохраняется при создании примечания, а содержимое очищается по правилам безопасного HTML WordPress.",
+          "Используйте форматирование в примечаниях для клиентов умеренно. Короткий абзац или маркированный список обычно читается лучше, чем длинный неструктурированный текст."
+        ],
+        "items": [
+          "Хороший пример: короткое приветствие, одно понятное объяснение и один следующий шаг.",
+          "Не используйте внутренние сокращения в примечаниях для клиентов.",
+          "Не добавляйте личные комментарии сотрудников в шаблоны, которые могут использоваться как примечания для клиентов."
+        ]
+      },
+      {
+        "title": "4. Заполнители",
+        "paragraphs": [
+          "Заполнители — это слова в фигурных скобках. В предпросмотре и при добавлении примечания к заказу они заменяются реальными данными заказа.",
+          "Обычный текст можно сочетать с заполнителями. Пример: <code>Здравствуйте, {customer}! Мы получили ваш заказ {order_number}.</code>"
+        ],
+        "items": [
+          "Заказ: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Клиент: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Доставка и оплата: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Товары и магазин: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
+        ]
+      },
+      {
+        "title": "5. Предпросмотр перед добавлением примечания",
+        "paragraphs": [
+          "Откройте заказ WooCommerce и выберите шаблон. В предпросмотре отображается примечание, в котором заполнители уже заменены данными выбранного заказа.",
+          "Всегда проверяйте предпросмотр перед созданием примечания. Это особенно важно, если для заполнителя в заказе нет значения, например отсутствует транспортная компания или номер телефона."
+        ],
+        "items": [
+          "Проверьте имена, суммы, способ доставки и список товаров.",
+          "Убедитесь, что выбран правильный тип примечания.",
+          "Если текст нужно улучшить для всех будущих заказов, сначала измените сам шаблон."
+        ]
+      },
+      {
+        "title": "6. Внутренние примечания и примечания для клиентов",
+        "paragraphs": [
+          "Внутренние примечания предназначены для сотрудников магазина и обычно используются для документирования, последующих задач или истории обслуживания. Примечания для клиентов могут быть видны клиенту и, в зависимости от настроек WooCommerce, могут запускать email-уведомления.",
+          "Внимательно проверяйте редактируемый предпросмотр и выбранный тип примечания. Используйте примечание для клиента только для текста, который клиенту разрешено видеть."
+        ],
+        "items": [
+          "Внутреннее примечание: «Клиент позвонил, адрес доставки подтверждён».",
+          "Примечание для клиента: «Ваш заказ готовится и вскоре будет отправлен».",
+          "Никогда не добавляйте в примечания для клиентов пароли, личные комментарии или информацию только для поставщиков."
+        ]
+      },
+      {
+        "title": "7. Избранное, поиск и сортировка",
+        "paragraphs": [
+          "Избранное помогает разместить наиболее важные шаблоны в верхней части списка. Поле поиска на экране заказа позволяет находить шаблон по заголовку, категории или содержимому.",
+          "В списке шаблонов порядок можно изменить перетаскиванием. Сохранённый порядок используется при отображении шаблонов на экране заказа."
+        ],
+        "items": [
+          "Добавляйте в избранное шаблоны, используемые ежедневно.",
+          "Используйте категории для групп по темам, например «Оплата», «Доставка», «Возвраты» и «Поддержка».",
+          "Делайте заголовки короткими, чтобы результаты поиска оставались удобочитаемыми."
+        ]
+      },
+      {
+        "title": "8. Импорт, экспорт и демонстрационные шаблоны",
+        "paragraphs": [
+          "Экспорт JSON создаёт резервную копию шаблонов. Его можно использовать перед крупными изменениями или для переноса шаблонов в другой магазин.",
+          "Импорт JSON может создавать шаблоны и обновлять существующие шаблоны с тем же заголовком или внутренним демонстрационным ключом. Демонстрационные шаблоны служат быстрой отправной точкой и создаются на активном языке."
+        ],
+        "items": [
+          "Выполняйте экспорт перед массовыми изменениями.",
+          "Импортируйте только JSON-файлы из надёжного источника.",
+          "После импорта откройте несколько шаблонов и проверьте форматирование и заполнители."
+        ]
+      },
+      {
+        "title": "9. Права доступа и роли",
+        "paragraphs": [
+          "Плагин использует отдельные права для управления шаблонами и их применения в заказах. Администраторы и менеджеры магазина получают эти права автоматически при активации.",
+          "Если используется плагин редактора ролей, эти права можно выдавать или отзывать для пользовательских ролей."
+        ],
+        "items": [
+          "<code>manage_mh_order_note_templates</code>: создание, изменение, удаление, импорт и экспорт шаблонов.",
+          "<code>use_mh_order_note_templates</code>: использование шаблонов в заказах WooCommerce.",
+          "Пользователи без необходимых прав не видят соответствующие функции панели управления."
+        ]
+      },
+      {
+        "title": "10. Безопасность и совместимость с HPOS",
+        "paragraphs": [
+          "Для действий в панели управления плагин использует nonce WordPress, проверку прав, очистку и экранирование данных. Перед сохранением или использованием содержимое шаблона очищается по правилам безопасного HTML WordPress.",
+          "Данные заказа считываются через API заказов WooCommerce, а не напрямую из таблиц базы данных. Благодаря этому плагин совместим с HPOS и классическим хранилищем заказов."
+        ],
+        "items": [
+          "Своевременно обновляйте WooCommerce и WordPress.",
+          "После изменения настроек email WooCommerce проверьте процесс добавления примечаний для клиентов.",
+          "Перед импортом большого набора шаблонов используйте тестовый сайт."
+        ]
+      },
+      {
+        "title": "11. Устранение неполадок",
+        "paragraphs": [
+          "Если шаблоны не отображаются в заказе, убедитесь, что WooCommerce активен, шаблон опубликован, а у текущего пользователя есть право использовать шаблоны.",
+          "Если перевод не отображается, проверьте язык сайта и язык пользователя в WordPress. Плагин содержит проверенные встроенные переводы для всех поддерживаемых языков, включая персидский. Для других языков следует использовать проверенные языковые пакеты WordPress.org."
+        ],
+        "items": [
+          "Если после обновления по-прежнему отображается старая панель управления, очистите объектный кеш или кеш плагина.",
+          "Если заполнитель не заменяется, проверьте его точное написание, включая фигурные скобки.",
+          "Если примечания для клиентов не отправляются по email, проверьте настройки уведомлений WooCommerce для примечаний клиенту."
+        ]
+      },
+      {
+        "title": "12. Страница настроек",
+        "paragraphs": [
+          "Откройте <strong>Примечания Mailhilfe → Настройки</strong>, чтобы выбрать тип примечания по умолчанию, правила безопасного HTML, отображение использования, избранное, параметры импорта JSON и сопоставление языков. Для более безопасной повседневной работы используйте внутренние примечания по умолчанию."
+        ],
+        "items": []
+      },
+      {
+        "title": "13. Язык шаблонов и многоязычные магазины",
+        "paragraphs": [
+          "Каждому шаблону можно назначить язык. Выберите <strong>Все языки</strong>, если один и тот же текст подходит для всех заказов, или укажите конкретный язык для локализованного текста.",
+          "Если данные доступны, плагин может отдавать предпочтение шаблонам, соответствующим языку заказа, языку пользователя или языковым данным распространённых многоязычных плагинов."
+        ],
+        "items": [
+          "Используйте один нейтральный шаблон для внутренних примечаний сотрудников.",
+          "Создавайте отдельные клиентские шаблоны для русского, немецкого, английского и других языков магазина.",
+          "В магазинах с WPML или Polylang проверьте определение языка заказа на реальном тестовом заказе."
+        ]
+      },
+      {
+        "title": "14. Пользовательские поля и метазаполнители",
+        "paragraphs": [
+          "Расширенные заполнители могут считывать выбранные метаполя заказа или клиента. Используйте <code>{order_meta:meta_key}</code> для данных заказа и <code>{customer_meta:meta_key}</code> для пользовательских данных клиента.",
+          "В целях безопасности блокируются чувствительные названия ключей, содержащие, например, password, token, secret, session, auth или hash. Используйте метазаполнители только тогда, когда известно содержимое поля."
+        ],
+        "items": [
+          "Пример: <code>{order_meta:_tracking_number}</code> для номера отслеживания, сохранённого плагином доставки.",
+          "Пример: <code>{order_meta:_billing_vat_id}</code> для поля идентификатора НДС.",
+          "Не выводите внутренние или конфиденциальные поля в примечаниях для клиентов."
+        ]
+      },
+      {
+        "title": "15. Дублирование шаблонов и редакции",
+        "paragraphs": [
+          "Используйте дублирование, если нужен похожий шаблон с небольшими изменениями. Копия создаётся как черновик, чтобы её можно было проверить перед публикацией.",
+          "Редакции шаблонов позволяют сравнивать предыдущие версии и восстанавливать прежний текст, если изменение было внесено по ошибке."
+        ],
+        "items": [
+          "Дублируйте общий шаблон доставки перед созданием вариантов для DHL, UPS или самовывоза.",
+          "После крупных изменений текста проверяйте редакции.",
+          "Используйте понятные заголовки, чтобы не путать похожие шаблоны."
+        ]
+      },
+      {
+        "title": "16. Страница прав доступа",
+        "paragraphs": [
+          "Откройте <strong>Примечания Mailhilfe → Права доступа</strong>, чтобы определить, какие роли WordPress могут управлять шаблонами, а какие — использовать их в заказах.",
+          "Администраторы сохраняют необходимые права. Другим ролям выдавайте только те права, которые нужны для повседневных задач."
+        ],
+        "items": [
+          "Управление шаблонами: создание, изменение, удаление, импорт и экспорт шаблонов.",
+          "Использование шаблонов: выбор шаблона и добавление примечания в заказ WooCommerce.",
+          "Предоставляйте права на импорт и экспорт только доверенным пользователям."
+        ]
+      },
+      {
+        "title": "17. Предпросмотр импорта",
+        "paragraphs": [
+          "Перед применением изменений при импорте JSON теперь отображается предпросмотр. Он показывает, сколько шаблонов будет создано, обновлено или пропущено.",
+          "Подтверждайте импорт только после проверки предпросмотра. Это помогает избежать случайной перезаписи существующих шаблонов."
+        ],
+        "items": [
+          "Перед импортом большого набора создайте резервную копию экспортом.",
+          "Импортируйте только JSON-файлы из надёжного источника.",
+          "После импорта проверьте хотя бы одно примечание для клиента и одно внутреннее примечание."
+        ]
+      },
+      {
+        "title": "18. Отправка email для примечаний клиенту",
+        "paragraphs": [
+          "Примечания для клиентов могут запускать email-уведомления WooCommerce, если соответствующее письмо включено. Плагин регистрирует создание примечания для клиента отдельно от обработки email. Перед добавлением примечания проверьте редактируемый предпросмотр, а результат обработчика почты смотрите на странице «История»."
+        ],
+        "items": []
+      },
+      {
+        "title": "19. Рекомендуемый рабочий процесс",
+        "paragraphs": [
+          "Безопасный повседневный процесс: выберите шаблон, проверьте предпросмотр после замены заполнителей, при необходимости отредактируйте его, проверьте тип примечания и только затем добавьте примечание.",
+          "Новые шаблоны сначала проверяйте в некритичном заказе или тестовом магазине, прежде чем использовать их для реальных клиентов."
+        ],
+        "items": [
+          "Используйте внутренние примечания для информации только для сотрудников.",
+          "Используйте примечания для клиентов только для сообщений, которые можно отправлять клиенту.",
+          "Проверяйте заполнители после каждого изменения шаблона."
+        ]
+      },
+      {
+        "title": "20. Условия шаблонов",
+        "paragraphs": [
+          "Условия определяют, доступен ли шаблон для конкретного заказа. Шаблоны можно ограничить по статусу заказа, способу оплаты, способу доставки, стране платёжного адреса, а также минимальной или максимальной сумме заказа. Все заданные условия должны выполняться."
+        ],
+        "items": [
+          "Оставьте поле пустым, если это условие не должно ограничивать шаблон.",
+          "Используйте технические идентификаторы способов оплаты и доставки.",
+          "Условия проверяются в интерфейсе и повторно на сервере перед созданием примечания."
+        ]
+      },
+      {
+        "title": "21. Журнал обработки email",
+        "paragraphs": [
+          "Для примечаний клиенту плагин регистрирует момент, когда WooCommerce сообщает об обработке соответствующего email, а также технические ошибки wp_mail. Событие «обработано» подтверждает, что WordPress/WooCommerce передал сообщение почтовой системе, но не доказывает окончательную доставку или прочтение клиентом."
+        ],
+        "items": [
+          "На странице «История» можно проверить обработанные и неудачные email-события.",
+          "Если необходимы надёжные сведения о доставке, используйте SMTP-провайдера или службу журналирования почты.",
+          "Внутренние примечания не запускают email для примечаний клиенту."
+        ]
+      },
+      {
+        "title": "22. Общая история",
+        "paragraphs": [
+          "Откройте <strong>Примечания Mailhilfe → История</strong>, чтобы просмотреть недавнее создание примечаний, использование шаблонов, обработку email и ошибки отправки. При наличии данных записи содержат заказ, шаблон, пользователя, получателя, тип события и время."
+        ],
+        "items": [
+          "Используйте историю для поддержки, аудита и устранения неполадок.",
+          "История плагина хранится отдельно от примечаний к заказам WooCommerce.",
+          "На странице отображаются 250 последних записей."
+        ]
+      },
+      {
+        "title": "23. Предпросмотр с тестовым заказом",
+        "paragraphs": [
+          "В редакторе шаблона введите ID заказа WooCommerce в области тестового предпросмотра. Текущее содержимое редактора, включая несохранённые изменения, будет отображено с данными этого заказа без создания примечания и отправки email."
+        ],
+        "items": [
+          "Используйте заказ на тестовом сайте или некритичный тестовый заказ.",
+          "Проверьте отсутствующие значения, форматирование, условия и пользовательские метазаполнители.",
+          "У вас должно быть право изменять выбранный заказ."
+        ]
+      },
+      {
+        "title": "24. Личное избранное и недавно использованные шаблоны",
+        "paragraphs": [
+          "Каждый администратор может отмечать личные избранные шаблоны на экране заказа. Плагин также запоминает десять последних использованных шаблонов для каждого пользователя и поднимает их выше в списке. Общее избранное остаётся доступным всем пользователям."
+        ],
+        "items": [
+          "Личное избранное не изменяет список другого пользователя.",
+          "Список недавних шаблонов обновляется только после успешного добавления примечания.",
+          "Персональные данные сохраняются как метаданные пользователя WordPress."
+        ]
+      },
+      {
+        "title": "25. Страница диагностики",
+        "paragraphs": [
+          "Откройте <strong>Примечания Mailhilfe → Диагностика</strong>, чтобы просмотреть технические сведения: версии WordPress, PHP и WooCommerce, состояние HPOS, состояние email для примечаний клиенту, локаль, количество опубликованных шаблонов, состояние кеша и WP_DEBUG."
+        ],
+        "items": [
+          "При обращении в поддержку скопируйте диагностические значения.",
+          "Страница не отображает содержимое примечаний к заказам или адреса клиентов.",
+          "Разработчики могут добавлять строки с помощью фильтра диагностики."
+        ]
+      },
+      {
+        "title": "26. Хуки и фильтры для разработчиков",
+        "paragraphs": [
+          "Плагин предоставляет хуки и фильтры для заполнителей, значений заполнителей, разрешённых метаключей, результатов шаблонов, условий, предпросмотра, итогового текста примечания, действий до и после добавления примечания, записей истории и диагностики. Названия хуков и параметры описаны в readme.txt."
+        ],
+        "items": [
+          "Проверяйте, очищайте и экранируйте все пользовательские данные.",
+          "Используйте API заказов WooCommerce вместо прямого доступа к таблицам заказов.",
+          "Обеспечивайте совместимость пользовательских расширений как с HPOS, так и с классическим хранилищем заказов."
         ]
       }
     ]
   },
   "pt_BR": {
     "title": "Ajuda detalhada do Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança. Mailhilfe Order Note Manager for WooCommerce.",
+    "intro": "Esta ajuda atualizada explica todo o fluxo de trabalho do Mailhilfe Order Note Manager for WooCommerce: criação e formatação de modelos, uso de idiomas de modelo, espaços reservados e espaços reservados de metadados, edição de prévias, envio seguro de notas ao cliente, configurações, permissões, prévias de importação e compatibilidade com HPOS.",
     "sections": [
       {
         "title": "1. O que o plugin faz",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "O Mailhilfe Order Note Manager for WooCommerce permite salvar notas de pedidos do WooCommerce usadas com frequência como modelos reutilizáveis. Isso evita digitar o mesmo texto repetidamente e mantém a comunicação no histórico do pedido consistente.",
+          "Um modelo pode ser preparado como nota interna para a equipe ou como nota ao cliente. Ainda é possível alterar o tipo de nota ao usar o modelo dentro de um pedido."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Exemplos comuns: lembretes de pagamento, atrasos na entrega, registros de chamadas telefônicas, verificações de endereço e respostas de atendimento.",
+          "Os modelos oferecem suporte a categorias, favoritos, ordenação, contador de uso e backup em JSON."
         ]
       },
       {
-        "title": "2. Criar um modelo",
+        "title": "2. Criar um novo modelo",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "Abra <strong>Notas de pedido Mailhilfe → Adicionar novo</strong>. Informe um título claro, escreva o texto da nota no editor e escolha se o tipo de nota padrão deve ser interno ou voltado ao cliente.",
+          "Use o título como uma descrição curta da finalidade, por exemplo, “Lembrete de pagamento” ou “Cliente ligou sobre a entrega”. Isso facilita encontrar o modelo na tela do pedido."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Atribua uma ou mais categorias quando houver muitos modelos.",
+          "Marque como favoritos os modelos usados com frequência.",
+          "Publique o modelo para que ele fique disponível nos pedidos."
         ]
       },
       {
-        "title": "3. Formatar o texto",
+        "title": "3. Formatar o texto do modelo",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "O texto do modelo usa o editor do WordPress. É possível formatar o conteúdo com parágrafos, negrito, itálico, listas e links. A formatação é mantida quando a nota é criada, mas o conteúdo é limpo de acordo com as regras de HTML seguro do WordPress.",
+          "Use a formatação com cuidado em notas ao cliente. Um parágrafo curto ou uma lista com marcadores costuma ser mais fácil de ler do que um texto longo e sem estrutura."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Bom exemplo: uma saudação curta, uma explicação clara e uma próxima etapa.",
+          "Evite abreviações internas em notas ao cliente.",
+          "Não insira comentários privados da equipe em modelos que possam ser usados como notas ao cliente."
         ]
       },
       {
-        "title": "4. Usar espaços reservados",
+        "title": "4. Espaços reservados",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "Espaços reservados são palavras entre chaves. Eles são substituídos por dados reais do pedido na prévia e quando a nota é adicionada ao pedido.",
+          "É possível combinar texto normal e espaços reservados. Exemplo: <code>Olá {customer}, recebemos o seu pedido {order_number}.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Pedido: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Cliente: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Entrega e pagamento: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Itens e loja: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Verificar a prévia",
+        "title": "5. Prévia antes de adicionar uma nota",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "Abra um pedido do WooCommerce e selecione um modelo. A prévia mostra a nota com os espaços reservados já substituídos pelos dados do pedido selecionado.",
+          "Sempre verifique a prévia antes de criar a nota. Isso é especialmente importante quando um espaço reservado não tem valor no pedido, por exemplo, quando não há empresa de entrega ou número de telefone."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Verifique nomes, totais, método de entrega e lista de itens.",
+          "Confirme se o tipo de nota selecionado está correto.",
+          "Edite primeiro o modelo se o mesmo texto precisar ser melhorado para todos os pedidos futuros."
         ]
       },
       {
-        "title": "6. Notas internas e notas do cliente",
+        "title": "6. Notas internas e notas ao cliente",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "Notas internas são destinadas à equipe da loja e normalmente são usadas para documentação, tarefas de acompanhamento ou histórico de atendimento. Notas ao cliente podem ficar visíveis para o cliente e podem acionar notificações por e-mail do WooCommerce, dependendo das configurações do WooCommerce.",
+          "Revise cuidadosamente a prévia editável e o tipo de nota selecionado. Use notas ao cliente somente para textos que o cliente pode ler."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Nota interna: “O cliente ligou e confirmou o endereço de entrega.”",
+          "Nota ao cliente: “Seu pedido está sendo preparado e será enviado em breve.”",
+          "Nunca inclua senhas, comentários privados ou informações exclusivas de fornecedores em notas ao cliente."
         ]
       },
       {
-        "title": "7. Favoritos, busca e ordenação",
+        "title": "7. Favoritos, pesquisa e ordenação",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "Os favoritos ajudam a colocar os modelos mais importantes no topo da seleção. O campo de pesquisa na tela do pedido ajuda a encontrar um modelo pelo título, categoria ou conteúdo.",
+          "Na lista de modelos, é possível alterar a ordem arrastando e soltando. A ordem salva é usada quando os modelos são exibidos na tela do pedido."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Use favoritos para os modelos utilizados diariamente.",
+          "Use categorias para grupos de assuntos como Pagamento, Entrega, Devoluções e Suporte.",
+          "Mantenha os títulos curtos para que os resultados da pesquisa continuem legíveis."
         ]
       },
       {
         "title": "8. Importação, exportação e modelos de demonstração",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "A exportação JSON cria um backup dos seus modelos. Ela pode ser usada antes de alterações maiores ou para transferir modelos para outra loja.",
+          "A importação JSON pode criar modelos e atualizar modelos existentes com o mesmo título ou a mesma chave interna de demonstração. Os modelos de demonstração oferecem um ponto de partida rápido e são criados no idioma ativo."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Exporte antes de fazer alterações em massa.",
+          "Importe somente arquivos JSON de uma fonte confiável.",
+          "Depois da importação, abra alguns modelos e verifique a formatação e os espaços reservados."
         ]
       },
       {
-        "title": "9. Funções e permissões",
+        "title": "9. Permissões e funções",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "O plugin usa capacidades separadas para gerenciar modelos e usar modelos em pedidos. Administradores e gerentes de loja recebem essas permissões automaticamente durante a ativação.",
+          "Se você usa um plugin de edição de funções, pode conceder ou remover essas permissões para funções personalizadas."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: criar, editar, excluir, importar e exportar modelos.",
+          "<code>use_mh_order_note_templates</code>: usar modelos em pedidos do WooCommerce.",
+          "Usuários sem a permissão necessária não veem as funções administrativas correspondentes."
         ]
       },
       {
-        "title": "10. Segurança e compatibilidade HPOS",
+        "title": "10. Segurança e compatibilidade com HPOS",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "O plugin usa nonces do WordPress, verificações de capacidade, higienização e escape nas ações administrativas. O conteúdo do modelo é limpo com HTML seguro do WordPress antes de ser salvo ou usado.",
+          "Os dados do pedido são lidos pelas APIs de pedidos do WooCommerce, em vez de acesso direto às tabelas do banco de dados. Isso mantém o plugin compatível com o HPOS do WooCommerce e com o armazenamento clássico de pedidos."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Mantenha o WooCommerce e o WordPress atualizados.",
+          "Teste os fluxos de notas ao cliente depois de alterar as configurações de e-mail do WooCommerce.",
+          "Use um site de testes antes de importar um conjunto grande de modelos."
         ]
       },
       {
         "title": "11. Solução de problemas",
         "paragraphs": [
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança.",
-          "Esta ajuda explica o fluxo completo: criar modelos formatados, usar espaços reservados, adicionar notas em pedidos WooCommerce, importar/exportar JSON, gerenciar permissões, usar HPOS e trabalhar com segurança."
+          "Se os modelos não aparecerem em um pedido, verifique se o WooCommerce está ativo, se o modelo está publicado e se o usuário atual tem permissão para usar modelos.",
+          "Se as traduções não aparecerem, verifique o idioma do site e o idioma do usuário no WordPress. O plugin inclui arquivos de fallback revisados para todos os idiomas compatíveis, inclusive persa. Outros idiomas devem ser fornecidos por pacotes de idioma revisados do WordPress.org."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Depois de uma atualização, limpe os plugins de cache ou cache de objetos se a tela administrativa antiga ainda estiver sendo exibida.",
+          "Se um espaço reservado permanecer inalterado, verifique se ele foi escrito exatamente como aparece na lista, incluindo as chaves.",
+          "Se as notas ao cliente não forem enviadas por e-mail, verifique as configurações de e-mail do WooCommerce para notificações de notas ao cliente."
         ]
       },
       {
         "title": "12. Página de configurações",
         "paragraphs": [
-          "Abra <strong>Mailhilfe Order Notes → Configurações</strong> para escolher o tipo de nota padrão, HTML seguro, exibição de uso, favoritos, importação JSON e correspondência de idioma. Use notas internas como padrão no trabalho diário."
+          "Abra <strong>Notas de pedido Mailhilfe → Configurações</strong> para escolher o tipo de nota padrão, o comportamento do HTML seguro, a exibição de uso, os favoritos, as opções de importação JSON e a correspondência de idioma. Use notas internas como padrão para um trabalho diário mais seguro."
         ],
         "items": []
       },
       {
         "title": "13. Idioma do modelo e lojas multilíngues",
         "paragraphs": [
-          "Cada modelo pode ter um idioma. Escolha <strong>Todos os idiomas</strong> para textos gerais ou um idioma específico para mensagens traduzidas ao cliente.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Cada modelo pode ter um idioma. Escolha <strong>Todos os idiomas</strong> se o mesmo texto puder ser usado em todos os pedidos ou selecione um idioma específico para textos localizados.",
+          "Quando disponível, o plugin pode dar preferência a modelos que correspondam ao idioma do pedido, ao idioma do usuário ou a dados de idioma comuns de plugins multilíngues."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Use um modelo neutro para notas internas da equipe.",
+          "Crie modelos separados voltados ao cliente para português, alemão, inglês ou outros idiomas da loja.",
+          "Em lojas com WPML ou Polylang, teste a detecção do idioma do pedido com um pedido de teste real."
         ]
       },
       {
-        "title": "14. Campos personalizados e metadados",
+        "title": "14. Campos personalizados e espaços reservados de metadados",
         "paragraphs": [
-          "Os placeholders <code>{order_meta:meta_key}</code> e <code>{customer_meta:meta_key}</code> inserem metadados selecionados. Chaves sensíveis como password, token ou secret são bloqueadas.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Espaços reservados avançados podem ler campos de metadados selecionados do pedido ou do cliente. Use <code>{order_meta:meta_key}</code> para dados do pedido e <code>{customer_meta:meta_key}</code> para dados de usuário do cliente.",
+          "Por segurança, nomes de chaves sensíveis como password, token, secret, session, auth e hash são bloqueados. Use espaços reservados de metadados somente quando souber o que o campo contém."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Exemplo: <code>{order_meta:_tracking_number}</code> para um código de rastreamento salvo por um plugin de entrega.",
+          "Exemplo: <code>{order_meta:_billing_vat_id}</code> para um campo de identificação fiscal.",
+          "Não exponha campos internos ou sensíveis em notas ao cliente."
         ]
       },
       {
-        "title": "15. Duplicar e revisões",
+        "title": "15. Duplicar modelos e revisões",
         "paragraphs": [
-          "A ação de duplicar cria uma cópia como rascunho. As revisões do WordPress ajudam a comparar e restaurar versões anteriores.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Use a ação de duplicar quando precisar de um modelo semelhante com pequenas alterações. A cópia é criada como rascunho para que possa ser revisada antes da publicação.",
+          "As revisões de modelos permitem comparar versões anteriores e restaurar um texto anterior quando uma alteração foi feita por engano."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Duplique um modelo geral de entrega antes de criar variantes para transportadoras ou retirada no local.",
+          "Verifique as revisões depois de alterações maiores no texto.",
+          "Mantenha os títulos claros para não confundir modelos semelhantes."
         ]
       },
       {
-        "title": "16. Permissões",
+        "title": "16. Página de permissões",
         "paragraphs": [
-          "A página <strong>Permissões</strong> define quais funções gerenciam modelos e quais podem usá-los nos pedidos.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Abra <strong>Notas de pedido Mailhilfe → Permissões</strong> para decidir quais funções do WordPress podem gerenciar modelos e quais podem usar modelos em pedidos.",
+          "Os administradores mantêm as permissões necessárias. Para outras funções, conceda somente as permissões exigidas pela tarefa diária."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Gerenciar modelos: criar, editar, excluir, importar e exportar modelos.",
+          "Usar modelos: selecionar um modelo e adicionar uma nota em um pedido do WooCommerce.",
+          "Conceda permissões de importação e exportação somente a usuários confiáveis."
         ]
       },
       {
-        "title": "17. Prévia de importação",
+        "title": "17. Prévia da importação",
         "paragraphs": [
-          "A importação JSON mostra uma prévia com modelos criados, atualizados ou ignorados antes da aplicação.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "As importações JSON agora mostram uma prévia antes de aplicar as alterações. A prévia informa quantos modelos serão criados, atualizados ou ignorados.",
+          "Confirme a importação somente depois de verificar a prévia. Isso evita a substituição acidental de modelos existentes."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Crie um backup de exportação antes de importar um conjunto grande.",
+          "Importe somente arquivos JSON de uma fonte confiável.",
+          "Depois da importação, teste pelo menos uma nota ao cliente e uma nota interna."
         ]
       },
       {
-        "title": "18. Status do e-mail de nota ao cliente",
+        "title": "18. Comportamento do e-mail de nota ao cliente",
         "paragraphs": [
-          "As notas ao cliente podem acionar notificações por e-mail do WooCommerce quando o e-mail correspondente está ativado. O plugin registra a criação da nota separadamente do processamento do e-mail. Revise a prévia editável antes de adicionar a nota e consulte a página Histórico para conferir o resultado."
+          "Notas ao cliente podem acionar notificações por e-mail do WooCommerce quando o e-mail correspondente está ativado. O plugin registra a criação da nota ao cliente separadamente do processamento do e-mail. Revise a prévia editável antes de adicionar a nota e use a página Histórico para verificar o resultado do manipulador de e-mail."
         ],
         "items": []
       },
       {
-        "title": "19. Fluxo recomendado",
+        "title": "19. Fluxo de trabalho recomendado",
         "paragraphs": [
-          "Selecione um modelo, revise a prévia, edite se necessário, confirme o tipo de nota e adicione a nota.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Um fluxo diário seguro é: selecionar um modelo, revisar a prévia com os valores substituídos, editar a prévia se necessário, verificar o tipo de nota e então adicionar a nota.",
+          "Para novos modelos, teste-os primeiro em um pedido sem importância ou em uma loja de testes antes de usá-los com clientes reais."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Use notas internas para informações destinadas apenas à equipe.",
+          "Use notas ao cliente somente para mensagens que podem ser enviadas ao cliente.",
+          "Revise os espaços reservados sempre que um modelo for alterado."
         ]
       },
       {
-        "title": "20. Condições dos modelos",
+        "title": "20. Condições do modelo",
         "paragraphs": [
-          "As condições definem se um modelo fica disponível para um pedido. É possível restringir por status, forma de pagamento, método de envio, país de cobrança e total mínimo ou máximo. Todas as condições preenchidas devem corresponder."
+          "As condições do modelo determinam se um modelo está disponível para um pedido específico. É possível restringir modelos por status do pedido, método de pagamento, método de entrega, país de faturamento e total mínimo ou máximo do pedido. Todas as condições configuradas devem corresponder."
         ],
         "items": [
-          "Deixe um campo vazio quando ele não deve restringir o modelo.",
-          "Use os IDs técnicos das formas de pagamento e envio.",
-          "As condições são verificadas na interface e novamente no servidor."
+          "Deixe um campo em branco quando essa condição não deve restringir o modelo.",
+          "Use os IDs técnicos dos métodos de pagamento e de entrega.",
+          "As condições são verificadas na interface e novamente no servidor antes de uma nota ser criada."
         ]
       },
       {
-        "title": "21. Registro do processamento de e-mail",
+        "title": "21. Registro de processamento de e-mail",
         "paragraphs": [
-          "Para notas do cliente, o plugin registra quando o WooCommerce informa que o e-mail foi processado e também erros técnicos do wp_mail. “Processado” confirma o envio ao sistema de e-mail, não a entrega final nem a leitura."
+          "Para notas ao cliente, o plugin registra quando o WooCommerce informa que o e-mail de nota ao cliente foi processado e também registra erros técnicos de wp_mail. Um evento processado confirma que o WordPress/WooCommerce entregou a mensagem ao sistema de e-mail; isso não comprova a entrega final nem que o cliente a leu."
         ],
         "items": [
-          "Consulte Histórico para eventos processados e com falha.",
-          "Use um provedor SMTP para obter informações de entrega mais precisas.",
-          "Notas internas não disparam o e-mail de nota do cliente."
+          "Verifique na página Histórico os eventos de e-mail processados e com falha.",
+          "Use um provedor SMTP ou um serviço de registro de e-mails quando forem necessárias informações definitivas de entrega.",
+          "Notas internas não acionam e-mails de nota ao cliente."
         ]
       },
       {
         "title": "22. Histórico central",
         "paragraphs": [
-          "Abra <strong>Mailhilfe Order Notes → Histórico</strong> para revisar notas criadas, uso de modelos, processamento e falhas de e-mail. Quando disponíveis são exibidos pedido, modelo, usuário, destinatário, tipo de evento e horário."
+          "Abra <strong>Notas de pedido Mailhilfe → Histórico</strong> para revisar a criação recente de notas, o uso de modelos, o processamento de e-mails e as falhas de e-mail. Quando disponíveis, os registros incluem o pedido, o modelo, o usuário, o destinatário, o tipo de evento e o horário."
         ],
         "items": [
           "Use o histórico para suporte, auditoria e solução de problemas.",
-          "Ele é separado das notas de pedido do WooCommerce.",
-          "São exibidas as 250 entradas mais recentes."
+          "O histórico é separado das notas de pedido do WooCommerce.",
+          "A página exibe os 250 registros mais recentes."
         ]
       },
       {
         "title": "23. Prévia com pedido de teste",
         "paragraphs": [
-          "No editor, informe o ID de um pedido WooCommerce. O conteúdo atual, inclusive alterações ainda não salvas, é exibido com os dados do pedido sem criar nota nem enviar e-mail."
+          "No editor de modelos, informe um ID de pedido do WooCommerce na área de prévia de teste. O conteúdo atual do editor, incluindo alterações não salvas, é renderizado com os dados desse pedido sem criar uma nota nem enviar um e-mail."
         ],
         "items": [
-          "Use um pedido de teste ou um ambiente de staging.",
-          "Verifique valores ausentes, formatação, condições e metadados personalizados.",
-          "Você precisa ter permissão para editar o pedido escolhido."
+          "Use um pedido de uma loja de testes ou um pedido de teste sem importância.",
+          "Verifique valores ausentes, formatação, condições e espaços reservados de metadados personalizados.",
+          "Você precisa ter permissão para editar o pedido selecionado."
         ]
       },
       {
-        "title": "24. Favoritos pessoais e modelos recentes",
+        "title": "24. Favoritos pessoais e modelos usados recentemente",
         "paragraphs": [
-          "Cada usuário pode marcar favoritos pessoais na tela do pedido. O plugin também guarda os dez últimos modelos usados com sucesso por usuário e os posiciona mais acima. Favoritos globais continuam compartilhados."
+          "Cada administrador pode marcar favoritos pessoais na tela do pedido. O plugin também armazena os dez modelos usados mais recentemente por cada usuário e dá a eles uma posição mais alta na seleção. Os favoritos globais continuam compartilhados com todos os usuários."
         ],
         "items": [
-          "Favoritos pessoais não alteram a lista de outros usuários.",
-          "A lista recente só é atualizada após uma nota ser adicionada com sucesso.",
-          "Os dados são armazenados como metadados de usuário do WordPress."
+          "Favoritos pessoais não alteram a lista de outro usuário.",
+          "A lista de recentes só é atualizada depois que uma nota é adicionada com sucesso.",
+          "Os dados pessoais são armazenados como metadados de usuário do WordPress."
         ]
       },
       {
         "title": "25. Página de diagnóstico",
         "paragraphs": [
-          "Abra <strong>Mailhilfe Order Notes → Diagnóstico</strong> para ver versões do WordPress, PHP e WooCommerce, status do HPOS, e-mail de nota do cliente, idioma, quantidade de modelos, cache e WP_DEBUG."
+          "Abra <strong>Notas de pedido Mailhilfe → Diagnóstico</strong> para ver informações técnicas como versões do WordPress, PHP e WooCommerce, status do HPOS, status do e-mail de nota ao cliente, localidade, quantidade de modelos publicados, status do cache e WP_DEBUG."
         ],
         "items": [
-          "Inclua esses dados ao solicitar suporte.",
-          "A página não mostra conteúdo de notas nem endereços de clientes.",
-          "Desenvolvedores podem adicionar linhas por meio do filtro de diagnóstico."
+          "Copie os valores de diagnóstico ao solicitar suporte.",
+          "A página não exibe o conteúdo das notas do pedido nem endereços de clientes.",
+          "Desenvolvedores podem adicionar linhas com o filtro de diagnóstico."
         ]
       },
       {
-        "title": "26. Hooks e filtros para desenvolvedores",
+        "title": "26. Ganchos e filtros para desenvolvedores",
         "paragraphs": [
-          "O plugin oferece hooks e filtros para placeholders, valores, chaves meta permitidas, resultados, condições, prévia, conteúdo final, ações antes/depois da inclusão, histórico e diagnóstico. Os nomes estão documentados no readme.txt."
+          "O plugin fornece ganchos e filtros para espaços reservados, valores de espaços reservados, chaves meta permitidas, resultados de modelos, condições, conteúdo da prévia, conteúdo final da nota, ações antes e depois de adicionar uma nota, registros de histórico e diagnóstico. Os nomes dos ganchos e seus parâmetros estão documentados em readme.txt."
         ],
         "items": [
           "Valide, higienize e escape todos os dados personalizados.",
-          "Use as APIs de pedidos do WooCommerce em vez de tabelas diretas.",
-          "Mantenha compatibilidade com HPOS e armazenamento clássico."
+          "Use as APIs de pedidos do WooCommerce em vez de acessar diretamente as tabelas de pedidos.",
+          "Mantenha as extensões personalizadas compatíveis com o HPOS e com o armazenamento clássico de pedidos."
         ]
       }
     ]
   },
-  "nl_NL": {
-    "title": "Uitgebreide hulp voor Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken. Mailhilfe Order Note Manager for WooCommerce.",
+  "it_IT": {
+    "title": "Guida dettagliata di Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Questa guida aggiornata descrive l’intero flusso di lavoro di Mailhilfe Order Note Manager for WooCommerce: creazione e formattazione dei modelli, lingue dei modelli, segnaposto e segnaposto meta, modifica delle anteprime, invio sicuro delle note per il cliente, impostazioni, permessi, anteprima delle importazioni e compatibilità con HPOS.",
     "sections": [
       {
-        "title": "1. Wat de plugin doet",
+        "title": "1. Funzione del plugin",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Mailhilfe Order Note Manager for WooCommerce consente di salvare le note degli ordini WooCommerce utilizzate di frequente come modelli riutilizzabili. In questo modo non è necessario digitare ogni volta lo stesso testo e la comunicazione nella cronologia dell’ordine rimane coerente.",
+          "Un modello può essere predisposto come nota interna per il personale oppure come nota per il cliente. Il tipo di nota può comunque essere modificato quando il modello viene utilizzato in un ordine."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Esempi tipici: promemoria di pagamento, ritardi di consegna, registrazioni di telefonate, verifiche dell’indirizzo e risposte del servizio clienti.",
+          "I modelli supportano categorie, preferiti, ordinamento, contatore di utilizzo e backup JSON."
         ]
       },
       {
-        "title": "2. Een sjabloon maken",
+        "title": "2. Creare un nuovo modello",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Apri <strong>Note ordine Mailhilfe → Aggiungi nuovo</strong>. Inserisci un titolo chiaro, scrivi il testo della nota nell’editor e scegli se il tipo di nota predefinito deve essere interno o destinato al cliente.",
+          "Usa il titolo come breve descrizione dello scopo, ad esempio “Promemoria di pagamento” o “Il cliente ha chiamato per la consegna”. In questo modo il modello sarà più facile da trovare nella schermata dell’ordine."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Assegna una o più categorie quando sono presenti molti modelli.",
+          "Contrassegna come preferiti i modelli utilizzati più spesso.",
+          "Pubblica il modello affinché diventi disponibile negli ordini."
         ]
       },
       {
-        "title": "3. Tekst opmaken",
+        "title": "3. Formattare il testo del modello",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Il testo del modello utilizza l’editor di WordPress. Puoi formattarlo con paragrafi, grassetto, corsivo, elenchi e link. La formattazione viene mantenuta quando viene creata la nota, ma il contenuto viene ripulito secondo le regole HTML sicure di WordPress.",
+          "Usa la formattazione con moderazione nelle note per il cliente. Un breve paragrafo o un elenco puntato è generalmente più leggibile di un testo lungo e non strutturato."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Buon esempio: un breve saluto, una spiegazione chiara e un passaggio successivo.",
+          "Evita abbreviazioni interne nelle note per il cliente.",
+          "Non inserire commenti privati del personale in modelli che potrebbero essere utilizzati come note per il cliente."
         ]
       },
       {
-        "title": "4. Placeholders gebruiken",
+        "title": "4. Segnaposto",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "I segnaposto sono parole racchiuse tra parentesi graffe. Nell’anteprima e quando la nota viene aggiunta all’ordine vengono sostituiti con i dati reali dell’ordine.",
+          "Puoi combinare testo normale e segnaposto. Esempio: <code>Buongiorno {customer}, abbiamo ricevuto il tuo ordine {order_number}.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Ordine: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Cliente: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Spedizione e pagamento: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Articoli e negozio: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Voorbeeld controleren",
+        "title": "5. Anteprima prima di aggiungere una nota",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Apri un ordine WooCommerce e seleziona un modello. L’anteprima mostra la nota con i segnaposto già sostituiti dai dati dell’ordine selezionato.",
+          "Controlla sempre l’anteprima prima di creare la nota. Questo è particolarmente importante quando un segnaposto non ha un valore nell’ordine, ad esempio se manca l’azienda di spedizione o il numero di telefono."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Controlla nomi, totali, metodo di spedizione ed elenco degli articoli.",
+          "Verifica che il tipo di nota selezionato sia corretto.",
+          "Modifica prima il modello se lo stesso testo deve essere migliorato per tutti gli ordini futuri."
         ]
       },
       {
-        "title": "6. Interne notities en klantnotities",
+        "title": "6. Note interne e note per il cliente",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Le note interne sono destinate al personale del negozio e vengono normalmente utilizzate per documentazione, attività successive o cronologia dell’assistenza. Le note per il cliente possono essere visibili al cliente e, a seconda delle impostazioni di WooCommerce, possono attivare notifiche email.",
+          "Controlla attentamente l’anteprima modificabile e il tipo di nota selezionato. Usa le note per il cliente solo per testi che il cliente è autorizzato a leggere."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Nota interna: “Il cliente ha chiamato, indirizzo di consegna confermato”.",
+          "Nota per il cliente: “Il tuo ordine è in preparazione e verrà spedito a breve”.",
+          "Non inserire mai password, commenti privati o informazioni riservate ai fornitori nelle note per il cliente."
         ]
       },
       {
-        "title": "7. Favorieten, zoeken en sorteren",
+        "title": "7. Preferiti, ricerca e ordinamento",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "I preferiti consentono di posizionare i modelli più importanti all’inizio della selezione. Il campo di ricerca nella schermata dell’ordine permette di trovare un modello per titolo, categoria o contenuto.",
+          "Nell’elenco dei modelli puoi modificare l’ordine tramite trascinamento. L’ordine salvato viene utilizzato quando i modelli vengono visualizzati nella schermata dell’ordine."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Usa i preferiti per i modelli quotidiani.",
+          "Usa le categorie per gruppi tematici come Pagamento, Spedizione, Resi e Assistenza.",
+          "Mantieni i titoli brevi affinché i risultati della ricerca restino leggibili."
         ]
       },
       {
-        "title": "8. Import, export en demosjablonen",
+        "title": "8. Importazione, esportazione e modelli dimostrativi",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "L’esportazione JSON crea un backup dei modelli. Puoi utilizzarla prima di modifiche importanti o per trasferire i modelli in un altro negozio.",
+          "L’importazione JSON può creare modelli e aggiornare quelli esistenti con lo stesso titolo o la stessa chiave dimostrativa interna. I modelli dimostrativi offrono un punto di partenza rapido e vengono creati nella lingua attiva."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Esegui un’esportazione prima di modifiche in blocco.",
+          "Importa solo file JSON provenienti da una fonte attendibile.",
+          "Dopo l’importazione, apri alcuni modelli e controlla formattazione e segnaposto."
         ]
       },
       {
-        "title": "9. Rollen en rechten",
+        "title": "9. Permessi e ruoli",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Il plugin utilizza capacità separate per la gestione dei modelli e per il loro utilizzo negli ordini. Amministratori e gestori del negozio ricevono automaticamente questi permessi durante l’attivazione.",
+          "Se utilizzi un plugin per la gestione dei ruoli, puoi concedere o rimuovere questi permessi per ruoli personalizzati."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: creare, modificare, eliminare, importare ed esportare modelli.",
+          "<code>use_mh_order_note_templates</code>: utilizzare i modelli negli ordini WooCommerce.",
+          "Gli utenti privi del permesso richiesto non vedono le relative funzioni amministrative."
         ]
       },
       {
-        "title": "10. Beveiliging en HPOS-compatibiliteit",
+        "title": "10. Sicurezza e compatibilità con HPOS",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Il plugin utilizza nonce di WordPress, controlli delle capacità, sanitizzazione ed escaping per le operazioni amministrative. Il contenuto dei modelli viene ripulito con HTML sicuro per WordPress prima di essere salvato o utilizzato.",
+          "I dati degli ordini vengono letti tramite le API degli ordini WooCommerce anziché accedendo direttamente alle tabelle del database. In questo modo il plugin rimane compatibile sia con WooCommerce HPOS sia con l’archiviazione classica degli ordini."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Mantieni aggiornati WooCommerce e WordPress.",
+          "Verifica il flusso delle note per il cliente dopo aver modificato le impostazioni email di WooCommerce.",
+          "Utilizza un sito di staging prima di importare un insieme di modelli di grandi dimensioni."
         ]
       },
       {
-        "title": "11. Problemen oplossen",
+        "title": "11. Risoluzione dei problemi",
         "paragraphs": [
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken.",
-          "Deze hulp legt de volledige workflow uit: opgemaakte sjablonen maken, placeholders gebruiken, notities toevoegen aan WooCommerce-bestellingen, JSON importeren/exporteren, rechten beheren, HPOS gebruiken en veilig werken."
+          "Se i modelli non vengono visualizzati in un ordine, verifica che WooCommerce sia attivo, che il modello sia pubblicato e che l’utente corrente disponga del permesso per utilizzare i modelli.",
+          "Se le traduzioni non vengono visualizzate, controlla la lingua del sito e la lingua dell’utente in WordPress. Il plugin include file di fallback verificati per tutte le lingue supportate, compreso il persiano. Le altre lingue devono essere fornite tramite pacchetti linguistici WordPress.org verificati."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Dopo un aggiornamento, svuota i plugin di cache o object cache se viene ancora mostrata la vecchia schermata amministrativa.",
+          "Se un segnaposto rimane invariato, verifica che sia scritto esattamente come indicato, incluse le parentesi graffe.",
+          "Se le note per il cliente non vengono inviate via email, controlla le impostazioni email di WooCommerce per le notifiche delle note al cliente."
         ]
       },
       {
-        "title": "12. Instellingenpagina",
+        "title": "12. Pagina delle impostazioni",
         "paragraphs": [
-          "Open <strong>Mailhilfe Order Notes → Instellingen</strong> om het standaardnotitietype, veilige HTML, gebruiksweergave, favorieten, JSON-import en taalkoppeling te kiezen. Gebruik interne notities als standaard voor dagelijks werk."
+          "Apri <strong>Note ordine Mailhilfe → Impostazioni</strong> per scegliere il tipo di nota predefinito, il comportamento dell’HTML sicuro, la visualizzazione degli utilizzi, i preferiti, le opzioni di importazione JSON e la corrispondenza linguistica. Per un lavoro quotidiano più sicuro, usa le note interne come impostazione predefinita."
         ],
         "items": []
       },
       {
-        "title": "13. Sjabloontaal en meertalige winkels",
+        "title": "13. Lingua del modello e negozi multilingue",
         "paragraphs": [
-          "Elke sjabloon kan een taal krijgen. Kies <strong>Alle talen</strong> voor algemene teksten of een specifieke taal voor vertaalde klantberichten.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Ogni modello può avere una lingua. Scegli <strong>Tutte le lingue</strong> se lo stesso testo può essere utilizzato per ogni ordine oppure seleziona una lingua specifica per i testi localizzati.",
+          "Quando possibile, il plugin può dare la precedenza ai modelli che corrispondono alla lingua dell’ordine, alla lingua dell’utente o ai dati linguistici comuni dei plugin multilingue."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Usa un modello neutro per le note interne del personale.",
+          "Crea modelli separati destinati ai clienti per italiano, tedesco, inglese o altre lingue del negozio.",
+          "Nei negozi WPML o Polylang, verifica il rilevamento della lingua dell’ordine con un vero ordine di prova."
         ]
       },
       {
-        "title": "14. Aangepaste velden en metadata",
+        "title": "14. Campi personalizzati e segnaposto meta",
         "paragraphs": [
-          "De placeholders <code>{order_meta:meta_key}</code> en <code>{customer_meta:meta_key}</code> voegen geselecteerde metadata in. Gevoelige sleutels zoals password, token of secret worden geblokkeerd.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "I segnaposto avanzati possono leggere campi meta selezionati dell’ordine o del cliente. Usa <code>{order_meta:meta_key}</code> per i dati dell’ordine e <code>{customer_meta:meta_key}</code> per i dati utente del cliente.",
+          "Per motivi di sicurezza, le chiavi sensibili contenenti parole come password, token, secret, session, auth e hash sono bloccate. Utilizza i segnaposto meta solo quando sai esattamente cosa contiene il campo."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Esempio: <code>{order_meta:_tracking_number}</code> per un numero di tracciamento salvato da un plugin di spedizione.",
+          "Esempio: <code>{order_meta:_billing_vat_id}</code> per un campo partita IVA.",
+          "Non esporre campi interni o sensibili nelle note per il cliente."
         ]
       },
       {
-        "title": "15. Dupliceren en revisies",
+        "title": "15. Duplicazione dei modelli e revisioni",
         "paragraphs": [
-          "Dupliceren maakt een kopie als concept. WordPress-revisies helpen eerdere versies te vergelijken en te herstellen.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Usa l’azione di duplicazione quando ti serve un modello simile con piccole modifiche. La copia viene creata come bozza in modo da poterla controllare prima della pubblicazione.",
+          "Le revisioni dei modelli consentono di confrontare versioni precedenti e ripristinare un testo precedente quando una modifica è stata effettuata per errore."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Duplica un modello generale di spedizione prima di creare varianti per DHL, UPS o ritiro.",
+          "Controlla le revisioni dopo modifiche importanti al testo.",
+          "Usa titoli chiari per evitare di confondere modelli simili."
         ]
       },
       {
-        "title": "16. Rechten",
+        "title": "16. Pagina dei permessi",
         "paragraphs": [
-          "Op de pagina <strong>Rechten</strong> bepaal je welke rollen sjablonen beheren en welke ze in bestellingen gebruiken.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Apri <strong>Note ordine Mailhilfe → Permessi</strong> per decidere quali ruoli WordPress possono gestire i modelli e quali possono utilizzarli negli ordini.",
+          "Gli amministratori mantengono i permessi necessari. Per gli altri ruoli, concedi solo i permessi richiesti dalle attività quotidiane."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Gestire i modelli: creare, modificare, eliminare, importare ed esportare modelli.",
+          "Usare i modelli: selezionare un modello e aggiungere una nota in un ordine WooCommerce.",
+          "Concedi i permessi di importazione/esportazione solo a utenti attendibili."
         ]
       },
       {
-        "title": "17. Importvoorbeeld",
+        "title": "17. Anteprima dell’importazione",
         "paragraphs": [
-          "JSON-import toont eerst een voorbeeld met gemaakte, bijgewerkte of overgeslagen sjablonen.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "Le importazioni JSON mostrano un’anteprima prima dell’applicazione delle modifiche. L’anteprima indica quanti modelli verranno creati, aggiornati o ignorati.",
+          "Conferma l’importazione solo dopo aver controllato l’anteprima. In questo modo eviti la sovrascrittura accidentale di modelli esistenti."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Crea un backup tramite esportazione prima di importare un insieme di grandi dimensioni.",
+          "Importa solo file JSON provenienti da una fonte attendibile.",
+          "Dopo l’importazione, prova almeno una nota per il cliente e una nota interna."
         ]
       },
       {
-        "title": "18. E-mailstatus klantnotitie",
+        "title": "18. Comportamento email delle note per il cliente",
         "paragraphs": [
-          "Klantnotities kunnen WooCommerce-e-mailmeldingen activeren wanneer de bijbehorende e-mail is ingeschakeld. De plugin registreert het aanmaken van de klantnotitie apart van de e-mailverwerking. Controleer de bewerkbare voorbeeldweergave en bekijk het resultaat op de pagina Geschiedenis."
+          "Le note per il cliente possono attivare notifiche email di WooCommerce quando l’email corrispondente è abilitata. Il plugin registra separatamente la creazione della nota per il cliente e l’elaborazione dell’email. Controlla l’anteprima modificabile prima di aggiungere la nota e usa la pagina Cronologia per verificare il risultato del gestore email."
         ],
         "items": []
       },
       {
-        "title": "19. Aanbevolen werkwijze",
+        "title": "19. Flusso di lavoro consigliato",
         "paragraphs": [
-          "Kies een sjabloon, controleer de vervangen preview, bewerk indien nodig, controleer het notitietype en voeg de notitie toe.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Un flusso di lavoro quotidiano sicuro consiste nel selezionare un modello, controllare l’anteprima con i dati sostituiti, modificarla se necessario, verificare il tipo di nota e infine aggiungere la nota.",
+          "Per i nuovi modelli, esegui prima una prova con un ordine non critico o in un negozio di staging prima di utilizzarli con clienti reali."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Usa le note interne per informazioni riservate al personale.",
+          "Usa le note per il cliente solo per messaggi che possono essere inviati al cliente.",
+          "Controlla i segnaposto ogni volta che un modello viene modificato."
         ]
       },
       {
-        "title": "20. Voorwaarden voor sjablonen",
+        "title": "20. Condizioni del modello",
         "paragraphs": [
-          "Voorwaarden bepalen of een sjabloon voor een bestelling beschikbaar is. Je kunt beperken op bestelstatus, betaalmethode, verzendmethode, factuurland en minimum- of maximumbedrag. Alle ingevulde voorwaarden moeten overeenkomen."
+          "Le condizioni del modello stabiliscono se un modello è disponibile per un determinato ordine. Puoi limitare i modelli in base a stato dell’ordine, metodo di pagamento, metodo di spedizione, paese di fatturazione e totale minimo o massimo dell’ordine. Tutte le condizioni configurate devono corrispondere."
         ],
         "items": [
-          "Laat een veld leeg als het sjabloon daarop niet beperkt moet worden.",
-          "Gebruik de technische ID’s van betaal- en verzendmethoden.",
-          "Voorwaarden worden in de interface en opnieuw op de server gecontroleerd."
+          "Lascia vuoto un campo quando la relativa condizione non deve limitare il modello.",
+          "Usa gli ID tecnici dei metodi di pagamento e di spedizione.",
+          "Le condizioni vengono verificate nell’interfaccia e nuovamente sul server prima della creazione di una nota."
         ]
       },
       {
-        "title": "21. Logboek voor e-mailverwerking",
+        "title": "21. Registro dell’elaborazione email",
         "paragraphs": [
-          "Bij klantnotities registreert de plugin wanneer WooCommerce meldt dat de e-mail is verwerkt en ook technische wp_mail-fouten. “Verwerkt” bevestigt overdracht aan het mailsysteem, niet de uiteindelijke bezorging of het lezen."
+          "Per le note per il cliente, il plugin registra quando WooCommerce segnala che l’email della nota è stata elaborata e registra anche gli errori tecnici di wp_mail. Un evento elaborato conferma che WordPress/WooCommerce ha consegnato il messaggio al sistema di posta, ma non dimostra la consegna finale né che il cliente lo abbia letto."
         ],
         "items": [
-          "Bekijk de pagina Geschiedenis voor verwerkte en mislukte gebeurtenissen.",
-          "Gebruik een SMTP-provider voor nauwkeurigere bezorginformatie.",
-          "Interne notities activeren geen e-mail voor klantnotities."
+          "Controlla nella pagina Cronologia gli eventi email elaborati e non riusciti.",
+          "Usa un provider SMTP o un servizio di registrazione email quando sono necessarie informazioni definitive sulla consegna.",
+          "Le note interne non attivano l’email delle note per il cliente."
         ]
       },
       {
-        "title": "22. Centrale geschiedenis",
+        "title": "22. Cronologia centralizzata",
         "paragraphs": [
-          "Open <strong>Mailhilfe Order Notes → Geschiedenis</strong> voor gemaakte notities, sjabloongebruik, e-mailverwerking en fouten. Indien beschikbaar worden bestelling, sjabloon, gebruiker, ontvanger, gebeurtenistype en tijd weergegeven."
+          "Apri <strong>Note ordine Mailhilfe → Cronologia</strong> per esaminare le creazioni recenti di note, l’utilizzo dei modelli, l’elaborazione email e gli errori email. Quando disponibili, le voci includono ordine, modello, utente, destinatario, tipo di evento e ora."
         ],
         "items": [
-          "Gebruik de geschiedenis voor ondersteuning, controle en probleemoplossing.",
-          "Deze staat los van WooCommerce-bestelnotities.",
-          "De 250 nieuwste vermeldingen worden getoond."
+          "Usa la cronologia per assistenza, controlli e risoluzione dei problemi.",
+          "La cronologia è separata dalle note dell’ordine WooCommerce.",
+          "La pagina mostra le 250 voci più recenti."
         ]
       },
       {
-        "title": "23. Voorbeeld met testbestelling",
+        "title": "23. Anteprima con ordine di prova",
         "paragraphs": [
-          "Voer in de sjablooneditor een WooCommerce-bestel-ID in. De huidige inhoud, ook niet-opgeslagen wijzigingen, wordt met bestelgegevens weergegeven zonder een notitie te maken of e-mail te sturen."
+          "Nell’editor del modello, inserisci un ID ordine WooCommerce nell’area dell’anteprima di prova. Il contenuto corrente dell’editor, incluse le modifiche non salvate, viene visualizzato con i dati di quell’ordine senza creare una nota né inviare un’email."
         ],
         "items": [
-          "Gebruik een testbestelling of stagingomgeving.",
-          "Controleer ontbrekende waarden, opmaak, voorwaarden en aangepaste metadata.",
-          "Je moet de gekozen bestelling mogen bewerken."
+          "Usa un ordine di staging o un ordine di prova non critico.",
+          "Controlla valori mancanti, formattazione, condizioni e segnaposto meta personalizzati.",
+          "Devi disporre del permesso per modificare l’ordine selezionato."
         ]
       },
       {
-        "title": "24. Persoonlijke favorieten en recente sjablonen",
+        "title": "24. Preferiti personali e modelli utilizzati di recente",
         "paragraphs": [
-          "Elke gebruiker kan persoonlijke favorieten markeren in de bestelling. De plugin bewaart ook de tien laatst succesvol gebruikte sjablonen per gebruiker en zet ze hoger. Globale favorieten blijven gedeeld."
+          "Ogni amministratore può contrassegnare preferiti personali nella schermata dell’ordine. Il plugin memorizza inoltre i dieci modelli utilizzati più di recente da ciascun utente e assegna loro una posizione più alta nella selezione. I preferiti globali restano condivisi con tutti gli utenti."
         ],
         "items": [
-          "Persoonlijke favorieten beïnvloeden andere gebruikers niet.",
-          "De recente lijst wordt alleen bijgewerkt na een succesvol toegevoegde notitie.",
-          "De gegevens worden als WordPress-gebruikersmeta opgeslagen."
+          "I preferiti personali non modificano l’elenco di un altro utente.",
+          "L’elenco dei recenti viene aggiornato solo dopo l’aggiunta corretta di una nota.",
+          "I dati personali vengono memorizzati come metadati utente di WordPress."
         ]
       },
       {
-        "title": "25. Diagnosepagina",
+        "title": "25. Pagina Diagnostica",
         "paragraphs": [
-          "Open <strong>Mailhilfe Order Notes → Diagnose</strong> voor WordPress-, PHP- en WooCommerce-versies, HPOS-status, klantnotitie-e-mail, taal, aantal gepubliceerde sjablonen, cache en WP_DEBUG."
+          "Apri <strong>Note ordine Mailhilfe → Diagnostica</strong> per visualizzare informazioni tecniche come versioni di WordPress, PHP e WooCommerce, stato HPOS, stato dell’email delle note per il cliente, locale, numero di modelli pubblicati, stato della cache e WP_DEBUG."
         ],
         "items": [
-          "Vermeld deze gegevens bij een supportvraag.",
-          "Er worden geen notitie-inhouden of klantadressen getoond.",
-          "Ontwikkelaars kunnen rijen toevoegen via het diagnosefilter."
+          "Copia i valori diagnostici quando richiedi assistenza.",
+          "La pagina non mostra il contenuto delle note degli ordini né gli indirizzi dei clienti.",
+          "Gli sviluppatori possono aggiungere righe tramite il filtro della diagnostica."
         ]
       },
       {
-        "title": "26. Hooks en filters voor ontwikkelaars",
+        "title": "26. Hook e filtri per sviluppatori",
         "paragraphs": [
-          "Er zijn hooks en filters voor placeholders, waarden, toegestane metasleutels, sjabloonresultaten, voorwaarden, voorbeeld, definitieve inhoud, acties vóór/na toevoegen, geschiedenis en diagnose. Namen staan in readme.txt."
+          "Il plugin fornisce hook e filtri per segnaposto, valori dei segnaposto, chiavi meta consentite, risultati dei modelli, condizioni, contenuto dell’anteprima, contenuto finale della nota, azioni prima e dopo l’aggiunta di una nota, record della cronologia e diagnostica. Nomi e parametri degli hook sono documentati in readme.txt."
         ],
         "items": [
-          "Valideer, sanitize en escape alle aangepaste gegevens.",
-          "Gebruik WooCommerce-order-API’s in plaats van directe tabellen.",
-          "Behoud compatibiliteit met HPOS en klassieke opslag."
+          "Convalida, sanitizza ed esegui l’escaping di tutti i dati personalizzati.",
+          "Usa le API degli ordini WooCommerce anziché l’accesso diretto alle tabelle degli ordini.",
+          "Mantieni le estensioni personalizzate compatibili sia con HPOS sia con l’archiviazione classica degli ordini."
         ]
       }
     ]
   },
-  "pl_PL": {
-    "title": "Szczegółowa pomoc Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę. Mailhilfe Order Note Manager for WooCommerce.",
+  "hi_IN": {
+    "title": "Mailhilfe Order Note Manager for WooCommerce की विस्तृत सहायता",
+    "intro": "यह अद्यतन सहायता Mailhilfe Order Note Manager for WooCommerce के पूरे कार्यप्रवाह को समझाती है: टेम्पलेट बनाना और फ़ॉर्मेट करना, टेम्पलेट भाषाएँ, प्लेसहोल्डर और मेटा प्लेसहोल्डर, पूर्वावलोकन संपादित करना, ग्राहक नोट सुरक्षित रूप से भेजना, सेटिंग्स, अनुमतियाँ, आयात पूर्वावलोकन और HPOS संगतता।",
     "sections": [
       {
-        "title": "1. Do czego służy wtyczka",
+        "title": "1. प्लगइन क्या करता है",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "Mailhilfe Order Note Manager for WooCommerce आपको बार-बार उपयोग होने वाले WooCommerce ऑर्डर नोट्स को पुनः उपयोग योग्य टेम्पलेट के रूप में सहेजने देता है। इससे एक ही टेक्स्ट बार-बार लिखने की आवश्यकता नहीं रहती और ऑर्डर इतिहास में संचार एकरूप रहता है।",
+          "किसी टेम्पलेट को कर्मचारियों के लिए आंतरिक नोट या ग्राहक नोट के रूप में तैयार किया जा सकता है। ऑर्डर में टेम्पलेट उपयोग करते समय भी नोट प्रकार बदला जा सकता है।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "सामान्य उदाहरण: भुगतान अनुस्मारक, डिलीवरी में देरी, फ़ोन कॉल रिकॉर्ड, पते की जाँच और सेवा उत्तर।",
+          "टेम्पलेट श्रेणियाँ, पसंदीदा, क्रमबद्धता, उपयोग काउंटर और JSON बैकअप का समर्थन करते हैं।"
         ]
       },
       {
-        "title": "2. Tworzenie szablonu",
+        "title": "2. नया टेम्पलेट बनाएँ",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "<strong>Mailhilfe ऑर्डर नोट्स → नया जोड़ें</strong> खोलें। स्पष्ट शीर्षक दर्ज करें, संपादक में नोट टेक्स्ट लिखें और चुनें कि डिफ़ॉल्ट नोट प्रकार आंतरिक होगा या ग्राहक के लिए।",
+          "शीर्षक को उद्देश्य का छोटा विवरण रखें, जैसे “भुगतान अनुस्मारक” या “ग्राहक ने डिलीवरी के बारे में फ़ोन किया”। इससे ऑर्डर स्क्रीन में टेम्पलेट ढूँढना आसान होता है।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "बहुत अधिक टेम्पलेट होने पर एक या अधिक श्रेणियाँ असाइन करें।",
+          "अक्सर उपयोग होने वाले टेम्पलेट को पसंदीदा के रूप में चिह्नित करें।",
+          "टेम्पलेट प्रकाशित करें ताकि वह ऑर्डर में उपलब्ध हो जाए।"
         ]
       },
       {
-        "title": "3. Formatowanie tekstu",
+        "title": "3. टेम्पलेट टेक्स्ट को फ़ॉर्मेट करना",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "टेम्पलेट टेक्स्ट WordPress संपादक का उपयोग करता है। आप अनुच्छेद, बोल्ड और इटैलिक टेक्स्ट, सूचियाँ और लिंक उपयोग कर सकते हैं। नोट बनाते समय फ़ॉर्मेटिंग बनी रहती है, लेकिन सामग्री WordPress के सुरक्षित HTML नियमों के अनुसार साफ की जाती है।",
+          "ग्राहक नोट्स में फ़ॉर्मेटिंग सावधानी से उपयोग करें। छोटा अनुच्छेद या बुलेट सूची सामान्यतः लंबे असंरचित टेक्स्ट से अधिक पठनीय होती है।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "अच्छा उदाहरण: छोटा अभिवादन, एक स्पष्ट व्याख्या और अगला कदम।",
+          "ग्राहक नोट्स में केवल कर्मचारियों के लिए उपयोग होने वाले संक्षेपों से बचें।",
+          "ऐसे टेम्पलेट में निजी कर्मचारी टिप्पणियाँ न डालें जो ग्राहक नोट के रूप में उपयोग हो सकते हैं।"
         ]
       },
       {
-        "title": "4. Używanie symboli zastępczych",
+        "title": "4. प्लेसहोल्डर",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "प्लेसहोल्डर घुँघराले कोष्ठकों में लिखे शब्द होते हैं। पूर्वावलोकन में और नोट को ऑर्डर में जोड़ते समय इन्हें वास्तविक ऑर्डर डेटा से बदल दिया जाता है।",
+          "आप सामान्य टेक्स्ट और प्लेसहोल्डर को मिला सकते हैं। उदाहरण: <code>नमस्ते {customer}, हमें आपका ऑर्डर {order_number} प्राप्त हो गया है।</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "ऑर्डर: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>।",
+          "ग्राहक: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>।",
+          "शिपिंग और भुगतान: <code>{shipping_method}</code>, <code>{payment_method}</code>।",
+          "आइटम और दुकान: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>।"
         ]
       },
       {
-        "title": "5. Sprawdzenie podglądu",
+        "title": "5. नोट जोड़ने से पहले पूर्वावलोकन",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "WooCommerce ऑर्डर खोलें और टेम्पलेट चुनें। पूर्वावलोकन में चयनित ऑर्डर डेटा से बदले हुए प्लेसहोल्डर के साथ नोट दिखाई देता है।",
+          "नोट बनाने से पहले पूर्वावलोकन हमेशा जाँचें। यह विशेष रूप से तब महत्वपूर्ण है जब ऑर्डर में किसी प्लेसहोल्डर का मान उपलब्ध न हो, जैसे शिपिंग कंपनी या फ़ोन नंबर।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "नाम, कुल राशि, शिपिंग विधि और आइटम सूची जाँचें।",
+          "जाँचें कि चुना गया नोट प्रकार सही है।",
+          "यदि वही टेक्स्ट सभी भविष्य के ऑर्डर के लिए सुधारना है तो पहले टेम्पलेट संपादित करें।"
         ]
       },
       {
-        "title": "6. Notatki wewnętrzne i dla klienta",
+        "title": "6. आंतरिक नोट और ग्राहक नोट",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "आंतरिक नोट दुकान के कर्मचारियों के लिए होते हैं और सामान्यतः दस्तावेज़ीकरण, आगे की कार्रवाई या सेवा इतिहास के लिए उपयोग किए जाते हैं। ग्राहक नोट ग्राहक को दिखाई दे सकते हैं और WooCommerce सेटिंग्स के आधार पर ईमेल सूचना भेज सकते हैं।",
+          "संपादन योग्य पूर्वावलोकन और चुने गए नोट प्रकार की सावधानीपूर्वक समीक्षा करें। ग्राहक नोट केवल ऐसे टेक्स्ट के लिए उपयोग करें जिसे ग्राहक पढ़ सकता हो।"
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "आंतरिक नोट: “ग्राहक ने फ़ोन किया, डिलीवरी पता पुष्ट किया गया।”",
+          "ग्राहक नोट: “आपका ऑर्डर तैयार किया जा रहा है और शीघ्र भेजा जाएगा।”",
+          "ग्राहक नोट्स में कभी भी पासवर्ड, निजी टिप्पणियाँ या केवल आपूर्तिकर्ता के लिए जानकारी न डालें।"
         ]
       },
       {
-        "title": "7. Ulubione, wyszukiwanie i sortowanie",
+        "title": "7. पसंदीदा, खोज और क्रमबद्धता",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "पसंदीदा सबसे महत्वपूर्ण टेम्पलेट को चयन सूची के ऊपर रखने में मदद करते हैं। ऑर्डर स्क्रीन का खोज फ़ील्ड शीर्षक, श्रेणी या सामग्री के आधार पर टेम्पलेट ढूँढने में सहायता करता है।",
+          "टेम्पलेट सूची में खींचकर और छोड़कर क्रम बदला जा सकता है। सहेजा गया क्रम ऑर्डर स्क्रीन में टेम्पलेट दिखाते समय उपयोग होता है।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "प्रतिदिन उपयोग होने वाले टेम्पलेट को पसंदीदा बनाएँ।",
+          "भुगतान, शिपिंग, वापसी और सहायता जैसे विषय समूहों के लिए श्रेणियाँ उपयोग करें।",
+          "शीर्षक छोटे रखें ताकि खोज परिणाम आसानी से पढ़े जा सकें।"
         ]
       },
       {
-        "title": "8. Import, eksport i szablony demo",
+        "title": "8. आयात, निर्यात और डेमो टेम्पलेट",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "JSON निर्यात आपके टेम्पलेट का बैकअप बनाता है। बड़े बदलावों से पहले या टेम्पलेट को दूसरी दुकान में स्थानांतरित करने के लिए इसका उपयोग किया जा सकता है।",
+          "JSON आयात नए टेम्पलेट बना सकता है और समान शीर्षक या आंतरिक डेमो कुंजी वाले मौजूदा टेम्पलेट अपडेट कर सकता है। डेमो टेम्पलेट शीघ्र शुरुआत के लिए हैं और सक्रिय भाषा में बनाए जाते हैं।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "एक साथ कई बदलाव करने से पहले निर्यात करें।",
+          "केवल विश्वसनीय स्रोत की JSON फ़ाइल आयात करें।",
+          "आयात के बाद कुछ टेम्पलेट खोलकर फ़ॉर्मेटिंग और प्लेसहोल्डर जाँचें।"
         ]
       },
       {
-        "title": "9. Role i uprawnienia",
+        "title": "9. अनुमतियाँ और भूमिकाएँ",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "प्लगइन टेम्पलेट प्रबंधित करने और ऑर्डर में टेम्पलेट उपयोग करने के लिए अलग-अलग क्षमताएँ उपयोग करता है। सक्रियण के समय प्रशासक और शॉप प्रबंधक ये अनुमतियाँ अपने-आप प्राप्त करते हैं।",
+          "यदि आप भूमिका संपादक प्लगइन उपयोग करते हैं तो कस्टम भूमिकाओं को ये अनुमतियाँ दे या हटा सकते हैं।"
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: टेम्पलेट बनाना, संपादित करना, हटाना तथा आयात/निर्यात करना।",
+          "<code>use_mh_order_note_templates</code>: WooCommerce ऑर्डर में टेम्पलेट उपयोग करना।",
+          "आवश्यक अनुमति के बिना उपयोगकर्ताओं को संबंधित एडमिन कार्य दिखाई नहीं देते।"
         ]
       },
       {
-        "title": "10. Bezpieczeństwo i zgodność HPOS",
+        "title": "10. सुरक्षा और HPOS संगतता",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "प्लगइन एडमिन क्रियाओं के लिए WordPress nonce, क्षमता जाँच, सैनिटाइज़िंग और एस्केपिंग उपयोग करता है। सहेजने या उपयोग करने से पहले टेम्पलेट सामग्री को WordPress-सुरक्षित HTML के अनुसार साफ किया जाता है।",
+          "ऑर्डर डेटा सीधे डेटाबेस तालिकाओं से पढ़ने के बजाय WooCommerce ऑर्डर API से पढ़ा जाता है। इससे प्लगइन WooCommerce HPOS और पारंपरिक ऑर्डर संग्रहण दोनों के साथ संगत रहता है।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "WooCommerce और WordPress को अद्यतन रखें।",
+          "WooCommerce ईमेल सेटिंग्स बदलने के बाद ग्राहक नोट कार्यप्रवाह जाँचें।",
+          "बहुत बड़े टेम्पलेट सेट को आयात करने से पहले स्टेजिंग साइट उपयोग करें।"
         ]
       },
       {
-        "title": "11. Rozwiązywanie problemów",
+        "title": "11. समस्या निवारण",
         "paragraphs": [
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę.",
-          "Ta pomoc opisuje cały proces: tworzenie formatowanych szablonów, używanie symboli zastępczych, dodawanie notatek do zamówień WooCommerce, import/eksport JSON, uprawnienia, HPOS i bezpieczną pracę."
+          "यदि ऑर्डर में टेम्पलेट दिखाई नहीं देते, तो जाँचें कि WooCommerce सक्रिय है, टेम्पलेट प्रकाशित है और वर्तमान उपयोगकर्ता के पास टेम्पलेट उपयोग करने की अनुमति है।",
+          "यदि अनुवाद दिखाई नहीं देते, तो WordPress में साइट भाषा और उपयोगकर्ता भाषा जाँचें। प्लगइन में फ़ारसी सहित सभी समर्थित भाषाओं के लिए समीक्षा किए गए बंडल फ़ॉलबैक शामिल हैं। अन्य भाषाएँ समीक्षा किए गए WordPress.org भाषा पैक से प्रदान की जानी चाहिए।"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "अपडेट के बाद पुरानी एडमिन स्क्रीन दिखे तो ऑब्जेक्ट कैश या कैश प्लगइन साफ करें।",
+          "यदि प्लेसहोल्डर नहीं बदलता तो सुनिश्चित करें कि वह घुँघराले कोष्ठकों सहित सूची के अनुसार बिल्कुल सही लिखा गया है।",
+          "यदि ग्राहक नोट ईमेल नहीं होते तो ग्राहक नोट सूचना के लिए WooCommerce ईमेल सेटिंग्स जाँचें।"
         ]
       },
       {
-        "title": "12. Strona ustawień",
+        "title": "12. सेटिंग्स पृष्ठ",
         "paragraphs": [
-          "Otwórz <strong>Mailhilfe Order Notes → Ustawienia</strong>, aby wybrać domyślny typ notatki, bezpieczny HTML, wyświetlanie użycia, ulubione, import JSON i dopasowanie języka. W codziennej pracy używaj domyślnie notatek wewnętrznych."
+          "<strong>Mailhilfe ऑर्डर नोट्स → सेटिंग्स</strong> खोलकर डिफ़ॉल्ट नोट प्रकार, सुरक्षित HTML व्यवहार, उपयोग प्रदर्शन, पसंदीदा, JSON आयात विकल्प और भाषा मिलान चुनें। अधिक सुरक्षित दैनिक कार्य के लिए आंतरिक नोट को डिफ़ॉल्ट रखें।"
         ],
         "items": []
       },
       {
-        "title": "13. Język szablonu i sklepy wielojęzyczne",
+        "title": "13. टेम्पलेट भाषा और बहुभाषी दुकानें",
         "paragraphs": [
-          "Każdy szablon może mieć język. Wybierz <strong>Wszystkie języki</strong> dla tekstów ogólnych albo konkretny język dla przetłumaczonych wiadomości do klienta.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "हर टेम्पलेट की एक टेम्पलेट भाषा हो सकती है। यदि वही टेक्स्ट सभी ऑर्डर के लिए उपयोग किया जा सकता है तो <strong>सभी भाषाएँ</strong> चुनें, अन्यथा स्थानीयकृत टेक्स्ट के लिए विशिष्ट भाषा चुनें।",
+          "उपलब्ध होने पर प्लगइन ऑर्डर भाषा, उपयोगकर्ता भाषा या बहुभाषी प्लगइन से प्राप्त सामान्य भाषा डेटा से मेल खाने वाले टेम्पलेट को प्राथमिकता दे सकता है।"
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "आंतरिक कर्मचारी नोट के लिए एक तटस्थ टेम्पलेट उपयोग करें।",
+          "हिंदी, जर्मन, अंग्रेज़ी या अन्य दुकान भाषाओं के लिए अलग ग्राहक-उन्मुख टेम्पलेट बनाएँ।",
+          "WPML या Polylang दुकान में वास्तविक परीक्षण ऑर्डर से भाषा पहचान जाँचें।"
         ]
       },
       {
-        "title": "14. Pola własne i metadane",
+        "title": "14. कस्टम फ़ील्ड और मेटा प्लेसहोल्डर",
         "paragraphs": [
-          "Symbole <code>{order_meta:meta_key}</code> i <code>{customer_meta:meta_key}</code> wstawiają wybrane metadane. Wrażliwe klucze, takie jak password, token lub secret, są blokowane.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "उन्नत प्लेसहोल्डर चुने हुए ऑर्डर या ग्राहक मेटा फ़ील्ड पढ़ सकते हैं। ऑर्डर डेटा के लिए <code>{order_meta:meta_key}</code> और ग्राहक उपयोगकर्ता डेटा के लिए <code>{customer_meta:meta_key}</code> उपयोग करें।",
+          "सुरक्षा के लिए password, token, secret, session, auth और hash जैसे संवेदनशील कुंजी नाम अवरुद्ध हैं। मेटा प्लेसहोल्डर केवल तब उपयोग करें जब आपको पता हो कि फ़ील्ड में क्या है।"
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "उदाहरण: शिपिंग प्लगइन द्वारा सहेजे गए ट्रैकिंग नंबर के लिए <code>{order_meta:_tracking_number}</code>।",
+          "उदाहरण: VAT ID फ़ील्ड के लिए <code>{order_meta:_billing_vat_id}</code>।",
+          "ग्राहक नोट्स में आंतरिक या संवेदनशील फ़ील्ड उजागर न करें।"
         ]
       },
       {
-        "title": "15. Duplikowanie i wersje",
+        "title": "15. टेम्पलेट की प्रतिलिपि और संशोधन",
         "paragraphs": [
-          "Duplikowanie tworzy kopię jako szkic. Wersje WordPress pomagają porównać i przywrócić wcześniejsze treści.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "जब थोड़े बदलाव के साथ समान टेम्पलेट चाहिए तो प्रतिलिपि क्रिया उपयोग करें। प्रति ड्राफ़्ट के रूप में बनती है ताकि प्रकाशित करने से पहले उसकी समीक्षा की जा सके।",
+          "टेम्पलेट संशोधन आपको पुराने संस्करणों की तुलना करने और गलती से हुए बदलाव के बाद पिछला टेक्स्ट पुनर्स्थापित करने देते हैं।"
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "DHL, UPS या पिकअप के अलग रूप बनाने से पहले सामान्य शिपिंग टेम्पलेट की प्रतिलिपि बनाएँ।",
+          "बड़े टेक्स्ट बदलावों के बाद संशोधन जाँचें।",
+          "समान टेम्पलेट में भ्रम से बचने के लिए शीर्षक स्पष्ट रखें।"
         ]
       },
       {
-        "title": "16. Uprawnienia",
+        "title": "16. अनुमतियाँ पृष्ठ",
         "paragraphs": [
-          "Strona <strong>Uprawnienia</strong> określa, które role zarządzają szablonami, a które używają ich w zamówieniach.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "<strong>Mailhilfe ऑर्डर नोट्स → अनुमतियाँ</strong> खोलकर तय करें कि कौन-सी WordPress भूमिकाएँ टेम्पलेट प्रबंधित कर सकती हैं और कौन-सी भूमिकाएँ ऑर्डर में उनका उपयोग कर सकती हैं।",
+          "प्रशासकों के पास आवश्यक अनुमतियाँ बनी रहती हैं। अन्य भूमिकाओं को केवल दैनिक कार्य के लिए आवश्यक अनुमतियाँ दें।"
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "टेम्पलेट प्रबंधित करें: टेम्पलेट बनाना, संपादित करना, हटाना, आयात और निर्यात करना।",
+          "टेम्पलेट उपयोग करें: WooCommerce ऑर्डर में टेम्पलेट चुनना और नोट जोड़ना।",
+          "आयात/निर्यात अनुमति केवल विश्वसनीय उपयोगकर्ताओं को दें।"
         ]
       },
       {
-        "title": "17. Podgląd importu",
+        "title": "17. आयात पूर्वावलोकन",
         "paragraphs": [
-          "Import JSON pokazuje podgląd szablonów tworzonych, aktualizowanych lub pomijanych przed zastosowaniem zmian.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "JSON आयात अब बदलाव लागू करने से पहले पूर्वावलोकन दिखाता है। पूर्वावलोकन बताता है कि कितने टेम्पलेट बनाए, अपडेट या छोड़े जाएंगे।",
+          "पूर्वावलोकन जाँचने के बाद ही आयात की पुष्टि करें। इससे मौजूदा टेम्पलेट अनजाने में ओवरराइट होने से बचते हैं।"
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "बड़ा सेट आयात करने से पहले निर्यात बैकअप बनाएँ।",
+          "केवल विश्वसनीय स्रोत की JSON फ़ाइल आयात करें।",
+          "आयात के बाद कम से कम एक ग्राहक नोट और एक आंतरिक नोट जाँचें।"
         ]
       },
       {
-        "title": "18. Status e-maila notatki klienta",
+        "title": "18. ग्राहक नोट ईमेल का व्यवहार",
         "paragraphs": [
-          "Notatki dla klienta mogą uruchamiać powiadomienia e-mail WooCommerce, jeśli odpowiednia wiadomość jest włączona. Wtyczka zapisuje utworzenie notatki oddzielnie od przetwarzania e-maila. Przed dodaniem sprawdź edytowalny podgląd, a wynik przetwarzania na stronie Historia."
+          "संबंधित ईमेल सक्षम होने पर ग्राहक नोट WooCommerce ईमेल सूचना भेज सकते हैं। प्लगइन ग्राहक नोट बनने और ईमेल संसाधित होने को अलग-अलग दर्ज करता है। नोट जोड़ने से पहले संपादन योग्य पूर्वावलोकन देखें और मेल हैंडलर का परिणाम जाँचने के लिए इतिहास पृष्ठ उपयोग करें।"
         ],
         "items": []
       },
       {
-        "title": "19. Zalecany przebieg pracy",
+        "title": "19. अनुशंसित कार्यप्रवाह",
         "paragraphs": [
-          "Wybierz szablon, sprawdź podgląd, edytuj w razie potrzeby, potwierdź typ notatki i dodaj notatkę.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "सुरक्षित दैनिक कार्यप्रवाह है: टेम्पलेट चुनें, बदला हुआ पूर्वावलोकन जाँचें, आवश्यकता होने पर पूर्वावलोकन संपादित करें, नोट प्रकार सत्यापित करें और फिर नोट जोड़ें।",
+          "नए टेम्पलेट को वास्तविक ग्राहकों के साथ उपयोग करने से पहले किसी गैर-महत्वपूर्ण ऑर्डर या स्टेजिंग दुकान में जाँचें।"
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "केवल कर्मचारियों की जानकारी के लिए आंतरिक नोट उपयोग करें।",
+          "ग्राहक नोट केवल उन संदेशों के लिए उपयोग करें जो ग्राहक को भेजे जा सकते हैं।",
+          "टेम्पलेट बदलने पर प्लेसहोल्डर फिर से जाँचें।"
         ]
       },
       {
-        "title": "20. Warunki szablonów",
+        "title": "20. टेम्पलेट शर्तें",
         "paragraphs": [
-          "Warunki określają, czy szablon jest dostępny dla zamówienia. Można ograniczyć go według statusu, metody płatności, metody wysyłki, kraju rozliczeniowego oraz minimalnej lub maksymalnej wartości. Wszystkie ustawione warunki muszą być spełnione."
+          "टेम्पलेट शर्तें तय करती हैं कि कोई टेम्पलेट किसी विशेष ऑर्डर के लिए उपलब्ध होगा या नहीं। आप ऑर्डर स्थिति, भुगतान विधि, शिपिंग विधि, बिलिंग देश और न्यूनतम या अधिकतम ऑर्डर कुल के आधार पर टेम्पलेट सीमित कर सकते हैं। सभी कॉन्फ़िगर की गई शर्तों का मिलना आवश्यक है।"
         ],
         "items": [
-          "Pozostaw pole puste, jeśli nie ma ograniczać szablonu.",
-          "Używaj technicznych identyfikatorów metod płatności i wysyłki.",
-          "Warunki są sprawdzane w interfejsie i ponownie po stronie serwera."
+          "जिस शर्त से टेम्पलेट सीमित नहीं करना है उसका फ़ील्ड खाली छोड़ें।",
+          "भुगतान और शिपिंग विधियों की तकनीकी ID उपयोग करें।",
+          "नोट बनने से पहले शर्तें इंटरफ़ेस में और सर्वर पर दोबारा जाँची जाती हैं।"
         ]
       },
       {
-        "title": "21. Rejestr przetwarzania e-maili",
+        "title": "21. ईमेल संसाधन लॉग",
         "paragraphs": [
-          "Dla notatek klienta wtyczka zapisuje, kiedy WooCommerce zgłasza przetworzenie wiadomości, oraz błędy techniczne wp_mail. „Przetworzono” oznacza przekazanie do systemu pocztowego, a nie ostateczne doręczenie lub odczytanie."
+          "ग्राहक नोट्स के लिए प्लगइन दर्ज करता है कि WooCommerce ने ग्राहक नोट ईमेल को संसाधित बताया या नहीं और तकनीकी wp_mail त्रुटियाँ भी दर्ज करता है। संसाधित घटना यह पुष्टि करती है कि WordPress/WooCommerce ने संदेश मेल प्रणाली को सौंपा; यह अंतिम डिलीवरी या ग्राहक द्वारा पढ़े जाने का प्रमाण नहीं है।"
         ],
         "items": [
-          "Sprawdź stronę Historia, aby zobaczyć zdarzenia udane i nieudane.",
-          "Dokładniejsze dane o doręczeniu wymagają dostawcy SMTP.",
-          "Notatki wewnętrzne nie uruchamiają e-maila notatki klienta."
+          "संसाधित और विफल ईमेल घटनाओं के लिए इतिहास पृष्ठ देखें।",
+          "यदि निश्चित डिलीवरी जानकारी चाहिए तो SMTP प्रदाता या मेल-लॉग सेवा उपयोग करें।",
+          "आंतरिक नोट ग्राहक नोट ईमेल सक्रिय नहीं करते।"
         ]
       },
       {
-        "title": "22. Centralna historia",
+        "title": "22. केंद्रीय इतिहास",
         "paragraphs": [
-          "Otwórz <strong>Mailhilfe Order Notes → Historia</strong>, aby przeglądać utworzone notatki, użycie szablonów, przetwarzanie i błędy e-mail. Gdy są dostępne, widoczne są zamówienie, szablon, użytkownik, odbiorca, typ zdarzenia i czas."
+          "हाल में बने नोट, टेम्पलेट उपयोग, ईमेल संसाधन और ईमेल विफलताएँ देखने के लिए <strong>Mailhilfe ऑर्डर नोट्स → इतिहास</strong> खोलें। उपलब्ध होने पर प्रविष्टियों में ऑर्डर, टेम्पलेट, उपयोगकर्ता, प्राप्तकर्ता, घटना प्रकार और समय शामिल होते हैं।"
         ],
         "items": [
-          "Historia pomaga w obsłudze, audycie i diagnostyce.",
-          "Jest oddzielona od notatek zamówienia WooCommerce.",
-          "Wyświetlane jest 250 najnowszych wpisów."
+          "सहायता, ऑडिट और समस्या निवारण के लिए इतिहास उपयोग करें।",
+          "इतिहास WooCommerce ऑर्डर नोट्स से अलग है।",
+          "पृष्ठ नवीनतम 250 प्रविष्टियाँ दिखाता है।"
         ]
       },
       {
-        "title": "23. Podgląd z zamówieniem testowym",
+        "title": "23. परीक्षण ऑर्डर पूर्वावलोकन",
         "paragraphs": [
-          "W edytorze wpisz identyfikator zamówienia WooCommerce. Bieżąca treść, także niezapisana, zostanie wyświetlona z danymi zamówienia bez tworzenia notatki i wysyłania e-maila."
+          "टेम्पलेट संपादक के परीक्षण पूर्वावलोकन क्षेत्र में WooCommerce ऑर्डर ID दर्ज करें। सहेजे न गए बदलावों सहित वर्तमान संपादक सामग्री उस ऑर्डर के डेटा के साथ दिखाई जाती है, बिना नोट बनाए या ईमेल भेजे।"
         ],
         "items": [
-          "Używaj zamówienia testowego lub środowiska staging.",
-          "Sprawdź brakujące wartości, formatowanie, warunki i własne metadane.",
-          "Musisz mieć prawo edycji wybranego zamówienia."
+          "स्टेजिंग ऑर्डर या गैर-महत्वपूर्ण परीक्षण ऑर्डर उपयोग करें।",
+          "खाली मान, फ़ॉर्मेटिंग, शर्तें और कस्टम मेटा प्लेसहोल्डर जाँचें।",
+          "चयनित ऑर्डर संपादित करने की अनुमति आपके पास होनी चाहिए।"
         ]
       },
       {
-        "title": "24. Osobiste ulubione i ostatnio używane szablony",
+        "title": "24. व्यक्तिगत पसंदीदा और हाल में उपयोग किए गए टेम्पलेट",
         "paragraphs": [
-          "Każdy użytkownik może oznaczać osobiste ulubione w zamówieniu. Wtyczka zapisuje również dziesięć ostatnio poprawnie użytych szablonów i umieszcza je wyżej. Ulubione globalne pozostają wspólne."
+          "हर प्रशासक ऑर्डर स्क्रीन में व्यक्तिगत पसंदीदा चिह्नित कर सकता है। प्लगइन प्रत्येक उपयोगकर्ता के दस सबसे हाल में उपयोग किए गए टेम्पलेट भी सहेजता है और उन्हें चयन सूची में ऊपर रखता है। वैश्विक पसंदीदा सभी उपयोगकर्ताओं के साथ साझा रहते हैं।"
         ],
         "items": [
-          "Osobiste ulubione nie wpływają na innych użytkowników.",
-          "Lista ostatnich aktualizuje się dopiero po pomyślnym dodaniu notatki.",
-          "Dane są przechowywane jako metadane użytkownika WordPress."
+          "व्यक्तिगत पसंदीदा दूसरे उपयोगकर्ता की सूची नहीं बदलते।",
+          "हाल की सूची केवल नोट सफलतापूर्वक जोड़ने के बाद अपडेट होती है।",
+          "व्यक्तिगत डेटा WordPress उपयोगकर्ता मेटाडेटा के रूप में सहेजा जाता है।"
         ]
       },
       {
-        "title": "25. Strona diagnostyczna",
+        "title": "25. निदान पृष्ठ",
         "paragraphs": [
-          "Otwórz <strong>Mailhilfe Order Notes → Diagnostyka</strong>, aby zobaczyć wersje WordPress, PHP i WooCommerce, status HPOS, e-mail notatki klienta, język, liczbę szablonów, pamięć podręczną i WP_DEBUG."
+          "WordPress, PHP और WooCommerce संस्करण, HPOS स्थिति, ग्राहक नोट ईमेल स्थिति, लोकेल, प्रकाशित टेम्पलेट संख्या, कैश स्थिति और WP_DEBUG जैसी तकनीकी जानकारी देखने के लिए <strong>Mailhilfe ऑर्डर नोट्स → निदान</strong> खोलें।"
         ],
         "items": [
-          "Dołącz te dane do zgłoszenia pomocy.",
-          "Strona nie pokazuje treści notatek ani adresów klientów.",
-          "Programiści mogą dodawać wiersze filtrem diagnostycznym."
+          "सहायता माँगते समय निदान मान कॉपी करें।",
+          "पृष्ठ ऑर्डर नोट सामग्री या ग्राहक पते प्रदर्शित नहीं करता।",
+          "डेवलपर निदान फ़िल्टर से अतिरिक्त पंक्तियाँ जोड़ सकते हैं।"
         ]
       },
       {
-        "title": "26. Hooki i filtry dla programistów",
+        "title": "26. डेवलपर हुक और फ़िल्टर",
         "paragraphs": [
-          "Dostępne są hooki i filtry dla symboli zastępczych, wartości, dozwolonych kluczy meta, wyników szablonów, warunków, podglądu, treści końcowej, działań przed/po dodaniu, historii i diagnostyki. Nazwy opisano w readme.txt."
+          "प्लगइन प्लेसहोल्डर, प्लेसहोल्डर मान, अनुमत मेटा कुंजियाँ, टेम्पलेट परिणाम, शर्तें, पूर्वावलोकन सामग्री, अंतिम नोट सामग्री, नोट जोड़ने से पहले और बाद की क्रियाएँ, इतिहास रिकॉर्ड और निदान के लिए हुक व फ़िल्टर देता है। हुक नाम और पैरामीटर readme.txt में दिए गए हैं।"
         ],
         "items": [
-          "Waliduj, oczyszczaj i escapuj własne dane.",
-          "Używaj API zamówień WooCommerce zamiast bezpośrednich tabel.",
-          "Zachowaj zgodność z HPOS i klasycznym magazynem."
-        ]
-      }
-    ]
-  },
-  "ru_RU": {
-    "title": "Подробная справка Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу. Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. Что делает плагин",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. Создание шаблона",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. Форматирование текста",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. Использование заполнителей",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. Проверка предварительного просмотра",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. Внутренние и клиентские заметки",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. Избранное, поиск и сортировка",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. Импорт, экспорт и демо-шаблоны",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. Роли и права",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. Безопасность и совместимость HPOS",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. Устранение неполадок",
-        "paragraphs": [
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу.",
-          "Эта справка описывает полный процесс: создание форматированных шаблонов, использование заполнителей, добавление заметок в заказы WooCommerce, импорт/экспорт JSON, права, HPOS и безопасную работу."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. Страница настроек",
-        "paragraphs": [
-          "Откройте <strong>Mailhilfe Order Notes → Настройки</strong>, чтобы выбрать тип заметки по умолчанию, безопасный HTML, отображение использования, избранное, импорт JSON и сопоставление языков. Для повседневной работы используйте внутренние заметки."
-        ],
-        "items": []
-      },
-      {
-        "title": "13. Язык шаблона и многоязычные магазины",
-        "paragraphs": [
-          "Каждому шаблону можно назначить язык. Выберите <strong>Все языки</strong> для универсального текста или конкретный язык для переведенных сообщений клиенту.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. Пользовательские поля и метаданные",
-        "paragraphs": [
-          "Заполнители <code>{order_meta:meta_key}</code> и <code>{customer_meta:meta_key}</code> вставляют выбранные метаданные. Чувствительные ключи, такие как password, token или secret, блокируются.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. Дублирование и редакции",
-        "paragraphs": [
-          "Дублирование создает копию как черновик. Редакции WordPress помогают сравнивать и восстанавливать предыдущие версии.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. Разрешения",
-        "paragraphs": [
-          "Страница <strong>Разрешения</strong> определяет, какие роли управляют шаблонами и какие используют их в заказах.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. Предпросмотр импорта",
-        "paragraphs": [
-          "Импорт JSON сначала показывает, какие шаблоны будут созданы, обновлены или пропущены.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. Статус письма заметки клиенту",
-        "paragraphs": [
-          "Заметки клиенту могут запускать уведомления WooCommerce по электронной почте, если соответствующее письмо включено. Плагин отдельно фиксирует создание заметки и обработку письма. Перед добавлением проверьте редактируемый предпросмотр, а результат обработки — на странице истории."
-        ],
-        "items": []
-      },
-      {
-        "title": "19. Рекомендуемый порядок",
-        "paragraphs": [
-          "Выберите шаблон, проверьте предпросмотр, отредактируйте при необходимости, подтвердите тип заметки и добавьте ее.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
-        ],
-        "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
-        ]
-      },
-      {
-        "title": "20. Условия шаблонов",
-        "paragraphs": [
-          "Условия определяют, доступен ли шаблон для конкретного заказа. Ограничения можно задать по статусу, способу оплаты, способу доставки, стране выставления счёта и минимальной или максимальной сумме. Все заполненные условия должны совпасть."
-        ],
-        "items": [
-          "Оставьте поле пустым, если оно не должно ограничивать шаблон.",
-          "Используйте технические идентификаторы способов оплаты и доставки.",
-          "Условия проверяются в интерфейсе и повторно на сервере."
-        ]
-      },
-      {
-        "title": "21. Журнал обработки электронной почты",
-        "paragraphs": [
-          "Для клиентских заметок плагин записывает сообщение WooCommerce об обработке письма и технические ошибки wp_mail. Статус «обработано» подтверждает передачу почтовой системе, но не окончательную доставку и не прочтение."
-        ],
-        "items": [
-          "Смотрите обработанные и неудачные события на странице истории.",
-          "Для точных данных о доставке используйте SMTP-сервис.",
-          "Внутренние заметки не запускают письмо клиентской заметки."
-        ]
-      },
-      {
-        "title": "22. Центральная история",
-        "paragraphs": [
-          "Откройте <strong>Mailhilfe Order Notes → История</strong>, чтобы увидеть создание заметок, использование шаблонов, обработку и ошибки писем. При наличии отображаются заказ, шаблон, пользователь, получатель, тип события и время."
-        ],
-        "items": [
-          "Используйте историю для поддержки, аудита и диагностики.",
-          "Она отделена от заметок заказа WooCommerce.",
-          "Показываются последние 250 записей."
-        ]
-      },
-      {
-        "title": "23. Предпросмотр с тестовым заказом",
-        "paragraphs": [
-          "В редакторе укажите ID заказа WooCommerce. Текущий текст, включая несохранённые изменения, будет показан с данными заказа без создания заметки и отправки письма."
-        ],
-        "items": [
-          "Используйте тестовый заказ или staging-сайт.",
-          "Проверьте отсутствующие значения, форматирование, условия и пользовательские метаданные.",
-          "Нужно иметь право редактировать выбранный заказ."
-        ]
-      },
-      {
-        "title": "24. Личное избранное и недавние шаблоны",
-        "paragraphs": [
-          "Каждый пользователь может отметить личные избранные шаблоны в заказе. Плагин также хранит десять последних успешно использованных шаблонов и поднимает их выше. Глобальное избранное остаётся общим."
-        ],
-        "items": [
-          "Личное избранное не влияет на других пользователей.",
-          "Недавний список обновляется только после успешного добавления заметки.",
-          "Данные хранятся в метаданных пользователя WordPress."
-        ]
-      },
-      {
-        "title": "25. Страница диагностики",
-        "paragraphs": [
-          "Откройте <strong>Mailhilfe Order Notes → Диагностика</strong>, чтобы увидеть версии WordPress, PHP и WooCommerce, статус HPOS, состояние письма клиентской заметки, язык, число шаблонов, кэш и WP_DEBUG."
-        ],
-        "items": [
-          "Указывайте эти данные при обращении в поддержку.",
-          "Содержимое заметок и адреса клиентов не показываются.",
-          "Разработчики могут добавлять строки фильтром диагностики."
-        ]
-      },
-      {
-        "title": "26. Хуки и фильтры для разработчиков",
-        "paragraphs": [
-          "Плагин предоставляет хуки и фильтры для заполнителей, значений, разрешённых мета-ключей, результатов шаблонов, условий, предпросмотра, итогового текста, действий до/после добавления, истории и диагностики. Имена описаны в readme.txt."
-        ],
-        "items": [
-          "Проверяйте, очищайте и экранируйте пользовательские данные.",
-          "Используйте API заказов WooCommerce, а не прямой доступ к таблицам.",
-          "Сохраняйте совместимость с HPOS и классическим хранением."
+          "सभी कस्टम डेटा को वैलिडेट, सैनिटाइज़ और एस्केप करें।",
+          "सीधे ऑर्डर तालिका पहुँच के बजाय WooCommerce ऑर्डर API उपयोग करें।",
+          "कस्टम एक्सटेंशन को HPOS और पारंपरिक ऑर्डर संग्रहण दोनों के साथ संगत रखें।"
         ]
       }
     ]
   },
   "zh_CN": {
     "title": "Mailhilfe Order Note Manager for WooCommerce 详细帮助",
-    "intro": "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。 Mailhilfe Order Note Manager for WooCommerce.",
+    "intro": "本帮助说明 Mailhilfe Order Note Manager for WooCommerce 的完整工作流程，包括创建和格式化模板、使用模板语言、占位符与元数据占位符、编辑预览、安全发送客户备注、设置权限、导入预览以及 HPOS 兼容性。",
     "sections": [
       {
-        "title": "1. 插件作用",
+        "title": "1. 插件的作用",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "Mailhilfe Order Note Manager for WooCommerce 可将常用的 WooCommerce 订单备注保存为可重复使用的模板。这样无需反复输入相同内容，并能让订单历史中的沟通记录保持一致。",
+          "模板可以设为员工使用的内部备注，也可以设为客户备注。在订单中使用模板时，仍可更改备注类型。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "典型用途包括付款提醒、配送延迟、电话沟通记录、地址核对和客户服务回复。",
+          "模板支持分类、收藏、排序、使用次数统计和 JSON 备份。"
         ]
       },
       {
-        "title": "2. 创建模板",
+        "title": "2. 创建新模板",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "打开 <strong>Mailhilfe 订单备注 → 新建</strong>。输入清晰的标题，在编辑器中填写备注文本，并选择默认备注类型是内部备注还是客户备注。",
+          "标题应简要说明用途，例如“付款提醒”或“客户来电询问配送”。这样更容易在订单页面中找到模板。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "模板较多时可分配一个或多个分类。",
+          "将经常使用的模板标记为收藏。",
+          "发布模板后，它才会在订单中可用。"
         ]
       },
       {
-        "title": "3. 设置文本格式",
+        "title": "3. 设置模板文本格式",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "模板文本使用 WordPress 编辑器。您可以使用段落、粗体、斜体、列表和链接。创建备注时会保留格式，但内容会按照 WordPress 的安全 HTML 规则进行清理。",
+          "客户备注中的格式应简洁。短段落或项目列表通常比冗长且无结构的文本更易阅读。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "推荐结构：简短问候、明确说明和下一步操作。",
+          "客户备注中应避免使用内部缩写。",
+          "不要在可能用作客户备注的模板中加入员工私密评论。"
         ]
       },
       {
-        "title": "4. 使用占位符",
+        "title": "4. 占位符",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "占位符是放在花括号中的文字。预览备注以及向订单添加备注时，占位符会被真实订单数据替换。",
+          "普通文本可以与占位符组合使用。例如：<code>您好 {customer}，我们已收到您的订单 {order_number}。</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "订单：<code>{order_number}</code>、<code>{order_status}</code>、<code>{order_date}</code>、<code>{order_total}</code>。",
+          "客户：<code>{customer}</code>、<code>{billing_email}</code>、<code>{billing_phone}</code>。",
+          "配送与付款：<code>{shipping_method}</code>、<code>{payment_method}</code>。",
+          "商品与商店：<code>{items}</code>、<code>{item_count}</code>、<code>{site_name}</code>。"
         ]
       },
       {
-        "title": "5. 检查预览",
+        "title": "5. 添加备注前预览",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "打开一个 WooCommerce 订单并选择模板。预览会显示已经用该订单数据替换占位符后的备注。",
+          "创建备注前务必检查预览。当订单中没有占位符对应的值时尤其重要，例如配送公司或电话号码缺失。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "检查姓名、金额、配送方式和商品列表。",
+          "确认所选备注类型是否正确。",
+          "如果相同文本需要对今后的所有订单进行改进，应先编辑模板。"
         ]
       },
       {
-        "title": "6. 内部备注和客户备注",
+        "title": "6. 内部备注与客户备注",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "内部备注供商店员工使用，通常用于记录、后续任务或服务历史。客户备注可能对客户可见，并且根据 WooCommerce 设置可能触发电子邮件通知。",
+          "请认真检查可编辑预览和所选备注类型。客户备注中只能包含允许客户查看的内容。"
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "内部备注示例：“客户来电，配送地址已确认。”",
+          "客户备注示例：“您的订单正在准备中，将很快发货。”",
+          "不要在客户备注中加入密码、私密评论或仅供供应商查看的信息。"
         ]
       },
       {
-        "title": "7. 收藏、搜索和排序",
+        "title": "7. 收藏、搜索与排序",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "收藏可将最重要的模板放在选择列表前部。订单页面中的搜索框可按标题、分类或内容查找模板。",
+          "您可以在模板列表中拖放调整顺序。保存后的顺序会用于订单页面中的模板显示。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "将日常使用的模板设为收藏。",
+          "使用分类整理付款、配送、退货和支持等主题。",
+          "标题保持简短，以便搜索结果易于阅读。"
         ]
       },
       {
-        "title": "8. 导入、导出和演示模板",
+        "title": "8. 导入、导出与演示模板",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "JSON 导出会为模板创建备份，可在进行较大更改前使用，也可将模板迁移到另一家商店。",
+          "JSON 导入可以创建模板，并更新标题或内部演示键相同的现有模板。演示模板可作为快速起点，并会按当前语言创建。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "批量更改前先导出备份。",
+          "仅导入来自可信来源的 JSON 文件。",
+          "导入后打开几个模板，检查格式和占位符。"
         ]
       },
       {
-        "title": "9. 角色和权限",
+        "title": "9. 权限与角色",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "插件分别使用“管理模板”和“在订单中使用模板”的权限。激活插件时，管理员和商店经理会自动获得这些权限。",
+          "如使用角色编辑器插件，可以为自定义角色授予或移除这些权限。"
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>：创建、编辑、删除和导入/导出模板。",
+          "<code>use_mh_order_note_templates</code>：在 WooCommerce 订单中使用模板。",
+          "没有所需权限的用户不会看到相关后台功能。"
         ]
       },
       {
-        "title": "10. 安全性和 HPOS 兼容性",
+        "title": "10. 安全性与 HPOS 兼容性",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "插件在后台操作中使用 WordPress nonce、权限检查、数据清理和输出转义。模板内容在保存或使用前会按照 WordPress 安全 HTML 规则进行清理。",
+          "订单数据通过 WooCommerce 订单 API 读取，而不是直接访问数据库表，因此兼容 WooCommerce HPOS 和经典订单存储。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "保持 WooCommerce 和 WordPress 为最新版本。",
+          "更改 WooCommerce 电子邮件设置后测试客户备注流程。",
+          "导入大量模板前先在测试站点中验证。"
         ]
       },
       {
         "title": "11. 故障排除",
         "paragraphs": [
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。",
-          "本帮助说明完整流程：创建带格式的模板、使用占位符、在 WooCommerce 订单中添加备注、导入/导出 JSON、管理权限、使用 HPOS 并安全操作。"
+          "如果订单中没有显示模板，请检查 WooCommerce 是否已启用、模板是否已发布，以及当前用户是否有使用模板的权限。",
+          "如果没有显示翻译，请检查 WordPress 的站点语言和用户语言。插件为所有受支持的语言（包括波斯语）内置了经过审核的回退文件。其他语言应通过经过审核的 WordPress.org 语言包提供。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "更新后如果仍显示旧后台页面，请清除对象缓存或缓存插件。",
+          "如果占位符没有被替换，请确认其拼写与列表完全一致，包括花括号。",
+          "如果客户备注没有发送邮件，请检查 WooCommerce 的客户备注邮件通知设置。"
         ]
       },
       {
         "title": "12. 设置页面",
         "paragraphs": [
-          "打开 <strong>Mailhilfe Order Notes → 设置</strong>，可配置默认备注类型、安全 HTML、使用次数显示、收藏、JSON 导入和语言匹配。日常操作建议默认使用内部备注。"
+          "打开 <strong>Mailhilfe 订单备注 → 设置</strong>，可配置默认备注类型、安全 HTML、使用次数显示、收藏、JSON 导入选项和语言匹配。日常使用时建议将内部备注设为默认类型，以降低误发风险。"
         ],
         "items": []
       },
       {
-        "title": "13. 模板语言和多语言商店",
+        "title": "13. 模板语言与多语言商店",
         "paragraphs": [
-          "每个模板都可以设置语言。选择 <strong>所有语言</strong> 表示通用文本，或选择具体语言用于已翻译的客户消息。",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "每个模板都可以设置模板语言。如果同一文本可用于所有订单，请选择<strong>所有语言</strong>；如需本地化文本，请选择指定语言。",
+          "在可用的情况下，插件可优先显示与订单语言、用户语言或多语言插件中的常用语言数据匹配的模板。"
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "员工内部备注可以使用一个中性模板。",
+          "为中文、德语、英语或其他商店语言创建不同的客户模板。",
+          "使用 WPML 或 Polylang 时，请通过真实测试订单验证订单语言识别。"
         ]
       },
       {
-        "title": "14. 自定义字段和元数据",
+        "title": "14. 自定义字段与元数据占位符",
         "paragraphs": [
-          "占位符 <code>{order_meta:meta_key}</code> 和 <code>{customer_meta:meta_key}</code> 可插入选定的元数据。password、token、secret 等敏感键会被阻止。",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "高级占位符可读取选定的订单或客户元数据字段。订单数据使用 <code>{order_meta:meta_key}</code>，客户用户数据使用 <code>{customer_meta:meta_key}</code>。",
+          "出于安全考虑，包含 password、token、secret、session、auth 和 hash 等敏感词的键名会被阻止。只有在了解字段内容时才应使用元数据占位符。"
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "示例：<code>{order_meta:_tracking_number}</code> 用于读取配送插件保存的物流单号。",
+          "示例：<code>{order_meta:_billing_vat_id}</code> 用于读取增值税识别号字段。",
+          "不要在客户备注中暴露内部字段或敏感字段。"
         ]
       },
       {
-        "title": "15. 复制和修订",
+        "title": "15. 复制模板与修订版本",
         "paragraphs": [
-          "复制操作会创建草稿副本。WordPress 修订可帮助比较并恢复旧版本。",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "需要创建仅有少量差异的模板时，可使用复制操作。副本会以草稿形式创建，以便发布前检查。",
+          "模板修订版本可用于比较早期版本，并在误改后恢复以前的文本。"
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "创建 DHL、UPS 或自提版本前，先复制通用配送模板。",
+          "大幅修改文本后检查修订版本。",
+          "标题应清晰，避免混淆相似模板。"
         ]
       },
       {
-        "title": "16. 权限",
+        "title": "16. 权限页面",
         "paragraphs": [
-          "<strong>权限</strong> 页面用于设置哪些角色可以管理模板，哪些角色可以在订单中使用模板。",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "打开 <strong>Mailhilfe 订单备注 → 权限</strong>，决定哪些 WordPress 角色可以管理模板，以及哪些角色可以在订单中使用模板。",
+          "管理员会保留必要权限。其他角色只应获得日常工作所需的权限。"
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "管理模板：创建、编辑、删除、导入和导出模板。",
+          "使用模板：选择模板并在 WooCommerce 订单中添加备注。",
+          "仅向受信任的用户授予导入/导出权限。"
         ]
       },
       {
         "title": "17. 导入预览",
         "paragraphs": [
-          "JSON 导入会先显示将创建、更新或跳过的模板数量。",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "JSON 导入会在执行更改前显示预览。预览会说明将创建、更新或跳过多少个模板。",
+          "检查预览后再确认导入，以避免意外覆盖现有模板。"
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "导入大量模板前先创建导出备份。",
+          "仅导入来自可信来源的 JSON 文件。",
+          "导入后至少测试一条客户备注和一条内部备注。"
         ]
       },
       {
-        "title": "18. 客户备注邮件状态",
+        "title": "18. 客户备注电子邮件行为",
         "paragraphs": [
-          "启用相应邮件后，客户备注可能触发 WooCommerce 邮件通知。插件会分别记录客户备注的创建和邮件处理结果。添加备注前请检查可编辑预览，并在“历史记录”页面查看邮件处理结果。"
+          "启用相应邮件后，客户备注可能触发 WooCommerce 电子邮件通知。插件会分别记录客户备注创建和电子邮件处理状态。添加备注前请检查可编辑预览，并在“历史记录”页面查看邮件处理程序的结果。"
         ],
         "items": []
       },
       {
-        "title": "19. 推荐流程",
+        "title": "19. 推荐工作流程",
         "paragraphs": [
-          "选择模板，检查替换后的预览，需要时编辑，确认备注类型，然后添加备注。",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "安全的日常流程是：选择模板，检查替换后的预览，必要时编辑预览，确认备注类型，然后添加备注。",
+          "新模板应先在非关键订单或测试商店中验证，再用于真实客户。"
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "仅供员工查看的信息使用内部备注。",
+          "只有可能发送给客户的内容才使用客户备注。",
+          "每次更改模板后都检查占位符。"
         ]
       },
       {
         "title": "20. 模板条件",
         "paragraphs": [
-          "模板条件决定某个模板是否可用于订单。可按订单状态、付款方式、配送方式、账单国家以及最低或最高订单金额进行限制。所有已设置的条件都必须匹配。"
+          "模板条件决定模板是否适用于某个订单。您可以按订单状态、付款方式、配送方式、账单国家/地区以及订单最低或最高金额限制模板。所有已配置条件都必须满足。"
         ],
         "items": [
-          "不需要限制的条件请留空。",
-          "付款和配送方式请使用技术 ID。",
-          "条件会在界面中检查，并在创建备注前由服务器再次检查。"
+          "某项条件不应限制模板时，将该字段留空。",
+          "付款方式和配送方式应使用技术 ID。",
+          "创建备注前，系统会在界面和服务器端再次检查条件。"
         ]
       },
       {
-        "title": "21. 邮件处理日志",
+        "title": "21. 电子邮件处理日志",
         "paragraphs": [
-          "对于客户备注，插件会记录 WooCommerce 报告的邮件处理事件以及 wp_mail 技术错误。“已处理”只表示邮件已交给邮件系统，并不证明最终送达或客户已阅读。"
+          "对于客户备注，插件会记录 WooCommerce 报告客户备注邮件已处理的时间，也会记录 wp_mail 技术错误。“已处理”仅表示 WordPress/WooCommerce 已将邮件交给邮件系统，不能证明最终送达或客户已阅读。"
         ],
         "items": [
-          "在“历史记录”页面查看已处理和失败事件。",
-          "需要准确送达信息时请使用 SMTP 服务商。",
+          "在“历史记录”页面查看已处理和失败的邮件事件。",
+          "需要确定送达信息时，请使用 SMTP 服务商或邮件日志服务。",
           "内部备注不会触发客户备注邮件。"
         ]
       },
       {
         "title": "22. 集中历史记录",
         "paragraphs": [
-          "打开 <strong>Mailhilfe Order Notes → 历史记录</strong>，可查看备注创建、模板使用、邮件处理和邮件失败。可用时会显示订单、模板、用户、收件人、事件类型和时间。"
+          "打开 <strong>Mailhilfe 订单备注 → 历史记录</strong>，可查看最近的备注创建、模板使用、电子邮件处理和邮件失败记录。可用时，记录会包含订单、模板、用户、收件人、事件类型和时间。"
         ],
         "items": [
-          "可用于支持、审计和故障排除。",
-          "该历史记录与 WooCommerce 订单备注分开。",
+          "历史记录可用于支持、审计和故障排除。",
+          "该历史记录独立于 WooCommerce 订单备注。",
           "页面显示最近 250 条记录。"
         ]
       },
       {
         "title": "23. 测试订单预览",
         "paragraphs": [
-          "在模板编辑器中输入 WooCommerce 订单 ID。当前编辑内容（包括未保存的更改）会使用该订单数据生成预览，不会创建备注或发送邮件。"
+          "在模板编辑器的测试预览区域输入 WooCommerce 订单 ID。系统会使用该订单的数据渲染当前编辑器内容（包括尚未保存的更改），不会创建备注或发送电子邮件。"
         ],
         "items": [
-          "请使用测试订单或预发布环境。",
+          "使用测试订单或非关键订单。",
           "检查缺失值、格式、条件和自定义元数据占位符。",
           "您必须有权编辑所选订单。"
         ]
       },
       {
-        "title": "24. 个人收藏和最近使用的模板",
+        "title": "24. 个人收藏与最近使用的模板",
         "paragraphs": [
-          "每位用户都可以在订单页面标记个人收藏。插件还会为每个用户保存最近成功使用的十个模板并优先显示。全局收藏仍对所有用户共享。"
+          "每位管理员都可以在订单页面标记个人收藏。插件还会为每个用户保存最近使用的 10 个模板，并在选择列表中提高其位置。全局收藏仍由所有用户共享。"
         ],
         "items": [
-          "个人收藏不会影响其他用户。",
-          "只有成功添加备注后才会更新最近列表。",
-          "数据存储为 WordPress 用户元数据。"
+          "个人收藏不会改变其他用户的列表。",
+          "只有成功添加备注后才会更新最近使用列表。",
+          "个人数据以 WordPress 用户元数据形式保存。"
         ]
       },
       {
         "title": "25. 诊断页面",
         "paragraphs": [
-          "打开 <strong>Mailhilfe Order Notes → 诊断</strong>，可查看 WordPress、PHP 和 WooCommerce 版本、HPOS 状态、客户备注邮件状态、语言、已发布模板数量、缓存和 WP_DEBUG。"
+          "打开 <strong>Mailhilfe 订单备注 → 诊断</strong>，可查看 WordPress、PHP 和 WooCommerce 版本、HPOS 状态、客户备注邮件状态、区域设置、已发布模板数量、缓存状态和 WP_DEBUG 等技术信息。"
         ],
         "items": [
-          "请求支持时请提供这些信息。",
-          "页面不会显示备注内容或客户地址。",
-          "开发者可通过诊断过滤器添加项目。"
+          "请求支持时复制诊断值。",
+          "该页面不会显示订单备注内容或客户地址。",
+          "开发者可以通过诊断过滤器添加行。"
         ]
       },
       {
-        "title": "26. 开发者钩子和过滤器",
+        "title": "26. 开发者钩子与过滤器",
         "paragraphs": [
-          "插件为占位符、值、允许的元键、模板结果、条件、预览、最终备注内容、添加前后操作、历史记录和诊断提供钩子与过滤器。名称和参数记录在 readme.txt 中。"
+          "插件为占位符、占位符值、允许的元数据键、模板结果、条件、预览内容、最终备注内容、添加备注前后的操作、历史记录和诊断提供钩子与过滤器。钩子名称和参数记录在 readme.txt 中。"
         ],
         "items": [
           "验证、清理并转义所有自定义数据。",
-          "使用 WooCommerce 订单 API，不要直接访问订单表。",
-          "保持对 HPOS 和经典订单存储的兼容性。"
+          "使用 WooCommerce 订单 API，不要直接访问订单数据库表。",
+          "确保自定义扩展同时兼容 HPOS 和经典订单存储。"
         ]
       }
     ]
   },
   "ja": {
     "title": "Mailhilfe Order Note Manager for WooCommerce 詳細ヘルプ",
-    "intro": "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。 Mailhilfe Order Note Manager for WooCommerce.",
+    "intro": "このヘルプでは、Mailhilfe Order Note Manager for WooCommerce の全体的な操作手順を説明します。テンプレートの作成と書式設定、テンプレート言語、プレースホルダーとメタプレースホルダー、プレビュー編集、顧客向けメモの安全な送信、設定、権限、インポートプレビュー、HPOS 互換性を扱います。",
     "sections": [
       {
-        "title": "1. プラグインの役割",
+        "title": "1. プラグインの機能",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "Mailhilfe Order Note Manager for WooCommerce を使用すると、よく使う WooCommerce の注文メモを再利用可能なテンプレートとして保存できます。同じ文章を繰り返し入力する必要がなくなり、注文履歴内のコミュニケーションを統一できます。",
+          "テンプレートはスタッフ用の内部メモまたは顧客向けメモとして準備できます。注文でテンプレートを使用する際に、メモの種類を変更することもできます。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "一般的な用途: 支払いリマインダー、配送遅延、電話対応記録、住所確認、カスタマーサービスの回答。",
+          "テンプレートではカテゴリー、お気に入り、並べ替え、使用回数、JSON バックアップを利用できます。"
         ]
       },
       {
-        "title": "2. テンプレートを作成する",
+        "title": "2. 新しいテンプレートを作成する",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "<strong>Mailhilfe 注文メモ → 新規追加</strong>を開きます。分かりやすいタイトルを入力し、エディターにメモ本文を記入して、既定のメモ種類を内部メモまたは顧客向けメモから選択します。",
+          "タイトルには「支払いリマインダー」や「配送について顧客から電話」など、用途を短く記載してください。注文画面でテンプレートを見つけやすくなります。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "テンプレートが多い場合は、1 つ以上のカテゴリーを割り当てます。",
+          "よく使うテンプレートをお気に入りに追加します。",
+          "注文で使用できるようにテンプレートを公開します。"
         ]
       },
       {
-        "title": "3. テキストを書式設定する",
+        "title": "3. テンプレート本文の書式設定",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "テンプレート本文には WordPress エディターを使用します。段落、太字、斜体、リスト、リンクで文章を整形できます。メモ作成時に書式は保持されますが、内容は WordPress の安全な HTML ルールに従ってサニタイズされます。",
+          "顧客向けメモでは書式を控えめに使用してください。長く構造のない文章より、短い段落や箇条書きの方が読みやすくなります。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "良い例: 短い挨拶、明確な説明、次に行うことを 1 つずつ記載します。",
+          "顧客向けメモでは社内略語を避けます。",
+          "顧客向けメモとして使用する可能性があるテンプレートに、スタッフだけが見るべきコメントを入れないでください。"
         ]
       },
       {
-        "title": "4. プレースホルダーを使う",
+        "title": "4. プレースホルダー",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "プレースホルダーは波括弧で囲まれた文字列です。プレビュー表示時と注文にメモを追加する際に、実際の注文データに置き換えられます。",
+          "通常の文章とプレースホルダーを組み合わせられます。例: <code>{customer} 様、ご注文 {order_number} を承りました。</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "注文: <code>{order_number}</code>、<code>{order_status}</code>、<code>{order_date}</code>、<code>{order_total}</code>。",
+          "顧客: <code>{customer}</code>、<code>{billing_email}</code>、<code>{billing_phone}</code>。",
+          "配送と支払い: <code>{shipping_method}</code>、<code>{payment_method}</code>。",
+          "商品とショップ: <code>{items}</code>、<code>{item_count}</code>、<code>{site_name}</code>。"
         ]
       },
       {
-        "title": "5. プレビューを確認する",
+        "title": "5. メモを追加する前のプレビュー",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "WooCommerce の注文を開いてテンプレートを選択します。プレビューには、選択した注文データでプレースホルダーを置換したメモが表示されます。",
+          "メモを作成する前に必ずプレビューを確認してください。配送会社名や電話番号がないなど、注文にプレースホルダーの値が存在しない場合は特に重要です。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "氏名、合計金額、配送方法、商品一覧を確認します。",
+          "選択したメモ種類が正しいか確認します。",
+          "今後のすべての注文で同じ文章を改善したい場合は、先にテンプレートを編集します。"
         ]
       },
       {
-        "title": "6. 内部メモと顧客メモ",
+        "title": "6. 内部メモと顧客向けメモ",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "内部メモはショップスタッフ向けで、通常は記録、フォローアップ作業、対応履歴に使用します。顧客向けメモは顧客に表示される可能性があり、WooCommerce の設定によってはメール通知が送信されます。",
+          "編集可能なプレビューと選択したメモ種類を慎重に確認してください。顧客向けメモには、顧客が読んでもよい内容だけを使用します。"
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "内部メモの例: 「顧客から電話あり。配送先住所を確認済み。」",
+          "顧客向けメモの例: 「ご注文の準備を進めており、まもなく発送いたします。」",
+          "顧客向けメモにパスワード、非公開コメント、仕入先専用情報を記載しないでください。"
         ]
       },
       {
         "title": "7. お気に入り、検索、並べ替え",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "お気に入りを使用すると、重要なテンプレートを選択リストの上部に表示できます。注文画面の検索欄では、タイトル、カテゴリー、内容からテンプレートを検索できます。",
+          "テンプレート一覧ではドラッグ＆ドロップで順序を変更できます。保存した順序は注文画面のテンプレート表示に反映されます。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "日常的に使用するテンプレートをお気に入りにします。",
+          "支払い、配送、返品、サポートなどのテーマ別にカテゴリーを使用します。",
+          "検索結果を読みやすくするため、タイトルは短くします。"
         ]
       },
       {
         "title": "8. インポート、エクスポート、デモテンプレート",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "JSON エクスポートはテンプレートのバックアップを作成します。大きな変更の前や、別のショップへテンプレートを移行する際に使用できます。",
+          "JSON インポートではテンプレートを作成し、同じタイトルまたは内部デモキーを持つ既存テンプレートを更新できます。デモテンプレートは作業開始用の例で、現在の言語で作成されます。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "一括変更の前にエクスポートします。",
+          "信頼できる提供元の JSON ファイルだけをインポートします。",
+          "インポート後に複数のテンプレートを開き、書式とプレースホルダーを確認します。"
         ]
       },
       {
-        "title": "9. ロールと権限",
+        "title": "9. 権限と権限グループ",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "このプラグインでは、テンプレートの管理権限と注文でテンプレートを使用する権限を分けています。管理者とショップマネージャーには、プラグイン有効化時にこれらの権限が自動的に付与されます。",
+          "権限グループ編集プラグインを使用している場合は、独自の権限グループにこれらの権限を付与または削除できます。"
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: テンプレートの作成、編集、削除、インポート、エクスポート。",
+          "<code>use_mh_order_note_templates</code>: WooCommerce の注文でテンプレートを使用。",
+          "必要な権限を持たないユーザーには、関連する管理機能が表示されません。"
         ]
       },
       {
         "title": "10. セキュリティと HPOS 互換性",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "管理操作では WordPress の nonce、権限チェック、サニタイズ、エスケープを使用します。テンプレート内容は保存または使用する前に、WordPress の安全な HTML ルールで処理されます。",
+          "注文データはデータベーステーブルへ直接アクセスせず、WooCommerce の注文 API から読み取ります。このため WooCommerce HPOS と従来の注文ストレージの両方に対応します。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "WooCommerce と WordPress を最新の状態に保ちます。",
+          "WooCommerce のメール設定を変更した後は、顧客向けメモの流れをテストします。",
+          "大量のテンプレートをインポートする前にステージングサイトを使用します。"
         ]
       },
       {
         "title": "11. トラブルシューティング",
         "paragraphs": [
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。",
-          "このヘルプでは、書式付きテンプレートの作成、プレースホルダーの使用、WooCommerce 注文へのメモ追加、JSON のインポート/エクスポート、権限、HPOS、安全な運用まで説明します。"
+          "注文にテンプレートが表示されない場合は、WooCommerce が有効であること、テンプレートが公開済みであること、現在のユーザーにテンプレート使用権限があることを確認してください。",
+          "翻訳が表示されない場合は、WordPress のサイト言語とユーザー言語を確認してください。プラグインには、ペルシア語を含むすべての対応言語のレビュー済みフォールバックファイルが同梱されています。その他の言語は、レビュー済みの WordPress.org 言語パックから提供してください。"
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "更新後も古い管理画面が表示される場合は、オブジェクトキャッシュまたはキャッシュプラグインを削除します。",
+          "プレースホルダーが置換されない場合は、波括弧を含めて一覧と完全に同じ表記か確認します。",
+          "顧客向けメモのメールが送信されない場合は、WooCommerce の顧客向けメモ通知メール設定を確認します。"
         ]
       },
       {
         "title": "12. 設定ページ",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → 設定</strong> で、既定のメモ種類、安全な HTML、使用回数表示、お気に入り、JSON インポート、言語照合を設定できます。日常作業では内部メモを既定にしてください。"
+          "<strong>Mailhilfe 注文メモ → 設定</strong>を開き、既定のメモ種類、安全な HTML の動作、使用回数表示、お気に入り、JSON インポート、言語照合を設定します。日常業務での誤送信を減らすため、既定値には内部メモを推奨します。"
         ],
         "items": []
       },
       {
         "title": "13. テンプレート言語と多言語ショップ",
         "paragraphs": [
-          "各テンプレートに言語を設定できます。共通テキストは <strong>すべての言語</strong>、翻訳済みの顧客向け文面は特定の言語を選びます。",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "各テンプレートにはテンプレート言語を設定できます。同じ文章をすべての注文で使用できる場合は<strong>すべての言語</strong>を選び、言語別の文章には特定の言語を選択します。",
+          "利用可能な場合、注文言語、ユーザー言語、多言語プラグインの一般的な言語データに一致するテンプレートを優先できます。"
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "スタッフ用の内部メモには、1 つの共通テンプレートを使用できます。",
+          "日本語、ドイツ語、英語など、ショップで使用する言語ごとに顧客向けテンプレートを作成します。",
+          "WPML または Polylang を使用する場合は、実際のテスト注文で注文言語の検出を確認します。"
         ]
       },
       {
-        "title": "14. カスタムフィールドとメタデータ",
+        "title": "14. カスタムフィールドとメタプレースホルダー",
         "paragraphs": [
-          "<code>{order_meta:meta_key}</code> と <code>{customer_meta:meta_key}</code> は選択したメタデータを挿入します。password、token、secret などの機密キーはブロックされます。",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "高度なプレースホルダーでは、選択した注文または顧客のメタフィールドを読み取れます。注文データには <code>{order_meta:meta_key}</code>、顧客ユーザーデータには <code>{customer_meta:meta_key}</code> を使用します。",
+          "セキュリティ上、password、token、secret、session、auth、hash などの機密語を含むキー名はブロックされます。フィールドの内容を理解している場合にのみ、メタプレースホルダーを使用してください。"
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "例: 配送プラグインが保存した追跡番号には <code>{order_meta:_tracking_number}</code>。",
+          "例: VAT ID フィールドには <code>{order_meta:_billing_vat_id}</code>。",
+          "内部情報や機密フィールドを顧客向けメモに表示しないでください。"
         ]
       },
       {
-        "title": "15. 複製とリビジョン",
+        "title": "15. テンプレートの複製とリビジョン",
         "paragraphs": [
-          "複製は下書きコピーを作成します。WordPress のリビジョンで過去の内容を比較・復元できます。",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "一部だけ異なる似たテンプレートが必要な場合は、複製操作を使用します。コピーは下書きとして作成されるため、公開前に確認できます。",
+          "テンプレートのリビジョンでは以前の版を比較し、誤って変更した場合に前の文章を復元できます。"
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "DHL、UPS、店頭受取用を作る前に、共通の配送テンプレートを複製します。",
+          "大きな文章変更の後はリビジョンを確認します。",
+          "似たテンプレートを混同しないよう、明確なタイトルを付けます。"
         ]
       },
       {
-        "title": "16. 権限",
+        "title": "16. 権限ページ",
         "paragraphs": [
-          "<strong>権限</strong> ページで、どの権限グループがテンプレートを管理または注文で使用できるかを設定します。",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "<strong>Mailhilfe 注文メモ → 権限</strong>を開き、どの WordPress 権限グループがテンプレートを管理できるか、どの権限グループが注文でテンプレートを使用できるかを設定します。",
+          "管理者には必要な権限が保持されます。その他の権限グループには、日常業務に必要な権限だけを付与します。"
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "テンプレート管理: 作成、編集、削除、インポート、エクスポート。",
+          "テンプレート使用: WooCommerce の注文でテンプレートを選択し、メモを追加。",
+          "インポート/エクスポート権限は信頼できるユーザーだけに付与します。"
         ]
       },
       {
         "title": "17. インポートプレビュー",
         "paragraphs": [
-          "JSON インポートでは、適用前に作成・更新・スキップされるテンプレート数を確認できます。",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "JSON インポートでは、変更を適用する前にプレビューが表示されます。作成、更新、スキップされるテンプレート数を確認できます。",
+          "既存テンプレートの意図しない上書きを防ぐため、プレビューを確認した後にのみインポートを確定してください。"
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "大量のテンプレートをインポートする前にエクスポートバックアップを作成します。",
+          "信頼できる提供元の JSON ファイルだけをインポートします。",
+          "インポート後に顧客向けメモと内部メモを少なくとも 1 件ずつテストします。"
         ]
       },
       {
-        "title": "18. 顧客メモメールの状態",
+        "title": "18. 顧客向けメモのメール動作",
         "paragraphs": [
-          "対応するメールが有効な場合、顧客メモによって WooCommerce のメール通知が送信されることがあります。プラグインは顧客メモの作成とメール処理を別々に記録します。追加前に編集可能なプレビューを確認し、履歴ページでメール処理結果を確認してください。"
+          "対応するメールが有効な場合、顧客向けメモによって WooCommerce のメール通知が送信されることがあります。プラグインは顧客向けメモの作成とメール処理状態を別々に記録します。メモ追加前に編集可能なプレビューを確認し、「履歴」ページでメール処理結果を確認してください。"
         ],
         "items": []
       },
       {
         "title": "19. 推奨ワークフロー",
         "paragraphs": [
-          "テンプレートを選択し、置換後のプレビューを確認し、必要に応じて編集し、メモ種類を確認してから追加します。",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "安全な日常手順は、テンプレートを選択し、置換後のプレビューを確認し、必要に応じてプレビューを編集し、メモ種類を確認してからメモを追加することです。",
+          "新しいテンプレートは実際の顧客に使用する前に、重要でない注文またはテストショップで検証してください。"
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "スタッフだけが見る情報には内部メモを使用します。",
+          "顧客に送信してよい内容だけを顧客向けメモに使用します。",
+          "テンプレートを変更するたびにプレースホルダーを確認します。"
         ]
       },
       {
         "title": "20. テンプレート条件",
         "paragraphs": [
-          "条件はテンプレートを注文で利用できるか決定します。注文ステータス、支払方法、配送方法、請求先国、最小・最大注文金額で制限できます。設定した条件はすべて一致する必要があります。"
+          "テンプレート条件は、特定の注文でテンプレートを利用できるかを決定します。注文ステータス、支払い方法、配送方法、請求先の国、注文合計の下限または上限でテンプレートを制限できます。設定したすべての条件を満たす必要があります。"
         ],
         "items": [
-          "制限しない項目は空欄にします。",
-          "支払方法と配送方法は技術 ID を使用します。",
-          "条件は画面上と、メモ作成前のサーバー側で再確認されます。"
+          "条件でテンプレートを制限しない項目は空欄にします。",
+          "支払い方法と配送方法には技術的な ID を使用します。",
+          "メモ作成前に、画面側とサーバー側の両方で条件が再確認されます。"
         ]
       },
       {
         "title": "21. メール処理ログ",
         "paragraphs": [
-          "顧客メモでは、WooCommerce がメールを処理したイベントと wp_mail の技術的エラーを記録します。「処理済み」はメールシステムへの引き渡しを示すだけで、最終配信や既読を保証しません。"
+          "顧客向けメモでは、WooCommerce が顧客向けメモメールを処理したと報告した時刻と、wp_mail の技術的エラーを記録します。「処理済み」は WordPress/WooCommerce がメールシステムへメッセージを渡したことを示すだけで、最終配信や顧客の開封を証明しません。"
         ],
         "items": [
-          "履歴ページで処理済み・失敗イベントを確認します。",
-          "正確な配信情報には SMTP サービスを利用してください。",
-          "内部メモは顧客メモメールを送信しません。"
+          "「履歴」ページで処理済みおよび失敗したメールイベントを確認します。",
+          "配信結果が必要な場合は、SMTP プロバイダーまたはメールログサービスを使用します。",
+          "内部メモでは顧客向けメモメールは送信されません。"
         ]
       },
       {
         "title": "22. 一元化された履歴",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → 履歴</strong>で、メモ作成、テンプレート利用、メール処理、メール失敗を確認できます。利用可能な場合は注文、テンプレート、ユーザー、受信者、イベント種別、時刻が表示されます。"
+          "<strong>Mailhilfe 注文メモ → 履歴</strong>を開くと、最近のメモ作成、テンプレート使用、メール処理、メール失敗を確認できます。利用可能な場合、注文、テンプレート、ユーザー、受信者、イベント種類、時刻が記録されます。"
         ],
         "items": [
-          "サポート、監査、トラブルシューティングに利用できます。",
-          "WooCommerce の注文メモとは別に保存されます。",
-          "最新 250 件を表示します。"
+          "履歴はサポート、監査、トラブルシューティングに使用できます。",
+          "この履歴は WooCommerce の注文メモとは別に保存されます。",
+          "ページには最新 250 件の記録が表示されます。"
         ]
       },
       {
         "title": "23. テスト注文プレビュー",
         "paragraphs": [
-          "テンプレートエディターに WooCommerce 注文 ID を入力すると、未保存の変更を含む現在の内容を注文データでプレビューできます。メモ作成やメール送信は行いません。"
+          "テンプレートエディターのテストプレビュー欄に WooCommerce の注文 ID を入力します。未保存の変更を含む現在のエディター内容が、その注文データで表示されます。メモの作成やメール送信は行われません。"
         ],
         "items": [
-          "テスト注文またはステージング環境を使用します。",
-          "空の値、書式、条件、カスタムメタを確認します。",
+          "テスト注文または重要でない注文を使用します。",
+          "不足値、書式、条件、カスタムメタプレースホルダーを確認します。",
           "選択した注文を編集する権限が必要です。"
         ]
       },
       {
         "title": "24. 個人のお気に入りと最近使用したテンプレート",
         "paragraphs": [
-          "各ユーザーは注文画面で個人のお気に入りを設定できます。また、正常に使用した最新 10 件をユーザーごとに保存して上位に表示します。グローバルなお気に入りは全員で共有されます。"
+          "各管理ユーザーは注文画面で個人のお気に入りを設定できます。また、ユーザーごとに最近使用した 10 件のテンプレートを保存し、選択リストで上位に表示します。グローバルのお気に入りは引き続き全ユーザーで共有されます。"
         ],
         "items": [
-          "個人のお気に入りは他のユーザーに影響しません。",
-          "最近の一覧はメモの追加成功後に更新されます。",
-          "データは WordPress のユーザーメタに保存されます。"
+          "個人のお気に入りは他のユーザーの一覧を変更しません。",
+          "最近使用した一覧はメモの追加に成功した後だけ更新されます。",
+          "個人データは WordPress のユーザーメタとして保存されます。"
         ]
       },
       {
         "title": "25. 診断ページ",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → 診断</strong>で WordPress、PHP、WooCommerce のバージョン、HPOS、顧客メモメール、言語、テンプレート数、キャッシュ、WP_DEBUG を確認できます。"
+          "<strong>Mailhilfe 注文メモ → 診断</strong>を開くと、WordPress、PHP、WooCommerce のバージョン、HPOS 状態、顧客向けメモメール状態、ロケール、公開済みテンプレート数、キャッシュ状態、WP_DEBUG などの技術情報を確認できます。"
         ],
         "items": [
-          "サポート依頼時にこれらの値を提供してください。",
-          "メモ内容や顧客住所は表示されません。",
-          "開発者は診断フィルターで項目を追加できます。"
+          "サポートを依頼する際は診断値をコピーします。",
+          "このページには注文メモ本文や顧客住所は表示されません。",
+          "開発者は診断フィルターを使用して行を追加できます。"
         ]
       },
       {
         "title": "26. 開発者向けフックとフィルター",
         "paragraphs": [
-          "プレースホルダー、値、許可メタキー、テンプレート結果、条件、プレビュー、最終内容、追加前後、履歴、診断を拡張するフックとフィルターがあります。名前と引数は readme.txt に記載されています。"
+          "プレースホルダー、プレースホルダー値、許可するメタキー、テンプレート結果、条件、プレビュー内容、最終メモ内容、メモ追加前後のアクション、履歴レコード、診断のためのフックとフィルターを提供します。フック名と引数は readme.txt に記載されています。"
         ],
         "items": [
-          "独自データは検証、サニタイズ、エスケープしてください。",
-          "注文テーブルへの直接アクセスではなく WooCommerce API を使用します。",
-          "HPOS と従来の保存方式の両方に対応してください。"
+          "すべてのカスタムデータを検証、サニタイズ、エスケープします。",
+          "注文テーブルへ直接アクセスせず、WooCommerce の注文 API を使用します。",
+          "独自拡張を HPOS と従来の注文ストレージの両方に対応させます。"
         ]
       }
     ]
   },
-  "ko_KR": {
-    "title": "Mailhilfe Order Note Manager for WooCommerce 상세 도움말",
-    "intro": "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다. Mailhilfe Order Note Manager for WooCommerce.",
+  "nl_NL": {
+    "title": "Uitgebreide hulp voor Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Deze hulp beschrijft de volledige werkwijze van Mailhilfe Order Note Manager for WooCommerce: sjablonen maken en opmaken, sjabloontalen gebruiken, plaatshouders en metaplaatshouders toepassen, voorbeelden bewerken, klantnotities veilig verzenden, instellingen en rechten beheren, importvoorbeelden controleren en werken met WooCommerce HPOS.",
     "sections": [
       {
-        "title": "1. 플러그인의 기능",
+        "title": "1. Wat de plugin doet",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Met Mailhilfe Order Note Manager for WooCommerce kun je vaak gebruikte WooCommerce-bestelnotities als herbruikbare sjablonen opslaan. Daardoor hoef je dezelfde tekst niet telkens opnieuw te typen en blijft de communicatie in de bestelgeschiedenis consistent.",
+          "Een sjabloon kan worden voorbereid als interne notitie voor medewerkers of als klantnotitie. Bij gebruik in een bestelling kun je het notitietype nog wijzigen."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Typische voorbeelden: betalingsherinneringen, leveringsvertragingen, telefoonnotities, adrescontroles en antwoorden van de klantenservice.",
+          "Sjablonen ondersteunen categorieën, favorieten, sortering, een gebruiksteller en JSON-back-ups."
         ]
       },
       {
-        "title": "2. 템플릿 만들기",
+        "title": "2. Een nieuw sjabloon maken",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Open <strong>Mailhilfe Bestelnotities → Nieuwe toevoegen</strong>. Voer een duidelijke titel in, schrijf de notitietekst in de editor en kies of het standaard notitietype intern of klantgericht moet zijn.",
+          "Gebruik de titel als korte omschrijving van het doel, bijvoorbeeld “Betalingsherinnering” of “Klant belde over levering”. Zo is het sjabloon gemakkelijker terug te vinden in het bestelscherm."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Wijs een of meer categorieën toe wanneer je veel sjablonen hebt.",
+          "Markeer veelgebruikte sjablonen als favoriet.",
+          "Publiceer het sjabloon zodat het in bestellingen beschikbaar wordt."
         ]
       },
       {
-        "title": "3. 텍스트 서식 지정",
+        "title": "3. Sjabloontekst opmaken",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "De sjabloontekst gebruikt de WordPress-editor. Je kunt tekst opmaken met alinea’s, vet en cursief, lijsten en links. De opmaak blijft behouden wanneer de notitie wordt gemaakt, maar de inhoud wordt opgeschoond volgens de veilige HTML-regels van WordPress.",
+          "Gebruik opmaak terughoudend in klantnotities. Een korte alinea of opsomming is meestal beter leesbaar dan een lange, ongestructureerde tekst."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Goed voorbeeld: een korte begroeting, één duidelijke uitleg en één volgende stap.",
+          "Vermijd interne afkortingen in klantnotities.",
+          "Plaats geen privé-opmerkingen voor medewerkers in sjablonen die als klantnotitie kunnen worden gebruikt."
         ]
       },
       {
-        "title": "4. 자리표시자 사용",
+        "title": "4. Plaatshouders",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Plaatshouders zijn woorden tussen accolades. Ze worden in het voorbeeld en bij het toevoegen van de notitie vervangen door echte bestelgegevens.",
+          "Je kunt gewone tekst en plaatshouders combineren. Voorbeeld: <code>Hallo {customer}, we hebben je bestelling {order_number} ontvangen.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Bestelling: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Klant: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Verzending en betaling: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Artikelen en winkel: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. 미리보기 확인",
+        "title": "5. Voorbeeld controleren voordat je een notitie toevoegt",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Open een WooCommerce-bestelling en selecteer een sjabloon. Het voorbeeld toont de notitie waarbij de plaatshouders al zijn vervangen door gegevens uit de geselecteerde bestelling.",
+          "Controleer het voorbeeld altijd voordat je de notitie maakt. Dit is vooral belangrijk wanneer een plaatshouder geen waarde in de bestelling heeft, bijvoorbeeld als een vervoerder of telefoonnummer ontbreekt."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Controleer namen, bedragen, verzendmethode en artikellijst.",
+          "Controleer of het geselecteerde notitietype juist is.",
+          "Bewerk eerst het sjabloon wanneer dezelfde tekst voor alle toekomstige bestellingen moet worden verbeterd."
         ]
       },
       {
-        "title": "6. 내부 메모와 고객 메모",
+        "title": "6. Interne notities en klantnotities",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Interne notities zijn bedoeld voor winkelmedewerkers en worden normaal gebruikt voor documentatie, vervolgacties of servicegeschiedenis. Klantnotities kunnen zichtbaar zijn voor de klant en kunnen, afhankelijk van je WooCommerce-instellingen, een e-mailmelding activeren.",
+          "Controleer het bewerkbare voorbeeld en het geselecteerde notitietype zorgvuldig. Gebruik klantnotities alleen voor tekst die de klant mag lezen."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Interne notitie: “Klant heeft gebeld, afleveradres bevestigd.”",
+          "Klantnotitie: “Je bestelling wordt voorbereid en wordt binnenkort verzonden.”",
+          "Zet nooit wachtwoorden, privé-opmerkingen of informatie die alleen voor leveranciers bestemd is in klantnotities."
         ]
       },
       {
-        "title": "7. 즐겨찾기, 검색 및 정렬",
+        "title": "7. Favorieten, zoeken en sorteren",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Met favorieten kun je de belangrijkste sjablonen bovenaan de selectie plaatsen. Het zoekveld in het bestelscherm helpt je een sjabloon te vinden op titel, categorie of inhoud.",
+          "In de sjablonenlijst kun je de volgorde met slepen en neerzetten wijzigen. De opgeslagen volgorde wordt gebruikt wanneer sjablonen in het bestelscherm worden getoond."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Gebruik favorieten voor dagelijkse sjablonen.",
+          "Gebruik categorieën voor onderwerpen zoals Betaling, Verzending, Retouren en Ondersteuning.",
+          "Houd titels kort zodat zoekresultaten goed leesbaar blijven."
         ]
       },
       {
-        "title": "8. 가져오기, 내보내기 및 데모 템플릿",
+        "title": "8. Importeren, exporteren en demosjablonen",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "De JSON-export maakt een back-up van je sjablonen. Je kunt die gebruiken vóór grotere wijzigingen of om sjablonen naar een andere winkel over te zetten.",
+          "De JSON-import kan sjablonen maken en bestaande sjablonen met dezelfde titel of interne demosleutel bijwerken. Demosjablonen bieden een snel uitgangspunt en worden in de actieve taal gemaakt."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Exporteer vóór bulkbewerkingen.",
+          "Importeer alleen JSON-bestanden uit een vertrouwde bron.",
+          "Open na de import enkele sjablonen en controleer de opmaak en plaatshouders."
         ]
       },
       {
-        "title": "9. 역할과 권한",
+        "title": "9. Rechten en rollen",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "De plugin gebruikt afzonderlijke rechten voor het beheren van sjablonen en het gebruiken van sjablonen in bestellingen. Beheerders en winkelmanagers ontvangen deze rechten automatisch bij activering.",
+          "Wanneer je een plugin voor rolbeheer gebruikt, kun je deze rechten aan aangepaste rollen toekennen of ervan verwijderen."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: sjablonen maken, bewerken, verwijderen, importeren en exporteren.",
+          "<code>use_mh_order_note_templates</code>: sjablonen gebruiken in WooCommerce-bestellingen.",
+          "Gebruikers zonder het vereiste recht zien de bijbehorende beheerfuncties niet."
         ]
       },
       {
-        "title": "10. 보안 및 HPOS 호환성",
+        "title": "10. Beveiliging en HPOS-compatibiliteit",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "De plugin gebruikt WordPress-nonces, rechtencontroles, opschoning en escaping voor beheeracties. Sjablooninhoud wordt volgens de veilige HTML-regels van WordPress opgeschoond voordat deze wordt opgeslagen of gebruikt.",
+          "Bestelgegevens worden via de WooCommerce-bestel-API’s gelezen in plaats van rechtstreeks uit databasetabellen. Daardoor blijft de plugin compatibel met WooCommerce HPOS en klassieke bestelopslag."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Houd WooCommerce en WordPress bijgewerkt.",
+          "Test de werkwijze voor klantnotities nadat je WooCommerce-e-mailinstellingen hebt gewijzigd.",
+          "Gebruik een testomgeving voordat je een grote verzameling sjablonen importeert."
         ]
       },
       {
-        "title": "11. 문제 해결",
+        "title": "11. Problemen oplossen",
         "paragraphs": [
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다.",
-          "이 도움말은 서식 있는 템플릿 생성, 자리표시자 사용, WooCommerce 주문에 메모 추가, JSON 가져오기/내보내기, 권한, HPOS 및 안전한 사용 방법을 설명합니다."
+          "Als sjablonen niet in een bestelling verschijnen, controleer dan of WooCommerce actief is, het sjabloon is gepubliceerd en de huidige gebruiker het recht heeft om sjablonen te gebruiken.",
+          "Als vertalingen niet verschijnen, controleer dan de sitetaal en gebruikerstaal in WordPress. De plugin bevat gecontroleerde terugvalbestanden voor alle ondersteunde talen, waaronder Perzisch. Andere talen moeten via gecontroleerde WordPress.org-taalpakketten worden geleverd."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Wis na een update de objectcache of cacheplugin wanneer het oude beheerscherm nog wordt getoond.",
+          "Als een plaatshouder ongewijzigd blijft, controleer dan of deze exact zoals in de lijst is geschreven, inclusief accolades.",
+          "Als klantnotities niet per e-mail worden verzonden, controleer dan de WooCommerce-e-mailinstellingen voor klantnotities."
         ]
       },
       {
-        "title": "12. 설정 페이지",
+        "title": "12. Instellingenpagina",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → 설정</strong>에서 기본 메모 유형, 안전한 HTML, 사용 횟수 표시, 즐겨찾기, JSON 가져오기 및 언어 일치를 설정할 수 있습니다. 일상 작업에서는 내부 메모를 기본값으로 사용하세요."
+          "Open <strong>Mailhilfe Bestelnotities → Instellingen</strong> om het standaard notitietype, veilige HTML, de gebruiksweergave, favorieten, JSON-importopties en taalkoppeling in te stellen. Gebruik interne notities als standaard voor veiliger dagelijks werk."
         ],
         "items": []
       },
       {
-        "title": "13. 템플릿 언어와 다국어 상점",
+        "title": "13. Sjabloontaal en meertalige winkels",
         "paragraphs": [
-          "각 템플릿에 언어를 지정할 수 있습니다. 공통 문구는 <strong>모든 언어</strong>, 번역된 고객 메시지는 특정 언어를 선택합니다.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Elk sjabloon kan een sjabloontaal hebben. Kies <strong>Alle talen</strong> als dezelfde tekst voor elke bestelling mag worden gebruikt, of selecteer een specifieke taal voor gelokaliseerde teksten.",
+          "Wanneer beschikbaar kan de plugin de voorkeur geven aan sjablonen die overeenkomen met de taal van de bestelling, de gebruikerstaal of algemene taalgegevens van meertalige plugins."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Gebruik één neutraal sjabloon voor interne notities van medewerkers.",
+          "Maak afzonderlijke klantgerichte sjablonen voor Nederlands, Duits, Engels of andere winkeltalen.",
+          "Test bij WPML- of Polylang-winkels de detectie van de besteltaal met een echte testbestelling."
         ]
       },
       {
-        "title": "14. 사용자 정의 필드와 메타데이터",
+        "title": "14. Aangepaste velden en metaplaatshouders",
         "paragraphs": [
-          "<code>{order_meta:meta_key}</code> 및 <code>{customer_meta:meta_key}</code>는 선택한 메타데이터를 삽입합니다. password, token, secret 같은 민감한 키는 차단됩니다.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Geavanceerde plaatshouders kunnen geselecteerde meta-velden van bestellingen of klanten lezen. Gebruik <code>{order_meta:meta_key}</code> voor bestelgegevens en <code>{customer_meta:meta_key}</code> voor gebruikersgegevens van de klant.",
+          "Om veiligheidsredenen worden gevoelige sleutelnamen met woorden als password, token, secret, session, auth en hash geblokkeerd. Gebruik metaplaatshouders alleen wanneer je weet welke inhoud het veld bevat."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Voorbeeld: <code>{order_meta:_tracking_number}</code> voor een trackingnummer dat door een verzendplugin is opgeslagen.",
+          "Voorbeeld: <code>{order_meta:_billing_vat_id}</code> voor een btw-ID-veld.",
+          "Toon geen interne of gevoelige velden in klantnotities."
         ]
       },
       {
-        "title": "15. 복제와 리비전",
+        "title": "15. Sjablonen dupliceren en revisies",
         "paragraphs": [
-          "복제는 초안 복사본을 만듭니다. WordPress 리비전으로 이전 버전을 비교하고 복원할 수 있습니다.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Gebruik de actie Dupliceren wanneer je een vergelijkbaar sjabloon met kleine wijzigingen nodig hebt. De kopie wordt als concept gemaakt zodat je deze vóór publicatie kunt controleren.",
+          "Met sjabloonrevisies kun je eerdere versies vergelijken en een vorige tekst herstellen wanneer een wijziging per ongeluk is aangebracht."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Dupliceer een algemeen verzendsjabloon voordat je varianten voor DHL, UPS of afhalen maakt.",
+          "Controleer revisies na grotere tekstwijzigingen.",
+          "Gebruik duidelijke titels zodat vergelijkbare sjablonen niet met elkaar worden verward."
         ]
       },
       {
-        "title": "16. 권한",
+        "title": "16. Rechtenpagina",
         "paragraphs": [
-          "<strong>권한</strong> 페이지에서 어떤 역할이 템플릿을 관리하거나 주문에서 사용할 수 있는지 정합니다.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Open <strong>Mailhilfe Bestelnotities → Rechten</strong> om te bepalen welke WordPress-rollen sjablonen mogen beheren en welke rollen sjablonen in bestellingen mogen gebruiken.",
+          "Beheerders behouden de vereiste rechten. Ken aan andere rollen alleen de rechten toe die voor hun dagelijkse taak nodig zijn."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Sjablonen beheren: sjablonen maken, bewerken, verwijderen, importeren en exporteren.",
+          "Sjablonen gebruiken: een sjabloon selecteren en een notitie aan een WooCommerce-bestelling toevoegen.",
+          "Ken import- en exportrechten alleen toe aan vertrouwde gebruikers."
         ]
       },
       {
-        "title": "17. 가져오기 미리보기",
+        "title": "17. Importvoorbeeld",
         "paragraphs": [
-          "JSON 가져오기는 적용 전에 생성, 업데이트 또는 건너뛸 템플릿 수를 보여줍니다.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "JSON-imports tonen een voorbeeld voordat wijzigingen worden toegepast. Het voorbeeld geeft aan hoeveel sjablonen worden aangemaakt, bijgewerkt of overgeslagen.",
+          "Bevestig de import pas nadat je het voorbeeld hebt gecontroleerd. Zo voorkom je dat bestaande sjablonen onbedoeld worden overschreven."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Maak een exportback-up voordat je een grote verzameling importeert.",
+          "Importeer alleen JSON-bestanden uit een vertrouwde bron.",
+          "Test na de import minstens één klantnotitie en één interne notitie."
         ]
       },
       {
-        "title": "18. 고객 메모 이메일 상태",
+        "title": "18. E-mailgedrag van klantnotities",
         "paragraphs": [
-          "해당 이메일이 활성화되어 있으면 고객 메모가 WooCommerce 이메일 알림을 트리거할 수 있습니다. 플러그인은 고객 메모 생성과 이메일 처리 결과를 별도로 기록합니다. 메모를 추가하기 전에 편집 가능한 미리보기를 확인하고 기록 페이지에서 처리 결과를 확인하세요."
+          "Klantnotities kunnen WooCommerce-e-mailmeldingen activeren wanneer de bijbehorende e-mail is ingeschakeld. De plugin registreert het aanmaken van de klantnotitie afzonderlijk van de e-mailverwerking. Controleer het bewerkbare voorbeeld voordat je de notitie toevoegt en gebruik de pagina Geschiedenis om het resultaat van de e-mailafhandeling te bekijken."
         ],
         "items": []
       },
       {
-        "title": "19. 권장 절차",
+        "title": "19. Aanbevolen werkwijze",
         "paragraphs": [
-          "템플릿을 선택하고 치환된 미리보기를 확인한 뒤 필요하면 수정하고 메모 유형을 확인한 후 추가합니다.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Een veilige dagelijkse werkwijze is: selecteer een sjabloon, controleer het ingevulde voorbeeld, bewerk het voorbeeld indien nodig, controleer het notitietype en voeg daarna de notitie toe.",
+          "Test nieuwe sjablonen eerst in een niet-kritieke bestelling of testwinkel voordat je ze voor echte klanten gebruikt."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Gebruik interne notities voor informatie die alleen voor medewerkers bestemd is.",
+          "Gebruik klantnotities alleen voor berichten die naar de klant mogen worden verzonden.",
+          "Controleer de plaatshouders telkens wanneer een sjabloon wordt gewijzigd."
         ]
       },
       {
-        "title": "20. 템플릿 조건",
+        "title": "20. Sjabloonvoorwaarden",
         "paragraphs": [
-          "조건은 특정 주문에서 템플릿을 사용할 수 있는지 결정합니다. 주문 상태, 결제 방법, 배송 방법, 청구 국가, 최소 또는 최대 주문 금액으로 제한할 수 있으며 설정된 모든 조건이 일치해야 합니다."
+          "Sjabloonvoorwaarden bepalen of een sjabloon voor een bepaalde bestelling beschikbaar is. Je kunt sjablonen beperken op bestelstatus, betaalmethode, verzendmethode, factureringsland en minimaal of maximaal bestelbedrag. Aan alle ingestelde voorwaarden moet worden voldaan."
         ],
         "items": [
-          "제한하지 않을 조건은 비워 두세요.",
-          "결제 및 배송 방법의 기술 ID를 사용하세요.",
-          "조건은 화면과 메모 생성 전 서버에서 다시 확인됩니다."
+          "Laat een veld leeg wanneer die voorwaarde het sjabloon niet moet beperken.",
+          "Gebruik de technische ID’s van betaal- en verzendmethoden.",
+          "Voorwaarden worden in de interface en opnieuw op de server gecontroleerd voordat een notitie wordt gemaakt."
         ]
       },
       {
-        "title": "21. 이메일 처리 기록",
+        "title": "21. Logboek voor e-mailverwerking",
         "paragraphs": [
-          "고객 메모의 경우 WooCommerce가 이메일 처리를 보고한 이벤트와 wp_mail 기술 오류를 기록합니다. “처리됨”은 메일 시스템으로 전달되었다는 뜻이며 최종 배달이나 읽음을 보장하지 않습니다."
+          "Bij klantnotities registreert de plugin wanneer WooCommerce meldt dat de e-mail voor de klantnotitie is verwerkt. Ook technische fouten van wp_mail worden vastgelegd. Een verwerkte gebeurtenis bevestigt alleen dat WordPress/WooCommerce het bericht aan het mailsysteem heeft doorgegeven; dit bewijst niet dat het bericht uiteindelijk is afgeleverd of door de klant is gelezen."
         ],
         "items": [
-          "기록 페이지에서 처리 및 실패 이벤트를 확인하세요.",
-          "정확한 배달 정보에는 SMTP 서비스를 사용하세요.",
-          "내부 메모는 고객 메모 이메일을 보내지 않습니다."
+          "Controleer op de pagina Geschiedenis de verwerkte en mislukte e-mailgebeurtenissen.",
+          "Gebruik een SMTP-provider of e-maillogdienst wanneer definitieve afleverinformatie nodig is.",
+          "Interne notities activeren geen e-mail voor klantnotities."
         ]
       },
       {
-        "title": "22. 중앙 기록",
+        "title": "22. Centrale geschiedenis",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → 기록</strong>에서 메모 생성, 템플릿 사용, 이메일 처리 및 실패를 확인할 수 있습니다. 가능한 경우 주문, 템플릿, 사용자, 수신자, 이벤트 종류와 시간이 표시됩니다."
+          "Open <strong>Mailhilfe Bestelnotities → Geschiedenis</strong> om recente notitiecreaties, sjabloongebruik, e-mailverwerking en e-mailfouten te bekijken. Vermeldingen bevatten waar beschikbaar de bestelling, het sjabloon, de gebruiker, ontvanger, het gebeurtenistype en het tijdstip."
         ],
         "items": [
-          "지원, 감사 및 문제 해결에 사용하세요.",
-          "WooCommerce 주문 메모와 별도로 저장됩니다.",
-          "최근 250개 항목을 표시합니다."
+          "Gebruik de geschiedenis voor ondersteuning, controle en probleemoplossing.",
+          "De geschiedenis staat los van de WooCommerce-bestelnotities.",
+          "De pagina toont de 250 meest recente vermeldingen."
         ]
       },
       {
-        "title": "23. 테스트 주문 미리보기",
+        "title": "23. Voorbeeld met testbestelling",
         "paragraphs": [
-          "템플릿 편집기에 WooCommerce 주문 ID를 입력하면 저장하지 않은 변경을 포함한 현재 내용을 주문 데이터로 미리 볼 수 있습니다. 메모를 만들거나 이메일을 보내지 않습니다."
+          "Voer in de sjablooneditor een WooCommerce-bestelling-ID in het gebied voor het testvoorbeeld in. De huidige editorinhoud, inclusief niet-opgeslagen wijzigingen, wordt met gegevens uit die bestelling weergegeven zonder een notitie te maken of een e-mail te verzenden."
         ],
         "items": [
-          "테스트 주문이나 스테이징 환경을 사용하세요.",
-          "누락 값, 서식, 조건 및 사용자 정의 메타를 확인하세요.",
-          "선택한 주문을 편집할 권한이 필요합니다."
+          "Gebruik een bestelling uit een testomgeving of een niet-kritieke testbestelling.",
+          "Controleer ontbrekende waarden, opmaak, voorwaarden en aangepaste metaplaatshouders.",
+          "Je moet toestemming hebben om de geselecteerde bestelling te bewerken."
         ]
       },
       {
-        "title": "24. 개인 즐겨찾기와 최근 사용 템플릿",
+        "title": "24. Persoonlijke favorieten en recent gebruikte sjablonen",
         "paragraphs": [
-          "각 사용자는 주문 화면에서 개인 즐겨찾기를 설정할 수 있습니다. 또한 사용자별로 성공적으로 사용한 최근 10개 템플릿을 저장해 위에 표시합니다. 전역 즐겨찾기는 모두에게 공유됩니다."
+          "Elke beheerder kan persoonlijke favorieten in het bestelscherm markeren. De plugin bewaart daarnaast per gebruiker de tien laatst gebruikte sjablonen en plaatst deze hoger in de selectie. Algemene favorieten blijven met alle gebruikers gedeeld."
         ],
         "items": [
-          "개인 즐겨찾기는 다른 사용자에게 영향을 주지 않습니다.",
-          "최근 목록은 메모가 성공적으로 추가된 후에만 갱신됩니다.",
-          "데이터는 WordPress 사용자 메타에 저장됩니다."
+          "Persoonlijke favorieten veranderen de lijst van een andere gebruiker niet.",
+          "De lijst met recente sjablonen wordt alleen bijgewerkt nadat een notitie succesvol is toegevoegd.",
+          "Persoonlijke gegevens worden als WordPress-gebruikersmetadata opgeslagen."
         ]
       },
       {
-        "title": "25. 진단 페이지",
+        "title": "25. Diagnostiekpagina",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → 진단</strong>에서 WordPress, PHP, WooCommerce 버전, HPOS, 고객 메모 이메일, 언어, 템플릿 수, 캐시 및 WP_DEBUG를 확인할 수 있습니다."
+          "Open <strong>Mailhilfe Bestelnotities → Diagnostiek</strong> om technische informatie te bekijken, zoals WordPress-, PHP- en WooCommerce-versies, HPOS-status, e-mailstatus voor klantnotities, locale, aantal gepubliceerde sjablonen, cachestatus en WP_DEBUG."
         ],
         "items": [
-          "지원 요청 시 이 정보를 제공하세요.",
-          "메모 내용이나 고객 주소는 표시하지 않습니다.",
-          "개발자는 진단 필터로 항목을 추가할 수 있습니다."
+          "Kopieer de diagnostische waarden wanneer je ondersteuning aanvraagt.",
+          "De pagina toont geen inhoud van bestelnotities of adressen van klanten.",
+          "Ontwikkelaars kunnen rijen toevoegen met het diagnostiekfilter."
         ]
       },
       {
-        "title": "26. 개발자용 훅과 필터",
+        "title": "26. Hooks en filters voor ontwikkelaars",
         "paragraphs": [
-          "플레이스홀더, 값, 허용 메타 키, 템플릿 결과, 조건, 미리보기, 최종 내용, 추가 전후 작업, 기록 및 진단을 확장하는 훅과 필터를 제공합니다. 이름과 매개변수는 readme.txt에 문서화되어 있습니다."
+          "De plugin biedt hooks en filters voor plaatshouders, plaatshouderwaarden, toegestane metasleutels, sjabloonresultaten, voorwaarden, voorbeeldinhoud, definitieve notitie-inhoud, acties vóór en na het toevoegen van een notitie, geschiedenisrecords en diagnostiek. Hooknamen en parameters zijn gedocumenteerd in readme.txt."
         ],
         "items": [
-          "사용자 정의 데이터는 검증, 정리 및 이스케이프하세요.",
-          "주문 테이블 직접 접근 대신 WooCommerce 주문 API를 사용하세요.",
-          "HPOS와 기존 저장 방식 모두와 호환되게 하세요."
+          "Valideer, schoon op en escape alle aangepaste gegevens.",
+          "Gebruik WooCommerce-bestel-API’s in plaats van rechtstreekse toegang tot besteltabellen.",
+          "Houd aangepaste uitbreidingen compatibel met zowel HPOS als klassieke bestelopslag."
+        ]
+      }
+    ]
+  },
+  "pl_PL": {
+    "title": "Szczegółowa pomoc dla Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Ta zaktualizowana pomoc objaśnia pełny sposób pracy z wtyczką Mailhilfe Order Note Manager for WooCommerce: tworzenie i formatowanie szablonów, używanie języków szablonów, symboli zastępczych i symboli meta, edytowanie podglądu, bezpieczne wysyłanie notatek dla klientów, ustawienia, uprawnienia, podgląd importu oraz zgodność z HPOS.",
+    "sections": [
+      {
+        "title": "1. Do czego służy wtyczka",
+        "paragraphs": [
+          "Mailhilfe Order Note Manager for WooCommerce umożliwia przechowywanie często używanych notatek zamówień WooCommerce jako szablonów wielokrotnego użytku. Pozwala to uniknąć ciągłego wpisywania tego samego tekstu i zachować spójną komunikację w historii zamówienia.",
+          "Szablon można przygotować jako wewnętrzną notatkę dla personelu albo notatkę dla klienta. Podczas używania szablonu w zamówieniu nadal można zmienić typ notatki."
+        ],
+        "items": [
+          "Typowe przykłady: przypomnienia o płatności, opóźnienia dostawy, zapisy rozmów telefonicznych, weryfikacja adresu i odpowiedzi działu obsługi.",
+          "Szablony obsługują kategorie, ulubione, sortowanie, licznik użycia i kopie zapasowe JSON."
+        ]
+      },
+      {
+        "title": "2. Tworzenie nowego szablonu",
+        "paragraphs": [
+          "Otwórz <strong>Mailhilfe Order Notes → Dodaj nowy</strong>. Wprowadź zrozumiały tytuł, wpisz treść notatki w edytorze i wybierz, czy domyślnym typem ma być notatka wewnętrzna, czy notatka dla klienta.",
+          "Tytuł powinien krótko opisywać przeznaczenie szablonu, na przykład „Przypomnienie o płatności” albo „Klient zadzwonił w sprawie dostawy”. Ułatwi to odnalezienie szablonu na ekranie zamówienia."
+        ],
+        "items": [
+          "Jeśli masz wiele szablonów, przypisz im co najmniej jedną kategorię.",
+          "Często używane szablony oznacz jako ulubione.",
+          "Opublikuj szablon, aby był dostępny w zamówieniach."
+        ]
+      },
+      {
+        "title": "3. Formatowanie treści szablonu",
+        "paragraphs": [
+          "Treść szablonu jest edytowana w edytorze WordPressa. Można używać akapitów, pogrubienia, kursywy, list i odnośników. Formatowanie zostaje zachowane podczas tworzenia notatki, a treść jest oczyszczana zgodnie z bezpiecznymi regułami HTML WordPressa.",
+          "W notatkach dla klientów stosuj formatowanie z umiarem. Krótki akapit lub lista punktowana są zwykle łatwiejsze do przeczytania niż długi, nieuporządkowany tekst."
+        ],
+        "items": [
+          "Dobry przykład: krótkie powitanie, jedno jasne wyjaśnienie i jeden kolejny krok.",
+          "W notatkach dla klientów unikaj wewnętrznych skrótów.",
+          "Nie umieszczaj prywatnych uwag personelu w szablonach, które mogą zostać użyte jako notatki dla klientów."
+        ]
+      },
+      {
+        "title": "4. Symbole zastępcze",
+        "paragraphs": [
+          "Symbole zastępcze to wyrażenia w nawiasach klamrowych. W podglądzie i podczas dodawania notatki do zamówienia są zastępowane rzeczywistymi danymi zamówienia.",
+          "Można łączyć zwykły tekst z symbolami zastępczymi. Przykład: <code>Dzień dobry {customer}, otrzymaliśmy zamówienie {order_number}.</code>"
+        ],
+        "items": [
+          "Zamówienie: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Klient: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Wysyłka i płatność: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Produkty i sklep: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
+        ]
+      },
+      {
+        "title": "5. Podgląd przed dodaniem notatki",
+        "paragraphs": [
+          "Otwórz zamówienie WooCommerce i wybierz szablon. Podgląd pokaże notatkę, w której symbole zastępcze zostały już zamienione na dane wybranego zamówienia.",
+          "Zawsze sprawdzaj podgląd przed utworzeniem notatki. Jest to szczególnie ważne, gdy dla symbolu zastępczego brakuje wartości w zamówieniu, na przykład nazwy firmy wysyłkowej albo numeru telefonu."
+        ],
+        "items": [
+          "Sprawdź nazwiska, kwoty, metodę wysyłki i listę produktów.",
+          "Sprawdź, czy wybrano właściwy typ notatki.",
+          "Jeśli ten sam tekst ma zostać poprawiony dla wszystkich przyszłych zamówień, najpierw edytuj szablon."
+        ]
+      },
+      {
+        "title": "6. Notatki wewnętrzne i notatki dla klientów",
+        "paragraphs": [
+          "Notatki wewnętrzne są przeznaczone dla personelu sklepu i zwykle służą do dokumentowania, zapisywania zadań następczych lub historii obsługi. Notatki dla klientów mogą być widoczne dla klienta i, zależnie od ustawień WooCommerce, mogą uruchamiać powiadomienia e-mail.",
+          "Dokładnie sprawdź edytowalny podgląd i wybrany typ notatki. Notatek dla klientów używaj wyłącznie do treści, które klient może przeczytać."
+        ],
+        "items": [
+          "Notatka wewnętrzna: „Klient zadzwonił, adres dostawy został potwierdzony”.",
+          "Notatka dla klienta: „Zamówienie jest przygotowywane i wkrótce zostanie wysłane”.",
+          "W notatkach dla klientów nigdy nie umieszczaj haseł, prywatnych uwag ani informacji przeznaczonych wyłącznie dla dostawcy."
+        ]
+      },
+      {
+        "title": "7. Ulubione, wyszukiwanie i sortowanie",
+        "paragraphs": [
+          "Ulubione pomagają umieścić najważniejsze szablony na początku listy wyboru. Pole wyszukiwania na ekranie zamówienia umożliwia odnalezienie szablonu według tytułu, kategorii lub treści.",
+          "Na liście szablonów można zmieniać kolejność metodą przeciągnij i upuść. Zapisana kolejność jest używana podczas wyświetlania szablonów na ekranie zamówienia."
+        ],
+        "items": [
+          "Codziennie używane szablony oznacz jako ulubione.",
+          "Używaj kategorii dla grup tematycznych, takich jak Płatność, Wysyłka, Zwroty i Pomoc.",
+          "Tytuły powinny być krótkie, aby wyniki wyszukiwania pozostały czytelne."
+        ]
+      },
+      {
+        "title": "8. Import, eksport i szablony demonstracyjne",
+        "paragraphs": [
+          "Eksport JSON tworzy kopię zapasową szablonów. Można z niego skorzystać przed większymi zmianami albo podczas przenoszenia szablonów do innego sklepu.",
+          "Import JSON może tworzyć szablony i aktualizować istniejące szablony o tym samym tytule lub wewnętrznym kluczu demonstracyjnym. Szablony demonstracyjne ułatwiają rozpoczęcie pracy i są tworzone w aktywnym języku."
+        ],
+        "items": [
+          "Przed zmianami zbiorczymi wykonaj eksport.",
+          "Importuj wyłącznie pliki JSON z zaufanego źródła.",
+          "Po imporcie otwórz kilka szablonów i sprawdź formatowanie oraz symbole zastępcze."
+        ]
+      },
+      {
+        "title": "9. Uprawnienia i role",
+        "paragraphs": [
+          "Wtyczka używa oddzielnych uprawnień do zarządzania szablonami oraz do używania ich w zamówieniach. Administratorzy i kierownicy sklepu otrzymują te uprawnienia automatycznie podczas aktywacji.",
+          "Jeśli używasz wtyczki do edycji ról, możesz przyznawać lub odbierać te uprawnienia rolom niestandardowym."
+        ],
+        "items": [
+          "<code>manage_mh_order_note_templates</code>: tworzenie, edycja, usuwanie oraz import i eksport szablonów.",
+          "<code>use_mh_order_note_templates</code>: używanie szablonów w zamówieniach WooCommerce.",
+          "Użytkownicy bez wymaganych uprawnień nie widzą odpowiednich funkcji administracyjnych."
+        ]
+      },
+      {
+        "title": "10. Bezpieczeństwo i zgodność z HPOS",
+        "paragraphs": [
+          "Wtyczka używa tokenów jednorazowych WordPressa, kontroli uprawnień, oczyszczania i kodowania danych dla działań administracyjnych. Treść szablonu jest oczyszczana za pomocą bezpiecznych reguł HTML WordPressa przed zapisaniem lub użyciem.",
+          "Dane zamówienia są odczytywane przez interfejsy API zamówień WooCommerce zamiast przez bezpośredni dostęp do tabel bazy danych. Dzięki temu wtyczka jest zgodna zarówno z WooCommerce HPOS, jak i klasycznym sposobem przechowywania zamówień."
+        ],
+        "items": [
+          "Regularnie aktualizuj WooCommerce i WordPressa.",
+          "Po zmianie ustawień wiadomości e-mail WooCommerce przetestuj obsługę notatek dla klientów.",
+          "Przed importem dużego zestawu szablonów użyj witryny testowej."
+        ]
+      },
+      {
+        "title": "11. Rozwiązywanie problemów",
+        "paragraphs": [
+          "Jeśli szablony nie pojawiają się w zamówieniu, sprawdź, czy WooCommerce jest aktywny, szablon został opublikowany, a bieżący użytkownik ma uprawnienie do używania szablonów.",
+          "Jeśli tłumaczenia się nie pojawiają, sprawdź język witryny i język użytkownika w WordPressie. Wtyczka zawiera sprawdzone pliki zapasowe dla wszystkich obsługiwanych języków, w tym perskiego. Inne języki powinny być dostarczane przez sprawdzone pakiety językowe WordPress.org."
+        ],
+        "items": [
+          "Jeśli po aktualizacji nadal jest wyświetlany stary ekran administracyjny, wyczyść pamięć podręczną obiektów lub wtyczki cache.",
+          "Jeśli symbol zastępczy pozostaje bez zmian, sprawdź, czy został zapisany dokładnie tak jak na liście, łącznie z nawiasami klamrowymi.",
+          "Jeśli notatki dla klientów nie są wysyłane e-mailem, sprawdź ustawienia wiadomości e-mail WooCommerce dla powiadomień o notatkach klientów."
+        ]
+      },
+      {
+        "title": "12. Strona ustawień",
+        "paragraphs": [
+          "Otwórz <strong>Mailhilfe Order Notes → Ustawienia</strong>, aby wybrać domyślny typ notatki, obsługę bezpiecznego HTML, wyświetlanie użycia, ulubione, opcje importu JSON i dopasowanie języka. Dla bezpiecznej codziennej pracy jako domyślne wybierz notatki wewnętrzne."
+        ],
+        "items": []
+      },
+      {
+        "title": "13. Język szablonu i sklepy wielojęzyczne",
+        "paragraphs": [
+          "Każdy szablon może mieć przypisany język. Wybierz <strong>Wszystkie języki</strong>, jeśli ten sam tekst może być używany dla każdego zamówienia, albo wybierz konkretny język dla treści zlokalizowanej.",
+          "Gdy jest to możliwe, wtyczka może preferować szablony zgodne z językiem zamówienia, językiem użytkownika lub typowymi danymi językowymi z wtyczek wielojęzycznych."
+        ],
+        "items": [
+          "Dla wewnętrznych notatek personelu użyj jednego neutralnego szablonu.",
+          "Utwórz oddzielne szablony dla klientów w języku polskim, niemieckim, angielskim lub innych językach sklepu.",
+          "W sklepach korzystających z WPML lub Polylang przetestuj wykrywanie języka na rzeczywistym zamówieniu testowym."
+        ]
+      },
+      {
+        "title": "14. Pola niestandardowe i symbole zastępcze meta",
+        "paragraphs": [
+          "Zaawansowane symbole zastępcze mogą odczytywać wybrane pola meta zamówienia lub klienta. Użyj <code>{order_meta:meta_key}</code> dla danych zamówienia i <code>{customer_meta:meta_key}</code> dla danych użytkownika klienta.",
+          "Ze względów bezpieczeństwa blokowane są wrażliwe nazwy kluczy zawierające między innymi password, token, secret, session, auth i hash. Symboli meta używaj tylko wtedy, gdy wiesz, co zawiera dane pole."
+        ],
+        "items": [
+          "Przykład: <code>{order_meta:_tracking_number}</code> dla numeru przesyłki zapisanego przez wtyczkę wysyłkową.",
+          "Przykład: <code>{order_meta:_billing_vat_id}</code> dla pola numeru VAT.",
+          "Nie ujawniaj wewnętrznych ani wrażliwych pól w notatkach dla klientów."
+        ]
+      },
+      {
+        "title": "15. Duplikowanie szablonów i wersje",
+        "paragraphs": [
+          "Użyj funkcji duplikowania, gdy potrzebujesz podobnego szablonu z niewielkimi zmianami. Kopia jest tworzona jako szkic, aby można ją było sprawdzić przed opublikowaniem.",
+          "Wersje szablonów pozwalają porównać wcześniejsze treści i przywrócić poprzedni tekst, jeśli zmiana została wprowadzona przez pomyłkę."
+        ],
+        "items": [
+          "Przed utworzeniem wariantów dla DHL, UPS lub odbioru osobistego zduplikuj ogólny szablon wysyłki.",
+          "Po większych zmianach tekstu sprawdź wersje.",
+          "Używaj jasnych tytułów, aby podobne szablony nie były ze sobą mylone."
+        ]
+      },
+      {
+        "title": "16. Strona uprawnień",
+        "paragraphs": [
+          "Otwórz <strong>Mailhilfe Order Notes → Uprawnienia</strong>, aby określić, które role WordPressa mogą zarządzać szablonami, a które mogą używać ich w zamówieniach.",
+          "Administratorzy zachowują wymagane uprawnienia. Pozostałym rolom przyznawaj wyłącznie uprawnienia niezbędne do codziennych zadań."
+        ],
+        "items": [
+          "Zarządzanie szablonami: tworzenie, edycja, usuwanie, import i eksport szablonów.",
+          "Używanie szablonów: wybór szablonu i dodawanie notatki w zamówieniu WooCommerce.",
+          "Uprawnienia do importu i eksportu przyznawaj wyłącznie zaufanym użytkownikom."
+        ]
+      },
+      {
+        "title": "17. Podgląd importu",
+        "paragraphs": [
+          "Import JSON wyświetla teraz podgląd przed zastosowaniem zmian. Podgląd informuje, ile szablonów zostanie utworzonych, zaktualizowanych lub pominiętych.",
+          "Potwierdź import dopiero po sprawdzeniu podglądu. Zapobiega to przypadkowemu nadpisaniu istniejących szablonów."
+        ],
+        "items": [
+          "Przed importem dużego zestawu utwórz kopię zapasową przez eksport.",
+          "Importuj wyłącznie pliki JSON z zaufanego źródła.",
+          "Po imporcie przetestuj co najmniej jedną notatkę dla klienta i jedną notatkę wewnętrzną."
+        ]
+      },
+      {
+        "title": "18. Obsługa wiadomości e-mail dla notatek klientów",
+        "paragraphs": [
+          "Notatki dla klientów mogą uruchamiać powiadomienia e-mail WooCommerce, jeśli odpowiednia wiadomość jest włączona. Wtyczka zapisuje utworzenie notatki dla klienta oddzielnie od przetwarzania wiadomości e-mail. Przed dodaniem notatki sprawdź edytowalny podgląd, a wynik obsługi poczty zweryfikuj na stronie Historia."
+        ],
+        "items": []
+      },
+      {
+        "title": "19. Zalecany sposób pracy",
+        "paragraphs": [
+          "Bezpieczny codzienny sposób pracy wygląda następująco: wybierz szablon, sprawdź podgląd z podstawionymi danymi, w razie potrzeby edytuj podgląd, zweryfikuj typ notatki, a następnie dodaj notatkę.",
+          "Nowe szablony najpierw przetestuj na nieistotnym zamówieniu lub w sklepie testowym, zanim użyjesz ich dla rzeczywistych klientów."
+        ],
+        "items": [
+          "Informacje przeznaczone wyłącznie dla personelu zapisuj jako notatki wewnętrzne.",
+          "Notatek dla klientów używaj wyłącznie do wiadomości, które mogą zostać wysłane klientowi.",
+          "Po każdej zmianie szablonu sprawdź symbole zastępcze."
+        ]
+      },
+      {
+        "title": "20. Warunki szablonów",
+        "paragraphs": [
+          "Warunki szablonu określają, czy szablon jest dostępny dla danego zamówienia. Szablony można ograniczać według statusu zamówienia, metody płatności, metody wysyłki, kraju rozliczeniowego oraz minimalnej lub maksymalnej wartości zamówienia. Wszystkie skonfigurowane warunki muszą być spełnione."
+        ],
+        "items": [
+          "Pozostaw pole puste, jeśli dany warunek nie powinien ograniczać szablonu.",
+          "Używaj technicznych identyfikatorów metod płatności i wysyłki.",
+          "Warunki są sprawdzane w interfejsie oraz ponownie na serwerze przed utworzeniem notatki."
+        ]
+      },
+      {
+        "title": "21. Dziennik przetwarzania wiadomości e-mail",
+        "paragraphs": [
+          "Dla notatek klientów wtyczka zapisuje moment, w którym WooCommerce zgłasza przetworzenie wiadomości e-mail z notatką dla klienta, a także techniczne błędy wp_mail. Zdarzenie przetworzenia potwierdza, że WordPress lub WooCommerce przekazał wiadomość do systemu pocztowego. Nie dowodzi ono końcowego doręczenia ani przeczytania wiadomości przez klienta."
+        ],
+        "items": [
+          "Na stronie Historia sprawdzaj zdarzenia pomyślnego przetworzenia i błędy wiadomości e-mail.",
+          "Jeśli potrzebujesz pewnych informacji o doręczeniu, użyj dostawcy SMTP lub usługi rejestrowania poczty.",
+          "Notatki wewnętrzne nie uruchamiają wiadomości e-mail z notatką dla klienta."
+        ]
+      },
+      {
+        "title": "22. Centralna historia",
+        "paragraphs": [
+          "Otwórz <strong>Mailhilfe Order Notes → Historia</strong>, aby przejrzeć ostatnio utworzone notatki, użycie szablonów, przetwarzanie wiadomości e-mail i błędy wysyłki. Wpisy zawierają, jeśli dane są dostępne, zamówienie, szablon, użytkownika, odbiorcę, typ zdarzenia i czas."
+        ],
+        "items": [
+          "Używaj historii do obsługi zgłoszeń, audytu i rozwiązywania problemów.",
+          "Historia jest oddzielona od notatek zamówień WooCommerce.",
+          "Strona wyświetla 250 najnowszych wpisów."
+        ]
+      },
+      {
+        "title": "23. Podgląd z zamówieniem testowym",
+        "paragraphs": [
+          "W edytorze szablonu wprowadź identyfikator zamówienia WooCommerce w obszarze podglądu testowego. Bieżąca treść edytora, łącznie z niezapisanymi zmianami, zostanie wyrenderowana z danymi tego zamówienia bez tworzenia notatki i bez wysyłania wiadomości e-mail."
+        ],
+        "items": [
+          "Użyj zamówienia w witrynie testowej albo nieistotnego zamówienia testowego.",
+          "Sprawdź brakujące wartości, formatowanie, warunki i niestandardowe symbole meta.",
+          "Musisz mieć uprawnienie do edycji wybranego zamówienia."
+        ]
+      },
+      {
+        "title": "24. Osobiste ulubione i ostatnio używane szablony",
+        "paragraphs": [
+          "Każdy administrator może oznaczać osobiste ulubione na ekranie zamówienia. Wtyczka zapisuje także dziesięć ostatnio używanych szablonów każdego użytkownika i umieszcza je wyżej na liście wyboru. Globalne ulubione pozostają wspólne dla wszystkich użytkowników."
+        ],
+        "items": [
+          "Osobiste ulubione nie zmieniają list innych użytkowników.",
+          "Lista ostatnich szablonów jest aktualizowana dopiero po pomyślnym dodaniu notatki.",
+          "Dane osobiste są przechowywane jako metadane użytkownika WordPressa."
+        ]
+      },
+      {
+        "title": "25. Strona diagnostyki",
+        "paragraphs": [
+          "Otwórz <strong>Mailhilfe Order Notes → Diagnostyka</strong>, aby wyświetlić informacje techniczne, takie jak wersje WordPressa, PHP i WooCommerce, status HPOS, status wiadomości e-mail z notatkami dla klientów, ustawienia regionalne, liczba opublikowanych szablonów, status pamięci podręcznej i WP_DEBUG."
+        ],
+        "items": [
+          "Podczas zgłaszania problemu skopiuj wartości diagnostyczne.",
+          "Strona nie wyświetla treści notatek zamówień ani adresów klientów.",
+          "Programiści mogą dodawać wiersze za pomocą filtra diagnostyki."
+        ]
+      },
+      {
+        "title": "26. Hooki i filtry dla programistów",
+        "paragraphs": [
+          "Wtyczka udostępnia hooki i filtry dla symboli zastępczych, ich wartości, dozwolonych kluczy meta, wyników szablonów, warunków, treści podglądu, końcowej treści notatki, działań przed dodaniem notatki i po jej dodaniu, wpisów historii oraz diagnostyki. Nazwy hooków i ich parametry są opisane w pliku readme.txt."
+        ],
+        "items": [
+          "Sprawdzaj, oczyszczaj i koduj wszystkie dane niestandardowe.",
+          "Korzystaj z interfejsów API zamówień WooCommerce zamiast bezpośredniego dostępu do tabel zamówień.",
+          "Dbaj o zgodność rozszerzeń zarówno z HPOS, jak i klasycznym sposobem przechowywania zamówień."
         ]
       }
     ]
   },
   "tr_TR": {
-    "title": "Mailhilfe Order Note Manager for WooCommerce ayrıntılı yardımı",
-    "intro": "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar. Mailhilfe Order Note Manager for WooCommerce.",
+    "title": "Mailhilfe Order Note Manager for WooCommerce için ayrıntılı yardım",
+    "intro": "Bu güncel yardım, Mailhilfe Order Note Manager for WooCommerce adı altındaki tüm iş akışını açıklar: şablon oluşturma ve biçimlendirme, şablon dilleri, yer tutucular ve meta yer tutucular, önizlemeleri düzenleme, müşteri notlarını güvenli biçimde gönderme, ayarlar, yetkiler, içe aktarma önizlemeleri ve HPOS uyumluluğu.",
     "sections": [
       {
-        "title": "1. Eklenti ne yapar",
+        "title": "1. Eklentinin işlevi",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Mailhilfe Order Note Manager for WooCommerce, sık kullanılan WooCommerce sipariş notlarını yeniden kullanılabilir şablonlar olarak saklamanızı sağlar. Böylece aynı metni tekrar tekrar yazmanız gerekmez ve sipariş geçmişindeki iletişim tutarlı kalır.",
+          "Bir şablon, personel için dahili not veya müşteriye yönelik not olarak hazırlanabilir. Şablonu bir siparişte kullanırken not türünü yine değiştirebilirsiniz."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Yaygın örnekler: ödeme hatırlatmaları, teslimat gecikmeleri, telefon görüşmesi kayıtları, adres kontrolleri ve hizmet yanıtları.",
+          "Şablonlar kategorileri, favorileri, sıralamayı, kullanım sayacını ve JSON yedeklemesini destekler."
         ]
       },
       {
-        "title": "2. Şablon oluşturma",
+        "title": "2. Yeni şablon oluşturma",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "<strong>Mailhilfe Sipariş Notları → Yeni ekle</strong> bölümünü açın. Açıklayıcı bir başlık girin, not metnini düzenleyicide yazın ve varsayılan not türünün dahili mi yoksa müşteriye yönelik mi olacağını seçin.",
+          "Başlığı amacın kısa açıklaması olarak kullanın; örneğin “Ödeme hatırlatması” veya “Müşteri teslimat hakkında aradı”. Bu, sipariş ekranında şablonu bulmayı kolaylaştırır."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Çok sayıda şablonunuz varsa bir veya daha fazla kategori atayın.",
+          "Sık kullanılan şablonları favori olarak işaretleyin.",
+          "Şablonun siparişlerde kullanılabilmesi için yayımlayın."
         ]
       },
       {
-        "title": "3. Metni biçimlendirme",
+        "title": "3. Şablon metnini biçimlendirme",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Şablon metni WordPress düzenleyicisini kullanır. Metni paragraflar, kalın ve italik yazı, listeler ve bağlantılarla biçimlendirebilirsiniz. Not oluşturulduğunda biçimlendirme korunur, ancak içerik WordPress’in güvenli HTML kurallarıyla temizlenir.",
+          "Müşteri notlarında biçimlendirmeyi ölçülü kullanın. Kısa bir paragraf veya madde işaretli liste, uzun ve yapılandırılmamış bir metinden genellikle daha kolay okunur."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "İyi örnek: kısa bir selamlama, açık bir açıklama ve sonraki adım.",
+          "Müşteri notlarında kurum içi kısaltmalar kullanmayın.",
+          "Müşteri notu olarak kullanılabilecek şablonlara özel personel yorumları eklemeyin."
         ]
       },
       {
-        "title": "4. Yer tutucuları kullanma",
+        "title": "4. Yer tutucular",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Yer tutucular, süslü parantez içindeki sözcüklerdir. Önizlemede ve not siparişe eklendiğinde gerçek sipariş verileriyle değiştirilirler.",
+          "Normal metni ve yer tutucuları birlikte kullanabilirsiniz. Örnek: <code>Merhaba {customer}, {order_number} numaralı siparişinizi aldık.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Sipariş: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Müşteri: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Gönderim ve ödeme: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Ürünler ve mağaza: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Önizlemeyi kontrol etme",
+        "title": "5. Not eklemeden önce önizleme",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Bir WooCommerce siparişini açın ve şablon seçin. Önizleme, yer tutucular seçilen sipariş verileriyle değiştirilmiş hâlde notu gösterir.",
+          "Notu oluşturmadan önce önizlemeyi her zaman kontrol edin. Özellikle gönderim şirketi veya telefon numarası gibi bir yer tutucunun siparişte değeri yoksa bu önemlidir."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Adları, toplamları, gönderim yöntemini ve ürün listesini kontrol edin.",
+          "Seçilen not türünün doğru olduğunu kontrol edin.",
+          "Aynı metnin gelecekteki tüm siparişler için iyileştirilmesi gerekiyorsa önce şablonu düzenleyin."
         ]
       },
       {
         "title": "6. Dahili notlar ve müşteri notları",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Dahili notlar mağaza personeli içindir ve genellikle belgeleme, takip görevleri veya hizmet geçmişi amacıyla kullanılır. Müşteri notları müşteriye görünebilir ve WooCommerce ayarlarınıza bağlı olarak e-posta bildirimlerini tetikleyebilir.",
+          "Düzenlenebilir önizlemeyi ve seçilen not türünü dikkatle inceleyin. Müşteri notlarını yalnızca müşterinin okuyabileceği metinler için kullanın."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Dahili not: “Müşteri aradı, teslimat adresi doğrulandı.”",
+          "Müşteri notu: “Siparişiniz hazırlanıyor ve kısa süre içinde gönderilecektir.”",
+          "Müşteri notlarına hiçbir zaman parola, özel yorum veya yalnızca tedarikçiye ait bilgi eklemeyin."
         ]
       },
       {
         "title": "7. Favoriler, arama ve sıralama",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Favoriler, en önemli şablonları seçimin üst kısmına yerleştirmenize yardımcı olur. Sipariş ekranındaki arama alanı, başlığa, kategoriye veya içeriğe göre şablon bulmanızı sağlar.",
+          "Şablon listesinde sürükleyip bırakarak sıralamayı değiştirebilirsiniz. Kaydedilen sıra, şablonlar sipariş ekranında gösterilirken kullanılır."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Günlük kullanılan şablonlar için favorileri kullanın.",
+          "Ödeme, Gönderim, İadeler ve Destek gibi konu grupları için kategorileri kullanın.",
+          "Arama sonuçlarının okunabilir kalması için başlıkları kısa tutun."
         ]
       },
       {
-        "title": "8. İçe aktarma, dışa aktarma ve demo şablonlar",
+        "title": "8. İçe aktarma, dışa aktarma ve demo şablonları",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "JSON dışa aktarma, şablonlarınızın yedeğini oluşturur. Bunu büyük değişikliklerden önce veya şablonları başka bir mağazaya taşımak için kullanabilirsiniz.",
+          "JSON içe aktarma yeni şablonlar oluşturabilir ve aynı başlığa veya dahili demo anahtarına sahip mevcut şablonları güncelleyebilir. Demo şablonları hızlı bir başlangıç sağlar ve etkin dilde oluşturulur."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Toplu değişikliklerden önce dışa aktarın.",
+          "Yalnızca güvenilir bir kaynaktan gelen JSON dosyalarını içe aktarın.",
+          "İçe aktarmadan sonra birkaç şablonu açıp biçimlendirmeyi ve yer tutucuları kontrol edin."
         ]
       },
       {
-        "title": "9. Roller ve izinler",
+        "title": "9. Yetkiler ve roller",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Eklenti, şablonları yönetmek ve siparişlerde kullanmak için ayrı yetkiler kullanır. Yöneticiler ve mağaza yöneticileri bu yetkileri etkinleştirme sırasında otomatik olarak alır.",
+          "Bir rol düzenleyici eklentisi kullanıyorsanız özel roller için bu yetkileri verebilir veya kaldırabilirsiniz."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: şablon oluşturma, düzenleme, silme ve içe/dışa aktarma.",
+          "<code>use_mh_order_note_templates</code>: WooCommerce siparişlerinde şablon kullanma.",
+          "Gerekli yetkisi olmayan kullanıcılar ilgili yönetim işlevlerini görmez."
         ]
       },
       {
         "title": "10. Güvenlik ve HPOS uyumluluğu",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Eklenti, yönetim işlemleri için WordPress nonce değerleri, yetki kontrolleri, veri temizleme ve çıktı kaçışını kullanır. Şablon içeriği kaydedilmeden veya kullanılmadan önce WordPress’in güvenli HTML kurallarıyla temizlenir.",
+          "Sipariş verileri, veritabanı tablolarına doğrudan erişmek yerine WooCommerce sipariş API’leri üzerinden okunur. Bu, eklentiyi WooCommerce HPOS ve klasik sipariş depolamasıyla uyumlu tutar."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "WooCommerce ve WordPress’i güncel tutun.",
+          "WooCommerce e-posta ayarlarını değiştirdikten sonra müşteri notu iş akışlarını test edin.",
+          "Büyük bir şablon kümesini içe aktarmadan önce bir hazırlık sitesi kullanın."
         ]
       },
       {
         "title": "11. Sorun giderme",
         "paragraphs": [
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar.",
-          "Bu yardım, biçimlendirilmiş şablon oluşturma, yer tutucu kullanma, WooCommerce siparişlerine not ekleme, JSON içe/dışa aktarma, izinler, HPOS ve güvenli kullanım sürecini açıklar."
+          "Şablonlar bir siparişte görünmüyorsa WooCommerce’in etkin, şablonun yayımlanmış ve geçerli kullanıcının şablon kullanma yetkisine sahip olduğunu kontrol edin.",
+          "Çeviriler görünmüyorsa WordPress’te site dilini ve kullanıcı dilini kontrol edin. Eklenti, Farsça dâhil desteklenen tüm diller için incelenmiş paketlenmiş yedek çeviri dosyaları içerir. Diğer diller, incelenmiş WordPress.org dil paketleriyle sağlanmalıdır."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Güncellemeden sonra eski yönetim ekranı hâlâ görünüyorsa nesne/önbellek eklentilerinin önbelleğini temizleyin.",
+          "Bir yer tutucu değişmeden kalıyorsa süslü parantezler dâhil listelendiği biçimde tam olarak yazıldığını doğrulayın.",
+          "Müşteri notları e-posta ile gönderilmiyorsa müşteri notu bildirimleri için WooCommerce e-posta ayarlarını kontrol edin."
         ]
       },
       {
         "title": "12. Ayarlar sayfası",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → Ayarlar</strong> bölümünde varsayılan not türünü, güvenli HTML’yi, kullanım görünümünü, favorileri, JSON içe aktarmayı ve dil eşleştirmeyi ayarlayın. Günlük kullanımda dahili notları varsayılan yapın."
+          "Varsayılan not türünü, güvenli HTML davranışını, kullanım görünümünü, favorileri, JSON içe aktarma seçeneklerini ve dil eşleştirmeyi seçmek için <strong>Mailhilfe Sipariş Notları → Ayarlar</strong> bölümünü açın. Daha güvenli günlük kullanım için varsayılan olarak dahili notları tercih edin."
         ],
         "items": []
       },
       {
         "title": "13. Şablon dili ve çok dilli mağazalar",
         "paragraphs": [
-          "Her şablona bir dil atanabilir. Genel metinler için <strong>Tüm diller</strong>, çevrilmiş müşteri mesajları için belirli bir dil seçin.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Her şablonun bir şablon dili olabilir. Aynı metin her sipariş için kullanılabiliyorsa <strong>Tüm diller</strong> seçeneğini, yerelleştirilmiş metinler için ise belirli bir dili seçin.",
+          "Mümkün olduğunda eklenti, sipariş diliyle, kullanıcı diliyle veya çok dilli eklentilerden gelen yaygın dil verileriyle eşleşen şablonları tercih edebilir."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Personel için dahili notlarda tek bir tarafsız şablon kullanın.",
+          "Almanca, İngilizce veya mağazanın diğer dilleri için ayrı müşteriye yönelik şablonlar oluşturun.",
+          "WPML veya Polylang kullanılan mağazalarda sipariş dili algılamasını gerçek bir test siparişiyle sınayın."
         ]
       },
       {
-        "title": "14. Özel alanlar ve meta veriler",
+        "title": "14. Özel alanlar ve meta yer tutucular",
         "paragraphs": [
-          "<code>{order_meta:meta_key}</code> ve <code>{customer_meta:meta_key}</code> seçili meta verileri ekler. password, token veya secret gibi hassas anahtarlar engellenir.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Gelişmiş yer tutucular seçilen sipariş veya müşteri meta alanlarını okuyabilir. Sipariş verileri için <code>{order_meta:meta_key}</code>, müşteri kullanıcı verileri için <code>{customer_meta:meta_key}</code> kullanın.",
+          "Güvenlik amacıyla password, token, secret, session, auth ve hash gibi hassas anahtar adları engellenir. Meta yer tutucuları yalnızca alanın ne içerdiğini biliyorsanız kullanın."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Örnek: bir gönderim eklentisinin kaydettiği takip numarası için <code>{order_meta:_tracking_number}</code>.",
+          "Örnek: KDV numarası alanı için <code>{order_meta:_billing_vat_id}</code>.",
+          "Müşteri notlarında dahili veya hassas alanları göstermeyin."
         ]
       },
       {
-        "title": "15. Çoğaltma ve revizyonlar",
+        "title": "15. Şablonları çoğaltma ve revizyonlar",
         "paragraphs": [
-          "Çoğaltma işlemi taslak bir kopya oluşturur. WordPress revizyonları eski sürümleri karşılaştırıp geri yüklemeye yardımcı olur.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Küçük değişikliklerle benzer bir şablona ihtiyacınız olduğunda çoğaltma işlemini kullanın. Kopya, yayımlanmadan önce incelenebilmesi için taslak olarak oluşturulur.",
+          "Şablon revizyonları, önceki sürümleri karşılaştırmanızı ve yanlışlıkla yapılan bir değişiklikte eski metni geri yüklemenizi sağlar."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "DHL, UPS veya mağazadan teslim alma varyantları oluşturmadan önce genel gönderim şablonunu çoğaltın.",
+          "Büyük metin değişikliklerinden sonra revizyonları kontrol edin.",
+          "Benzer şablonların karışmaması için başlıkları açık tutun."
         ]
       },
       {
-        "title": "16. İzinler",
+        "title": "16. Yetkiler sayfası",
         "paragraphs": [
-          "<strong>İzinler</strong> sayfası hangi rollerin şablonları yöneteceğini ve siparişlerde kullanacağını belirler.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Hangi WordPress rollerinin şablonları yönetebileceğini ve hangi rollerin siparişlerde şablon kullanabileceğini belirlemek için <strong>Mailhilfe Sipariş Notları → Yetkiler</strong> bölümünü açın.",
+          "Yöneticiler gerekli yetkileri korur. Diğer roller için yalnızca günlük görev için gereken yetkileri verin."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Şablonları yönet: şablon oluşturma, düzenleme, silme, içe aktarma ve dışa aktarma.",
+          "Şablonları kullan: bir şablon seçme ve WooCommerce siparişine not ekleme.",
+          "İçe/dışa aktarma yetkilerini yalnızca güvenilir kullanıcılara verin."
         ]
       },
       {
         "title": "17. İçe aktarma önizlemesi",
         "paragraphs": [
-          "JSON içe aktarma, değişikliklerden önce oluşturulacak, güncellenecek veya atlanacak şablonları gösterir.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "JSON içe aktarımları artık değişiklikler uygulanmadan önce bir önizleme gösterir. Önizleme, kaç şablonun oluşturulacağını, güncelleneceğini veya atlanacağını bildirir.",
+          "İçe aktarmayı yalnızca önizlemeyi kontrol ettikten sonra onaylayın. Bu, mevcut şablonların yanlışlıkla üzerine yazılmasını önler."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Büyük bir kümeyi içe aktarmadan önce dışa aktarma yedeği oluşturun.",
+          "Yalnızca güvenilir bir kaynaktan gelen JSON dosyalarını içe aktarın.",
+          "İçe aktarmadan sonra en az bir müşteri notunu ve bir dahili notu test edin."
         ]
       },
       {
-        "title": "18. Müşteri notu e-posta durumu",
+        "title": "18. Müşteri notu e-posta davranışı",
         "paragraphs": [
-          "İlgili e-posta etkinse müşteri notları WooCommerce e-posta bildirimlerini tetikleyebilir. Eklenti, müşteri notunun oluşturulmasını e-posta işleme sonucundan ayrı kaydeder. Notu eklemeden önce düzenlenebilir önizlemeyi kontrol edin ve sonucu Geçmiş sayfasından inceleyin."
+          "İlgili e-posta etkinse müşteri notları WooCommerce e-posta bildirimlerini tetikleyebilir. Eklenti, müşteri notunun oluşturulmasını e-posta işlemesinden ayrı kaydeder. Notu eklemeden önce düzenlenebilir önizlemeyi inceleyin ve posta işleyicisinin sonucunu kontrol etmek için Geçmiş sayfasını kullanın."
         ],
         "items": []
       },
       {
         "title": "19. Önerilen iş akışı",
         "paragraphs": [
-          "Şablonu seçin, değiştirilmiş önizlemeyi kontrol edin, gerekiyorsa düzenleyin, not türünü doğrulayın ve notu ekleyin.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Güvenli bir günlük iş akışı şöyledir: şablon seçin, değiştirilmiş önizlemeyi inceleyin, gerekirse önizlemeyi düzenleyin, not türünü doğrulayın ve ardından notu ekleyin.",
+          "Yeni şablonları gerçek müşterilerle kullanmadan önce kritik olmayan bir siparişte veya hazırlık mağazasında test edin."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Yalnızca personelin görebileceği bilgiler için dahili notları kullanın.",
+          "Müşteri notlarını yalnızca müşteriye gönderilebilecek iletiler için kullanın.",
+          "Bir şablon değiştirildiğinde yer tutucuları yeniden kontrol edin."
         ]
       },
       {
         "title": "20. Şablon koşulları",
         "paragraphs": [
-          "Koşullar bir şablonun siparişte kullanılabilir olup olmadığını belirler. Sipariş durumu, ödeme yöntemi, gönderim yöntemi, fatura ülkesi ve minimum veya maksimum toplam ile sınırlandırabilirsiniz. Girilen tüm koşullar eşleşmelidir."
+          "Şablon koşulları, bir şablonun belirli bir sipariş için kullanılabilir olup olmadığını belirler. Şablonları sipariş durumu, ödeme yöntemi, gönderim yöntemi, fatura ülkesi ve en düşük ya da en yüksek sipariş toplamına göre sınırlayabilirsiniz. Yapılandırılan tüm koşullar eşleşmelidir."
         ],
         "items": [
-          "Kısıtlama uygulanmayacak alanı boş bırakın.",
+          "Bir koşul şablonu sınırlamamalıysa ilgili alanı boş bırakın.",
           "Ödeme ve gönderim yöntemlerinin teknik kimliklerini kullanın.",
           "Koşullar arayüzde ve not oluşturulmadan önce sunucuda tekrar kontrol edilir."
         ]
@@ -4097,2459 +4435,970 @@ JSON;
       {
         "title": "21. E-posta işleme günlüğü",
         "paragraphs": [
-          "Müşteri notlarında eklenti, WooCommerce’in e-postayı işlediğini bildirdiği olayları ve wp_mail teknik hatalarını kaydeder. “İşlendi” durumu posta sistemine aktarımı gösterir; nihai teslimatı veya okunmayı kanıtlamaz."
+          "Müşteri notları için eklenti, WooCommerce müşteri notu e-postasını işlenmiş olarak bildirdiğinde bunu kaydeder ve teknik wp_mail hatalarını da kaydeder. İşlenmiş olay, WordPress/WooCommerce’in iletiyi posta sistemine teslim ettiğini doğrular; nihai teslimatı veya müşterinin iletiyi okuduğunu kanıtlamaz."
         ],
         "items": [
-          "İşlenen ve başarısız olaylar için Geçmiş sayfasını kontrol edin.",
-          "Kesin teslimat bilgisi için SMTP hizmeti kullanın.",
-          "Dahili notlar müşteri notu e-postası göndermez."
+          "İşlenen ve başarısız e-posta olayları için Geçmiş sayfasını kontrol edin.",
+          "Kesin teslimat bilgisi gerektiğinde bir SMTP sağlayıcısı veya posta günlüğü hizmeti kullanın.",
+          "Dahili notlar müşteri notu e-postasını tetiklemez."
         ]
       },
       {
         "title": "22. Merkezi geçmiş",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → Geçmiş</strong> sayfasında not oluşturma, şablon kullanımı, e-posta işleme ve hataları görebilirsiniz. Varsa sipariş, şablon, kullanıcı, alıcı, olay türü ve zaman gösterilir."
+          "Son not oluşturma işlemlerini, şablon kullanımını, e-posta işlemesini ve e-posta hatalarını incelemek için <strong>Mailhilfe Sipariş Notları → Geçmiş</strong> bölümünü açın. Kayıtlar, mevcut olduğunda sipariş, şablon, kullanıcı, alıcı, olay türü ve zamanı içerir."
         ],
         "items": [
-          "Destek, denetim ve sorun giderme için kullanın.",
-          "WooCommerce sipariş notlarından ayrıdır.",
-          "En son 250 kayıt gösterilir."
+          "Geçmişi destek, denetim ve sorun giderme için kullanın.",
+          "Geçmiş, WooCommerce sipariş notlarından ayrıdır.",
+          "Sayfa en yeni 250 kaydı gösterir."
         ]
       },
       {
         "title": "23. Test siparişi önizlemesi",
         "paragraphs": [
-          "Şablon düzenleyicisinde bir WooCommerce sipariş kimliği girin. Kaydedilmemiş değişiklikler dahil mevcut içerik, not oluşturmadan veya e-posta göndermeden sipariş verileriyle gösterilir."
+          "Şablon düzenleyicisinde test önizleme alanına bir WooCommerce sipariş kimliği girin. Kaydedilmemiş değişiklikler dâhil geçerli düzenleyici içeriği, not oluşturmadan veya e-posta göndermeden bu siparişin verileriyle işlenir."
         ],
         "items": [
-          "Test siparişi veya hazırlık sitesi kullanın.",
-          "Eksik değerleri, biçimlendirmeyi, koşulları ve özel metayı kontrol edin.",
+          "Bir hazırlık siparişi veya kritik olmayan bir test siparişi kullanın.",
+          "Eksik değerleri, biçimlendirmeyi, koşulları ve özel meta yer tutucuları kontrol edin.",
           "Seçilen siparişi düzenleme yetkiniz olmalıdır."
         ]
       },
       {
         "title": "24. Kişisel favoriler ve son kullanılan şablonlar",
         "paragraphs": [
-          "Her kullanıcı sipariş ekranında kişisel favoriler belirleyebilir. Eklenti ayrıca kullanıcı başına başarıyla kullanılan son on şablonu kaydeder ve üstte gösterir. Genel favoriler herkesle paylaşılır."
+          "Her yönetici sipariş ekranında kişisel favorileri işaretleyebilir. Eklenti ayrıca her kullanıcı için son kullanılan on şablonu saklar ve seçimde bunlara daha üst bir konum verir. Genel favoriler tüm kullanıcılarla paylaşılmaya devam eder."
         ],
         "items": [
-          "Kişisel favoriler diğer kullanıcıları etkilemez.",
-          "Son kullanılanlar yalnızca not başarıyla eklendikten sonra güncellenir.",
-          "Veriler WordPress kullanıcı metası olarak saklanır."
+          "Kişisel favoriler başka bir kullanıcının listesini değiştirmez.",
+          "Son kullanılanlar listesi yalnızca bir not başarıyla eklendikten sonra güncellenir.",
+          "Kişisel veriler WordPress kullanıcı meta verisi olarak saklanır."
         ]
       },
       {
         "title": "25. Tanılama sayfası",
         "paragraphs": [
-          "<strong>Mailhilfe Order Notes → Tanılama</strong> altında WordPress, PHP ve WooCommerce sürümleri, HPOS, müşteri notu e-postası, dil, şablon sayısı, önbellek ve WP_DEBUG bilgileri bulunur."
+          "WordPress, PHP ve WooCommerce sürümleri, HPOS durumu, müşteri notu e-posta durumu, yerel ayar, yayımlanmış şablon sayısı, önbellek durumu ve WP_DEBUG gibi teknik bilgileri görüntülemek için <strong>Mailhilfe Sipariş Notları → Tanılama</strong> bölümünü açın."
         ],
         "items": [
-          "Destek isterken bu bilgileri paylaşın.",
-          "Not içeriği veya müşteri adresleri gösterilmez.",
+          "Destek isterken tanılama değerlerini kopyalayın.",
+          "Sayfa sipariş notu içeriğini veya müşteri adreslerini göstermez.",
           "Geliştiriciler tanılama filtresiyle satır ekleyebilir."
         ]
       },
       {
         "title": "26. Geliştirici kancaları ve filtreleri",
         "paragraphs": [
-          "Yer tutucular, değerler, izin verilen meta anahtarları, şablon sonuçları, koşullar, önizleme, son içerik, ekleme öncesi/sonrası, geçmiş ve tanılama için kancalar ve filtreler vardır. Adlar readme.txt dosyasında belgelenmiştir."
+          "Eklenti; yer tutucular, yer tutucu değerleri, izin verilen meta anahtarları, şablon sonuçları, koşullar, önizleme içeriği, son not içeriği, not eklemeden önceki ve sonraki işlemler, geçmiş kayıtları ve tanılama için kancalar ve filtreler sağlar. Kanca adları ve parametreleri readme.txt dosyasında belgelenmiştir."
         ],
         "items": [
-          "Özel verileri doğrulayın, temizleyin ve kaçışlayın.",
-          "Doğrudan tablolara erişmek yerine WooCommerce sipariş API’lerini kullanın.",
-          "HPOS ve klasik depolamayla uyumluluğu koruyun."
+          "Tüm özel verileri doğrulayın, temizleyin ve kaçış uygulayın.",
+          "Sipariş tablolarına doğrudan erişmek yerine WooCommerce sipariş API’lerini kullanın.",
+          "Özel uzantıları hem HPOS hem de klasik sipariş depolamasıyla uyumlu tutun."
         ]
       }
     ]
   },
-  "ar": {
-    "title": "مساعدة مفصلة لـ Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن. Mailhilfe Order Note Manager for WooCommerce.",
+  "fa_IR": {
+    "title": "راهنمای کامل Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "این راهنمای به‌روز، روند کامل کار با Mailhilfe Order Note Manager for WooCommerce را توضیح می‌دهد: ایجاد و قالب‌بندی الگوها، استفاده از زبان الگو، جای‌نگهدارها و جای‌نگهدارهای متا، ویرایش پیش‌نمایش، ارسال ایمن یادداشت‌های مشتری، تنظیمات، دسترسی‌ها، پیش‌نمایش درون‌ریزی و سازگاری با HPOS.",
     "sections": [
       {
-        "title": "1. وظيفة الإضافة",
+        "title": "۱. افزونه چه کاری انجام می‌دهد",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "Mailhilfe Order Note Manager for WooCommerce به شما امکان می‌دهد یادداشت‌های پرکاربرد سفارش‌های ووکامرس را به‌صورت الگوهای قابل استفاده مجدد ذخیره کنید. به این ترتیب نیازی به تایپ چندباره متن‌های یکسان نیست و ارتباطات ثبت‌شده در تاریخچه سفارش یکدست می‌ماند.",
+          "هر الگو می‌تواند به‌صورت یادداشت داخلی کارکنان یا یادداشت مشتری آماده شود. هنگام استفاده از الگو در یک سفارش همچنان می‌توانید نوع یادداشت را تغییر دهید."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "نمونه‌های معمول: یادآوری پرداخت، تأخیر در ارسال، ثبت تماس تلفنی، بررسی نشانی و پاسخ‌های پشتیبانی.",
+          "الگوها از دسته‌بندی، برگزیده‌ها، مرتب‌سازی، شمارنده استفاده و پشتیبان‌گیری JSON پشتیبانی می‌کنند."
         ]
       },
       {
-        "title": "2. إنشاء قالب",
+        "title": "۲. ایجاد الگوی تازه",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "<strong>یادداشت‌های سفارش Mailhilfe ← افزودن</strong> را باز کنید. یک عنوان روشن وارد کنید، متن یادداشت را در ویرایشگر بنویسید و مشخص کنید نوع پیش‌فرض یادداشت داخلی باشد یا برای مشتری.",
+          "عنوان را به‌صورت توضیحی کوتاه درباره کاربرد الگو انتخاب کنید؛ برای نمونه «یادآوری پرداخت» یا «تماس مشتری درباره تحویل». این کار پیدا کردن الگو در صفحه سفارش را آسان‌تر می‌کند."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "اگر الگوهای زیادی دارید، یک یا چند دسته به الگو اختصاص دهید.",
+          "الگوهای پرکاربرد را به‌عنوان برگزیده علامت‌گذاری کنید.",
+          "الگو را منتشر کنید تا در سفارش‌ها در دسترس قرار گیرد."
         ]
       },
       {
-        "title": "3. تنسيق النص",
+        "title": "۳. قالب‌بندی متن الگو",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "متن الگو از ویرایشگر وردپرس استفاده می‌کند. می‌توانید متن را با بندها، نوشته پررنگ و کج، فهرست‌ها و پیوندها قالب‌بندی کنید. قالب‌بندی هنگام ایجاد یادداشت حفظ می‌شود، اما محتوا با قواعد HTML امن وردپرس پاک‌سازی خواهد شد.",
+          "در یادداشت‌های مشتری از قالب‌بندی با دقت استفاده کنید. معمولاً یک بند کوتاه یا فهرست نشانه‌دار از متن بلند و بدون ساختار خواناتر است."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "نمونه مناسب: یک سلام کوتاه، یک توضیح روشن و یک گام بعدی.",
+          "در یادداشت‌های مشتری از مخفف‌های داخلی خودداری کنید.",
+          "نظرهای خصوصی کارکنان را در الگوهایی که ممکن است به‌عنوان یادداشت مشتری استفاده شوند وارد نکنید."
         ]
       },
       {
-        "title": "4. استخدام العناصر النائبة",
+        "title": "۴. جای‌نگهدارها",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "جای‌نگهدارها واژه‌هایی میان آکولاد هستند. در پیش‌نمایش و هنگام افزودن یادداشت به سفارش، آن‌ها با داده‌های واقعی سفارش جایگزین می‌شوند.",
+          "می‌توانید متن عادی و جای‌نگهدارها را با هم ترکیب کنید. نمونه: <code>سلام {customer}، سفارش {order_number} شما را دریافت کردیم.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "سفارش: <code>{order_number}</code>، <code>{order_status}</code>، <code>{order_date}</code>، <code>{order_total}</code>.",
+          "مشتری: <code>{customer}</code>، <code>{billing_email}</code>، <code>{billing_phone}</code>.",
+          "حمل‌ونقل و پرداخت: <code>{shipping_method}</code>، <code>{payment_method}</code>.",
+          "اقلام و فروشگاه: <code>{items}</code>، <code>{item_count}</code>، <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. فحص المعاينة",
+        "title": "۵. پیش‌نمایش پیش از افزودن یادداشت",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "یک سفارش ووکامرس را باز و یک الگو انتخاب کنید. پیش‌نمایش، یادداشت را در حالی نشان می‌دهد که جای‌نگهدارها با داده‌های سفارش انتخاب‌شده جایگزین شده‌اند.",
+          "همیشه پیش از ایجاد یادداشت، پیش‌نمایش را بررسی کنید. این موضوع به‌ویژه زمانی مهم است که جای‌نگهداری در سفارش مقدار ندارد؛ برای نمونه وقتی نام شرکت حمل‌ونقل یا شماره تلفن ثبت نشده است."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "نام‌ها، مبلغ‌ها، روش حمل‌ونقل و فهرست اقلام را بررسی کنید.",
+          "بررسی کنید نوع یادداشت انتخاب‌شده درست باشد.",
+          "اگر متن باید برای همه سفارش‌های آینده بهتر شود، ابتدا خود الگو را ویرایش کنید."
         ]
       },
       {
-        "title": "6. ملاحظات داخلية وملاحظات للعميل",
+        "title": "۶. یادداشت داخلی و یادداشت مشتری",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "یادداشت‌های داخلی برای کارکنان فروشگاه هستند و معمولاً برای مستندسازی، کارهای پیگیری یا سابقه پشتیبانی استفاده می‌شوند. یادداشت‌های مشتری ممکن است برای مشتری قابل مشاهده باشند و بسته به تنظیمات ووکامرس، اعلان ایمیلی ووکامرس را فعال کنند.",
+          "پیش‌نمایش قابل ویرایش و نوع یادداشت انتخاب‌شده را با دقت بررسی کنید. یادداشت مشتری را فقط برای متنی به‌کار ببرید که مشتری مجاز به خواندن آن است."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "یادداشت داخلی: «مشتری تماس گرفت؛ نشانی تحویل تأیید شد.»",
+          "یادداشت مشتری: «سفارش شما در حال آماده‌سازی است و به‌زودی ارسال می‌شود.»",
+          "هرگز گذرواژه، نظر خصوصی یا اطلاعات ویژه تأمین‌کننده را در یادداشت مشتری قرار ندهید."
         ]
       },
       {
-        "title": "7. المفضلة والبحث والترتيب",
+        "title": "۷. برگزیده‌ها، جست‌وجو و مرتب‌سازی",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "برگزیده‌ها کمک می‌کنند مهم‌ترین الگوها در ابتدای فهرست انتخاب قرار گیرند. کادر جست‌وجو در صفحه سفارش به شما امکان می‌دهد الگو را بر اساس عنوان، دسته یا محتوا پیدا کنید.",
+          "در فهرست الگوها می‌توانید ترتیب را با کشیدن و رها کردن تغییر دهید. ترتیب ذخیره‌شده هنگام نمایش الگوها در صفحه سفارش استفاده می‌شود."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "برای الگوهای روزمره از برگزیده‌ها استفاده کنید.",
+          "برای گروه‌های موضوعی مانند پرداخت، حمل‌ونقل، مرجوعی و پشتیبانی از دسته‌ها استفاده کنید.",
+          "عنوان‌ها را کوتاه نگه دارید تا نتایج جست‌وجو خوانا بمانند."
         ]
       },
       {
-        "title": "8. الاستيراد والتصدير وقوالب العرض",
+        "title": "۸. درون‌ریزی، برون‌بری و الگوهای نمایشی",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "برون‌بری JSON یک نسخه پشتیبان از الگوهای شما ایجاد می‌کند. می‌توانید پیش از تغییرات گسترده یا برای انتقال الگوها به فروشگاهی دیگر از آن استفاده کنید.",
+          "درون‌ریزی JSON می‌تواند الگوهای تازه ایجاد کند و الگوهای موجود با عنوان یا کلید نمایشی داخلی یکسان را به‌روزرسانی کند. الگوهای نمایشی یک نقطه شروع سریع فراهم می‌کنند و به زبان فعال ساخته می‌شوند."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "پیش از تغییرات گروهی، برون‌بری تهیه کنید.",
+          "فقط فایل‌های JSON از منبع مورد اعتماد را درون‌ریزی کنید.",
+          "پس از درون‌ریزی، چند الگو را باز و قالب‌بندی و جای‌نگهدارها را بررسی کنید."
         ]
       },
       {
-        "title": "9. الأدوار والصلاحيات",
+        "title": "۹. دسترسی‌ها و نقش‌ها",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "افزونه برای مدیریت الگوها و استفاده از الگوها در سفارش‌ها، دسترسی‌های جداگانه دارد. مدیران و مدیران فروشگاه هنگام فعال‌سازی این دسترسی‌ها را به‌طور خودکار دریافت می‌کنند.",
+          "اگر از افزونه ویرایش نقش استفاده می‌کنید، می‌توانید این دسترسی‌ها را برای نقش‌های سفارشی اضافه یا حذف کنید."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: ایجاد، ویرایش، حذف و درون‌ریزی/برون‌بری الگوها.",
+          "<code>use_mh_order_note_templates</code>: استفاده از الگوها در سفارش‌های ووکامرس.",
+          "کاربرانی که دسترسی لازم را ندارند، بخش‌های مدیریتی مربوط را نمی‌بینند."
         ]
       },
       {
-        "title": "10. الأمان وتوافق HPOS",
+        "title": "۱۰. امنیت و سازگاری با HPOS",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "افزونه برای عملیات مدیریتی از نانس‌های وردپرس، بررسی دسترسی، پاک‌سازی و ایمن‌سازی خروجی استفاده می‌کند. محتوای الگو پیش از ذخیره یا استفاده با HTML امن وردپرس پاک‌سازی می‌شود.",
+          "داده‌های سفارش از طریق APIهای سفارش ووکامرس خوانده می‌شوند، نه با دسترسی مستقیم به جدول‌های پایگاه داده. به همین دلیل افزونه با HPOS ووکامرس و شیوه کلاسیک ذخیره سفارش سازگار می‌ماند."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "ووکامرس و وردپرس را به‌روز نگه دارید.",
+          "پس از تغییر تنظیمات ایمیل ووکامرس، روند یادداشت مشتری را آزمایش کنید.",
+          "پیش از درون‌ریزی مجموعه بزرگی از الگوها، از یک سایت آزمایشی استفاده کنید."
         ]
       },
       {
-        "title": "11. استكشاف الأخطاء",
+        "title": "۱۱. رفع اشکال",
         "paragraphs": [
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن.",
-          "تشرح هذه المساعدة سير العمل الكامل: إنشاء قوالب منسقة، استخدام العناصر النائبة، إضافة ملاحظات إلى طلبات WooCommerce، استيراد/تصدير JSON، إدارة الصلاحيات، HPOS والاستخدام الآمن."
+          "اگر الگوها در سفارش نمایش داده نمی‌شوند، بررسی کنید ووکامرس فعال باشد، الگو منتشر شده باشد و کاربر فعلی اجازه استفاده از الگوها را داشته باشد.",
+          "اگر ترجمه‌ها نمایش داده نمی‌شوند، زبان سایت و زبان کاربر را در وردپرس بررسی کنید. افزونه برای همه زبان‌های پشتیبانی‌شده، از جمله فارسی، فایل‌های جایگزین داخلی بازبینی‌شده دارد. زبان‌های دیگر باید از بسته‌های زبانی بازبینی‌شده WordPress.org تأمین شوند."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "اگر پس از به‌روزرسانی همچنان صفحه مدیریتی قدیمی دیده می‌شود، کش شیء یا افزونه‌های کش را پاک کنید.",
+          "اگر جای‌نگهداری بدون تغییر باقی ماند، بررسی کنید دقیقاً مطابق فهرست و همراه با آکولاد نوشته شده باشد.",
+          "اگر یادداشت مشتری ایمیل نمی‌شود، تنظیمات ایمیل ووکامرس برای اعلان یادداشت مشتری را بررسی کنید."
         ]
       },
       {
-        "title": "12. صفحة الإعدادات",
+        "title": "۱۲. صفحه تنظیمات",
         "paragraphs": [
-          "افتح <strong>Mailhilfe Order Notes → الإعدادات</strong> لاختيار نوع الملاحظة الافتراضي وHTML الآمن وعرض الاستخدام والمفضلة واستيراد JSON ومطابقة اللغة. استخدم الملاحظات الداخلية افتراضيًا في العمل اليومي."
-        ],
-        "items": []
-      },
-      {
-        "title": "13. لغة القالب والمتاجر متعددة اللغات",
-        "paragraphs": [
-          "يمكن تعيين لغة لكل قالب. اختر <strong>كل اللغات</strong> للنص العام أو لغة محددة للرسائل المترجمة للعميل.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. الحقول المخصصة والبيانات الوصفية",
-        "paragraphs": [
-          "تدرج العناصر <code>{order_meta:meta_key}</code> و <code>{customer_meta:meta_key}</code> بيانات وصفية محددة. يتم حظر المفاتيح الحساسة مثل password و token و secret.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. النسخ والمراجعات",
-        "paragraphs": [
-          "تنشئ عملية النسخ نسخة كمسودة. تساعد مراجعات WordPress في مقارنة الإصدارات السابقة واستعادتها.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. الصلاحيات",
-        "paragraphs": [
-          "تحدد صفحة <strong>الصلاحيات</strong> الأدوار التي تدير القوالب والأدوار التي تستخدمها في الطلبات.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. معاينة الاستيراد",
-        "paragraphs": [
-          "يعرض استيراد JSON معاينة للقوالب التي سيتم إنشاؤها أو تحديثها أو تخطيها قبل التطبيق.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. حالة بريد ملاحظة العميل",
-        "paragraphs": [
-          "قد تؤدي ملاحظات العملاء إلى تشغيل إشعارات WooCommerce عبر البريد الإلكتروني عند تفعيل الرسالة المقابلة. تسجل الإضافة إنشاء ملاحظة العميل بصورة منفصلة عن معالجة البريد. راجع المعاينة القابلة للتحرير قبل إضافة الملاحظة وتحقق من النتيجة في صفحة السجل."
+          "<strong>یادداشت‌های سفارش Mailhilfe ← تنظیمات</strong> را باز کنید تا نوع پیش‌فرض یادداشت، رفتار HTML امن، نمایش میزان استفاده، برگزیده‌ها، گزینه‌های درون‌ریزی JSON و تطبیق زبان را انتخاب کنید. برای کار روزمره ایمن‌تر، یادداشت داخلی را به‌عنوان پیش‌فرض انتخاب کنید."
         ],
         "items": []
       },
       {
-        "title": "19. سير العمل الموصى به",
+        "title": "۱۳. زبان الگو و فروشگاه‌های چندزبانه",
         "paragraphs": [
-          "اختر قالبًا، راجع المعاينة بعد الاستبدال، عدّلها عند الحاجة، تحقق من نوع الملاحظة ثم أضفها.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "هر الگو می‌تواند یک زبان داشته باشد. اگر همان متن برای همه سفارش‌ها قابل استفاده است، <strong>همه زبان‌ها</strong> را انتخاب کنید؛ در غیر این صورت برای متن محلی‌شده یک زبان مشخص برگزینید.",
+          "در صورت وجود داده مناسب، افزونه می‌تواند الگوهای هم‌زبان با سفارش، کاربر یا اطلاعات زبانی افزونه‌های چندزبانه را ترجیح دهد."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "برای یادداشت‌های داخلی کارکنان از یک الگوی خنثی استفاده کنید.",
+          "برای مشتریان، الگوهای جداگانه فارسی، آلمانی، انگلیسی یا زبان‌های دیگر بسازید.",
+          "در فروشگاه‌های WPML یا Polylang، تشخیص زبان سفارش را با یک سفارش آزمایشی واقعی بررسی کنید."
         ]
       },
       {
-        "title": "20. شروط القوالب",
+        "title": "۱۴. فیلدهای سفارشی و جای‌نگهدارهای متا",
         "paragraphs": [
-          "تحدد الشروط ما إذا كان القالب متاحًا لطلب معين. يمكن التقييد حسب حالة الطلب وطريقة الدفع وطريقة الشحن وبلد الفوترة والحد الأدنى أو الأقصى للإجمالي. يجب أن تتطابق جميع الشروط المدخلة."
+          "جای‌نگهدارهای پیشرفته می‌توانند فیلدهای متای انتخاب‌شده سفارش یا مشتری را بخوانند. برای داده سفارش از <code>{order_meta:meta_key}</code> و برای داده کاربری مشتری از <code>{customer_meta:meta_key}</code> استفاده کنید.",
+          "برای امنیت، نام کلیدهای حساس مانند password، token، secret، session، auth و hash مسدود هستند. فقط زمانی از جای‌نگهدار متا استفاده کنید که محتوای فیلد را می‌شناسید."
         ],
         "items": [
-          "اترك الحقل فارغًا إذا لم يكن مطلوبًا أن يقيّد القالب.",
-          "استخدم المعرّفات التقنية لطرق الدفع والشحن.",
-          "يتم فحص الشروط في الواجهة ثم مرة أخرى على الخادم."
+          "نمونه: <code>{order_meta:_tracking_number}</code> برای شماره رهگیری ذخیره‌شده توسط افزونه حمل‌ونقل.",
+          "نمونه: <code>{order_meta:_billing_vat_id}</code> برای فیلد شناسه مالیات بر ارزش افزوده.",
+          "فیلدهای داخلی یا حساس را در یادداشت مشتری نمایش ندهید."
         ]
       },
       {
-        "title": "21. سجل معالجة البريد الإلكتروني",
+        "title": "۱۵. تکثیر الگوها و بازنگری‌ها",
         "paragraphs": [
-          "في ملاحظات العميل تسجل الإضافة عندما يبلغ WooCommerce عن معالجة البريد، كما تسجل أخطاء wp_mail التقنية. تعني «تمت المعالجة» تسليم الرسالة لنظام البريد فقط، ولا تثبت وصولها النهائي أو قراءتها."
+          "هنگامی که به الگویی مشابه با تغییرات کوچک نیاز دارید از عمل تکثیر استفاده کنید. رونوشت به‌صورت پیش‌نویس ایجاد می‌شود تا پیش از انتشار بررسی شود.",
+          "بازنگری‌های الگو به شما امکان می‌دهند نسخه‌های پیشین را مقایسه کنید و اگر تغییری اشتباه بود، متن قبلی را بازگردانید."
         ],
         "items": [
-          "راجع صفحة السجل للأحداث المعالجة والفاشلة.",
-          "استخدم مزود SMTP للحصول على معلومات تسليم أدق.",
-          "الملاحظات الداخلية لا ترسل بريد ملاحظة العميل."
+          "پیش از ساخت نسخه‌های DHL، UPS یا تحویل حضوری، یک الگوی عمومی حمل‌ونقل را تکثیر کنید.",
+          "پس از تغییرات بزرگ متن، بازنگری‌ها را بررسی کنید.",
+          "عنوان‌ها را روشن انتخاب کنید تا الگوهای مشابه با هم اشتباه نشوند."
         ]
       },
       {
-        "title": "22. السجل المركزي",
+        "title": "۱۶. صفحه دسترسی‌ها",
         "paragraphs": [
-          "افتح <strong>Mailhilfe Order Notes ← السجل</strong> لمراجعة إنشاء الملاحظات واستخدام القوالب ومعالجة البريد والأخطاء. عند توفرها تظهر بيانات الطلب والقالب والمستخدم والمستلم ونوع الحدث والوقت."
+          "<strong>یادداشت‌های سفارش Mailhilfe ← دسترسی‌ها</strong> را باز کنید تا مشخص کنید کدام نقش‌های وردپرس می‌توانند الگوها را مدیریت کنند و کدام نقش‌ها اجازه استفاده از الگوها در سفارش‌ها را دارند.",
+          "مدیران دسترسی‌های لازم را حفظ می‌کنند. برای نقش‌های دیگر فقط دسترسی‌های مورد نیاز کار روزمره را اعطا کنید."
         ],
         "items": [
-          "استخدم السجل للدعم والتدقيق واستكشاف الأخطاء.",
-          "السجل منفصل عن ملاحظات طلب WooCommerce.",
-          "يتم عرض أحدث 250 إدخالًا."
+          "مدیریت الگوها: ایجاد، ویرایش، حذف، درون‌ریزی و برون‌بری الگوها.",
+          "استفاده از الگوها: انتخاب الگو و افزودن یادداشت در سفارش ووکامرس.",
+          "دسترسی درون‌ریزی/برون‌بری را فقط به کاربران مورد اعتماد بدهید."
         ]
       },
       {
-        "title": "23. معاينة باستخدام طلب اختبار",
+        "title": "۱۷. پیش‌نمایش درون‌ریزی",
         "paragraphs": [
-          "أدخل معرّف طلب WooCommerce في محرر القالب. تتم معاينة المحتوى الحالي، بما في ذلك التغييرات غير المحفوظة، ببيانات الطلب دون إنشاء ملاحظة أو إرسال بريد."
+          "درون‌ریزی‌های JSON اکنون پیش از اعمال تغییرات، پیش‌نمایش نشان می‌دهند. پیش‌نمایش مشخص می‌کند چند الگو ایجاد، به‌روزرسانی یا نادیده گرفته خواهند شد.",
+          "فقط پس از بررسی پیش‌نمایش، درون‌ریزی را تأیید کنید. این کار از بازنویسی ناخواسته الگوهای موجود جلوگیری می‌کند."
         ],
         "items": [
-          "استخدم طلب اختبار أو موقعًا تجريبيًا.",
-          "تحقق من القيم المفقودة والتنسيق والشروط والبيانات الوصفية.",
-          "يجب أن تملك صلاحية تعديل الطلب المحدد."
+          "پیش از درون‌ریزی مجموعه بزرگ، یک نسخه پشتیبان برون‌بری ایجاد کنید.",
+          "فقط فایل‌های JSON از منبع مورد اعتماد را درون‌ریزی کنید.",
+          "پس از درون‌ریزی، دست‌کم یک یادداشت مشتری و یک یادداشت داخلی را آزمایش کنید."
         ]
       },
       {
-        "title": "24. المفضلة الشخصية والقوالب المستخدمة حديثًا",
+        "title": "۱۸. رفتار ایمیل یادداشت مشتری",
         "paragraphs": [
-          "يمكن لكل مستخدم تعيين مفضلات شخصية في شاشة الطلب. كما تحفظ الإضافة آخر عشرة قوالب تم استخدامها بنجاح لكل مستخدم وتعرضها أولًا. تبقى المفضلات العامة مشتركة."
-        ],
-        "items": [
-          "لا تؤثر المفضلات الشخصية على المستخدمين الآخرين.",
-          "لا يتم تحديث القائمة الحديثة إلا بعد إضافة الملاحظة بنجاح.",
-          "تُخزن البيانات كبيانات وصفية لمستخدم WordPress."
-        ]
-      },
-      {
-        "title": "25. صفحة التشخيص",
-        "paragraphs": [
-          "افتح <strong>Mailhilfe Order Notes ← التشخيص</strong> لعرض إصدارات WordPress وPHP وWooCommerce وحالة HPOS وبريد ملاحظة العميل واللغة وعدد القوالب والتخزين المؤقت وWP_DEBUG."
-        ],
-        "items": [
-          "أرسل هذه المعلومات عند طلب الدعم.",
-          "لا تعرض الصفحة محتوى الملاحظات أو عناوين العملاء.",
-          "يمكن للمطورين إضافة صفوف عبر مرشح التشخيص."
-        ]
-      },
-      {
-        "title": "26. الخطافات والمرشحات للمطورين",
-        "paragraphs": [
-          "توفر الإضافة خطافات ومرشحات للعناصر النائبة والقيم ومفاتيح البيانات الوصفية المسموحة ونتائج القوالب والشروط والمعاينة والمحتوى النهائي والإجراءات قبل/بعد الإضافة والسجل والتشخيص. الأسماء موثقة في readme.txt."
-        ],
-        "items": [
-          "تحقق من البيانات المخصصة ونظفها وهربها.",
-          "استخدم واجهات طلبات WooCommerce بدل الوصول المباشر للجداول.",
-          "حافظ على التوافق مع HPOS والتخزين التقليدي."
-        ]
-      }
-    ]
-  },
-  "hi_IN": {
-    "title": "Mailhilfe Order Note Manager for WooCommerce की विस्तृत सहायता",
-    "intro": "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग। Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. प्लगइन क्या करता है",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. टेम्पलेट बनाना",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. पाठ को स्वरूपित करना",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. प्लेसहोल्डर उपयोग करना",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. पूर्वावलोकन जांचना",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. आंतरिक नोट और ग्राहक नोट",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. पसंदीदा, खोज और क्रम",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. आयात, निर्यात और डेमो टेम्पलेट",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. भूमिकाएं और अनुमतियां",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. सुरक्षा और HPOS अनुकूलता",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. समस्या समाधान",
-        "paragraphs": [
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।",
-          "यह सहायता पूरा कार्यप्रवाह समझाती है: स्वरूपित टेम्पलेट बनाना, प्लेसहोल्डर उपयोग करना, WooCommerce ऑर्डर में नोट जोड़ना, JSON आयात/निर्यात, अनुमतियां, HPOS और सुरक्षित उपयोग।"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. सेटिंग पेज",
-        "paragraphs": [
-          "<strong>Mailhilfe Order Notes → सेटिंग</strong> में डिफ़ॉल्ट नोट प्रकार, सुरक्षित HTML, उपयोग प्रदर्शन, पसंदीदा, JSON आयात और भाषा मिलान चुनें। दैनिक काम के लिए आंतरिक नोट को डिफ़ॉल्ट रखें।"
+          "وقتی ایمیل مربوط در ووکامرس فعال باشد، یادداشت مشتری می‌تواند اعلان ایمیلی ووکامرس را فعال کند. افزونه ایجاد یادداشت مشتری را جدا از پردازش ایمیل ثبت می‌کند. پیش از افزودن یادداشت، پیش‌نمایش قابل ویرایش را بررسی کنید و برای مشاهده نتیجه پردازش ایمیل از صفحه تاریخچه استفاده کنید."
         ],
         "items": []
       },
       {
-        "title": "13. टेम्पलेट भाषा और बहुभाषी दुकानें",
+        "title": "۱۹. روند کاری پیشنهادی",
         "paragraphs": [
-          "हर टेम्पलेट की भाषा चुनी जा सकती है। सामान्य पाठ के लिए <strong>सभी भाषाएँ</strong> और अनुवादित ग्राहक संदेशों के लिए विशिष्ट भाषा चुनें।",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "روند ایمن روزانه چنین است: یک الگو انتخاب کنید، پیش‌نمایش جایگزین‌شده را بررسی کنید، در صورت نیاز آن را ویرایش کنید، نوع یادداشت را تأیید و سپس یادداشت را اضافه کنید.",
+          "الگوهای تازه را پیش از استفاده برای مشتریان واقعی، ابتدا در یک سفارش کم‌اهمیت یا فروشگاه آزمایشی بررسی کنید."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "برای اطلاعات ویژه کارکنان از یادداشت داخلی استفاده کنید.",
+          "یادداشت مشتری را فقط برای پیام‌هایی به‌کار ببرید که ممکن است برای مشتری ارسال شوند.",
+          "هر بار که الگو تغییر می‌کند، جای‌نگهدارها را بررسی کنید."
         ]
       },
       {
-        "title": "14. कस्टम फ़ील्ड और मेटाडेटा",
+        "title": "۲۰. شرایط الگو",
         "paragraphs": [
-          "<code>{order_meta:meta_key}</code> और <code>{customer_meta:meta_key}</code> चुने हुए मेटाडेटा जोड़ते हैं। password, token या secret जैसी संवेदनशील कुंजियाँ रोकी जाती हैं।",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "شرایط الگو تعیین می‌کنند یک الگو برای سفارش مشخص در دسترس باشد یا نه. می‌توانید الگوها را بر اساس وضعیت سفارش، روش پرداخت، روش حمل‌ونقل، کشور صورتحساب و حداقل یا حداکثر مبلغ سفارش محدود کنید. همه شرایط تنظیم‌شده باید برقرار باشند."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "اگر یک شرط نباید الگو را محدود کند، فیلد آن را خالی بگذارید.",
+          "از شناسه‌های فنی روش‌های پرداخت و حمل‌ونقل استفاده کنید.",
+          "شرایط در رابط کاربری و دوباره در سرور، پیش از ایجاد یادداشت بررسی می‌شوند."
         ]
       },
       {
-        "title": "15. डुप्लिकेट और संशोधन",
+        "title": "۲۱. گزارش پردازش ایمیل",
         "paragraphs": [
-          "डुप्लिकेट क्रिया ड्राफ्ट कॉपी बनाती है। WordPress revisions पुराने संस्करणों की तुलना और पुनर्स्थापना में मदद करते हैं।",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "برای یادداشت‌های مشتری، افزونه زمانی را ثبت می‌کند که ووکامرس ایمیل یادداشت مشتری را پردازش‌شده گزارش می‌دهد و خطاهای فنی wp_mail را نیز ثبت می‌کند. رویداد پردازش‌شده تأیید می‌کند وردپرس/ووکامرس پیام را به سامانه ایمیل تحویل داده‌اند؛ اما تحویل نهایی یا خواندن پیام توسط مشتری را ثابت نمی‌کند."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "برای رویدادهای ایمیل پردازش‌شده و ناموفق، صفحه تاریخچه را بررسی کنید.",
+          "اگر اطلاعات قطعی تحویل لازم است، از ارائه‌دهنده SMTP یا سرویس ثبت ایمیل استفاده کنید.",
+          "یادداشت‌های داخلی ایمیل یادداشت مشتری را فعال نمی‌کنند."
         ]
       },
       {
-        "title": "16. अनुमतियाँ",
+        "title": "۲۲. تاریخچه مرکزی",
         "paragraphs": [
-          "<strong>Permissions</strong> पेज तय करता है कि कौन-सी भूमिकाएँ टेम्पलेट प्रबंधित करेंगी और कौन उन्हें ऑर्डर में उपयोग करेंगी।",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "<strong>یادداشت‌های سفارش Mailhilfe ← تاریخچه</strong> را باز کنید تا ایجاد یادداشت‌های اخیر، استفاده از الگو، پردازش ایمیل و خطاهای ایمیل را بررسی کنید. در صورت وجود، هر ورودی شامل سفارش، الگو، کاربر، گیرنده، نوع رویداد و زمان است."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "از تاریخچه برای پشتیبانی، حسابرسی و رفع اشکال استفاده کنید.",
+          "تاریخچه افزونه از یادداشت‌های سفارش ووکامرس جدا است.",
+          "صفحه ۲۵۰ ورودی اخیر را نمایش می‌دهد."
         ]
       },
       {
-        "title": "17. आयात पूर्वावलोकन",
+        "title": "۲۳. پیش‌نمایش سفارش آزمایشی",
         "paragraphs": [
-          "JSON आयात लागू करने से पहले बनाए, अपडेट या छोड़े जाने वाले टेम्पलेट दिखाता है।",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "در ویرایشگر الگو، شناسه یک سفارش ووکامرس را در بخش پیش‌نمایش آزمایشی وارد کنید. محتوای فعلی ویرایشگر، از جمله تغییرات ذخیره‌نشده، با داده‌های آن سفارش نمایش داده می‌شود، بدون آنکه یادداشتی ایجاد یا ایمیلی ارسال شود."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "از یک سفارش سایت آزمایشی یا سفارش کم‌اهمیت استفاده کنید.",
+          "مقادیر خالی، قالب‌بندی، شرایط و جای‌نگهدارهای متای سفارشی را بررسی کنید.",
+          "باید اجازه ویرایش سفارش انتخاب‌شده را داشته باشید."
         ]
       },
       {
-        "title": "18. ग्राहक नोट ईमेल स्थिति",
+        "title": "۲۴. برگزیده‌های شخصی و الگوهای اخیراً استفاده‌شده",
         "paragraphs": [
-          "यदि संबंधित ईमेल सक्षम है तो ग्राहक नोट WooCommerce ईमेल सूचना शुरू कर सकते हैं। प्लगइन ग्राहक नोट बनने और ईमेल प्रोसेसिंग के परिणाम को अलग-अलग दर्ज करता है। नोट जोड़ने से पहले संपादन योग्य पूर्वावलोकन देखें और इतिहास पृष्ठ पर परिणाम जाँचें।"
-        ],
-        "items": []
-      },
-      {
-        "title": "19. अनुशंसित कार्यप्रवाह",
-        "paragraphs": [
-          "टेम्पलेट चुनें, बदला हुआ पूर्वावलोकन जाँचें, आवश्यकता हो तो संपादित करें, नोट प्रकार जाँचें और नोट जोड़ें.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "هر مدیر می‌تواند در صفحه سفارش، برگزیده‌های شخصی خود را علامت‌گذاری کند. افزونه همچنین ده الگوی اخیر هر کاربر را ذخیره می‌کند و جایگاه بالاتری در فهرست به آن‌ها می‌دهد. برگزیده‌های عمومی همچنان میان همه کاربران مشترک هستند."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "برگزیده‌های شخصی فهرست کاربر دیگر را تغییر نمی‌دهند.",
+          "فهرست اخیر فقط پس از افزودن موفق یادداشت به‌روزرسانی می‌شود.",
+          "داده‌های شخصی به‌صورت فراداده کاربر وردپرس ذخیره می‌شوند."
         ]
       },
       {
-        "title": "20. टेम्पलेट की शर्तें",
+        "title": "۲۵. صفحه عیب‌یابی",
         "paragraphs": [
-          "शर्तें तय करती हैं कि कोई टेम्पलेट किसी ऑर्डर के लिए उपलब्ध है या नहीं। इसे ऑर्डर स्थिति, भुगतान विधि, शिपिंग विधि, बिलिंग देश और न्यूनतम या अधिकतम कुल राशि से सीमित किया जा सकता है। सभी भरी हुई शर्तें पूरी होनी चाहिए।"
+          "<strong>یادداشت‌های سفارش Mailhilfe ← عیب‌یابی</strong> را باز کنید تا اطلاعات فنی مانند نسخه‌های وردپرس، PHP و ووکامرس، وضعیت HPOS، وضعیت ایمیل یادداشت مشتری، زبان، تعداد الگوهای منتشرشده، وضعیت کش و WP_DEBUG را ببینید."
         ],
         "items": [
-          "जिस शर्त से सीमा नहीं लगानी हो उसे खाली छोड़ें।",
-          "भुगतान और शिपिंग विधियों के तकनीकी ID उपयोग करें।",
-          "शर्तें इंटरफ़ेस और नोट बनाने से पहले सर्वर पर दोबारा जांची जाती हैं।"
+          "هنگام درخواست پشتیبانی، مقادیر عیب‌یابی را کپی کنید.",
+          "این صفحه محتوای یادداشت سفارش یا نشانی مشتریان را نمایش نمی‌دهد.",
+          "توسعه‌دهندگان می‌توانند با فیلتر عیب‌یابی ردیف‌های بیشتری اضافه کنند."
         ]
       },
       {
-        "title": "21. ईमेल प्रोसेसिंग लॉग",
+        "title": "۲۶. هوک‌ها و فیلترهای توسعه‌دهندگان",
         "paragraphs": [
-          "ग्राहक नोट के लिए प्लगइन WooCommerce द्वारा ईमेल प्रोसेस होने की सूचना और wp_mail की तकनीकी त्रुटियां दर्ज करता है। “प्रोसेस्ड” केवल मेल सिस्टम को सौंपे जाने की पुष्टि है, अंतिम डिलीवरी या पढ़े जाने की नहीं।"
+          "افزونه برای جای‌نگهدارها، مقدارهای جای‌نگهدار، کلیدهای متای مجاز، نتایج الگو، شرایط، محتوای پیش‌نمایش، محتوای نهایی یادداشت، اقدامات پیش و پس از افزودن یادداشت، رکوردهای تاریخچه و عیب‌یابی، هوک و فیلتر ارائه می‌دهد. نام و پارامترهای هوک‌ها در readme.txt مستند شده‌اند."
         ],
         "items": [
-          "प्रोसेस्ड और विफल घटनाओं के लिए इतिहास पेज देखें।",
-          "सटीक डिलीवरी जानकारी के लिए SMTP सेवा उपयोग करें।",
-          "आंतरिक नोट ग्राहक नोट ईमेल नहीं भेजते।"
-        ]
-      },
-      {
-        "title": "22. केंद्रीय इतिहास",
-        "paragraphs": [
-          "<strong>Mailhilfe Order Notes → इतिहास</strong> में नोट निर्माण, टेम्पलेट उपयोग, ईमेल प्रोसेसिंग और विफलताएं देखें। उपलब्ध होने पर ऑर्डर, टेम्पलेट, उपयोगकर्ता, प्राप्तकर्ता, घटना प्रकार और समय दिखता है।"
-        ],
-        "items": [
-          "समर्थन, ऑडिट और समस्या समाधान के लिए उपयोग करें।",
-          "यह WooCommerce ऑर्डर नोट से अलग है।",
-          "सबसे हाल की 250 प्रविष्टियां दिखाई जाती हैं।"
-        ]
-      },
-      {
-        "title": "23. टेस्ट ऑर्डर पूर्वावलोकन",
-        "paragraphs": [
-          "टेम्पलेट एडिटर में WooCommerce ऑर्डर ID दर्ज करें। सहेजे बिना किए गए बदलावों सहित वर्तमान सामग्री ऑर्डर डेटा से दिखाई जाएगी, बिना नोट बनाए या ईमेल भेजे।"
-        ],
-        "items": [
-          "टेस्ट ऑर्डर या स्टेजिंग साइट उपयोग करें।",
-          "खाली मान, फॉर्मेटिंग, शर्तें और कस्टम मेटा जांचें।",
-          "चुने गए ऑर्डर को संपादित करने की अनुमति आवश्यक है।"
-        ]
-      },
-      {
-        "title": "24. व्यक्तिगत पसंदीदा और हाल के टेम्पलेट",
-        "paragraphs": [
-          "हर उपयोगकर्ता ऑर्डर स्क्रीन में व्यक्तिगत पसंदीदा चुन सकता है। प्लगइन प्रति उपयोगकर्ता सफलतापूर्वक उपयोग किए गए अंतिम दस टेम्पलेट भी सहेजता और ऊपर दिखाता है। वैश्विक पसंदीदा सभी के लिए साझा रहते हैं।"
-        ],
-        "items": [
-          "व्यक्तिगत पसंदीदा दूसरे उपयोगकर्ताओं को प्रभावित नहीं करते।",
-          "हाल की सूची केवल नोट सफलतापूर्वक जुड़ने पर अपडेट होती है।",
-          "डेटा WordPress उपयोगकर्ता मेटा में सहेजा जाता है।"
-        ]
-      },
-      {
-        "title": "25. निदान पेज",
-        "paragraphs": [
-          "<strong>Mailhilfe Order Notes → निदान</strong> में WordPress, PHP और WooCommerce संस्करण, HPOS, ग्राहक नोट ईमेल, भाषा, टेम्पलेट संख्या, कैश और WP_DEBUG देखें।"
-        ],
-        "items": [
-          "समर्थन मांगते समय ये जानकारी दें।",
-          "नोट सामग्री या ग्राहक पते नहीं दिखाए जाते।",
-          "डेवलपर निदान फ़िल्टर से पंक्तियां जोड़ सकते हैं।"
-        ]
-      },
-      {
-        "title": "26. डेवलपर हुक और फ़िल्टर",
-        "paragraphs": [
-          "प्लेसहोल्डर, मान, अनुमत मेटा कुंजी, टेम्पलेट परिणाम, शर्तें, पूर्वावलोकन, अंतिम सामग्री, जोड़ने से पहले/बाद, इतिहास और निदान के लिए हुक और फ़िल्टर उपलब्ध हैं। नाम readme.txt में दिए हैं।"
-        ],
-        "items": [
-          "कस्टम डेटा को मान्य, स्वच्छ और एस्केप करें।",
-          "सीधे टेबल के बजाय WooCommerce ऑर्डर API उपयोग करें।",
-          "HPOS और क्लासिक स्टोरेज दोनों के साथ संगतता रखें।"
-        ]
-      }
-    ]
-  },
-  "id_ID": {
-    "title": "Bantuan lengkap Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman. Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. Fungsi plugin",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. Membuat templat",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. Memformat teks",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. Menggunakan placeholder",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. Memeriksa pratinjau",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. Catatan internal dan catatan pelanggan",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. Favorit, pencarian, dan pengurutan",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. Impor, ekspor, dan templat demo",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. Peran dan izin",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. Keamanan dan kompatibilitas HPOS",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. Pemecahan masalah",
-        "paragraphs": [
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman.",
-          "Bantuan ini menjelaskan alur lengkap: membuat templat berformat, memakai placeholder, menambahkan catatan pada pesanan WooCommerce, impor/ekspor JSON, izin, HPOS, dan penggunaan yang aman."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. Halaman pengaturan",
-        "paragraphs": [
-          "Buka <strong>Mailhilfe Order Notes → Pengaturan</strong> untuk memilih tipe catatan default, HTML aman, tampilan penggunaan, favorit, impor JSON, dan pencocokan bahasa. Gunakan catatan internal sebagai default untuk pekerjaan sehari-hari."
-        ],
-        "items": []
-      },
-      {
-        "title": "13. Bahasa templat dan toko multibahasa",
-        "paragraphs": [
-          "Setiap templat dapat memiliki bahasa. Pilih <strong>Semua bahasa</strong> untuk teks umum atau bahasa tertentu untuk pesan pelanggan yang diterjemahkan.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. Kolom khusus dan metadata",
-        "paragraphs": [
-          "Placeholder <code>{order_meta:meta_key}</code> dan <code>{customer_meta:meta_key}</code> memasukkan metadata terpilih. Kunci sensitif seperti password, token, atau secret diblokir.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. Duplikasi dan revisi",
-        "paragraphs": [
-          "Duplikasi membuat salinan sebagai draf. Revisi WordPress membantu membandingkan dan memulihkan versi lama.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. Izin",
-        "paragraphs": [
-          "Halaman <strong>Izin</strong> menentukan peran mana yang mengelola templat dan mana yang menggunakannya di pesanan.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. Pratinjau impor",
-        "paragraphs": [
-          "Impor JSON menampilkan pratinjau templat yang dibuat, diperbarui, atau dilewati sebelum diterapkan.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. Status email catatan pelanggan",
-        "paragraphs": [
-          "Catatan pelanggan dapat memicu pemberitahuan email WooCommerce jika email terkait diaktifkan. Plugin mencatat pembuatan catatan pelanggan secara terpisah dari pemrosesan email. Tinjau pratinjau yang dapat diedit sebelum menambahkan catatan dan periksa hasilnya di halaman Riwayat."
-        ],
-        "items": []
-      },
-      {
-        "title": "19. Alur kerja yang disarankan",
-        "paragraphs": [
-          "Pilih templat, periksa pratinjau, edit bila perlu, pastikan tipe catatan, lalu tambahkan catatan.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
-        ],
-        "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
-        ]
-      },
-      {
-        "title": "20. Kondisi templat",
-        "paragraphs": [
-          "Kondisi menentukan apakah templat tersedia untuk suatu pesanan. Templat dapat dibatasi berdasarkan status, metode pembayaran, metode pengiriman, negara penagihan, serta total minimum atau maksimum. Semua kondisi yang diisi harus cocok."
-        ],
-        "items": [
-          "Kosongkan kolom jika tidak ingin membatasi templat.",
-          "Gunakan ID teknis metode pembayaran dan pengiriman.",
-          "Kondisi diperiksa di antarmuka dan kembali di server."
-        ]
-      },
-      {
-        "title": "21. Log pemrosesan email",
-        "paragraphs": [
-          "Untuk catatan pelanggan, plugin mencatat saat WooCommerce melaporkan email telah diproses dan kesalahan teknis wp_mail. “Diproses” hanya menegaskan penyerahan ke sistem email, bukan pengiriman akhir atau bahwa email dibaca."
-        ],
-        "items": [
-          "Lihat halaman Riwayat untuk kejadian diproses dan gagal.",
-          "Gunakan layanan SMTP untuk informasi pengiriman yang lebih akurat.",
-          "Catatan internal tidak memicu email catatan pelanggan."
-        ]
-      },
-      {
-        "title": "22. Riwayat terpusat",
-        "paragraphs": [
-          "Buka <strong>Mailhilfe Order Notes → Riwayat</strong> untuk melihat pembuatan catatan, penggunaan templat, pemrosesan email, dan kegagalan. Jika tersedia, pesanan, templat, pengguna, penerima, jenis kejadian, dan waktu ditampilkan."
-        ],
-        "items": [
-          "Gunakan untuk dukungan, audit, dan pemecahan masalah.",
-          "Riwayat ini terpisah dari catatan pesanan WooCommerce.",
-          "Menampilkan 250 entri terbaru."
-        ]
-      },
-      {
-        "title": "23. Pratinjau dengan pesanan uji",
-        "paragraphs": [
-          "Masukkan ID pesanan WooCommerce di editor templat. Konten saat ini, termasuk perubahan yang belum disimpan, ditampilkan dengan data pesanan tanpa membuat catatan atau mengirim email."
-        ],
-        "items": [
-          "Gunakan pesanan uji atau situs staging.",
-          "Periksa nilai kosong, format, kondisi, dan meta khusus.",
-          "Anda harus memiliki izin mengedit pesanan yang dipilih."
-        ]
-      },
-      {
-        "title": "24. Favorit pribadi dan templat terbaru",
-        "paragraphs": [
-          "Setiap pengguna dapat menandai favorit pribadi di layar pesanan. Plugin juga menyimpan sepuluh templat terakhir yang berhasil digunakan per pengguna dan menampilkannya lebih atas. Favorit global tetap dibagikan."
-        ],
-        "items": [
-          "Favorit pribadi tidak memengaruhi pengguna lain.",
-          "Daftar terbaru hanya diperbarui setelah catatan berhasil ditambahkan.",
-          "Data disimpan sebagai metadata pengguna WordPress."
-        ]
-      },
-      {
-        "title": "25. Halaman diagnostik",
-        "paragraphs": [
-          "Buka <strong>Mailhilfe Order Notes → Diagnostik</strong> untuk melihat versi WordPress, PHP dan WooCommerce, HPOS, email catatan pelanggan, bahasa, jumlah templat, cache, dan WP_DEBUG."
-        ],
-        "items": [
-          "Sertakan data ini saat meminta dukungan.",
-          "Konten catatan dan alamat pelanggan tidak ditampilkan.",
-          "Pengembang dapat menambah baris melalui filter diagnostik."
-        ]
-      },
-      {
-        "title": "26. Hook dan filter untuk pengembang",
-        "paragraphs": [
-          "Plugin menyediakan hook dan filter untuk placeholder, nilai, kunci meta yang diizinkan, hasil templat, kondisi, pratinjau, konten akhir, tindakan sebelum/sesudah penambahan, riwayat, dan diagnostik. Nama didokumentasikan di readme.txt."
-        ],
-        "items": [
-          "Validasi, sanitasi, dan escape semua data khusus.",
-          "Gunakan API pesanan WooCommerce, bukan akses tabel langsung.",
-          "Pertahankan kompatibilitas dengan HPOS dan penyimpanan klasik."
+          "همه داده‌های سفارشی را اعتبارسنجی، پاک‌سازی و ایمن‌سازی خروجی کنید.",
+          "به‌جای دسترسی مستقیم به جدول سفارش‌ها از APIهای سفارش ووکامرس استفاده کنید.",
+          "افزونه‌های سفارشی را با HPOS و ذخیره‌سازی کلاسیک سفارش سازگار نگه دارید."
         ]
       }
     ]
   },
   "vi": {
-    "title": "Trợ giúp chi tiết Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn. Mailhilfe Order Note Manager for WooCommerce.",
+    "title": "Hướng dẫn chi tiết cho Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Hướng dẫn cập nhật này giải thích toàn bộ quy trình làm việc của Mailhilfe Order Note Manager for WooCommerce: tạo và định dạng mẫu, sử dụng ngôn ngữ mẫu, biến giữ chỗ và biến meta, chỉnh sửa bản xem trước, gửi ghi chú cho khách hàng an toàn, cài đặt, quyền, xem trước dữ liệu nhập và khả năng tương thích với HPOS.",
     "sections": [
       {
-        "title": "1. Plugin làm gì",
+        "title": "1. Chức năng của plugin",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Mailhilfe Order Note Manager for WooCommerce cho phép bạn lưu các ghi chú đơn hàng WooCommerce thường dùng thành mẫu có thể tái sử dụng. Nhờ đó, bạn không phải nhập lại cùng một nội dung nhiều lần và việc trao đổi trong lịch sử đơn hàng luôn nhất quán.",
+          "Mỗi mẫu có thể được chuẩn bị dưới dạng ghi chú nội bộ cho nhân viên hoặc ghi chú cho khách hàng. Bạn vẫn có thể thay đổi loại ghi chú khi sử dụng mẫu trong một đơn hàng."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Ví dụ thường gặp: nhắc thanh toán, chậm giao hàng, ghi lại cuộc gọi, kiểm tra địa chỉ và phản hồi chăm sóc khách hàng.",
+          "Mẫu hỗ trợ danh mục, mục yêu thích, sắp xếp, bộ đếm sử dụng và sao lưu JSON."
         ]
       },
       {
-        "title": "2. Tạo mẫu",
+        "title": "2. Tạo mẫu mới",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Mở <strong>Ghi chú đơn hàng Mailhilfe → Thêm mới</strong>. Nhập tiêu đề rõ ràng, viết nội dung ghi chú trong trình soạn thảo và chọn loại ghi chú mặc định là nội bộ hay dành cho khách hàng.",
+          "Dùng tiêu đề như một mô tả ngắn về mục đích, chẳng hạn “Nhắc thanh toán” hoặc “Khách hàng gọi về việc giao hàng”. Điều này giúp tìm mẫu dễ dàng hơn trên màn hình đơn hàng."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Gán một hoặc nhiều danh mục khi bạn có nhiều mẫu.",
+          "Đánh dấu các mẫu thường dùng là yêu thích.",
+          "Xuất bản mẫu để mẫu xuất hiện trong đơn hàng."
         ]
       },
       {
-        "title": "3. Định dạng văn bản",
+        "title": "3. Định dạng nội dung mẫu",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Nội dung mẫu sử dụng trình soạn thảo WordPress. Bạn có thể định dạng bằng đoạn văn, chữ đậm, chữ nghiêng, danh sách và liên kết. Định dạng được giữ lại khi tạo ghi chú, nhưng nội dung sẽ được làm sạch theo các quy tắc HTML an toàn của WordPress.",
+          "Hãy định dạng ghi chú cho khách hàng một cách vừa phải. Một đoạn ngắn hoặc danh sách gạch đầu dòng thường dễ đọc hơn một khối văn bản dài không có cấu trúc."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Ví dụ tốt: lời chào ngắn, một giải thích rõ ràng và một bước tiếp theo.",
+          "Tránh dùng chữ viết tắt nội bộ trong ghi chú cho khách hàng.",
+          "Không đưa nhận xét riêng của nhân viên vào mẫu có thể được dùng làm ghi chú cho khách hàng."
         ]
       },
       {
-        "title": "4. Sử dụng biến giữ chỗ",
+        "title": "4. Biến giữ chỗ",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Biến giữ chỗ là các từ nằm trong dấu ngoặc nhọn. Chúng được thay bằng dữ liệu thực của đơn hàng trong bản xem trước và khi ghi chú được thêm vào đơn hàng.",
+          "Bạn có thể kết hợp văn bản thông thường với biến giữ chỗ. Ví dụ: <code>Xin chào {customer}, chúng tôi đã nhận được đơn hàng {order_number} của bạn.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Đơn hàng: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Khách hàng: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Giao hàng và thanh toán: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Mặt hàng và cửa hàng: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Kiểm tra bản xem trước",
+        "title": "5. Xem trước trước khi thêm ghi chú",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Mở một đơn hàng WooCommerce và chọn mẫu. Bản xem trước hiển thị ghi chú sau khi các biến giữ chỗ đã được thay bằng dữ liệu của đơn hàng được chọn.",
+          "Luôn kiểm tra bản xem trước trước khi tạo ghi chú. Điều này đặc biệt quan trọng khi một biến giữ chỗ không có giá trị trong đơn hàng, ví dụ khi thiếu tên công ty giao hàng hoặc số điện thoại."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Kiểm tra tên, tổng tiền, phương thức giao hàng và danh sách mặt hàng.",
+          "Kiểm tra loại ghi chú đã chọn có chính xác hay không.",
+          "Hãy sửa mẫu trước nếu cùng nội dung cần được cải thiện cho mọi đơn hàng trong tương lai."
         ]
       },
       {
-        "title": "6. Ghi chú nội bộ và ghi chú khách hàng",
+        "title": "6. Ghi chú nội bộ và ghi chú cho khách hàng",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Ghi chú nội bộ dành cho nhân viên cửa hàng và thường được dùng để lưu tài liệu, công việc cần theo dõi hoặc lịch sử chăm sóc. Ghi chú cho khách hàng có thể hiển thị cho khách hàng và có thể kích hoạt email thông báo WooCommerce tùy theo cài đặt WooCommerce của bạn.",
+          "Hãy kiểm tra kỹ bản xem trước có thể chỉnh sửa và loại ghi chú đã chọn. Chỉ dùng ghi chú cho khách hàng với nội dung mà khách hàng được phép đọc."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Ghi chú nội bộ: “Khách hàng đã gọi, địa chỉ giao hàng đã được xác nhận.”",
+          "Ghi chú cho khách hàng: “Đơn hàng của bạn đang được chuẩn bị và sẽ sớm được gửi đi.”",
+          "Không bao giờ đưa mật khẩu, nhận xét riêng hoặc thông tin chỉ dành cho nhà cung cấp vào ghi chú cho khách hàng."
         ]
       },
       {
         "title": "7. Yêu thích, tìm kiếm và sắp xếp",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Mục yêu thích giúp đưa các mẫu quan trọng nhất lên đầu danh sách chọn. Ô tìm kiếm trên màn hình đơn hàng giúp bạn tìm mẫu theo tiêu đề, danh mục hoặc nội dung.",
+          "Trong danh sách mẫu, bạn có thể thay đổi thứ tự bằng thao tác kéo và thả. Thứ tự đã lưu sẽ được dùng khi hiển thị mẫu trên màn hình đơn hàng."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Dùng mục yêu thích cho các mẫu sử dụng hằng ngày.",
+          "Dùng danh mục cho các nhóm chủ đề như Thanh toán, Giao hàng, Trả hàng và Hỗ trợ.",
+          "Giữ tiêu đề ngắn để kết quả tìm kiếm dễ đọc."
         ]
       },
       {
-        "title": "8. Nhập, xuất và mẫu demo",
+        "title": "8. Nhập, xuất và mẫu minh họa",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Chức năng xuất JSON tạo bản sao lưu cho các mẫu của bạn. Bạn có thể dùng bản sao lưu trước khi thực hiện thay đổi lớn hoặc để chuyển mẫu sang cửa hàng khác.",
+          "Chức năng nhập JSON có thể tạo mẫu mới và cập nhật mẫu hiện có có cùng tiêu đề hoặc khóa minh họa nội bộ. Mẫu minh họa cung cấp điểm bắt đầu nhanh và được tạo bằng ngôn ngữ đang hoạt động."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Xuất bản sao lưu trước khi thay đổi hàng loạt.",
+          "Chỉ nhập tệp JSON từ nguồn đáng tin cậy.",
+          "Sau khi nhập, hãy mở một vài mẫu để kiểm tra định dạng và biến giữ chỗ."
         ]
       },
       {
-        "title": "9. Vai trò và quyền",
+        "title": "9. Quyền và vai trò",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Plugin sử dụng các quyền riêng biệt cho việc quản lý mẫu và sử dụng mẫu trong đơn hàng. Quản trị viên và quản lý cửa hàng tự động nhận các quyền này khi kích hoạt plugin.",
+          "Nếu dùng plugin chỉnh sửa vai trò, bạn có thể cấp hoặc thu hồi các quyền này cho vai trò tùy chỉnh."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: tạo, sửa, xóa và nhập/xuất mẫu.",
+          "<code>use_mh_order_note_templates</code>: sử dụng mẫu trong đơn hàng WooCommerce.",
+          "Người dùng không có quyền cần thiết sẽ không thấy các chức năng quản trị liên quan."
         ]
       },
       {
-        "title": "10. Bảo mật và tương thích HPOS",
+        "title": "10. Bảo mật và khả năng tương thích HPOS",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Plugin sử dụng nonce của WordPress, kiểm tra quyền, làm sạch dữ liệu và thoát dữ liệu đầu ra cho các thao tác quản trị. Nội dung mẫu được làm sạch bằng HTML an toàn của WordPress trước khi lưu hoặc sử dụng.",
+          "Dữ liệu đơn hàng được đọc qua API đơn hàng WooCommerce thay vì truy cập trực tiếp bảng cơ sở dữ liệu. Nhờ đó, plugin tương thích với cả WooCommerce HPOS và cơ chế lưu trữ đơn hàng cổ điển."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Luôn cập nhật WooCommerce và WordPress.",
+          "Kiểm tra lại quy trình ghi chú cho khách hàng sau khi thay đổi cài đặt email WooCommerce.",
+          "Dùng trang thử nghiệm trước khi nhập một bộ mẫu lớn."
         ]
       },
       {
         "title": "11. Khắc phục sự cố",
         "paragraphs": [
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn.",
-          "Phần trợ giúp này giải thích toàn bộ quy trình: tạo mẫu có định dạng, dùng biến giữ chỗ, thêm ghi chú vào đơn hàng WooCommerce, nhập/xuất JSON, quyền, HPOS và sử dụng an toàn."
+          "Nếu mẫu không xuất hiện trong đơn hàng, hãy kiểm tra WooCommerce đang hoạt động, mẫu đã được xuất bản và người dùng hiện tại có quyền sử dụng mẫu.",
+          "Nếu bản dịch không xuất hiện, hãy kiểm tra ngôn ngữ trang web và ngôn ngữ người dùng trong WordPress. Plugin bao gồm các tệp dự phòng đã được kiểm tra cho mọi ngôn ngữ được hỗ trợ, bao gồm tiếng Việt. Các ngôn ngữ khác nên được cung cấp qua gói ngôn ngữ WordPress.org đã được duyệt."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Sau khi cập nhật, hãy xóa bộ nhớ đệm đối tượng hoặc plugin bộ nhớ đệm nếu màn hình quản trị cũ vẫn còn hiển thị.",
+          "Nếu biến giữ chỗ không được thay, hãy kiểm tra biến được viết chính xác như trong danh sách, bao gồm cả dấu ngoặc nhọn.",
+          "Nếu ghi chú cho khách hàng không được gửi qua email, hãy kiểm tra cài đặt email WooCommerce dành cho thông báo ghi chú khách hàng."
         ]
       },
       {
         "title": "12. Trang cài đặt",
         "paragraphs": [
-          "Mở <strong>Mailhilfe Order Notes → Cài đặt</strong> để chọn loại ghi chú mặc định, HTML an toàn, hiển thị lượt dùng, mục yêu thích, nhập JSON và khớp ngôn ngữ. Nên dùng ghi chú nội bộ làm mặc định hằng ngày."
+          "Mở <strong>Ghi chú đơn hàng Mailhilfe → Cài đặt</strong> để chọn loại ghi chú mặc định, cách xử lý HTML an toàn, hiển thị lượt sử dụng, mục yêu thích, tùy chọn nhập JSON và đối chiếu ngôn ngữ. Hãy dùng ghi chú nội bộ làm mặc định để an toàn hơn trong công việc hằng ngày."
         ],
         "items": []
       },
       {
         "title": "13. Ngôn ngữ mẫu và cửa hàng đa ngôn ngữ",
         "paragraphs": [
-          "Mỗi mẫu có thể có một ngôn ngữ. Chọn <strong>Tất cả ngôn ngữ</strong> cho nội dung chung hoặc một ngôn ngữ cụ thể cho thông báo khách hàng đã dịch.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Mỗi mẫu có thể có một ngôn ngữ. Chọn <strong>Tất cả ngôn ngữ</strong> nếu cùng nội dung có thể dùng cho mọi đơn hàng, hoặc chọn một ngôn ngữ cụ thể cho nội dung đã bản địa hóa.",
+          "Khi có dữ liệu phù hợp, plugin có thể ưu tiên mẫu khớp với ngôn ngữ đơn hàng, ngôn ngữ người dùng hoặc dữ liệu ngôn ngữ phổ biến từ plugin đa ngôn ngữ."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Dùng một mẫu trung lập cho ghi chú nội bộ của nhân viên.",
+          "Tạo mẫu riêng dành cho khách hàng bằng tiếng Việt, tiếng Anh hoặc các ngôn ngữ khác của cửa hàng.",
+          "Đối với cửa hàng dùng WPML hoặc Polylang, hãy kiểm tra khả năng nhận diện ngôn ngữ đơn hàng bằng một đơn hàng thử nghiệm thực tế."
         ]
       },
       {
-        "title": "14. Trường tùy chỉnh và siêu dữ liệu",
+        "title": "14. Trường tùy chỉnh và biến meta",
         "paragraphs": [
-          "Placeholder <code>{order_meta:meta_key}</code> và <code>{customer_meta:meta_key}</code> chèn siêu dữ liệu đã chọn. Các khóa nhạy cảm như password, token hoặc secret bị chặn.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Các biến giữ chỗ nâng cao có thể đọc một số trường meta của đơn hàng hoặc khách hàng. Dùng <code>{order_meta:meta_key}</code> cho dữ liệu đơn hàng và <code>{customer_meta:meta_key}</code> cho dữ liệu người dùng của khách hàng.",
+          "Vì lý do bảo mật, các tên khóa nhạy cảm như password, token, secret, session, auth và hash bị chặn. Chỉ dùng biến meta khi bạn biết rõ trường đó chứa gì."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Ví dụ: <code>{order_meta:_tracking_number}</code> cho mã theo dõi do plugin giao hàng lưu.",
+          "Ví dụ: <code>{order_meta:_billing_vat_id}</code> cho trường mã số thuế VAT.",
+          "Không để lộ các trường nội bộ hoặc nhạy cảm trong ghi chú cho khách hàng."
         ]
       },
       {
-        "title": "15. Nhân bản và phiên bản",
+        "title": "15. Nhân bản mẫu và bản sửa đổi",
         "paragraphs": [
-          "Hành động nhân bản tạo một bản nháp. Revisions của WordPress giúp so sánh và khôi phục phiên bản cũ.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "Dùng thao tác nhân bản khi bạn cần một mẫu tương tự chỉ với vài thay đổi nhỏ. Bản sao được tạo dưới dạng bản nháp để có thể kiểm tra trước khi xuất bản.",
+          "Bản sửa đổi của mẫu cho phép bạn so sánh các phiên bản trước và khôi phục nội dung cũ nếu vô tình thực hiện thay đổi sai."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Nhân bản một mẫu giao hàng chung trước khi tạo các biến thể cho DHL, UPS hoặc nhận tại cửa hàng.",
+          "Kiểm tra bản sửa đổi sau khi thay đổi nội dung lớn.",
+          "Đặt tiêu đề rõ ràng để tránh nhầm lẫn giữa các mẫu tương tự."
         ]
       },
       {
-        "title": "16. Quyền",
+        "title": "16. Trang quyền",
         "paragraphs": [
-          "Trang <strong>Quyền</strong> xác định vai trò nào quản lý mẫu và vai trò nào dùng mẫu trong đơn hàng.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Mở <strong>Ghi chú đơn hàng Mailhilfe → Quyền</strong> để quyết định vai trò WordPress nào được quản lý mẫu và vai trò nào được sử dụng mẫu trong đơn hàng.",
+          "Quản trị viên vẫn giữ các quyền bắt buộc. Với vai trò khác, chỉ cấp những quyền cần thiết cho công việc hằng ngày."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Quản lý mẫu: tạo, sửa, xóa, nhập và xuất mẫu.",
+          "Sử dụng mẫu: chọn mẫu và thêm ghi chú trong đơn hàng WooCommerce.",
+          "Chỉ cấp quyền nhập/xuất cho người dùng đáng tin cậy."
         ]
       },
       {
-        "title": "17. Xem trước nhập",
+        "title": "17. Xem trước dữ liệu nhập",
         "paragraphs": [
-          "Nhập JSON hiển thị trước các mẫu sẽ được tạo, cập nhật hoặc bỏ qua trước khi áp dụng.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "Tính năng nhập JSON hiện hiển thị bản xem trước trước khi áp dụng thay đổi. Bản xem trước cho biết số mẫu sẽ được tạo, cập nhật hoặc bỏ qua.",
+          "Chỉ xác nhận nhập sau khi kiểm tra bản xem trước. Điều này giúp ngăn việc vô tình ghi đè mẫu hiện có."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Tạo bản sao lưu bằng chức năng xuất trước khi nhập một bộ mẫu lớn.",
+          "Chỉ nhập tệp JSON từ nguồn đáng tin cậy.",
+          "Sau khi nhập, hãy thử ít nhất một ghi chú cho khách hàng và một ghi chú nội bộ."
         ]
       },
       {
-        "title": "18. Trạng thái email ghi chú khách hàng",
+        "title": "18. Hoạt động email của ghi chú cho khách hàng",
         "paragraphs": [
-          "Ghi chú khách hàng có thể kích hoạt email thông báo WooCommerce khi email tương ứng được bật. Plugin ghi riêng việc tạo ghi chú và kết quả xử lý email. Hãy kiểm tra bản xem trước có thể chỉnh sửa trước khi thêm và xem kết quả trên trang Lịch sử."
+          "Ghi chú cho khách hàng có thể kích hoạt email thông báo WooCommerce khi email tương ứng được bật. Plugin ghi nhận việc tạo ghi chú cho khách hàng riêng với quá trình xử lý email. Hãy kiểm tra bản xem trước có thể chỉnh sửa trước khi thêm ghi chú và dùng trang Lịch sử để xem kết quả của trình xử lý thư."
         ],
         "items": []
       },
       {
-        "title": "19. Quy trình đề xuất",
+        "title": "19. Quy trình làm việc được đề xuất",
         "paragraphs": [
-          "Chọn mẫu, kiểm tra bản xem trước đã thay thế, chỉnh sửa nếu cần, xác nhận loại ghi chú rồi thêm ghi chú.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Quy trình hằng ngày an toàn là: chọn mẫu, kiểm tra bản xem trước đã thay dữ liệu, chỉnh sửa nếu cần, xác nhận loại ghi chú rồi mới thêm ghi chú.",
+          "Với mẫu mới, hãy thử trước trên một đơn hàng không quan trọng hoặc cửa hàng thử nghiệm trước khi dùng cho khách hàng thật."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Dùng ghi chú nội bộ cho thông tin chỉ dành cho nhân viên.",
+          "Chỉ dùng ghi chú cho khách hàng với thông điệp có thể được gửi đến khách hàng.",
+          "Kiểm tra lại biến giữ chỗ mỗi khi mẫu được thay đổi."
         ]
       },
       {
         "title": "20. Điều kiện mẫu",
         "paragraphs": [
-          "Điều kiện quyết định mẫu có sẵn cho một đơn hàng hay không. Có thể giới hạn theo trạng thái đơn hàng, phương thức thanh toán, phương thức giao hàng, quốc gia thanh toán và tổng tối thiểu hoặc tối đa. Tất cả điều kiện đã nhập phải phù hợp."
+          "Điều kiện mẫu quyết định mẫu có khả dụng cho một đơn hàng cụ thể hay không. Bạn có thể giới hạn mẫu theo trạng thái đơn hàng, phương thức thanh toán, phương thức giao hàng, quốc gia thanh toán và tổng đơn hàng tối thiểu hoặc tối đa. Tất cả điều kiện đã cấu hình đều phải khớp."
         ],
         "items": [
-          "Để trống trường nếu không muốn giới hạn mẫu.",
+          "Để trống một trường nếu điều kiện đó không nên giới hạn mẫu.",
           "Dùng ID kỹ thuật của phương thức thanh toán và giao hàng.",
-          "Điều kiện được kiểm tra trên giao diện và lại trên máy chủ."
+          "Điều kiện được kiểm tra trên giao diện và kiểm tra lại trên máy chủ trước khi tạo ghi chú."
         ]
       },
       {
         "title": "21. Nhật ký xử lý email",
         "paragraphs": [
-          "Với ghi chú khách hàng, plugin ghi lại khi WooCommerce báo email đã được xử lý và các lỗi kỹ thuật wp_mail. “Đã xử lý” chỉ xác nhận chuyển sang hệ thống thư, không chứng minh đã giao cuối cùng hoặc đã đọc."
+          "Đối với ghi chú cho khách hàng, plugin ghi lại thời điểm WooCommerce báo email ghi chú khách hàng đã được xử lý và cũng ghi lại lỗi kỹ thuật của wp_mail. Sự kiện đã xử lý xác nhận rằng WordPress/WooCommerce đã chuyển thư cho hệ thống gửi thư; sự kiện này không chứng minh thư đã được giao cuối cùng hoặc khách hàng đã đọc thư."
         ],
         "items": [
-          "Xem trang Lịch sử để biết sự kiện đã xử lý và thất bại.",
-          "Dùng dịch vụ SMTP để có thông tin giao thư chính xác hơn.",
-          "Ghi chú nội bộ không kích hoạt email ghi chú khách hàng."
+          "Kiểm tra trang Lịch sử để xem các sự kiện email đã xử lý và thất bại.",
+          "Dùng nhà cung cấp SMTP hoặc dịch vụ nhật ký thư khi cần thông tin giao thư chắc chắn.",
+          "Ghi chú nội bộ không kích hoạt email ghi chú cho khách hàng."
         ]
       },
       {
         "title": "22. Lịch sử tập trung",
         "paragraphs": [
-          "Mở <strong>Mailhilfe Order Notes → Lịch sử</strong> để xem việc tạo ghi chú, sử dụng mẫu, xử lý và lỗi email. Khi có, đơn hàng, mẫu, người dùng, người nhận, loại sự kiện và thời gian sẽ được hiển thị."
+          "Mở <strong>Ghi chú đơn hàng Mailhilfe → Lịch sử</strong> để xem việc tạo ghi chú gần đây, sử dụng mẫu, xử lý email và lỗi email. Khi có dữ liệu, mỗi mục gồm đơn hàng, mẫu, người dùng, người nhận, loại sự kiện và thời gian."
         ],
         "items": [
-          "Dùng cho hỗ trợ, kiểm tra và khắc phục sự cố.",
+          "Dùng lịch sử cho hỗ trợ, kiểm tra và khắc phục sự cố.",
           "Lịch sử này tách biệt với ghi chú đơn hàng WooCommerce.",
-          "Hiển thị 250 mục mới nhất."
+          "Trang hiển thị 250 mục gần đây nhất."
         ]
       },
       {
-        "title": "23. Xem trước bằng đơn hàng thử",
+        "title": "23. Xem trước với đơn hàng thử nghiệm",
         "paragraphs": [
-          "Nhập ID đơn hàng WooCommerce trong trình sửa mẫu. Nội dung hiện tại, kể cả thay đổi chưa lưu, được hiển thị với dữ liệu đơn hàng mà không tạo ghi chú hoặc gửi email."
+          "Trong trình soạn thảo mẫu, nhập ID đơn hàng WooCommerce vào khu vực xem trước thử nghiệm. Nội dung hiện tại của trình soạn thảo, kể cả thay đổi chưa lưu, sẽ được hiển thị với dữ liệu của đơn hàng đó mà không tạo ghi chú hoặc gửi email."
         ],
         "items": [
-          "Dùng đơn hàng thử hoặc trang staging.",
-          "Kiểm tra giá trị thiếu, định dạng, điều kiện và meta tùy chỉnh.",
+          "Dùng đơn hàng trên trang thử nghiệm hoặc một đơn hàng thử không quan trọng.",
+          "Kiểm tra giá trị bị thiếu, định dạng, điều kiện và biến meta tùy chỉnh.",
           "Bạn phải có quyền sửa đơn hàng đã chọn."
         ]
       },
       {
         "title": "24. Yêu thích cá nhân và mẫu dùng gần đây",
         "paragraphs": [
-          "Mỗi người dùng có thể đánh dấu yêu thích cá nhân trong màn hình đơn hàng. Plugin cũng lưu mười mẫu được dùng thành công gần nhất theo người dùng và đưa lên trên. Yêu thích chung vẫn được chia sẻ."
+          "Mỗi quản trị viên có thể đánh dấu mục yêu thích cá nhân trên màn hình đơn hàng. Plugin cũng lưu mười mẫu được mỗi người dùng sử dụng gần đây nhất và đưa chúng lên vị trí cao hơn trong danh sách chọn. Mục yêu thích toàn cục vẫn được chia sẻ với mọi người dùng."
         ],
         "items": [
-          "Yêu thích cá nhân không ảnh hưởng người dùng khác.",
-          "Danh sách gần đây chỉ cập nhật sau khi thêm ghi chú thành công.",
-          "Dữ liệu được lưu dưới dạng meta người dùng WordPress."
+          "Mục yêu thích cá nhân không thay đổi danh sách của người dùng khác.",
+          "Danh sách gần đây chỉ được cập nhật sau khi thêm ghi chú thành công.",
+          "Dữ liệu cá nhân được lưu dưới dạng metadata người dùng WordPress."
         ]
       },
       {
         "title": "25. Trang chẩn đoán",
         "paragraphs": [
-          "Mở <strong>Mailhilfe Order Notes → Chẩn đoán</strong> để xem phiên bản WordPress, PHP, WooCommerce, trạng thái HPOS, email ghi chú khách hàng, ngôn ngữ, số mẫu, bộ nhớ đệm và WP_DEBUG."
+          "Mở <strong>Ghi chú đơn hàng Mailhilfe → Chẩn đoán</strong> để xem thông tin kỹ thuật như phiên bản WordPress, PHP và WooCommerce, trạng thái HPOS, trạng thái email ghi chú khách hàng, locale, số mẫu đã xuất bản, trạng thái bộ nhớ đệm và WP_DEBUG."
         ],
         "items": [
-          "Cung cấp các giá trị này khi yêu cầu hỗ trợ.",
-          "Trang không hiển thị nội dung ghi chú hoặc địa chỉ khách hàng.",
-          "Nhà phát triển có thể thêm hàng qua bộ lọc chẩn đoán."
+          "Sao chép các giá trị chẩn đoán khi yêu cầu hỗ trợ.",
+          "Trang này không hiển thị nội dung ghi chú đơn hàng hoặc địa chỉ khách hàng.",
+          "Nhà phát triển có thể thêm hàng dữ liệu bằng bộ lọc chẩn đoán."
         ]
       },
       {
-        "title": "26. Hook và bộ lọc cho nhà phát triển",
+        "title": "26. Hook và bộ lọc dành cho nhà phát triển",
         "paragraphs": [
-          "Plugin cung cấp hook và bộ lọc cho biến giữ chỗ, giá trị, khóa meta được phép, kết quả mẫu, điều kiện, xem trước, nội dung cuối, hành động trước/sau khi thêm, lịch sử và chẩn đoán. Tên được ghi trong readme.txt."
+          "Plugin cung cấp hook và bộ lọc cho biến giữ chỗ, giá trị biến giữ chỗ, khóa meta được phép, kết quả mẫu, điều kiện, nội dung xem trước, nội dung ghi chú cuối cùng, thao tác trước và sau khi thêm ghi chú, bản ghi lịch sử và chẩn đoán. Tên hook và tham số được ghi trong readme.txt."
         ],
         "items": [
-          "Xác thực, làm sạch và escape dữ liệu tùy chỉnh.",
-          "Dùng API đơn hàng WooCommerce thay vì truy cập bảng trực tiếp.",
-          "Giữ tương thích với HPOS và lưu trữ cổ điển."
-        ]
-      }
-    ]
-  },
-  "th": {
-    "title": "วิธีใช้ Mailhilfe Order Note Manager for WooCommerce แบบละเอียด",
-    "intro": "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. ปลั๊กอินทำอะไร",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. สร้างเทมเพลต",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. จัดรูปแบบข้อความ",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. ใช้ตัวยึดตำแหน่ง",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. ตรวจสอบตัวอย่าง",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. บันทึกภายในและบันทึกลูกค้า",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. รายการโปรด ค้นหา และจัดเรียง",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. นำเข้า ส่งออก และเทมเพลตตัวอย่าง",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. บทบาทและสิทธิ์",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. ความปลอดภัยและความเข้ากันได้กับ HPOS",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. การแก้ไขปัญหา",
-        "paragraphs": [
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย",
-          "วิธีใช้นี้อธิบายขั้นตอนทั้งหมด: การสร้างเทมเพลตแบบจัดรูปแบบ การใช้ตัวยึดตำแหน่ง การเพิ่มบันทึกในคำสั่งซื้อ WooCommerce การนำเข้า/ส่งออก JSON สิทธิ์ HPOS และการใช้งานอย่างปลอดภัย"
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. หน้าการตั้งค่า",
-        "paragraphs": [
-          "เปิด <strong>Mailhilfe Order Notes → การตั้งค่า</strong> เพื่อเลือกชนิดบันทึกเริ่มต้น HTML ที่ปลอดภัย การแสดงจำนวนการใช้ รายการโปรด การนำเข้า JSON และการจับคู่ภาษา ควรใช้บันทึกภายในเป็นค่าเริ่มต้นในการทำงานประจำวัน"
-        ],
-        "items": []
-      },
-      {
-        "title": "13. ภาษาของเทมเพลตและร้านหลายภาษา",
-        "paragraphs": [
-          "แต่ละเทมเพลตกำหนดภาษาได้ เลือก <strong>ทุกภาษา</strong> สำหรับข้อความทั่วไป หรือเลือกภาษาเฉพาะสำหรับข้อความลูกค้าที่แปลแล้ว",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. ฟิลด์กำหนดเองและเมตาดาต้า",
-        "paragraphs": [
-          "ตัวแทน <code>{order_meta:meta_key}</code> และ <code>{customer_meta:meta_key}</code> จะแทรกเมตาดาต้าที่เลือก คีย์อ่อนไหวเช่น password, token หรือ secret จะถูกบล็อก",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. ทำซ้ำและรุ่นแก้ไข",
-        "paragraphs": [
-          "การทำซ้ำจะสร้างสำเนาแบบร่าง รุ่นแก้ไขของ WordPress ช่วยเปรียบเทียบและกู้คืนเวอร์ชันเก่า",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. สิทธิ์",
-        "paragraphs": [
-          "หน้า <strong>สิทธิ์</strong> กำหนดว่าบทบาทใดจัดการเทมเพลตและบทบาทใดใช้เทมเพลตในคำสั่งซื้อ",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. ตัวอย่างก่อนนำเข้า",
-        "paragraphs": [
-          "การนำเข้า JSON จะแสดงตัวอย่างเทมเพลตที่จะสร้าง อัปเดต หรือข้ามก่อนนำไปใช้",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. สถานะอีเมลบันทึกลูกค้า",
-        "paragraphs": [
-          "บันทึกลูกค้าอาจกระตุ้นการแจ้งเตือนอีเมลของ WooCommerce เมื่อเปิดใช้งานอีเมลที่เกี่ยวข้อง ปลั๊กอินบันทึกการสร้างบันทึกลูกค้าแยกจากผลการประมวลผลอีเมล ตรวจสอบตัวอย่างที่แก้ไขได้ก่อนเพิ่มบันทึกและดูผลลัพธ์ในหน้าประวัติ"
-        ],
-        "items": []
-      },
-      {
-        "title": "19. ขั้นตอนที่แนะนำ",
-        "paragraphs": [
-          "เลือกเทมเพลต ตรวจตัวอย่างที่แทนค่าแล้ว แก้ไขถ้าจำเป็น ตรวจชนิดบันทึก แล้วเพิ่มบันทึก",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
-        ],
-        "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
-        ]
-      },
-      {
-        "title": "20. เงื่อนไขของเทมเพลต",
-        "paragraphs": [
-          "เงื่อนไขกำหนดว่าเทมเพลตพร้อมใช้กับคำสั่งซื้อหรือไม่ สามารถจำกัดตามสถานะคำสั่งซื้อ วิธีชำระเงิน วิธีจัดส่ง ประเทศที่ออกใบแจ้งหนี้ และยอดขั้นต่ำหรือสูงสุด เงื่อนไขที่กรอกทั้งหมดต้องตรงกัน"
-        ],
-        "items": [
-          "ปล่อยช่องว่างหากไม่ต้องการใช้เป็นข้อจำกัด",
-          "ใช้ ID ทางเทคนิคของวิธีชำระเงินและจัดส่ง",
-          "ตรวจสอบเงื่อนไขทั้งในหน้าจอและฝั่งเซิร์ฟเวอร์อีกครั้ง"
-        ]
-      },
-      {
-        "title": "21. บันทึกการประมวลผลอีเมล",
-        "paragraphs": [
-          "สำหรับบันทึกลูกค้า ปลั๊กอินจะบันทึกเมื่อ WooCommerce รายงานว่าอีเมลถูกประมวลผลและบันทึกข้อผิดพลาดทางเทคนิคของ wp_mail สถานะ “ประมวลผลแล้ว” หมายถึงส่งต่อให้ระบบอีเมล ไม่ได้ยืนยันการส่งถึงหรือการอ่าน"
-        ],
-        "items": [
-          "ดูเหตุการณ์สำเร็จและล้มเหลวในหน้าประวัติ",
-          "ใช้ผู้ให้บริการ SMTP หากต้องการข้อมูลการส่งที่ละเอียดขึ้น",
-          "บันทึกภายในไม่ส่งอีเมลบันทึกลูกค้า"
-        ]
-      },
-      {
-        "title": "22. ประวัติส่วนกลาง",
-        "paragraphs": [
-          "เปิด <strong>Mailhilfe Order Notes → ประวัติ</strong> เพื่อดูการสร้างบันทึก การใช้เทมเพลต การประมวลผลและความล้มเหลวของอีเมล หากมีจะแสดงคำสั่งซื้อ เทมเพลต ผู้ใช้ ผู้รับ ประเภทเหตุการณ์ และเวลา"
-        ],
-        "items": [
-          "ใช้สำหรับการสนับสนุน การตรวจสอบ และแก้ปัญหา",
-          "แยกจากบันทึกคำสั่งซื้อของ WooCommerce",
-          "แสดง 250 รายการล่าสุด"
-        ]
-      },
-      {
-        "title": "23. ตัวอย่างด้วยคำสั่งซื้อทดสอบ",
-        "paragraphs": [
-          "ป้อน ID คำสั่งซื้อ WooCommerce ในตัวแก้ไขเทมเพลต เนื้อหาปัจจุบันรวมถึงการเปลี่ยนแปลงที่ยังไม่บันทึกจะแสดงด้วยข้อมูลคำสั่งซื้อ โดยไม่สร้างบันทึกหรือส่งอีเมล"
-        ],
-        "items": [
-          "ใช้คำสั่งซื้อทดสอบหรือเว็บไซต์ staging",
-          "ตรวจสอบค่าที่ขาด รูปแบบ เงื่อนไข และเมตาที่กำหนดเอง",
-          "ต้องมีสิทธิ์แก้ไขคำสั่งซื้อที่เลือก"
-        ]
-      },
-      {
-        "title": "24. รายการโปรดส่วนตัวและเทมเพลตล่าสุด",
-        "paragraphs": [
-          "ผู้ใช้แต่ละคนสามารถกำหนดรายการโปรดส่วนตัวในหน้าคำสั่งซื้อ ปลั๊กอินยังบันทึกเทมเพลตสิบรายการล่าสุดที่ใช้สำเร็จต่อผู้ใช้และแสดงไว้ด้านบน รายการโปรดส่วนกลางยังคงใช้ร่วมกัน"
-        ],
-        "items": [
-          "รายการโปรดส่วนตัวไม่กระทบผู้ใช้อื่น",
-          "รายการล่าสุดจะอัปเดตหลังเพิ่มบันทึกสำเร็จเท่านั้น",
-          "ข้อมูลเก็บเป็นเมตาผู้ใช้ WordPress"
-        ]
-      },
-      {
-        "title": "25. หน้าวินิจฉัย",
-        "paragraphs": [
-          "เปิด <strong>Mailhilfe Order Notes → วินิจฉัย</strong> เพื่อดูเวอร์ชัน WordPress, PHP และ WooCommerce, สถานะ HPOS, อีเมลบันทึกลูกค้า, ภาษา, จำนวนเทมเพลต, แคช และ WP_DEBUG"
-        ],
-        "items": [
-          "ส่งข้อมูลเหล่านี้เมื่อขอความช่วยเหลือ",
-          "ไม่แสดงเนื้อหาบันทึกหรือที่อยู่ลูกค้า",
-          "นักพัฒนาสามารถเพิ่มแถวผ่านตัวกรองวินิจฉัย"
-        ]
-      },
-      {
-        "title": "26. ฮุกและตัวกรองสำหรับนักพัฒนา",
-        "paragraphs": [
-          "มีฮุกและตัวกรองสำหรับตัวยึดตำแหน่ง ค่า คีย์เมตาที่อนุญาต ผลลัพธ์เทมเพลต เงื่อนไข ตัวอย่าง เนื้อหาสุดท้าย การทำงานก่อน/หลังเพิ่ม ประวัติ และวินิจฉัย ชื่อระบุใน readme.txt"
-        ],
-        "items": [
-          "ตรวจสอบ ทำความสะอาด และ escape ข้อมูลที่กำหนดเอง",
-          "ใช้ WooCommerce Order API แทนการเข้าถึงตารางโดยตรง",
-          "รักษาความเข้ากันได้กับ HPOS และการจัดเก็บแบบเดิม"
+          "Xác thực, làm sạch và thoát toàn bộ dữ liệu tùy chỉnh.",
+          "Dùng API đơn hàng WooCommerce thay vì truy cập trực tiếp bảng đơn hàng.",
+          "Giữ tiện ích mở rộng tùy chỉnh tương thích với cả HPOS và cơ chế lưu trữ đơn hàng cổ điển."
         ]
       }
     ]
   },
-  "uk": {
-    "title": "Детальна довідка Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу. Mailhilfe Order Note Manager for WooCommerce.",
+  "cs_CZ": {
+    "title": "Podrobná nápověda k Mailhilfe Order Note Manager for WooCommerce",
+    "intro": "Tato aktualizovaná nápověda vysvětluje celý pracovní postup v pluginu Mailhilfe Order Note Manager for WooCommerce: vytváření a formátování šablon, používání jazyků šablon, zástupných symbolů a meta zástupných symbolů, úpravu náhledů, bezpečné odesílání poznámek zákazníkům, nastavení, oprávnění, náhled importu a kompatibilitu s HPOS.",
     "sections": [
       {
-        "title": "1. Що робить плагін",
+        "title": "1. K čemu plugin slouží",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Mailhilfe Order Note Manager for WooCommerce umožňuje ukládat často používané poznámky k objednávkám WooCommerce jako opakovaně použitelné šablony. Nemusíte tak stále psát stejný text a komunikace v historii objednávky zůstává jednotná.",
+          "Šablonu lze připravit jako interní poznámku pro zaměstnance nebo jako poznámku pro zákazníka. Při použití šablony v objednávce můžete typ poznámky stále změnit."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Typické příklady: připomínky plateb, zpoždění dodávky, záznamy telefonátů, kontrola adresy a odpovědi zákaznické podpory.",
+          "Šablony podporují kategorie, oblíbené položky, řazení, počítadlo použití a zálohování do JSON."
         ]
       },
       {
-        "title": "2. Створення шаблону",
+        "title": "2. Vytvoření nové šablony",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Otevřete <strong>Poznámky k objednávkám Mailhilfe → Přidat novou</strong>. Zadejte srozumitelný název, napište text poznámky v editoru a zvolte, zda má být výchozím typem interní poznámka, nebo poznámka pro zákazníka.",
+          "Název používejte jako krátký popis účelu, například „Připomínka platby“ nebo „Zákazník volal ohledně dodání“. Šablonu pak na obrazovce objednávky snáze najdete."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Pokud máte mnoho šablon, přiřaďte jim jednu nebo více kategorií.",
+          "Často používané šablony označte jako oblíbené.",
+          "Šablonu publikujte, aby byla dostupná v objednávkách."
         ]
       },
       {
-        "title": "3. Форматування тексту",
+        "title": "3. Formátování textu šablony",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Text šablony se upravuje ve WordPress editoru. Můžete používat odstavce, tučné písmo, kurzívu, seznamy a odkazy. Formátování se při vytvoření poznámky zachová, ale obsah se vyčistí podle pravidel bezpečného HTML ve WordPressu.",
+          "V poznámkách pro zákazníky používejte formátování střídmě. Krátký odstavec nebo odrážkový seznam se obvykle čte lépe než dlouhý nestrukturovaný text."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Dobrý příklad: krátký pozdrav, jedno jasné vysvětlení a jeden další krok.",
+          "V poznámkách pro zákazníky nepoužívejte interní zkratky.",
+          "Do šablon, které lze použít jako poznámky pro zákazníky, nevkládejte soukromé komentáře zaměstnanců."
         ]
       },
       {
-        "title": "4. Використання заповнювачів",
+        "title": "4. Zástupné symboly",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Zástupné symboly jsou výrazy ve složených závorkách. V náhledu a při přidání poznámky k objednávce se nahradí skutečnými údaji objednávky.",
+          "Běžný text můžete kombinovat se zástupnými symboly. Příklad: <code>Dobrý den, {customer}, přijali jsme vaši objednávku {order_number}.</code>"
         ],
         "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
+          "Objednávka: <code>{order_number}</code>, <code>{order_status}</code>, <code>{order_date}</code>, <code>{order_total}</code>.",
+          "Zákazník: <code>{customer}</code>, <code>{billing_email}</code>, <code>{billing_phone}</code>.",
+          "Doprava a platba: <code>{shipping_method}</code>, <code>{payment_method}</code>.",
+          "Položky a obchod: <code>{items}</code>, <code>{item_count}</code>, <code>{site_name}</code>."
         ]
       },
       {
-        "title": "5. Перевірка попереднього перегляду",
+        "title": "5. Náhled před přidáním poznámky",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Otevřete objednávku WooCommerce a vyberte šablonu. Náhled zobrazí poznámku, ve které již byly zástupné symboly nahrazeny údaji z vybrané objednávky.",
+          "Před vytvořením poznámky náhled vždy zkontrolujte. Je to zvlášť důležité, pokud některý zástupný symbol nemá v objednávce hodnotu, například když chybí společnost pro dodání nebo telefonní číslo."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Zkontrolujte jména, částky, způsob dopravy a seznam položek.",
+          "Zkontrolujte, zda je vybrán správný typ poznámky.",
+          "Pokud se má stejný text zlepšit pro všechny budoucí objednávky, upravte nejprve samotnou šablonu."
         ]
       },
       {
-        "title": "6. Внутрішні та клієнтські нотатки",
+        "title": "6. Interní poznámky a poznámky pro zákazníky",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Interní poznámky jsou určeny zaměstnancům obchodu a běžně slouží k dokumentaci, následným úkolům nebo historii podpory. Poznámky pro zákazníky mohou být zákazníkovi viditelné a podle nastavení WooCommerce mohou spustit e-mailové oznámení.",
+          "Pečlivě zkontrolujte upravitelný náhled i vybraný typ poznámky. Jako poznámku pro zákazníka používejte pouze text, který zákazník smí číst."
         ],
         "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
+          "Interní poznámka: „Zákazník volal, dodací adresa potvrzena.“",
+          "Poznámka pro zákazníka: „Vaši objednávku připravujeme a brzy ji odešleme.“",
+          "Do poznámek pro zákazníky nikdy nevkládejte hesla, soukromé komentáře ani informace určené pouze dodavatelům."
         ]
       },
       {
-        "title": "7. Обране, пошук і сортування",
+        "title": "7. Oblíbené položky, hledání a řazení",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Oblíbené položky pomáhají zobrazit nejdůležitější šablony v horní části výběru. Vyhledávací pole na obrazovce objednávky umožňuje najít šablonu podle názvu, kategorie nebo obsahu.",
+          "V seznamu šablon můžete změnit pořadí přetažením. Uložené pořadí se použije při zobrazení šablon na obrazovce objednávky."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Oblíbené položky používejte pro každodenní šablony.",
+          "Kategorie používejte pro tematické skupiny, například Platby, Doprava, Vrácení a Podpora.",
+          "Názvy udržujte krátké, aby výsledky hledání zůstaly přehledné."
         ]
       },
       {
-        "title": "8. Імпорт, експорт і демо-шаблони",
+        "title": "8. Import, export a ukázkové šablony",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Export JSON vytvoří zálohu vašich šablon. Můžete jej použít před většími změnami nebo pro přenos šablon do jiného obchodu.",
+          "Import JSON může vytvářet nové šablony a aktualizovat existující šablony se stejným názvem nebo interním klíčem ukázky. Ukázkové šablony poskytují rychlý výchozí bod a vytvoří se v aktivním jazyce."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Před hromadnými změnami proveďte export.",
+          "Importujte pouze soubory JSON z důvěryhodného zdroje.",
+          "Po importu otevřete několik šablon a zkontrolujte formátování a zástupné symboly."
         ]
       },
       {
-        "title": "9. Ролі та права",
+        "title": "9. Oprávnění a role",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Plugin používá samostatná oprávnění pro správu šablon a jejich používání v objednávkách. Administrátoři a správci obchodu tato oprávnění při aktivaci získají automaticky.",
+          "Pokud používáte plugin pro úpravu rolí, můžete tato oprávnění přidělit vlastním rolím nebo jim je odebrat."
         ],
         "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
+          "<code>manage_mh_order_note_templates</code>: vytváření, úpravy, mazání a import/export šablon.",
+          "<code>use_mh_order_note_templates</code>: používání šablon v objednávkách WooCommerce.",
+          "Uživatelé bez potřebného oprávnění související funkce administrace neuvidí."
         ]
       },
       {
-        "title": "10. Безпека і сумісність HPOS",
+        "title": "10. Zabezpečení a kompatibilita s HPOS",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Plugin pro akce v administraci používá nonce, kontroly oprávnění, sanitizaci a escapování. Obsah šablony se před uložením nebo použitím vyčistí pomocí pravidel bezpečného HTML ve WordPressu.",
+          "Údaje objednávky se načítají přes API objednávek WooCommerce, nikoli přímým přístupem k databázovým tabulkám. Plugin je tak kompatibilní s WooCommerce HPOS i klasickým ukládáním objednávek."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Udržujte WooCommerce a WordPress aktualizované.",
+          "Po změně nastavení e-mailů WooCommerce otestujte pracovní postup s poznámkami pro zákazníky.",
+          "Před importem velkého množství šablon použijte testovací web."
         ]
       },
       {
-        "title": "11. Усунення несправностей",
+        "title": "11. Řešení problémů",
         "paragraphs": [
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу.",
-          "Ця довідка описує повний процес: створення форматованих шаблонів, використання заповнювачів, додавання нотаток у замовлення WooCommerce, імпорт/експорт JSON, права, HPOS і безпечну роботу."
+          "Pokud se šablony v objednávce nezobrazují, ověřte, že je WooCommerce aktivní, šablona je publikovaná a aktuální uživatel má oprávnění šablony používat.",
+          "Pokud se nezobrazují překlady, zkontrolujte jazyk webu a jazyk uživatele ve WordPressu. Plugin obsahuje zkontrolované vestavěné záložní soubory pro všechny podporované jazyky, včetně perštiny, vietnamštiny a češtiny. Ostatní jazyky by měly být poskytovány prostřednictvím zkontrolovaných jazykových balíčků WordPress.org."
         ],
         "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
+          "Pokud se po aktualizaci stále zobrazuje stará administrace, vymažte objektovou cache nebo cache pluginu.",
+          "Pokud zástupný symbol zůstane nezměněn, ověřte, že je zapsán přesně podle seznamu, včetně složených závorek.",
+          "Pokud se poznámky pro zákazníky neodesílají e-mailem, zkontrolujte nastavení e-mailového oznámení o poznámce zákazníka ve WooCommerce."
         ]
       },
       {
-        "title": "12. Сторінка налаштувань",
+        "title": "12. Stránka nastavení",
         "paragraphs": [
-          "Відкрийте <strong>Mailhilfe Order Notes → Налаштування</strong>, щоб вибрати стандартний тип нотатки, безпечний HTML, показ використання, обране, імпорт JSON і зіставлення мов. Для щоденної роботи використовуйте внутрішні нотатки."
-        ],
-        "items": []
-      },
-      {
-        "title": "13. Мова шаблону та багатомовні магазини",
-        "paragraphs": [
-          "Кожному шаблону можна призначити мову. Виберіть <strong>Усі мови</strong> для універсального тексту або конкретну мову для перекладених повідомлень клієнту.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. Власні поля і метадані",
-        "paragraphs": [
-          "Заповнювачі <code>{order_meta:meta_key}</code> і <code>{customer_meta:meta_key}</code> вставляють вибрані метадані. Чутливі ключі, такі як password, token або secret, блокуються.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. Дублювання та редакції",
-        "paragraphs": [
-          "Дублювання створює копію як чернетку. Редакції WordPress допомагають порівнювати та відновлювати старі версії.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. Дозволи",
-        "paragraphs": [
-          "Сторінка <strong>Дозволи</strong> визначає, які ролі керують шаблонами, а які використовують їх у замовленнях.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. Попередній перегляд імпорту",
-        "paragraphs": [
-          "Імпорт JSON спочатку показує, які шаблони буде створено, оновлено або пропущено.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. Стан e-mail нотатки клієнту",
-        "paragraphs": [
-          "Нотатки клієнту можуть запускати сповіщення WooCommerce електронною поштою, якщо відповідний лист увімкнено. Плагін окремо фіксує створення нотатки та обробку листа. Перед додаванням перевірте редагований попередній перегляд, а результат — на сторінці історії."
+          "Otevřete <strong>Poznámky k objednávkám Mailhilfe → Nastavení</strong> a zvolte výchozí typ poznámky, chování bezpečného HTML, zobrazení použití, oblíbené položky, možnosti importu JSON a porovnávání jazyků. Pro bezpečnější každodenní práci použijte jako výchozí interní poznámky."
         ],
         "items": []
       },
       {
-        "title": "19. Рекомендований порядок",
+        "title": "13. Jazyk šablony a vícejazyčné obchody",
         "paragraphs": [
-          "Виберіть шаблон, перевірте попередній перегляд, відредагуйте за потреби, підтвердьте тип нотатки й додайте її.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Každá šablona může mít přiřazený jazyk. Pokud lze stejný text použít pro každou objednávku, zvolte <strong>Všechny jazyky</strong>; pro lokalizované texty vyberte konkrétní jazyk.",
+          "Pokud jsou potřebné údaje dostupné, plugin může upřednostnit šablony odpovídající jazyku objednávky, jazyku uživatele nebo běžným jazykovým údajům z vícejazyčných pluginů."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Pro interní poznámky zaměstnanců použijte jednu neutrální šablonu.",
+          "Pro zákazníky vytvořte samostatné šablony v češtině, němčině, angličtině nebo dalších jazycích obchodu.",
+          "V obchodech s WPML nebo Polylang otestujte rozpoznávání jazyka objednávky na skutečné testovací objednávce."
         ]
       },
       {
-        "title": "20. Умови шаблонів",
+        "title": "14. Vlastní pole a meta zástupné symboly",
         "paragraphs": [
-          "Умови визначають, чи доступний шаблон для певного замовлення. Можна обмежити за статусом, способом оплати, способом доставки, країною виставлення рахунку та мінімальною або максимальною сумою. Усі задані умови мають збігатися."
+          "Pokročilé zástupné symboly mohou načítat vybraná meta pole objednávky nebo zákazníka. Pro údaje objednávky použijte <code>{order_meta:meta_key}</code> a pro uživatelské údaje zákazníka <code>{customer_meta:meta_key}</code>.",
+          "Z bezpečnostních důvodů jsou blokovány citlivé názvy klíčů obsahující například password, token, secret, session, auth nebo hash. Meta zástupné symboly používejte pouze tehdy, když víte, co dané pole obsahuje."
         ],
         "items": [
-          "Залиште поле порожнім, якщо воно не повинно обмежувати шаблон.",
-          "Використовуйте технічні ідентифікатори оплати та доставки.",
-          "Умови перевіряються в інтерфейсі й повторно на сервері."
+          "Příklad: <code>{order_meta:_tracking_number}</code> pro číslo zásilky uložené pluginem dopravy.",
+          "Příklad: <code>{order_meta:_billing_vat_id}</code> pro pole DIČ.",
+          "V poznámkách pro zákazníky nezveřejňujte interní ani citlivá pole."
         ]
       },
       {
-        "title": "21. Журнал обробки електронної пошти",
+        "title": "15. Duplikování šablon a revize",
         "paragraphs": [
-          "Для клієнтських нотаток плагін записує повідомлення WooCommerce про обробку листа та технічні помилки wp_mail. «Оброблено» означає передачу поштовій системі, але не підтверджує остаточну доставку або прочитання."
+          "Funkci duplikování použijte, když potřebujete podobnou šablonu s drobnými změnami. Kopie se vytvoří jako koncept, abyste ji mohli před publikováním zkontrolovat.",
+          "Revize šablon umožňují porovnat dřívější verze a obnovit předchozí text, pokud byla změna provedena omylem."
         ],
         "items": [
-          "Переглядайте оброблені й невдалі події на сторінці історії.",
-          "Для точних даних про доставку використовуйте SMTP-сервіс.",
-          "Внутрішні нотатки не запускають лист клієнтської нотатки."
+          "Před vytvořením variant pro DHL, UPS nebo osobní odběr duplikujte obecnou šablonu dopravy.",
+          "Po větších úpravách textu zkontrolujte revize.",
+          "Používejte jasné názvy, aby se podobné šablony nezaměňovaly."
         ]
       },
       {
-        "title": "22. Центральна історія",
+        "title": "16. Stránka oprávnění",
         "paragraphs": [
-          "Відкрийте <strong>Mailhilfe Order Notes → Історія</strong>, щоб переглянути створення нотаток, використання шаблонів, обробку та помилки листів. За наявності показуються замовлення, шаблон, користувач, отримувач, тип події та час."
+          "Otevřete <strong>Poznámky k objednávkám Mailhilfe → Oprávnění</strong> a určete, které role WordPressu smějí spravovat šablony a které je smějí používat v objednávkách.",
+          "Administrátorům potřebná oprávnění zůstávají. Ostatním rolím přidělte pouze oprávnění potřebná pro jejich každodenní úkoly."
         ],
         "items": [
-          "Використовуйте для підтримки, аудиту й діагностики.",
-          "Історія відокремлена від нотаток WooCommerce.",
-          "Відображаються останні 250 записів."
+          "Správa šablon: vytváření, úpravy, mazání, import a export šablon.",
+          "Používání šablon: výběr šablony a přidání poznámky v objednávce WooCommerce.",
+          "Oprávnění k importu a exportu přidělujte pouze důvěryhodným uživatelům."
         ]
       },
       {
-        "title": "23. Попередній перегляд із тестовим замовленням",
+        "title": "17. Náhled importu",
         "paragraphs": [
-          "У редакторі введіть ID замовлення WooCommerce. Поточний вміст, включно з незбереженими змінами, буде показано з даними замовлення без створення нотатки або надсилання листа."
+          "Importy JSON nyní před provedením změn zobrazují náhled. Náhled uvádí, kolik šablon bude vytvořeno, aktualizováno nebo přeskočeno.",
+          "Import potvrďte až po kontrole náhledu. Zabráníte tak nechtěnému přepsání existujících šablon."
         ],
         "items": [
-          "Використовуйте тестове замовлення або staging-сайт.",
-          "Перевіряйте відсутні значення, форматування, умови й власні метадані.",
-          "Потрібне право редагувати вибране замовлення."
+          "Před importem velké sady vytvořte zálohu exportem.",
+          "Importujte pouze soubory JSON z důvěryhodného zdroje.",
+          "Po importu otestujte alespoň jednu poznámku pro zákazníka a jednu interní poznámku."
         ]
       },
       {
-        "title": "24. Особисте обране та нещодавні шаблони",
+        "title": "18. Chování e-mailů s poznámkami pro zákazníky",
         "paragraphs": [
-          "Кожен користувач може позначати особисте обране в замовленні. Плагін також зберігає десять останніх успішно використаних шаблонів і піднімає їх вище. Глобальне обране залишається спільним."
-        ],
-        "items": [
-          "Особисте обране не впливає на інших користувачів.",
-          "Список нещодавніх оновлюється лише після успішного додавання нотатки.",
-          "Дані зберігаються як метадані користувача WordPress."
-        ]
-      },
-      {
-        "title": "25. Сторінка діагностики",
-        "paragraphs": [
-          "Відкрийте <strong>Mailhilfe Order Notes → Діагностика</strong>, щоб побачити версії WordPress, PHP і WooCommerce, статус HPOS, лист клієнтської нотатки, мову, кількість шаблонів, кеш і WP_DEBUG."
-        ],
-        "items": [
-          "Додавайте ці дані до запиту підтримки.",
-          "Вміст нотаток і адреси клієнтів не показуються.",
-          "Розробники можуть додати рядки фільтром діагностики."
-        ]
-      },
-      {
-        "title": "26. Хуки й фільтри для розробників",
-        "paragraphs": [
-          "Плагін має хуки й фільтри для заповнювачів, значень, дозволених мета-ключів, результатів шаблонів, умов, перегляду, фінального вмісту, дій до/після додавання, історії та діагностики. Назви описані в readme.txt."
-        ],
-        "items": [
-          "Перевіряйте, очищуйте й екрануйте власні дані.",
-          "Використовуйте API замовлень WooCommerce замість прямого доступу до таблиць.",
-          "Зберігайте сумісність з HPOS і класичним сховищем."
-        ]
-      }
-    ]
-  },
-  "sv_SE": {
-    "title": "Utförlig hjälp för Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning. Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. Vad tillägget gör",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. Skapa en mall",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. Formatera text",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. Använda platshållare",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. Kontrollera förhandsvisning",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. Interna notiser och kundnotiser",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. Favoriter, sökning och sortering",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. Import, export och demomallar",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. Roller och behörigheter",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. Säkerhet och HPOS-kompatibilitet",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. Felsökning",
-        "paragraphs": [
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning.",
-          "Den här hjälpen beskriver hela arbetsflödet: skapa formaterade mallar, använda platshållare, lägga till notiser i WooCommerce-order, importera/exportera JSON, behörigheter, HPOS och säker användning."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. Inställningssida",
-        "paragraphs": [
-          "Öppna <strong>Mailhilfe Order Notes → Inställningar</strong> för att välja standardtyp, säker HTML, användningsvisning, favoriter, JSON-import och språkmatchning. Använd interna notiser som standard i det dagliga arbetet."
+          "Poznámky pro zákazníky mohou spustit e-mailová oznámení WooCommerce, pokud je příslušný e-mail povolen. Plugin zaznamenává vytvoření poznámky pro zákazníka odděleně od zpracování e-mailu. Před přidáním poznámky zkontrolujte upravitelný náhled a na stránce Historie ověřte výsledek zpracování e-mailu."
         ],
         "items": []
       },
       {
-        "title": "13. Mallens språk och flerspråkiga butiker",
+        "title": "19. Doporučený pracovní postup",
         "paragraphs": [
-          "Varje mall kan ha ett språk. Välj <strong>Alla språk</strong> för generell text eller ett specifikt språk för översatta kundmeddelanden.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
+          "Bezpečný každodenní postup je následující: vyberte šablonu, zkontrolujte náhled s nahrazenými hodnotami, podle potřeby jej upravte, ověřte typ poznámky a teprve poté poznámku přidejte.",
+          "Nové šablony nejprve otestujte v nekritické objednávce nebo v testovacím obchodě, než je použijete u skutečných zákazníků."
         ],
         "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
+          "Interní poznámky používejte pro informace určené pouze zaměstnancům.",
+          "Poznámky pro zákazníky používejte pouze pro zprávy, které mohou být zákazníkovi odeslány.",
+          "Po každé změně šablony zkontrolujte zástupné symboly."
         ]
       },
       {
-        "title": "14. Egna fält och metadata",
+        "title": "20. Podmínky šablony",
         "paragraphs": [
-          "Platshållarna <code>{order_meta:meta_key}</code> och <code>{customer_meta:meta_key}</code> infogar vald metadata. Känsliga nycklar som password, token eller secret blockeras.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
+          "Podmínky šablony určují, zda je šablona pro konkrétní objednávku dostupná. Šablony můžete omezit podle stavu objednávky, platební metody, způsobu dopravy, fakturační země a minimální nebo maximální hodnoty objednávky. Všechny nastavené podmínky musí být splněny."
         ],
         "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
+          "Pokud daná podmínka nemá šablonu omezovat, ponechte pole prázdné.",
+          "Používejte technická ID platebních metod a způsobů dopravy.",
+          "Podmínky se kontrolují v rozhraní a znovu na serveru před vytvořením poznámky."
         ]
       },
       {
-        "title": "15. Duplicera och revideringar",
+        "title": "21. Protokol zpracování e-mailů",
         "paragraphs": [
-          "Duplicering skapar en kopia som utkast. WordPress-revideringar hjälper dig jämföra och återställa äldre versioner.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
+          "U poznámek pro zákazníky plugin zaznamenává, kdy WooCommerce oznámí zpracování e-mailu s poznámkou pro zákazníka, a také technické chyby wp_mail. Událost „zpracováno“ potvrzuje, že WordPress/WooCommerce předal zprávu poštovnímu systému; neprokazuje konečné doručení ani přečtení zákazníkem."
         ],
         "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
+          "Na stránce Historie kontrolujte zpracované a neúspěšné e-mailové události.",
+          "Pokud potřebujete spolehlivou informaci o doručení, použijte poskytovatele SMTP nebo službu pro protokolování e-mailů.",
+          "Interní poznámky nespouštějí e-mail s poznámkou pro zákazníka."
         ]
       },
       {
-        "title": "16. Behörigheter",
+        "title": "22. Centrální historie",
         "paragraphs": [
-          "Sidan <strong>Behörigheter</strong> anger vilka roller som hanterar mallar och vilka som använder dem i ordrar.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
+          "Otevřete <strong>Poznámky k objednávkám Mailhilfe → Historie</strong> a zkontrolujte nedávné vytvoření poznámek, použití šablon, zpracování e-mailů a chyby e-mailů. Pokud jsou údaje k dispozici, záznamy obsahují objednávku, šablonu, uživatele, příjemce, typ události a čas."
         ],
         "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
+          "Historii používejte pro podporu, audit a řešení problémů.",
+          "Historie je oddělená od poznámek objednávek WooCommerce.",
+          "Stránka zobrazuje 250 nejnovějších záznamů."
         ]
       },
       {
-        "title": "17. Importförhandsvisning",
+        "title": "23. Náhled testovací objednávky",
         "paragraphs": [
-          "JSON-import visar först vilka mallar som skapas, uppdateras eller hoppas över.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
+          "V editoru šablony zadejte do oblasti testovacího náhledu ID objednávky WooCommerce. Aktuální obsah editoru včetně neuložených změn se vykreslí s údaji z této objednávky, aniž by se vytvořila poznámka nebo odeslal e-mail."
         ],
         "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
+          "Použijte testovací objednávku nebo nekritickou objednávku.",
+          "Zkontrolujte chybějící hodnoty, formátování, podmínky a vlastní meta zástupné symboly.",
+          "Musíte mít oprávnění upravovat vybranou objednávku."
         ]
       },
       {
-        "title": "18. E-poststatus för kundnotis",
+        "title": "24. Osobní oblíbené položky a naposledy použité šablony",
         "paragraphs": [
-          "Kundanteningar kan utlösa WooCommerce-e-postmeddelanden när motsvarande e-post är aktiverad. Pluginet registrerar att kundanteckningen skapades separat från e-postbehandlingen. Kontrollera den redigerbara förhandsvisningen och resultatet på sidan Historik."
-        ],
-        "items": []
-      },
-      {
-        "title": "19. Rekommenderat arbetsflöde",
-        "paragraphs": [
-          "Välj en mall, granska förhandsvisningen, redigera vid behov, kontrollera notistypen och lägg till notisen.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
+          "Každý administrátor může na obrazovce objednávky označovat osobní oblíbené položky. Plugin také ukládá deset šablon, které každý uživatel použil naposledy, a zobrazuje je ve výběru výše. Globální oblíbené položky zůstávají sdílené se všemi uživateli."
         ],
         "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
+          "Osobní oblíbené položky nemění seznam jiného uživatele.",
+          "Seznam nedávných šablon se aktualizuje pouze po úspěšném přidání poznámky.",
+          "Osobní údaje se ukládají jako uživatelská metadata WordPressu."
         ]
       },
       {
-        "title": "20. Villkor för mallar",
+        "title": "25. Stránka diagnostiky",
         "paragraphs": [
-          "Villkor avgör om en mall är tillgänglig för en order. Du kan begränsa efter orderstatus, betalningsmetod, leveransmetod, faktureringsland och minsta eller högsta orderbelopp. Alla angivna villkor måste stämma."
+          "Otevřete <strong>Poznámky k objednávkám Mailhilfe → Diagnostika</strong> a zobrazte technické informace, například verze WordPressu, PHP a WooCommerce, stav HPOS, stav e-mailů s poznámkami pro zákazníky, locale, počet publikovaných šablon, stav cache a WP_DEBUG."
         ],
         "items": [
-          "Lämna ett fält tomt om det inte ska begränsa mallen.",
-          "Använd tekniska ID:n för betalnings- och leveransmetoder.",
-          "Villkoren kontrolleras i gränssnittet och igen på servern."
+          "Při žádosti o podporu zkopírujte diagnostické hodnoty.",
+          "Stránka nezobrazuje obsah poznámek k objednávkám ani adresy zákazníků.",
+          "Vývojáři mohou pomocí filtru diagnostiky přidat další řádky."
         ]
       },
       {
-        "title": "21. Logg för e-postbearbetning",
+        "title": "26. Hooky a filtry pro vývojáře",
         "paragraphs": [
-          "För kundnotiser registrerar tillägget när WooCommerce rapporterar att e-post har bearbetats samt tekniska wp_mail-fel. ”Bearbetad” betyder överlämnad till e-postsystemet, inte slutlig leverans eller läsning."
+          "Plugin poskytuje hooky a filtry pro zástupné symboly, hodnoty zástupných symbolů, povolené meta klíče, výsledky šablon, podmínky, obsah náhledu, konečný obsah poznámky, akce před přidáním poznámky a po něm, záznamy historie a diagnostiku. Názvy hooků a parametry jsou popsány v souboru readme.txt."
         ],
         "items": [
-          "Se sidan Historik för bearbetade och misslyckade händelser.",
-          "Använd en SMTP-leverantör för mer exakt leveransinformation.",
-          "Interna notiser utlöser inte e-post för kundnotis."
-        ]
-      },
-      {
-        "title": "22. Central historik",
-        "paragraphs": [
-          "Öppna <strong>Mailhilfe Order Notes → Historik</strong> för skapade notiser, mallanvändning, e-postbearbetning och fel. Om tillgängligt visas order, mall, användare, mottagare, händelsetyp och tid."
-        ],
-        "items": [
-          "Använd historiken för support, granskning och felsökning.",
-          "Den är separat från WooCommerce-orderanteckningar.",
-          "De 250 senaste posterna visas."
-        ]
-      },
-      {
-        "title": "23. Förhandsvisning med testorder",
-        "paragraphs": [
-          "Ange ett WooCommerce-order-ID i mallredigeraren. Aktuellt innehåll, även osparade ändringar, visas med orderdata utan att skapa en notis eller skicka e-post."
-        ],
-        "items": [
-          "Använd en testorder eller stagingmiljö.",
-          "Kontrollera saknade värden, formatering, villkor och egen metadata.",
-          "Du måste ha rätt att redigera den valda ordern."
-        ]
-      },
-      {
-        "title": "24. Personliga favoriter och nyligen använda mallar",
-        "paragraphs": [
-          "Varje användare kan markera personliga favoriter på ordersidan. Tillägget sparar också de tio senast framgångsrikt använda mallarna och placerar dem högre. Globala favoriter är fortsatt gemensamma."
-        ],
-        "items": [
-          "Personliga favoriter påverkar inte andra användare.",
-          "Listan uppdateras först efter att en notis har lagts till.",
-          "Data sparas som WordPress-användarmetadata."
-        ]
-      },
-      {
-        "title": "25. Diagnossida",
-        "paragraphs": [
-          "Öppna <strong>Mailhilfe Order Notes → Diagnos</strong> för WordPress-, PHP- och WooCommerce-versioner, HPOS, kundnotis-e-post, språk, antal mallar, cache och WP_DEBUG."
-        ],
-        "items": [
-          "Ange dessa uppgifter vid supportförfrågningar.",
-          "Inget notisinnehåll eller kundadresser visas.",
-          "Utvecklare kan lägga till rader via diagnosfiltret."
-        ]
-      },
-      {
-        "title": "26. Hooks och filter för utvecklare",
-        "paragraphs": [
-          "Tillägget har hooks och filter för platshållare, värden, tillåtna metanycklar, mallresultat, villkor, förhandsvisning, slutligt innehåll, åtgärder före/efter tillägg, historik och diagnos. Namnen dokumenteras i readme.txt."
-        ],
-        "items": [
-          "Validera, sanera och escape:a egna data.",
-          "Använd WooCommerce order-API i stället för direkt tabellåtkomst.",
-          "Behåll kompatibilitet med HPOS och klassisk lagring."
-        ]
-      }
-    ]
-  },
-  "da_DK": {
-    "title": "Udførlig hjælp til Mailhilfe Order Note Manager for WooCommerce",
-    "intro": "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug. Mailhilfe Order Note Manager for WooCommerce.",
-    "sections": [
-      {
-        "title": "1. Hvad pluginet gør",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "2. Opret en skabelon",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "3. Formater teksten",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "4. Brug pladsholdere",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "<code>{order_number}</code>, <code>{customer}</code>, <code>{order_total}</code>",
-          "<code>{payment_method}</code>, <code>{shipping_method}</code>, <code>{items}</code>",
-          "<code>{billing_email}</code>, <code>{billing_phone}</code>, <code>{site_name}</code>"
-        ]
-      },
-      {
-        "title": "5. Kontrollér forhåndsvisning",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "6. Interne noter og kundenoter",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "<strong>Internal note</strong> / <strong>Customer note</strong>",
-          "Check customer notes carefully before sending."
-        ]
-      },
-      {
-        "title": "7. Favoritter, søgning og sortering",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "8. Import, eksport og demoskabeloner",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "9. Roller og tilladelser",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "<code>manage_mh_order_note_templates</code>",
-          "<code>use_mh_order_note_templates</code>"
-        ]
-      },
-      {
-        "title": "10. Sikkerhed og HPOS-kompatibilitet",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "11. Fejlfinding",
-        "paragraphs": [
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug.",
-          "Denne hjælp forklarer hele arbejdsgangen: opret formaterede skabeloner, brug pladsholdere, tilføj noter i WooCommerce-ordrer, importer/eksporter JSON, tilladelser, HPOS og sikker brug."
-        ],
-        "items": [
-          "Use clear titles and categories.",
-          "Check the preview before adding the note.",
-          "Keep templates short and easy to understand."
-        ]
-      },
-      {
-        "title": "12. Indstillingsside",
-        "paragraphs": [
-          "Åbn <strong>Mailhilfe Order Notes → Indstillinger</strong> for at vælge standardnotetype, sikker HTML, brugsvisning, favoritter, JSON-import og sprogmatchning. Brug interne noter som standard i det daglige arbejde."
-        ],
-        "items": []
-      },
-      {
-        "title": "13. Skabelonsprog og flersprogede butikker",
-        "paragraphs": [
-          "Hver skabelon kan have et sprog. Vælg <strong>Alle sprog</strong> til generelle tekster eller et bestemt sprog til oversatte kundebeskeder.",
-          "For multilingual shops, create separate customer-facing templates for each important shop language and keep internal templates language-neutral when possible."
-        ],
-        "items": [
-          "Use “All languages” for staff-only notes.",
-          "Use a specific language for customer messages.",
-          "Test the language selection with a real test order."
-        ]
-      },
-      {
-        "title": "14. Brugerdefinerede felter og metadata",
-        "paragraphs": [
-          "Pladsholderne <code>{order_meta:meta_key}</code> og <code>{customer_meta:meta_key}</code> indsætter valgte metadata. Følsomme nøgler som password, token eller secret blokeres.",
-          "Use meta placeholders carefully because they can expose data from other plugins. Check every customer note preview before saving."
-        ],
-        "items": [
-          "Example: <code>{order_meta:_tracking_number}</code>.",
-          "Example: <code>{order_meta:_billing_vat_id}</code>.",
-          "Do not use sensitive data in customer notes."
-        ]
-      },
-      {
-        "title": "15. Duplikering og revisioner",
-        "paragraphs": [
-          "Duplikering opretter en kopi som kladde. WordPress-revisioner hjælper med at sammenligne og gendanne tidligere versioner.",
-          "Use duplicate templates for similar shipping, payment or support messages and keep titles easy to distinguish."
-        ],
-        "items": [
-          "The duplicate starts as a draft.",
-          "Usage counters are not copied.",
-          "Review the draft before publishing."
-        ]
-      },
-      {
-        "title": "16. Rettigheder",
-        "paragraphs": [
-          "Siden <strong>Rettigheder</strong> bestemmer, hvilke roller der administrerer skabeloner, og hvilke der bruger dem i ordrer.",
-          "Give import/export and management rights only to trusted users. Users who only work in orders usually need only the permission to use templates."
-        ],
-        "items": [
-          "Manage templates: create, edit, delete, import and export.",
-          "Use templates: add notes in WooCommerce orders.",
-          "Administrators keep the required rights."
-        ]
-      },
-      {
-        "title": "17. Importforhåndsvisning",
-        "paragraphs": [
-          "JSON-import viser først, hvilke skabeloner der oprettes, opdateres eller springes over.",
-          "Confirm the import only after checking the preview and create an export backup before importing larger template sets."
-        ],
-        "items": [
-          "New templates are listed separately from updates.",
-          "Skipped entries should be reviewed.",
-          "Import only trusted JSON files."
-        ]
-      },
-      {
-        "title": "18. E-mailstatus for kundenote",
-        "paragraphs": [
-          "Kundenoter kan udløse WooCommerce-e-mails, når den tilsvarende e-mail er aktiveret. Pluginet registrerer oprettelsen af kundenoten separat fra e-mailbehandlingen. Kontrollér den redigerbare forhåndsvisning, og se resultatet på siden Historik."
-        ],
-        "items": []
-      },
-      {
-        "title": "19. Anbefalet arbejdsgang",
-        "paragraphs": [
-          "Vælg en skabelon, kontroller forhåndsvisningen, rediger om nødvendigt, bekræft notetypen og tilføj noten.",
-          "For new templates, test placeholders and formatting before using them in real customer communication."
-        ],
-        "items": [
-          "Internal notes are for staff information.",
-          "Customer notes must be suitable for the customer to read.",
-          "Review placeholders after each template change."
-        ]
-      },
-      {
-        "title": "20. Betingelser for skabeloner",
-        "paragraphs": [
-          "Betingelser afgør, om en skabelon er tilgængelig for en ordre. Den kan begrænses efter ordrestatus, betalingsmetode, leveringsmetode, faktureringsland og minimum eller maksimum total. Alle udfyldte betingelser skal passe."
-        ],
-        "items": [
-          "Lad et felt være tomt, hvis det ikke skal begrænse skabelonen.",
-          "Brug de tekniske ID’er for betalings- og leveringsmetoder.",
-          "Betingelser kontrolleres i grænsefladen og igen på serveren."
-        ]
-      },
-      {
-        "title": "21. Log over e-mailbehandling",
-        "paragraphs": [
-          "For kundenoter registrerer pluginet, når WooCommerce melder e-mailen behandlet, samt tekniske wp_mail-fejl. “Behandlet” bekræfter overførsel til mailsystemet, ikke endelig levering eller læsning."
-        ],
-        "items": [
-          "Se siden Historik for behandlede og mislykkede hændelser.",
-          "Brug en SMTP-udbyder for mere præcise leveringsoplysninger.",
-          "Interne noter udløser ikke e-mail for kundenoter."
-        ]
-      },
-      {
-        "title": "22. Central historik",
-        "paragraphs": [
-          "Åbn <strong>Mailhilfe Order Notes → Historik</strong> for oprettede noter, skabelonbrug, e-mailbehandling og fejl. Når de findes, vises ordre, skabelon, bruger, modtager, hændelsestype og tidspunkt."
-        ],
-        "items": [
-          "Brug historikken til support, kontrol og fejlfinding.",
-          "Den er adskilt fra WooCommerce-ordrenoter.",
-          "De seneste 250 poster vises."
-        ]
-      },
-      {
-        "title": "23. Forhåndsvisning med testordre",
-        "paragraphs": [
-          "Indtast et WooCommerce-ordre-ID i skabeloneditoren. Det aktuelle indhold, også ikke-gemte ændringer, vises med ordredata uden at oprette en note eller sende e-mail."
-        ],
-        "items": [
-          "Brug en testordre eller staging-side.",
-          "Kontrollér manglende værdier, formatering, betingelser og egne metadata.",
-          "Du skal have ret til at redigere den valgte ordre."
-        ]
-      },
-      {
-        "title": "24. Personlige favoritter og senest brugte skabeloner",
-        "paragraphs": [
-          "Hver bruger kan markere personlige favoritter på ordresiden. Pluginet gemmer også de ti senest anvendte skabeloner pr. bruger og viser dem højere. Globale favoritter er fortsat fælles."
-        ],
-        "items": [
-          "Personlige favoritter påvirker ikke andre brugere.",
-          "Listen opdateres kun efter en note er tilføjet korrekt.",
-          "Data gemmes som WordPress-brugermetadata."
-        ]
-      },
-      {
-        "title": "25. Diagnoseside",
-        "paragraphs": [
-          "Åbn <strong>Mailhilfe Order Notes → Diagnose</strong> for WordPress-, PHP- og WooCommerce-versioner, HPOS, kundenote-e-mail, sprog, antal skabeloner, cache og WP_DEBUG."
-        ],
-        "items": [
-          "Medtag disse oplysninger ved support.",
-          "Notetekst og kundeadresser vises ikke.",
-          "Udviklere kan tilføje rækker via diagnosefilteret."
-        ]
-      },
-      {
-        "title": "26. Hooks og filtre for udviklere",
-        "paragraphs": [
-          "Pluginet tilbyder hooks og filtre for pladsholdere, værdier, tilladte metanøgler, skabelonresultater, betingelser, forhåndsvisning, endeligt indhold, handlinger før/efter tilføjelse, historik og diagnose. Navnene er dokumenteret i readme.txt."
-        ],
-        "items": [
-          "Validér, rens og escape egne data.",
-          "Brug WooCommerce ordre-API’er i stedet for direkte tabeladgang.",
-          "Bevar kompatibilitet med HPOS og klassisk lagring."
+          "Veškerá vlastní data validujte, sanitizujte a escapujte.",
+          "Namísto přímého přístupu k tabulkám objednávek používejte API objednávek WooCommerce.",
+          "Vlastní rozšíření udržujte kompatibilní s HPOS i klasickým ukládáním objednávek."
         ]
       }
     ]

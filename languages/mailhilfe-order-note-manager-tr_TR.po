@@ -1,0 +1,630 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
+"POT-Creation-Date: 2026-06-23 00:00+0000\n"
+"PO-Revision-Date: 2026-06-23 13:00+0000\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: tr_TR\n"
+"Language-Team: Turkish\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d şablon bulundu."
+msgstr[1] "%d şablon bulundu."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d şablon oluşturulacak."
+msgstr[1] "%d şablon oluşturulacak."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d şablon atlanacak."
+msgstr[1] "%d şablon atlanacak."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d şablon güncellenecek."
+msgstr[1] "%d şablon güncellenecek."
+
+msgid "Add New"
+msgstr "Yeni ekle"
+
+msgid "Add New Category"
+msgstr "Yeni kategori ekle"
+
+msgid "Add New Template"
+msgstr "Yeni şablon ekle"
+
+msgid "Add note to order"
+msgstr "Siparişe not ekle"
+
+msgid "Adding order note..."
+msgstr "Sipariş notu ekleniyor..."
+
+msgid "Admin email"
+msgstr "Yönetici e-postası"
+
+msgid "All Categories"
+msgstr "Tüm kategoriler"
+
+msgid "All languages"
+msgstr "Tüm diller"
+
+msgid "Allow JSON imports"
+msgstr "JSON içe aktarımlarına izin ver"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Notlarda güvenli HTML biçimlendirmesine izin ver"
+
+msgid "Allowed billing countries"
+msgstr "İzin verilen fatura ülkeleri"
+
+msgid "Allowed order statuses"
+msgstr "İzin verilen sipariş durumları"
+
+msgid "Allowed payment method IDs"
+msgstr "İzin verilen ödeme yöntemi kimlikleri"
+
+msgid "Allowed shipping method IDs"
+msgstr "İzin verilen gönderim yöntemi kimlikleri"
+
+msgid "Apply import now"
+msgstr "İçe aktarmayı şimdi uygula"
+
+msgid "Available placeholders:"
+msgstr "Kullanılabilir yer tutucular:"
+
+msgid "Billing address"
+msgstr "Fatura adresi"
+
+msgid "Billing city"
+msgstr "Fatura şehri"
+
+msgid "Billing company"
+msgstr "Fatura şirketi"
+
+msgid "Billing country"
+msgstr "Fatura ülkesi"
+
+msgid "Billing email"
+msgstr "Fatura e-postası"
+
+msgid "Billing phone"
+msgstr "Fatura telefonu"
+
+msgid "Billing postcode"
+msgstr "Fatura posta kodu"
+
+msgid "Categories"
+msgstr "Kategoriler"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Virgülle ayrılmış ISO ülke kodları; örneğin DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Virgülle ayırın; örneğin bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Tamamlanma tarihi"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Şablon seçimi, müşteri notları, içe aktarma ve yönetim görünümü için varsayılan davranışı "
+"yapılandırın."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "%s kopyası"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Müşteri notu oluşturulduktan sonra dahili bir kayıt notu oluştur"
+
+msgid "Currency"
+msgstr "Para birimi"
+
+msgid "Currency symbol"
+msgstr "Para birimi simgesi"
+
+msgid "Current admin user"
+msgstr "Geçerli yönetici kullanıcısı"
+
+msgid "Current date"
+msgstr "Geçerli tarih"
+
+msgid "Current time"
+msgstr "Geçerli saat"
+
+msgid "Customer custom field by meta key"
+msgstr "Meta anahtarına göre müşteri özel alanı"
+
+msgid "Customer first name"
+msgstr "Müşterinin adı"
+
+msgid "Customer ID"
+msgstr "Müşteri kimliği"
+
+msgid "Customer last name"
+msgstr "Müşterinin soyadı"
+
+msgid "Customer name"
+msgstr "Müşteri adı"
+
+msgid "Customer note"
+msgstr "Müşteri notu"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Müşteri notu, \"%3$s\" şablonu kullanılarak %1$s tarihinde %2$s tarafından oluşturuldu."
+
+msgid "Customer order note"
+msgstr "Müşteri sipariş notu"
+
+msgid "Date"
+msgstr "Tarih"
+
+msgid "Default note type"
+msgstr "Varsayılan not türü"
+
+msgid "Demo templates"
+msgstr "Demo şablonları"
+
+msgid "Demo templates installed successfully."
+msgstr "Demo şablonları başarıyla yüklendi."
+
+msgid "Diagnostics"
+msgstr "Tanılama"
+
+msgid "Discount total"
+msgstr "İndirim toplamı"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Yayımlanmış tüm not şablonlarını, kategorileri, favorileri, sıralama değerlerini ve kullanım "
+"sayaçlarını JSON dosyası olarak indirin."
+
+msgid "Drag to sort"
+msgstr "Sıralamak için sürükleyin"
+
+msgid "Duplicate"
+msgstr "Çoğalt"
+
+msgid "Edit Category"
+msgstr "Kategoriyi düzenle"
+
+msgid "Edit Template"
+msgstr "Şablonu düzenle"
+
+msgid "Enabled"
+msgstr "Etkin"
+
+msgid "Event"
+msgstr "Olay"
+
+msgid "Export JSON"
+msgstr "JSON dışa aktar"
+
+msgid "Export templates"
+msgstr "Şablonları dışa aktar"
+
+msgid "FAQ"
+msgstr "SSS"
+
+msgid "Favorite"
+msgstr "Favori"
+
+msgid "Generate test preview"
+msgstr "Test önizlemesi oluştur"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"Şablon yetkilerini yalnızca güvenilir rollere verin. Kullanıcıların siparişe not ekleyebilmesi "
+"için ayrıca siparişleri düzenlemeye yönelik normal WooCommerce yetkisine sahip olması gerekir."
+
+msgid "Help"
+msgstr "Yardım"
+
+msgid "History"
+msgstr "Geçmiş"
+
+msgid "Import JSON"
+msgstr "JSON içe aktar"
+
+msgid "Import preview"
+msgstr "İçe aktarma önizlemesi"
+
+msgid "Import templates"
+msgstr "Şablonları içe aktar"
+
+msgid "Import usage counters from JSON files"
+msgstr "JSON dosyalarından kullanım sayaçlarını içe aktar"
+
+msgid "Insert placeholder"
+msgstr "Yer tutucu ekle"
+
+msgid "Install demo templates"
+msgstr "Demo şablonlarını yükle"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Hiç şablon yoksa demo şablonlarını otomatik olarak yükle"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Gönderim güncellemeleri, ödeme hatırlatmaları ve müşteri hizmetleri notları için kullanışlı demo "
+"şablonları yükleyin."
+
+msgid "Internal note"
+msgstr "Dahili not"
+
+msgid "Item count"
+msgstr "Ürün sayısı"
+
+msgid "Last customer note:"
+msgstr "Son müşteri notu:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Bu şablonu tüm dillerde göstermek için boş bırakın. WPML ve Polylang sipariş dili değerleri "
+"burada eşleştirilebilir."
+
+msgid "Loading preview..."
+msgstr "Önizleme yükleniyor..."
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Sipariş Notu Yöneticisi"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Mailhilfe Sipariş Notu Yöneticisi İçe/Dışa Aktarma"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Mailhilfe Sipariş Notu Yöneticisi Yetkileri"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Mailhilfe Sipariş Notu Yöneticisi Ayarları"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Mailhilfe Sipariş Notları"
+
+msgid "Manage templates"
+msgstr "Şablonları yönet"
+
+msgid "Mark as favorite"
+msgstr "Favori olarak işaretle"
+
+msgid "Maximum order total"
+msgstr "En yüksek sipariş toplamı"
+
+msgid "Minimum order total"
+msgstr "En düşük sipariş toplamı"
+
+msgid "New Category Name"
+msgstr "Yeni kategori adı"
+
+msgid "New Template"
+msgstr "Yeni şablon"
+
+msgid "No history entries found."
+msgstr "Geçmiş kaydı bulunamadı."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "Şablon sırası alınmadı."
+
+msgid "No templates are available yet."
+msgstr "Henüz kullanılabilir şablon yok."
+
+msgid "No templates found in Trash."
+msgstr "Çöp Kutusu’nda şablon bulunamadı."
+
+msgid "No templates found."
+msgstr "Şablon bulunamadı."
+
+msgid "Not favorite"
+msgstr "Favori değil"
+
+msgid "Note type"
+msgstr "Not türü"
+
+msgid "Order"
+msgstr "Sipariş"
+
+msgid "Order could not be loaded."
+msgstr "Sipariş yüklenemedi."
+
+msgid "Order custom field by meta key"
+msgstr "Meta anahtarına göre sipariş özel alanı"
+
+msgid "Order date"
+msgstr "Sipariş tarihi"
+
+msgid "Order date and time"
+msgstr "Sipariş tarihi ve saati"
+
+msgid "Order ID"
+msgstr "Sipariş kimliği"
+
+msgid "Order note history"
+msgstr "Sipariş notu geçmişi"
+
+msgid "Order number"
+msgstr "Sipariş numarası"
+
+msgid "Order status"
+msgstr "Sipariş durumu"
+
+msgid "Order subtotal"
+msgstr "Sipariş ara toplamı"
+
+msgid "Order time"
+msgstr "Sipariş saati"
+
+msgid "Order total"
+msgstr "Sipariş toplamı"
+
+msgid "Ordered items"
+msgstr "Sipariş edilen ürünler"
+
+msgid "Paid date"
+msgstr "Ödeme tarihi"
+
+msgid "Payment method"
+msgstr "Ödeme yöntemi"
+
+msgid "Payment method ID"
+msgstr "Ödeme yöntemi kimliği"
+
+msgid "Permissions"
+msgstr "Yetkiler"
+
+msgid "Personal favorite"
+msgstr "Kişisel favori"
+
+msgid "Personal favorite updated."
+msgstr "Kişisel favori güncellendi."
+
+msgid "Placeholder inserted."
+msgstr "Yer tutucu eklendi."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "Mümkün olduğunda çok dilli şablonlarda sipariş/müşteri dilini tercih et"
+
+msgid "Preview"
+msgstr "Önizleme"
+
+msgid "Preview could not be loaded."
+msgstr "Önizleme yüklenemedi."
+
+msgid "Recipient"
+msgstr "Alıcı"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "İçe aktarmayı uygulamadan önce özeti inceleyin. Henüz hiçbir değişiklik yapılmadı."
+
+msgid "Role"
+msgstr "Rol"
+
+msgid "Save permissions"
+msgstr "Yetkileri kaydet"
+
+msgid "Save settings"
+msgstr "Ayarları kaydet"
+
+msgid "Search Categories"
+msgstr "Kategorilerde ara"
+
+msgid "Search Templates"
+msgstr "Şablonlarda ara"
+
+msgid "Search templates"
+msgstr "Şablon ara"
+
+msgid "Security check failed."
+msgstr "Güvenlik denetimi başarısız oldu."
+
+msgid "Select a template to show the preview."
+msgstr "Önizlemeyi göstermek için bir şablon seçin."
+
+msgid "Select template"
+msgstr "Şablon seç"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Shipping address"
+msgstr "Gönderim adresi"
+
+msgid "Shipping city"
+msgstr "Gönderim şehri"
+
+msgid "Shipping company"
+msgstr "Gönderim şirketi"
+
+msgid "Shipping country"
+msgstr "Gönderim ülkesi"
+
+msgid "Shipping first name"
+msgstr "Gönderim adresindeki ad"
+
+msgid "Shipping last name"
+msgstr "Gönderim adresindeki soyad"
+
+msgid "Shipping method"
+msgstr "Gönderim yöntemi"
+
+msgid "Shipping postcode"
+msgstr "Gönderim posta kodu"
+
+msgid "Shipping total"
+msgstr "Gönderim toplamı"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Sipariş şablonu seçicisinde favorileri önce göster"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Şablon listesinde kullanım sayacı sütununu göster"
+
+msgid "Site name"
+msgstr "Site adı"
+
+msgid "Sort"
+msgstr "Sırala"
+
+msgid "Sorting saved."
+msgstr "Sıralama kaydedildi."
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "Tax total"
+msgstr "Vergi toplamı"
+
+msgid "Template"
+msgstr "Şablon"
+
+msgid "Template conditions"
+msgstr "Şablon koşulları"
+
+msgid "Template could not be duplicated."
+msgstr "Şablon çoğaltılamadı."
+
+msgid "Template could not be found."
+msgstr "Şablon bulunamadı."
+
+msgid "Template Import/Export"
+msgstr "Şablon İçe/Dışa Aktarma"
+
+msgid "Template language"
+msgstr "Şablon dili"
+
+msgid "Template or order could not be found."
+msgstr "Şablon veya sipariş bulunamadı."
+
+msgid "Template Settings"
+msgstr "Şablon ayarları"
+
+msgid "Template text"
+msgstr "Şablon metni"
+
+msgid "Templates imported successfully."
+msgstr "Şablonlar başarıyla içe aktarıldı."
+
+msgid "Test order preview"
+msgstr "Test siparişi önizlemesi"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "Düzenlenen not çok büyük."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"E-posta durumu, gönderim isteğinin WooCommerce/WordPress tarafından işlenip işlenmediğini "
+"kaydeder. Bu, alıcının iletiyi aldığına veya açtığına dair kanıt değildir."
+
+msgid "The JSON file could not be exported."
+msgstr "JSON dosyası dışa aktarılamadı."
+
+msgid "The JSON file could not be imported."
+msgstr "JSON dosyası içe aktarılamadı."
+
+msgid "The order note could not be added."
+msgstr "Sipariş notu eklenemedi."
+
+msgid "The order note could not be saved."
+msgstr "Sipariş notu kaydedilemedi."
+
+msgid "The order note was added successfully."
+msgstr "Sipariş notu başarıyla eklendi."
+
+msgid "The selected template is empty."
+msgstr "Seçilen şablon boş."
+
+msgid "The selected template is not available for this order language."
+msgstr "Seçilen şablon bu sipariş dili için kullanılamıyor."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "Şablon sırası kaydedilemedi."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Bir şablon kendi not türünü tanımlamadığında bu değer kullanılır."
+
+msgid "Type to filter templates..."
+msgstr "Şablonları filtrelemek için yazın..."
+
+msgid "Unknown user"
+msgstr "Bilinmeyen kullanıcı"
+
+msgid "Update Category"
+msgstr "Kategoriyi güncelle"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"İçe aktarma uygulanmadan önce önizlemeyi incelemek için bir JSON dışa aktarma dosyası yükleyin. "
+"Aynı başlığa sahip mevcut şablonlar güncellenecektir."
+
+msgid "Usage"
+msgstr "Kullanım"
+
+msgid "Use templates"
+msgstr "Şablonları kullan"
+
+msgid "User"
+msgstr "Kullanıcı"
+
+msgid "View Template"
+msgstr "Şablonu görüntüle"
+
+msgid "WooCommerce is required for this action."
+msgstr "Bu işlem için WooCommerce gereklidir."
+
+msgid "You are not allowed to manage note templates."
+msgstr "Not şablonlarını yönetme yetkiniz yok."
+
+msgid "You are not allowed to manage permissions."
+msgstr "Yetkileri yönetme izniniz yok."
+
+msgid "You are not allowed to use note templates."
+msgstr "Not şablonlarını kullanma yetkiniz yok."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "Tanılama bilgilerini görüntüleme yetkiniz yok."
+
+msgid "You are not allowed to view the history."
+msgstr "Geçmişi görüntüleme yetkiniz yok."
+

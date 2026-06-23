@@ -1,0 +1,635 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
+"POT-Creation-Date: 2026-06-19 13:45+0000\n"
+"PO-Revision-Date: 2026-06-23 00:00+0200\n"
+"Last-Translator: Mailhilfe <info@mailhilfe.de>\n"
+"Language: fr_FR\n"
+"Language-Team: French\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d modèle trouvé."
+msgstr[1] "%d modèles trouvés."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d modèle sera créé."
+msgstr[1] "%d modèles seront créés."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d modèle sera ignoré."
+msgstr[1] "%d modèles seront ignorés."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d modèle sera mis à jour."
+msgstr[1] "%d modèles seront mis à jour."
+
+msgid "Add New"
+msgstr "Ajouter"
+
+msgid "Add New Category"
+msgstr "Ajouter une catégorie"
+
+msgid "Add New Template"
+msgstr "Ajouter un modèle"
+
+msgid "Add note to order"
+msgstr "Ajouter une note à la commande"
+
+msgid "Adding order note..."
+msgstr "Ajout de la note à la commande…"
+
+msgid "Admin email"
+msgstr "Adresse e-mail de l’administrateur"
+
+msgid "All Categories"
+msgstr "Toutes les catégories"
+
+msgid "All languages"
+msgstr "Toutes les langues"
+
+msgid "Allow JSON imports"
+msgstr "Autoriser les importations JSON"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Autoriser la mise en forme HTML sécurisée dans les notes"
+
+msgid "Allowed billing countries"
+msgstr "Pays de facturation autorisés"
+
+msgid "Allowed order statuses"
+msgstr "États de commande autorisés"
+
+msgid "Allowed payment method IDs"
+msgstr "Identifiants de modes de paiement autorisés"
+
+msgid "Allowed shipping method IDs"
+msgstr "Identifiants de modes de livraison autorisés"
+
+msgid "Apply import now"
+msgstr "Appliquer l’importation maintenant"
+
+msgid "Available placeholders:"
+msgstr "Variables disponibles :"
+
+msgid "Billing address"
+msgstr "Adresse de facturation"
+
+msgid "Billing city"
+msgstr "Ville de facturation"
+
+msgid "Billing company"
+msgstr "Société de facturation"
+
+msgid "Billing country"
+msgstr "Pays de facturation"
+
+msgid "Billing email"
+msgstr "Adresse e-mail de facturation"
+
+msgid "Billing phone"
+msgstr "Téléphone de facturation"
+
+msgid "Billing postcode"
+msgstr "Code postal de facturation"
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Codes ISO de pays séparés par des virgules, par exemple DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Valeurs séparées par des virgules, par exemple bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Date de finalisation"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Configurez le comportement par défaut de la sélection des modèles, des notes au client, des "
+"importations et de l’affichage dans l’administration."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "Copie de %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Créer une note de journal interne après la création d’une note au client"
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "Currency symbol"
+msgstr "Symbole monétaire"
+
+msgid "Current admin user"
+msgstr "Administrateur connecté"
+
+msgid "Current date"
+msgstr "Date actuelle"
+
+msgid "Current time"
+msgstr "Heure actuelle"
+
+msgid "Customer custom field by meta key"
+msgstr "Champ personnalisé du client par clé de métadonnée"
+
+msgid "Customer first name"
+msgstr "Prénom du client"
+
+msgid "Customer ID"
+msgstr "ID du client"
+
+msgid "Customer last name"
+msgstr "Nom du client"
+
+msgid "Customer name"
+msgstr "Nom complet du client"
+
+msgid "Customer note"
+msgstr "Note du client"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Note au client créée le %1$s par %2$s à l’aide du modèle « %3$s »."
+
+msgid "Customer order note"
+msgstr "Note de commande au client"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Default note type"
+msgstr "Type de note par défaut"
+
+msgid "Demo templates"
+msgstr "Modèles de démonstration"
+
+msgid "Demo templates installed successfully."
+msgstr "Les modèles de démonstration ont été installés."
+
+msgid "Diagnostics"
+msgstr "Diagnostic"
+
+msgid "Discount total"
+msgstr "Montant total de la remise"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Téléchargez tous les modèles de notes publiés, les catégories, les favoris, les valeurs de tri et"
+" les compteurs d’utilisation dans un fichier JSON."
+
+msgid "Drag to sort"
+msgstr "Glisser pour trier"
+
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+msgid "Edit Category"
+msgstr "Modifier la catégorie"
+
+msgid "Edit Template"
+msgstr "Modifier le modèle"
+
+msgid "Enabled"
+msgstr "Activé"
+
+msgid "Event"
+msgstr "Événement"
+
+msgid "Export JSON"
+msgstr "Exporter au format JSON"
+
+msgid "Export templates"
+msgstr "Exporter les modèles"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Favorite"
+msgstr "Favori"
+
+msgid "Generate test preview"
+msgstr "Générer un aperçu de test"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"N’accordez les droits relatifs aux modèles qu’aux rôles de confiance. Les utilisateurs doivent "
+"également disposer du droit WooCommerce habituel permettant de modifier les commandes avant de "
+"pouvoir y ajouter des notes."
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Import JSON"
+msgstr "Importer un fichier JSON"
+
+msgid "Import preview"
+msgstr "Aperçu de l’importation"
+
+msgid "Import templates"
+msgstr "Importer les modèles"
+
+msgid "Import usage counters from JSON files"
+msgstr "Importer les compteurs d’utilisation depuis des fichiers JSON"
+
+msgid "Insert placeholder"
+msgstr "Insérer une variable"
+
+msgid "Install demo templates"
+msgstr "Installer les modèles de démonstration"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Installer automatiquement les modèles de démonstration lorsqu’aucun modèle n’existe"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Installez des modèles de démonstration pratiques pour les informations de livraison, les rappels "
+"de paiement et les notes du service client."
+
+msgid "Internal note"
+msgstr "Note interne"
+
+msgid "Item count"
+msgstr "Nombre d’articles"
+
+msgid "Last customer note:"
+msgstr "Dernière note au client :"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Laissez ce champ vide pour afficher ce modèle dans toutes les langues. Les valeurs de langue des "
+"commandes WPML et Polylang peuvent être indiquées ici."
+
+msgid "Loading preview..."
+msgstr "Chargement de l’aperçu…"
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Importation/exportation de Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Droits de Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Réglages de Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Notes de commande Mailhilfe"
+
+msgid "Manage templates"
+msgstr "Gérer les modèles"
+
+msgid "Mark as favorite"
+msgstr "Ajouter aux favoris"
+
+msgid "Maximum order total"
+msgstr "Total maximal de la commande"
+
+msgid "Minimum order total"
+msgstr "Total minimal de la commande"
+
+msgid "New Category Name"
+msgstr "Nom de la nouvelle catégorie"
+
+msgid "New Template"
+msgstr "Nouveau modèle"
+
+msgid "No history entries found."
+msgstr "Aucune entrée d’historique trouvée."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "Aucun ordre de tri des modèles n’a été reçu."
+
+msgid "No templates are available yet."
+msgstr "Aucun modèle n’est encore disponible."
+
+msgid "No templates found in Trash."
+msgstr "Aucun modèle trouvé dans la corbeille."
+
+msgid "No templates found."
+msgstr "Aucun modèle trouvé."
+
+msgid "Not favorite"
+msgstr "Non favori"
+
+msgid "Note type"
+msgstr "Type de note"
+
+msgid "Order"
+msgstr "Commande"
+
+msgid "Order could not be loaded."
+msgstr "Impossible de charger la commande."
+
+msgid "Order custom field by meta key"
+msgstr "Champ personnalisé de la commande par clé de métadonnée"
+
+msgid "Order date"
+msgstr "Date de la commande"
+
+msgid "Order date and time"
+msgstr "Date et heure de la commande"
+
+msgid "Order ID"
+msgstr "ID de la commande"
+
+msgid "Order note history"
+msgstr "Historique des notes de commande"
+
+msgid "Order number"
+msgstr "Numéro de commande"
+
+msgid "Order status"
+msgstr "État de la commande"
+
+msgid "Order subtotal"
+msgstr "Sous-total de la commande"
+
+msgid "Order time"
+msgstr "Heure de la commande"
+
+msgid "Order total"
+msgstr "Total de la commande"
+
+msgid "Ordered items"
+msgstr "Articles commandés"
+
+msgid "Paid date"
+msgstr "Date de paiement"
+
+msgid "Payment method"
+msgstr "Mode de paiement"
+
+msgid "Payment method ID"
+msgstr "ID du mode de paiement"
+
+msgid "Permissions"
+msgstr "Droits"
+
+msgid "Personal favorite"
+msgstr "Favori personnel"
+
+msgid "Personal favorite updated."
+msgstr "Favori personnel mis à jour."
+
+msgid "Placeholder inserted."
+msgstr "Variable insérée."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr ""
+"Privilégier la langue de la commande ou du client pour les modèles multilingues lorsqu’elle est "
+"disponible"
+
+msgid "Preview"
+msgstr "Aperçu"
+
+msgid "Preview could not be loaded."
+msgstr "Impossible de charger l’aperçu."
+
+msgid "Recipient"
+msgstr "Destinataire"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr ""
+"Vérifiez le récapitulatif avant d’appliquer l’importation. Aucune modification n’a encore été "
+"effectuée."
+
+msgid "Role"
+msgstr "Rôle"
+
+msgid "Save permissions"
+msgstr "Enregistrer les droits"
+
+msgid "Save settings"
+msgstr "Enregistrer les réglages"
+
+msgid "Search Categories"
+msgstr "Rechercher des catégories"
+
+msgid "Search Templates"
+msgstr "Rechercher des modèles"
+
+msgid "Search templates"
+msgstr "Rechercher des modèles"
+
+msgid "Security check failed."
+msgstr "Échec de la vérification de sécurité."
+
+msgid "Select a template to show the preview."
+msgstr "Sélectionnez un modèle pour afficher l’aperçu."
+
+msgid "Select template"
+msgstr "Sélectionner un modèle"
+
+msgid "Settings"
+msgstr "Réglages"
+
+msgid "Shipping address"
+msgstr "Adresse de livraison"
+
+msgid "Shipping city"
+msgstr "Ville de livraison"
+
+msgid "Shipping company"
+msgstr "Société de livraison"
+
+msgid "Shipping country"
+msgstr "Pays de livraison"
+
+msgid "Shipping first name"
+msgstr "Prénom du destinataire"
+
+msgid "Shipping last name"
+msgstr "Nom du destinataire"
+
+msgid "Shipping method"
+msgstr "Mode de livraison"
+
+msgid "Shipping postcode"
+msgstr "Code postal de livraison"
+
+msgid "Shipping total"
+msgstr "Total des frais de livraison"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Afficher les favoris en premier dans le sélecteur de modèles de la commande"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Afficher la colonne du compteur d’utilisation dans la liste des modèles"
+
+msgid "Site name"
+msgstr "Nom du site"
+
+msgid "Sort"
+msgstr "Ordre"
+
+msgid "Sorting saved."
+msgstr "Ordre enregistré."
+
+msgid "Status"
+msgstr "État"
+
+msgid "Tax total"
+msgstr "Montant total des taxes"
+
+msgid "Template"
+msgstr "Modèle"
+
+msgid "Template conditions"
+msgstr "Conditions du modèle"
+
+msgid "Template could not be duplicated."
+msgstr "Impossible de dupliquer le modèle."
+
+msgid "Template could not be found."
+msgstr "Impossible de trouver le modèle."
+
+msgid "Template Import/Export"
+msgstr "Importation/exportation des modèles"
+
+msgid "Template language"
+msgstr "Langue du modèle"
+
+msgid "Template or order could not be found."
+msgstr "Impossible de trouver le modèle ou la commande."
+
+msgid "Template Settings"
+msgstr "Réglages des modèles"
+
+msgid "Template text"
+msgstr "Texte du modèle"
+
+msgid "Templates imported successfully."
+msgstr "Les modèles ont été importés."
+
+msgid "Test order preview"
+msgstr "Aperçu avec une commande de test"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "La note modifiée est trop volumineuse."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"Le statut de l’e-mail indique si WooCommerce/WordPress a traité la demande d’envoi. Il ne prouve "
+"pas que le destinataire a ouvert ou reçu le message."
+
+msgid "The JSON file could not be exported."
+msgstr "Impossible d’exporter le fichier JSON."
+
+msgid "The JSON file could not be imported."
+msgstr "Impossible d’importer le fichier JSON."
+
+msgid "The order note could not be added."
+msgstr "Impossible d’ajouter la note à la commande."
+
+msgid "The order note could not be saved."
+msgstr "Impossible d’enregistrer la note de commande."
+
+msgid "The order note was added successfully."
+msgstr "La note de commande a été ajoutée."
+
+msgid "The selected template is empty."
+msgstr "Le modèle sélectionné est vide."
+
+msgid "The selected template is not available for this order language."
+msgstr "Le modèle sélectionné n’est pas disponible pour la langue de cette commande."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "Impossible d’enregistrer l’ordre des modèles."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Cette valeur est utilisée lorsqu’un modèle ne définit pas son propre type de note."
+
+msgid "Type to filter templates..."
+msgstr "Saisissez du texte pour filtrer les modèles…"
+
+msgid "Unknown user"
+msgstr "Utilisateur inconnu"
+
+msgid "Update Category"
+msgstr "Mettre à jour la catégorie"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"Téléversez un fichier d’exportation JSON afin d’en vérifier l’aperçu avant d’appliquer "
+"l’importation. Les modèles existants portant le même titre seront mis à jour."
+
+msgid "Usage"
+msgstr "Utilisation"
+
+msgid "Use templates"
+msgstr "Utiliser les modèles"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "View Template"
+msgstr "Voir le modèle"
+
+msgid "WooCommerce is required for this action."
+msgstr "WooCommerce est requis pour cette action."
+
+msgid "You are not allowed to manage note templates."
+msgstr "Vous n’avez pas l’autorisation de gérer les modèles de notes."
+
+msgid "You are not allowed to manage permissions."
+msgstr "Vous n’avez pas l’autorisation de gérer les droits."
+
+msgid "You are not allowed to use note templates."
+msgstr "Vous n’avez pas l’autorisation d’utiliser les modèles de notes."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "Vous n’avez pas l’autorisation de consulter le diagnostic."
+
+msgid "You are not allowed to view the history."
+msgstr "Vous n’avez pas l’autorisation de consulter l’historique."
+

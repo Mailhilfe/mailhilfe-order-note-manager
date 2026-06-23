@@ -1,0 +1,612 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 10:00+0200\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: ja\n"
+"Language-Team: Japanese\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d 件のテンプレートが見つかりました。"
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d 件のテンプレートを作成します。"
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d 件のテンプレートをスキップします。"
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d 件のテンプレートを更新します。"
+
+msgid "Add New"
+msgstr "新規追加"
+
+msgid "Add New Category"
+msgstr "新しいカテゴリーを追加"
+
+msgid "Add New Template"
+msgstr "新しいテンプレートを追加"
+
+msgid "Add note to order"
+msgstr "注文にメモを追加"
+
+msgid "Adding order note..."
+msgstr "注文メモを追加しています…"
+
+msgid "Admin email"
+msgstr "管理者メールアドレス"
+
+msgid "All Categories"
+msgstr "すべてのカテゴリー"
+
+msgid "All languages"
+msgstr "すべての言語"
+
+msgid "Allow JSON imports"
+msgstr "JSON インポートを許可"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "メモで安全な HTML 書式を許可"
+
+msgid "Allowed billing countries"
+msgstr "許可する請求先の国"
+
+msgid "Allowed order statuses"
+msgstr "許可する注文ステータス"
+
+msgid "Allowed payment method IDs"
+msgstr "許可する支払い方法 ID"
+
+msgid "Allowed shipping method IDs"
+msgstr "許可する配送方法 ID"
+
+msgid "Apply import now"
+msgstr "今すぐインポートを実行"
+
+msgid "Available placeholders:"
+msgstr "利用可能なプレースホルダー:"
+
+msgid "Billing address"
+msgstr "請求先住所"
+
+msgid "Billing city"
+msgstr "請求先市区町村"
+
+msgid "Billing company"
+msgstr "請求先会社名"
+
+msgid "Billing country"
+msgstr "請求先の国"
+
+msgid "Billing email"
+msgstr "請求先メールアドレス"
+
+msgid "Billing phone"
+msgstr "請求先電話番号"
+
+msgid "Billing postcode"
+msgstr "請求先郵便番号"
+
+msgid "Categories"
+msgstr "カテゴリー"
+
+msgid "Category"
+msgstr "カテゴリー"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "ISO 国コードをカンマ区切りで入力します。例: DE, AT, CH。"
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "カンマ区切りで入力します。例: bacs, paypal, stripe。"
+
+msgid "Completed date"
+msgstr "完了日"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr "テンプレート選択、顧客向けメモ、インポート、管理画面表示の既定動作を設定します。"
+
+#, python-format
+msgid "Copy of %s"
+msgstr "%s のコピー"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "顧客向けメモの作成後に内部ログメモを追加"
+
+msgid "Currency"
+msgstr "通貨"
+
+msgid "Currency symbol"
+msgstr "通貨記号"
+
+msgid "Current admin user"
+msgstr "現在の管理ユーザー"
+
+msgid "Current date"
+msgstr "現在の日付"
+
+msgid "Current time"
+msgstr "現在の時刻"
+
+msgid "Customer custom field by meta key"
+msgstr "メタキーで顧客カスタムフィールドを取得"
+
+msgid "Customer first name"
+msgstr "顧客の名"
+
+msgid "Customer ID"
+msgstr "顧客 ID"
+
+msgid "Customer last name"
+msgstr "顧客の姓"
+
+msgid "Customer name"
+msgstr "顧客名"
+
+msgid "Customer note"
+msgstr "顧客向けメモ"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "%2$s が %1$s にテンプレート「%3$s」を使用して顧客向けメモを作成しました。"
+
+msgid "Customer order note"
+msgstr "顧客向け注文メモ"
+
+msgid "Date"
+msgstr "日付"
+
+msgid "Default note type"
+msgstr "既定のメモ種類"
+
+msgid "Demo templates"
+msgstr "デモテンプレート"
+
+msgid "Demo templates installed successfully."
+msgstr "デモテンプレートをインストールしました。"
+
+msgid "Diagnostics"
+msgstr "診断"
+
+msgid "Discount total"
+msgstr "割引合計"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr "公開済みのメモテンプレート、カテゴリー、お気に入り、並び順、使用回数を JSON ファイルとしてダウンロードします。"
+
+msgid "Drag to sort"
+msgstr "ドラッグして並べ替え"
+
+msgid "Duplicate"
+msgstr "複製"
+
+msgid "Edit Category"
+msgstr "カテゴリーを編集"
+
+msgid "Edit Template"
+msgstr "テンプレートを編集"
+
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Event"
+msgstr "イベント"
+
+msgid "Export JSON"
+msgstr "JSON をエクスポート"
+
+msgid "Export templates"
+msgstr "テンプレートをエクスポート"
+
+msgid "FAQ"
+msgstr "よくある質問"
+
+msgid "Favorite"
+msgstr "お気に入り"
+
+msgid "Generate test preview"
+msgstr "テストプレビューを生成"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr "テンプレート権限は信頼できる権限グループにのみ付与してください。注文にメモを追加するには、通常の WooCommerce 注文編集権限も必要です。"
+
+msgid "Help"
+msgstr "ヘルプ"
+
+msgid "History"
+msgstr "履歴"
+
+msgid "Import JSON"
+msgstr "JSON をインポート"
+
+msgid "Import preview"
+msgstr "インポートプレビュー"
+
+msgid "Import templates"
+msgstr "テンプレートをインポート"
+
+msgid "Import usage counters from JSON files"
+msgstr "JSON ファイルから使用回数をインポート"
+
+msgid "Insert placeholder"
+msgstr "プレースホルダーを挿入"
+
+msgid "Install demo templates"
+msgstr "デモテンプレートをインストール"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "テンプレートがない場合にデモテンプレートを自動インストール"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr "配送状況、支払いリマインダー、カスタマーサービス向けの実用的なデモテンプレートをインストールします。"
+
+msgid "Internal note"
+msgstr "内部メモ"
+
+msgid "Item count"
+msgstr "商品数"
+
+msgid "Last customer note:"
+msgstr "最新の顧客向けメモ:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr "すべての言語でこのテンプレートを表示する場合は空欄にします。WPML と Polylang の注文言語値をここで照合できます。"
+
+msgid "Loading preview..."
+msgstr "プレビューを読み込んでいます…"
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe 注文メモ管理"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Mailhilfe 注文メモ管理 インポート/エクスポート"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Mailhilfe 注文メモ管理 権限"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Mailhilfe 注文メモ管理 設定"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Mailhilfe 注文メモ"
+
+msgid "Manage templates"
+msgstr "テンプレートを管理"
+
+msgid "Mark as favorite"
+msgstr "お気に入りに追加"
+
+msgid "Maximum order total"
+msgstr "注文合計の上限"
+
+msgid "Minimum order total"
+msgstr "注文合計の下限"
+
+msgid "New Category Name"
+msgstr "新しいカテゴリー名"
+
+msgid "New Template"
+msgstr "新しいテンプレート"
+
+msgid "No history entries found."
+msgstr "履歴は見つかりませんでした。"
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "テンプレートの並び順データを受信できませんでした。"
+
+msgid "No templates are available yet."
+msgstr "利用可能なテンプレートはまだありません。"
+
+msgid "No templates found in Trash."
+msgstr "ゴミ箱にテンプレートはありません。"
+
+msgid "No templates found."
+msgstr "テンプレートが見つかりませんでした。"
+
+msgid "Not favorite"
+msgstr "お気に入りではない"
+
+msgid "Note type"
+msgstr "メモの種類"
+
+msgid "Order"
+msgstr "注文"
+
+msgid "Order could not be loaded."
+msgstr "注文を読み込めませんでした。"
+
+msgid "Order custom field by meta key"
+msgstr "メタキーで注文カスタムフィールドを取得"
+
+msgid "Order date"
+msgstr "注文日"
+
+msgid "Order date and time"
+msgstr "注文日時"
+
+msgid "Order ID"
+msgstr "注文 ID"
+
+msgid "Order note history"
+msgstr "注文メモ履歴"
+
+msgid "Order number"
+msgstr "注文番号"
+
+msgid "Order status"
+msgstr "注文ステータス"
+
+msgid "Order subtotal"
+msgstr "注文小計"
+
+msgid "Order time"
+msgstr "注文時刻"
+
+msgid "Order total"
+msgstr "注文合計"
+
+msgid "Ordered items"
+msgstr "注文商品"
+
+msgid "Paid date"
+msgstr "支払日"
+
+msgid "Payment method"
+msgstr "支払い方法"
+
+msgid "Payment method ID"
+msgstr "支払い方法 ID"
+
+msgid "Permissions"
+msgstr "権限"
+
+msgid "Personal favorite"
+msgstr "個人のお気に入り"
+
+msgid "Personal favorite updated."
+msgstr "個人のお気に入りを更新しました。"
+
+msgid "Placeholder inserted."
+msgstr "プレースホルダーを挿入しました。"
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "利用可能な場合、多言語テンプレートでは注文または顧客の言語を優先"
+
+msgid "Preview"
+msgstr "プレビュー"
+
+msgid "Preview could not be loaded."
+msgstr "プレビューを読み込めませんでした。"
+
+msgid "Recipient"
+msgstr "受信者"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "インポートを実行する前に概要を確認してください。まだ変更は行われていません。"
+
+msgid "Role"
+msgstr "権限グループ"
+
+msgid "Save permissions"
+msgstr "権限を保存"
+
+msgid "Save settings"
+msgstr "設定を保存"
+
+msgid "Search Categories"
+msgstr "カテゴリーを検索"
+
+msgid "Search Templates"
+msgstr "テンプレートを検索"
+
+msgid "Search templates"
+msgstr "テンプレートを検索"
+
+msgid "Security check failed."
+msgstr "セキュリティチェックに失敗しました。"
+
+msgid "Select a template to show the preview."
+msgstr "プレビューを表示するテンプレートを選択してください。"
+
+msgid "Select template"
+msgstr "テンプレートを選択"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Shipping address"
+msgstr "配送先住所"
+
+msgid "Shipping city"
+msgstr "配送先市区町村"
+
+msgid "Shipping company"
+msgstr "配送先会社名"
+
+msgid "Shipping country"
+msgstr "配送先の国"
+
+msgid "Shipping first name"
+msgstr "配送先の名"
+
+msgid "Shipping last name"
+msgstr "配送先の姓"
+
+msgid "Shipping method"
+msgstr "配送方法"
+
+msgid "Shipping postcode"
+msgstr "配送先郵便番号"
+
+msgid "Shipping total"
+msgstr "配送料合計"
+
+msgid "Show favorites first in the order template selector"
+msgstr "注文のテンプレート選択でお気に入りを先に表示"
+
+msgid "Show the usage counter column in the template list"
+msgstr "テンプレート一覧に使用回数列を表示"
+
+msgid "Site name"
+msgstr "サイト名"
+
+msgid "Sort"
+msgstr "並び順"
+
+msgid "Sorting saved."
+msgstr "並び順を保存しました。"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Tax total"
+msgstr "税額合計"
+
+msgid "Template"
+msgstr "テンプレート"
+
+msgid "Template conditions"
+msgstr "テンプレート条件"
+
+msgid "Template could not be duplicated."
+msgstr "テンプレートを複製できませんでした。"
+
+msgid "Template could not be found."
+msgstr "テンプレートが見つかりませんでした。"
+
+msgid "Template Import/Export"
+msgstr "テンプレートのインポート/エクスポート"
+
+msgid "Template language"
+msgstr "テンプレート言語"
+
+msgid "Template or order could not be found."
+msgstr "テンプレートまたは注文が見つかりませんでした。"
+
+msgid "Template Settings"
+msgstr "テンプレート設定"
+
+msgid "Template text"
+msgstr "テンプレート本文"
+
+msgid "Templates imported successfully."
+msgstr "テンプレートをインポートしました。"
+
+msgid "Test order preview"
+msgstr "テスト注文プレビュー"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "編集したメモが大きすぎます。"
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr "メールステータスは WooCommerce/WordPress が送信要求を処理したかどうかを記録します。受信者がメールを受信または開封したことを証明するものではありません。"
+
+msgid "The JSON file could not be exported."
+msgstr "JSON ファイルをエクスポートできませんでした。"
+
+msgid "The JSON file could not be imported."
+msgstr "JSON ファイルをインポートできませんでした。"
+
+msgid "The order note could not be added."
+msgstr "注文メモを追加できませんでした。"
+
+msgid "The order note could not be saved."
+msgstr "注文メモを保存できませんでした。"
+
+msgid "The order note was added successfully."
+msgstr "注文メモを追加しました。"
+
+msgid "The selected template is empty."
+msgstr "選択したテンプレートは空です。"
+
+msgid "The selected template is not available for this order language."
+msgstr "選択したテンプレートはこの注文言語では利用できません。"
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "テンプレートの並び順を保存できませんでした。"
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "テンプレートでメモ種類が指定されていない場合に、この値が使用されます。"
+
+msgid "Type to filter templates..."
+msgstr "入力してテンプレートを絞り込み…"
+
+msgid "Unknown user"
+msgstr "不明なユーザー"
+
+msgid "Update Category"
+msgstr "カテゴリーを更新"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr "JSON エクスポートファイルをアップロードし、インポート前にプレビューを確認します。同じタイトルの既存テンプレートは更新されます。"
+
+msgid "Usage"
+msgstr "使用回数"
+
+msgid "Use templates"
+msgstr "テンプレートを使用"
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "View Template"
+msgstr "テンプレートを表示"
+
+msgid "WooCommerce is required for this action."
+msgstr "この操作には WooCommerce が必要です。"
+
+msgid "You are not allowed to manage note templates."
+msgstr "メモテンプレートを管理する権限がありません。"
+
+msgid "You are not allowed to manage permissions."
+msgstr "権限を管理する権限がありません。"
+
+msgid "You are not allowed to use note templates."
+msgstr "メモテンプレートを使用する権限がありません。"
+
+msgid "You are not allowed to view diagnostics."
+msgstr "診断情報を表示する権限がありません。"
+
+msgid "You are not allowed to view the history."
+msgstr "履歴を表示する権限がありません。"
+

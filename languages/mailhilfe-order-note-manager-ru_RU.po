@@ -1,0 +1,636 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 00:00+0200\n"
+"Last-Translator: Mailhilfe <info@mailhilfe.de>\n"
+"Language: ru_RU\n"
+"Language-Team: Russian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || "
+"n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d шаблон найден."
+msgstr[1] "%d шаблона найдено."
+msgstr[2] "%d шаблонов найдено."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d шаблон будет создан."
+msgstr[1] "%d шаблона будут созданы."
+msgstr[2] "%d шаблонов будут созданы."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d шаблон будет пропущен."
+msgstr[1] "%d шаблона будут пропущены."
+msgstr[2] "%d шаблонов будут пропущены."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d шаблон будет обновлён."
+msgstr[1] "%d шаблона будут обновлены."
+msgstr[2] "%d шаблонов будут обновлены."
+
+msgid "Add New"
+msgstr "Добавить"
+
+msgid "Add New Category"
+msgstr "Добавить новую категорию"
+
+msgid "Add New Template"
+msgstr "Добавить новый шаблон"
+
+msgid "Add note to order"
+msgstr "Добавить примечание к заказу"
+
+msgid "Adding order note..."
+msgstr "Добавление примечания к заказу…"
+
+msgid "Admin email"
+msgstr "Email администратора"
+
+msgid "All Categories"
+msgstr "Все категории"
+
+msgid "All languages"
+msgstr "Все языки"
+
+msgid "Allow JSON imports"
+msgstr "Разрешить импорт JSON"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Разрешить безопасное HTML-форматирование в примечаниях"
+
+msgid "Allowed billing countries"
+msgstr "Разрешённые страны платёжного адреса"
+
+msgid "Allowed order statuses"
+msgstr "Разрешённые статусы заказа"
+
+msgid "Allowed payment method IDs"
+msgstr "Разрешённые идентификаторы способов оплаты"
+
+msgid "Allowed shipping method IDs"
+msgstr "Разрешённые идентификаторы способов доставки"
+
+msgid "Apply import now"
+msgstr "Выполнить импорт"
+
+msgid "Available placeholders:"
+msgstr "Доступные заполнители:"
+
+msgid "Billing address"
+msgstr "Платёжный адрес"
+
+msgid "Billing city"
+msgstr "Город платёжного адреса"
+
+msgid "Billing company"
+msgstr "Компания платёжного адреса"
+
+msgid "Billing country"
+msgstr "Страна платёжного адреса"
+
+msgid "Billing email"
+msgstr "Email платёжного адреса"
+
+msgid "Billing phone"
+msgstr "Телефон платёжного адреса"
+
+msgid "Billing postcode"
+msgstr "Индекс платёжного адреса"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "ISO-коды стран через запятую, например DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Значения через запятую, например bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Дата завершения"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Настройте поведение по умолчанию для выбора шаблонов, примечаний для клиентов, импорта и "
+"отображения в панели управления."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "Копия %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Создавать внутреннее служебное примечание после создания примечания для клиента"
+
+msgid "Currency"
+msgstr "Валюта"
+
+msgid "Currency symbol"
+msgstr "Символ валюты"
+
+msgid "Current admin user"
+msgstr "Текущий администратор"
+
+msgid "Current date"
+msgstr "Текущая дата"
+
+msgid "Current time"
+msgstr "Текущее время"
+
+msgid "Customer custom field by meta key"
+msgstr "Пользовательское поле клиента по метаключу"
+
+msgid "Customer first name"
+msgstr "Имя клиента"
+
+msgid "Customer ID"
+msgstr "ID клиента"
+
+msgid "Customer last name"
+msgstr "Фамилия клиента"
+
+msgid "Customer name"
+msgstr "Полное имя клиента"
+
+msgid "Customer note"
+msgstr "Примечание клиента"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Примечание для клиента создано %1$s пользователем %2$s с использованием шаблона «%3$s»."
+
+msgid "Customer order note"
+msgstr "Примечание к заказу для клиента"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Default note type"
+msgstr "Тип примечания по умолчанию"
+
+msgid "Demo templates"
+msgstr "Демонстрационные шаблоны"
+
+msgid "Demo templates installed successfully."
+msgstr "Демонстрационные шаблоны успешно установлены."
+
+msgid "Diagnostics"
+msgstr "Диагностика"
+
+msgid "Discount total"
+msgstr "Общая сумма скидки"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Скачайте все опубликованные шаблоны примечаний, категории, избранное, значения сортировки и "
+"счётчики использования в виде JSON-файла."
+
+msgid "Drag to sort"
+msgstr "Перетащите для сортировки"
+
+msgid "Duplicate"
+msgstr "Дублировать"
+
+msgid "Edit Category"
+msgstr "Изменить категорию"
+
+msgid "Edit Template"
+msgstr "Изменить шаблон"
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Event"
+msgstr "Событие"
+
+msgid "Export JSON"
+msgstr "Экспортировать JSON"
+
+msgid "Export templates"
+msgstr "Экспорт шаблонов"
+
+msgid "FAQ"
+msgstr "Часто задаваемые вопросы"
+
+msgid "Favorite"
+msgstr "Избранное"
+
+msgid "Generate test preview"
+msgstr "Создать тестовый предпросмотр"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"Предоставляйте права на шаблоны только доверенным ролям. Пользователям также требуется "
+"стандартное разрешение WooCommerce на изменение заказов, прежде чем они смогут добавлять к ним "
+"примечания."
+
+msgid "Help"
+msgstr "Справка"
+
+msgid "History"
+msgstr "История"
+
+msgid "Import JSON"
+msgstr "Импортировать JSON"
+
+msgid "Import preview"
+msgstr "Предпросмотр импорта"
+
+msgid "Import templates"
+msgstr "Импорт шаблонов"
+
+msgid "Import usage counters from JSON files"
+msgstr "Импортировать счётчики использования из JSON-файлов"
+
+msgid "Insert placeholder"
+msgstr "Вставить заполнитель"
+
+msgid "Install demo templates"
+msgstr "Установить демонстрационные шаблоны"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Автоматически устанавливать демонстрационные шаблоны, если шаблонов нет"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Установите полезные демонстрационные шаблоны для уведомлений о доставке, напоминаний об оплате и "
+"примечаний службы поддержки."
+
+msgid "Internal note"
+msgstr "Внутреннее примечание"
+
+msgid "Item count"
+msgstr "Количество товаров"
+
+msgid "Last customer note:"
+msgstr "Последнее примечание для клиента:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Оставьте пустым, чтобы показывать этот шаблон для всех языков. Здесь можно указать значения языка"
+" заказа WPML и Polylang."
+
+msgid "Loading preview..."
+msgstr "Загрузка предпросмотра…"
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Импорт и экспорт Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Права доступа Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Настройки Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Примечания Mailhilfe"
+
+msgid "Manage templates"
+msgstr "Управление шаблонами"
+
+msgid "Mark as favorite"
+msgstr "Добавить в избранное"
+
+msgid "Maximum order total"
+msgstr "Максимальная сумма заказа"
+
+msgid "Minimum order total"
+msgstr "Минимальная сумма заказа"
+
+msgid "New Category Name"
+msgstr "Название новой категории"
+
+msgid "New Template"
+msgstr "Новый шаблон"
+
+msgid "No history entries found."
+msgstr "Записи истории не найдены."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "Порядок шаблонов не получен."
+
+msgid "No templates are available yet."
+msgstr "Шаблоны пока недоступны."
+
+msgid "No templates found in Trash."
+msgstr "В корзине шаблоны не найдены."
+
+msgid "No templates found."
+msgstr "Шаблоны не найдены."
+
+msgid "Not favorite"
+msgstr "Не в избранном"
+
+msgid "Note type"
+msgstr "Тип примечания"
+
+msgid "Order"
+msgstr "Заказ"
+
+msgid "Order could not be loaded."
+msgstr "Не удалось загрузить заказ."
+
+msgid "Order custom field by meta key"
+msgstr "Пользовательское поле заказа по метаключу"
+
+msgid "Order date"
+msgstr "Дата заказа"
+
+msgid "Order date and time"
+msgstr "Дата и время заказа"
+
+msgid "Order ID"
+msgstr "ID заказа"
+
+msgid "Order note history"
+msgstr "История примечаний к заказам"
+
+msgid "Order number"
+msgstr "Номер заказа"
+
+msgid "Order status"
+msgstr "Статус заказа"
+
+msgid "Order subtotal"
+msgstr "Промежуточный итог заказа"
+
+msgid "Order time"
+msgstr "Время заказа"
+
+msgid "Order total"
+msgstr "Сумма заказа"
+
+msgid "Ordered items"
+msgstr "Товары в заказе"
+
+msgid "Paid date"
+msgstr "Дата оплаты"
+
+msgid "Payment method"
+msgstr "Способ оплаты"
+
+msgid "Payment method ID"
+msgstr "ID способа оплаты"
+
+msgid "Permissions"
+msgstr "Права доступа"
+
+msgid "Personal favorite"
+msgstr "Личное избранное"
+
+msgid "Personal favorite updated."
+msgstr "Личное избранное обновлено."
+
+msgid "Placeholder inserted."
+msgstr "Заполнитель вставлен."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "По возможности отдавать предпочтение языку заказа или клиента для многоязычных шаблонов"
+
+msgid "Preview"
+msgstr "Предпросмотр"
+
+msgid "Preview could not be loaded."
+msgstr "Не удалось загрузить предпросмотр."
+
+msgid "Recipient"
+msgstr "Получатель"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "Проверьте сводку перед импортом. Изменения ещё не внесены."
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Save permissions"
+msgstr "Сохранить права"
+
+msgid "Save settings"
+msgstr "Сохранить настройки"
+
+msgid "Search Categories"
+msgstr "Поиск категорий"
+
+msgid "Search Templates"
+msgstr "Поиск шаблонов"
+
+msgid "Search templates"
+msgstr "Искать шаблоны"
+
+msgid "Security check failed."
+msgstr "Проверка безопасности не пройдена."
+
+msgid "Select a template to show the preview."
+msgstr "Выберите шаблон, чтобы открыть предпросмотр."
+
+msgid "Select template"
+msgstr "Выберите шаблон"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Shipping address"
+msgstr "Адрес доставки"
+
+msgid "Shipping city"
+msgstr "Город доставки"
+
+msgid "Shipping company"
+msgstr "Компания доставки"
+
+msgid "Shipping country"
+msgstr "Страна доставки"
+
+msgid "Shipping first name"
+msgstr "Имя получателя"
+
+msgid "Shipping last name"
+msgstr "Фамилия получателя"
+
+msgid "Shipping method"
+msgstr "Способ доставки"
+
+msgid "Shipping postcode"
+msgstr "Индекс доставки"
+
+msgid "Shipping total"
+msgstr "Стоимость доставки"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Сначала показывать избранные в списке шаблонов заказа"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Показывать столбец счётчика использования в списке шаблонов"
+
+msgid "Site name"
+msgstr "Название сайта"
+
+msgid "Sort"
+msgstr "Сортировка"
+
+msgid "Sorting saved."
+msgstr "Сортировка сохранена."
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Tax total"
+msgstr "Общая сумма налога"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "Template conditions"
+msgstr "Условия шаблона"
+
+msgid "Template could not be duplicated."
+msgstr "Не удалось дублировать шаблон."
+
+msgid "Template could not be found."
+msgstr "Не удалось найти шаблон."
+
+msgid "Template Import/Export"
+msgstr "Импорт и экспорт шаблонов"
+
+msgid "Template language"
+msgstr "Язык шаблона"
+
+msgid "Template or order could not be found."
+msgstr "Не удалось найти шаблон или заказ."
+
+msgid "Template Settings"
+msgstr "Настройки шаблонов"
+
+msgid "Template text"
+msgstr "Текст шаблона"
+
+msgid "Templates imported successfully."
+msgstr "Шаблоны успешно импортированы."
+
+msgid "Test order preview"
+msgstr "Предпросмотр с тестовым заказом"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "Отредактированное примечание слишком велико."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"Статус email показывает, обработали ли WooCommerce/WordPress запрос на отправку. Он не "
+"подтверждает, что получатель открыл или получил сообщение."
+
+msgid "The JSON file could not be exported."
+msgstr "Не удалось экспортировать JSON-файл."
+
+msgid "The JSON file could not be imported."
+msgstr "Не удалось импортировать JSON-файл."
+
+msgid "The order note could not be added."
+msgstr "Не удалось добавить примечание к заказу."
+
+msgid "The order note could not be saved."
+msgstr "Не удалось сохранить примечание к заказу."
+
+msgid "The order note was added successfully."
+msgstr "Примечание к заказу успешно добавлено."
+
+msgid "The selected template is empty."
+msgstr "Выбранный шаблон пуст."
+
+msgid "The selected template is not available for this order language."
+msgstr "Выбранный шаблон недоступен для языка этого заказа."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "Не удалось сохранить порядок шаблонов."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Это значение используется, если в шаблоне не указан собственный тип примечания."
+
+msgid "Type to filter templates..."
+msgstr "Начните вводить текст для фильтрации шаблонов…"
+
+msgid "Unknown user"
+msgstr "Неизвестный пользователь"
+
+msgid "Update Category"
+msgstr "Обновить категорию"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"Загрузите экспортированный JSON-файл, чтобы просмотреть изменения до импорта. Существующие "
+"шаблоны с тем же заголовком будут обновлены."
+
+msgid "Usage"
+msgstr "Использование"
+
+msgid "Use templates"
+msgstr "Использовать шаблоны"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "View Template"
+msgstr "Просмотреть шаблон"
+
+msgid "WooCommerce is required for this action."
+msgstr "Для этого действия требуется WooCommerce."
+
+msgid "You are not allowed to manage note templates."
+msgstr "У вас нет прав на управление шаблонами примечаний."
+
+msgid "You are not allowed to manage permissions."
+msgstr "У вас нет прав на управление правами доступа."
+
+msgid "You are not allowed to use note templates."
+msgstr "У вас нет прав на использование шаблонов примечаний."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "У вас нет прав на просмотр диагностики."
+
+msgid "You are not allowed to view the history."
+msgstr "У вас нет прав на просмотр истории."
+

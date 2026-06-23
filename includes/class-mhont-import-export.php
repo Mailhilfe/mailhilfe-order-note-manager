@@ -232,10 +232,34 @@ final class MHONT_Import_Export {
 			<h2><?php esc_html_e( 'Import preview', 'mailhilfe-order-note-manager' ); ?></h2>
 			<p><?php esc_html_e( 'Review the summary before applying the import. Nothing has been changed yet.', 'mailhilfe-order-note-manager' ); ?></p>
 			<ul>
-				<li><?php printf( esc_html__( '%d templates found.', 'mailhilfe-order-note-manager' ), absint( $summary['total'] ) ); ?></li>
-				<li><?php printf( esc_html__( '%d templates will be created.', 'mailhilfe-order-note-manager' ), absint( $summary['create'] ) ); ?></li>
-				<li><?php printf( esc_html__( '%d templates will be updated.', 'mailhilfe-order-note-manager' ), absint( $summary['update'] ) ); ?></li>
-				<li><?php printf( esc_html__( '%d templates will be skipped.', 'mailhilfe-order-note-manager' ), absint( $summary['skip'] ) ); ?></li>
+				<li>
+					<?php
+					$total = absint( $summary['total'] );
+					/* translators: %d: number of templates found. */
+					printf( esc_html( _n( '%d template found.', '%d templates found.', $total, 'mailhilfe-order-note-manager' ) ), $total );
+					?>
+				</li>
+				<li>
+					<?php
+					$create = absint( $summary['create'] );
+					/* translators: %d: number of templates that will be created. */
+					printf( esc_html( _n( '%d template will be created.', '%d templates will be created.', $create, 'mailhilfe-order-note-manager' ) ), $create );
+					?>
+				</li>
+				<li>
+					<?php
+					$update = absint( $summary['update'] );
+					/* translators: %d: number of templates that will be updated. */
+					printf( esc_html( _n( '%d template will be updated.', '%d templates will be updated.', $update, 'mailhilfe-order-note-manager' ) ), $update );
+					?>
+				</li>
+				<li>
+					<?php
+					$skip = absint( $summary['skip'] );
+					/* translators: %d: number of templates that will be skipped. */
+					printf( esc_html( _n( '%d template will be skipped.', '%d templates will be skipped.', $skip, 'mailhilfe-order-note-manager' ) ), $skip );
+					?>
+				</li>
 			</ul>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="mhont_confirm_import_json">
@@ -356,7 +380,7 @@ final class MHONT_Import_Export {
 	}
 
 	/**
-	 * Installs or updates demo templates in the current admin language.
+	 * Installs or updates bundled English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese or Czech demo templates.
 	 *
 	 * @return void
 	 */
@@ -368,11 +392,11 @@ final class MHONT_Import_Export {
 	}
 
 	/**
-	 * Returns demo templates for the current locale.
+	 * Returns bundled demo templates for English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese or Czech.
 	 *
 	 * Demo templates are stored as normal WordPress posts. Because stored post
 	 * content is not dynamically translated by WordPress, the plugin creates the
-	 * demo records directly in the active admin language. The stable demo_key
+	 * demo records in German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese or Czech for matching admin locales and in English otherwise. The stable demo_key
 	 * value lets later installs update older English demo templates instead of
 	 * creating duplicates.
 	 *
@@ -432,34 +456,12 @@ final class MHONT_Import_Export {
 	}
 
 	/**
-	 * Gets the best matching supported locale for demo content.
+	 * Chooses German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese or Czech demo content for matching locales and English otherwise.
 	 *
 	 * @return string
 	 */
 	private static function get_demo_locale() {
 		$locales = array( determine_locale(), get_user_locale(), get_locale() );
-		$map     = array(
-			'de' => 'de_DE',
-			'fr' => 'fr_FR',
-			'es' => 'es_ES',
-			'it' => 'it_IT',
-			'pt' => 'pt_BR',
-			'nl' => 'nl_NL',
-			'pl' => 'pl_PL',
-			'ru' => 'ru_RU',
-			'zh' => 'zh_CN',
-			'ja' => 'ja',
-			'ko' => 'ko_KR',
-			'tr' => 'tr_TR',
-			'ar' => 'ar',
-			'hi' => 'hi_IN',
-			'id' => 'id_ID',
-			'vi' => 'vi',
-			'th' => 'th',
-			'uk' => 'uk',
-			'sv' => 'sv_SE',
-			'da' => 'da_DK',
-		);
 
 		foreach ( $locales as $locale ) {
 			if ( ! is_string( $locale ) || '' === $locale ) {
@@ -467,13 +469,54 @@ final class MHONT_Import_Export {
 			}
 
 			$normalized = str_replace( '-', '_', $locale );
-			if ( 'de_DE_formal' === $normalized ) {
+			$language   = strtolower( strtok( $normalized, '_' ) );
+			if ( 'de' === $language && false !== stripos( $normalized, 'formal' ) ) {
+				return 'de_DE_formal';
+			}
+			if ( 'de' === $language ) {
 				return 'de_DE';
 			}
-
-			$language = strtolower( strtok( $normalized, '_' ) );
-			if ( isset( $map[ $language ] ) ) {
-				return $map[ $language ];
+			if ( 'es' === $language ) {
+				return 'es_ES';
+			}
+			if ( 'fr' === $language ) {
+				return 'fr_FR';
+			}
+			if ( 'it' === $language ) {
+				return 'it_IT';
+			}
+			if ( 'hi' === $language ) {
+				return 'hi_IN';
+			}
+			if ( 'zh' === $language && in_array( strtolower( $normalized ), array( 'zh', 'zh_cn', 'zh_sg', 'zh_hans' ), true ) ) {
+				return 'zh_CN';
+			}
+			if ( 'ja' === $language ) {
+				return 'ja';
+			}
+			if ( 'nl' === $language ) {
+				return 'nl_NL';
+			}
+			if ( 'pl' === $language ) {
+				return 'pl_PL';
+			}
+			if ( 'tr' === $language ) {
+				return 'tr_TR';
+			}
+			if ( 'fa' === $language ) {
+				return 'fa_IR';
+			}
+			if ( 'vi' === $language ) {
+				return 'vi';
+			}
+			if ( 'cs' === $language ) {
+				return 'cs_CZ';
+			}
+			if ( 'ru' === $language ) {
+				return 'ru_RU';
+			}
+			if ( 'pt' === $language ) {
+				return 'pt_BR';
 			}
 		}
 
@@ -481,7 +524,7 @@ final class MHONT_Import_Export {
 	}
 
 	/**
-	 * Returns translated demo template sets.
+	 * Returns the reviewed English, German, Spanish, French, Italian, Russian and Brazilian Portuguese demo template sets.
 	 *
 	 * @return array<string,array<string,array<string,string>>>
 	 */
@@ -494,124 +537,100 @@ final class MHONT_Import_Export {
 				'delay'    => array( 'title' => 'Demo: Delay information', 'content' => 'Hello {customer}, we are sorry that order {order_number} is delayed. We will send another update as soon as possible.', 'category' => 'Customer service' ),
 			),
 			'de_DE' => array(
-				'shipping' => array( 'title' => 'Demo: Versandupdate', 'content' => 'Hallo {customer}, Ihre Bestellung {order_number} wird für den Versand mit {shipping_method} vorbereitet.', 'category' => 'Versand' ),
-				'payment'  => array( 'title' => 'Demo: Zahlungserinnerung', 'content' => 'Zahlungserinnerung für Bestellung {order_number}. Zahlungsart: {payment_method}. Bitte prüfen Sie den Zahlungsstatus vor der Bearbeitung.', 'category' => 'Zahlung' ),
-				'called'   => array( 'title' => 'Demo: Kunde hat angerufen', 'content' => 'Kunde {customer} hat am {date} wegen Bestellung {order_number} angerufen. Bitte Gespräch vor dem nächsten Update prüfen.', 'category' => 'Kundendienst' ),
-				'delay'    => array( 'title' => 'Demo: Verzögerungsinformation', 'content' => 'Hallo {customer}, es tut uns leid, dass sich Bestellung {order_number} verzögert. Wir senden so bald wie möglich ein weiteres Update.', 'category' => 'Kundendienst' ),
+				'shipping' => array( 'title' => 'Demo: Versandinformation', 'content' => 'Hallo {customer}, deine Bestellung {order_number} wird für den Versand mit {shipping_method} vorbereitet.', 'category' => 'Versand' ),
+				'payment'  => array( 'title' => 'Demo: Zahlungserinnerung', 'content' => 'Zahlungserinnerung für Bestellung {order_number}. Zahlungsart: {payment_method}. Bitte prüfe den Zahlungsstatus vor der Bearbeitung.', 'category' => 'Zahlung' ),
+				'called'   => array( 'title' => 'Demo: Kundenanruf', 'content' => 'Kunde {customer} hat am {date} wegen Bestellung {order_number} angerufen. Bitte prüfe das Gespräch vor der nächsten Aktualisierung.', 'category' => 'Kundendienst' ),
+				'delay'    => array( 'title' => 'Demo: Lieferverzögerung', 'content' => 'Hallo {customer}, es tut uns leid, dass sich deine Bestellung {order_number} verzögert. Wir senden so bald wie möglich eine weitere Nachricht.', 'category' => 'Kundendienst' ),
 			),
-			'fr_FR' => array(
-				'shipping' => array( 'title' => 'Démo : mise à jour d’expédition', 'content' => 'Bonjour {customer}, votre commande {order_number} est en préparation pour une expédition via {shipping_method}.', 'category' => 'Expédition' ),
-				'payment'  => array( 'title' => 'Démo : rappel de paiement', 'content' => 'Rappel de paiement pour la commande {order_number}. Mode de paiement : {payment_method}. Veuillez vérifier le statut du paiement avant le traitement.', 'category' => 'Paiement' ),
-				'called'   => array( 'title' => 'Démo : appel du client', 'content' => 'Le client {customer} a appelé le {date} au sujet de la commande {order_number}. Veuillez consulter l’échange avant la prochaine mise à jour.', 'category' => 'Service client' ),
-				'delay'    => array( 'title' => 'Démo : information de retard', 'content' => 'Bonjour {customer}, nous sommes désolés que la commande {order_number} soit retardée. Nous enverrons une nouvelle mise à jour dès que possible.', 'category' => 'Service client' ),
+			'de_DE_formal' => array(
+				'shipping' => array( 'title' => 'Demo: Versandinformation', 'content' => 'Hallo {customer}, Ihre Bestellung {order_number} wird für den Versand mit {shipping_method} vorbereitet.', 'category' => 'Versand' ),
+				'payment'  => array( 'title' => 'Demo: Zahlungserinnerung', 'content' => 'Zahlungserinnerung für Bestellung {order_number}. Zahlungsart: {payment_method}. Bitte prüfen Sie den Zahlungsstatus vor der Bearbeitung.', 'category' => 'Zahlung' ),
+				'called'   => array( 'title' => 'Demo: Kundenanruf', 'content' => 'Kunde {customer} hat am {date} wegen Bestellung {order_number} angerufen. Bitte prüfen Sie das Gespräch vor der nächsten Aktualisierung.', 'category' => 'Kundendienst' ),
+				'delay'    => array( 'title' => 'Demo: Lieferverzögerung', 'content' => 'Hallo {customer}, es tut uns leid, dass sich Ihre Bestellung {order_number} verzögert. Wir senden so bald wie möglich eine weitere Nachricht.', 'category' => 'Kundendienst' ),
 			),
 			'es_ES' => array(
-				'shipping' => array( 'title' => 'Demo: actualización de envío', 'content' => 'Hola {customer}, tu pedido {order_number} se está preparando para el envío mediante {shipping_method}.', 'category' => 'Envío' ),
-				'payment'  => array( 'title' => 'Demo: recordatorio de pago', 'content' => 'Recordatorio de pago para el pedido {order_number}. Método de pago: {payment_method}. Comprueba el estado del pago antes de procesarlo.', 'category' => 'Pago' ),
-				'called'   => array( 'title' => 'Demo: llamada del cliente', 'content' => 'El cliente {customer} llamó el {date} sobre el pedido {order_number}. Revisa la conversación antes de la próxima actualización.', 'category' => 'Atención al cliente' ),
-				'delay'    => array( 'title' => 'Demo: información de retraso', 'content' => 'Hola {customer}, sentimos que el pedido {order_number} se haya retrasado. Enviaremos otra actualización lo antes posible.', 'category' => 'Atención al cliente' ),
+				'shipping' => array( 'title' => 'Demostración: Actualización del envío', 'content' => 'Hola {customer}, su pedido {order_number} se está preparando para enviarse mediante {shipping_method}.', 'category' => 'Envío' ),
+				'payment'  => array( 'title' => 'Demostración: Recordatorio de pago', 'content' => 'Recordatorio de pago del pedido {order_number}. Método de pago: {payment_method}. Compruebe el estado del pago antes de continuar.', 'category' => 'Pago' ),
+				'called'   => array( 'title' => 'Demostración: Llamada del cliente', 'content' => 'El cliente {customer} llamó el {date} por el pedido {order_number}. Revise la conversación antes de la próxima actualización.', 'category' => 'Atención al cliente' ),
+				'delay'    => array( 'title' => 'Demostración: Información sobre el retraso', 'content' => 'Hola {customer}, lamentamos que el pedido {order_number} se haya retrasado. Enviaremos otra actualización lo antes posible.', 'category' => 'Atención al cliente' ),
+			),
+			'fr_FR' => array(
+				'shipping' => array( 'title' => 'Démonstration : information de livraison', 'content' => 'Bonjour {customer}, votre commande {order_number} est en cours de préparation pour une expédition avec {shipping_method}.', 'category' => 'Livraison' ),
+				'payment'  => array( 'title' => 'Démonstration : rappel de paiement', 'content' => 'Rappel de paiement pour la commande {order_number}. Mode de paiement : {payment_method}. Veuillez vérifier l’état du paiement avant de poursuivre.', 'category' => 'Paiement' ),
+				'called'   => array( 'title' => 'Démonstration : appel du client', 'content' => 'Le client {customer} a appelé le {date} au sujet de la commande {order_number}. Veuillez consulter le compte rendu avant la prochaine mise à jour.', 'category' => 'Service client' ),
+				'delay'    => array( 'title' => 'Démonstration : retard de livraison', 'content' => 'Bonjour {customer}, nous sommes désolés que la commande {order_number} soit retardée. Nous vous enverrons de nouvelles informations dès que possible.', 'category' => 'Service client' ),
 			),
 			'it_IT' => array(
-				'shipping' => array( 'title' => 'Demo: aggiornamento spedizione', 'content' => 'Ciao {customer}, il tuo ordine {order_number} è in preparazione per la spedizione tramite {shipping_method}.', 'category' => 'Spedizione' ),
-				'payment'  => array( 'title' => 'Demo: promemoria di pagamento', 'content' => 'Promemoria di pagamento per l’ordine {order_number}. Metodo di pagamento: {payment_method}. Verifica lo stato del pagamento prima di procedere.', 'category' => 'Pagamento' ),
-				'called'   => array( 'title' => 'Demo: cliente ha chiamato', 'content' => 'Il cliente {customer} ha chiamato il {date} riguardo all’ordine {order_number}. Rivedi la conversazione prima del prossimo aggiornamento.', 'category' => 'Servizio clienti' ),
-				'delay'    => array( 'title' => 'Demo: informazioni sul ritardo', 'content' => 'Ciao {customer}, ci dispiace che l’ordine {order_number} sia in ritardo. Invieremo un altro aggiornamento appena possibile.', 'category' => 'Servizio clienti' ),
+				'shipping' => array( 'title' => 'Demo: aggiornamento sulla spedizione', 'content' => 'Buongiorno {customer}, il tuo ordine {order_number} è in preparazione per la spedizione tramite {shipping_method}.', 'category' => 'Spedizione' ),
+				'payment'  => array( 'title' => 'Demo: promemoria di pagamento', 'content' => 'Promemoria di pagamento per l’ordine {order_number}. Metodo di pagamento: {payment_method}. Controlla lo stato del pagamento prima di procedere.', 'category' => 'Pagamento' ),
+				'called'   => array( 'title' => 'Demo: chiamata del cliente', 'content' => 'Il cliente {customer} ha chiamato il {date} in merito all’ordine {order_number}. Controlla il resoconto della conversazione prima del prossimo aggiornamento.', 'category' => 'Servizio clienti' ),
+				'delay'    => array( 'title' => 'Demo: ritardo nella consegna', 'content' => 'Buongiorno {customer}, ci dispiace che l’ordine {order_number} sia in ritardo. Invieremo un nuovo aggiornamento appena possibile.', 'category' => 'Servizio clienti' ),
 			),
-			'pt_BR' => array(
-				'shipping' => array( 'title' => 'Demo: atualização de envio', 'content' => 'Olá {customer}, seu pedido {order_number} está sendo preparado para envio por {shipping_method}.', 'category' => 'Envio' ),
-				'payment'  => array( 'title' => 'Demo: lembrete de pagamento', 'content' => 'Lembrete de pagamento do pedido {order_number}. Forma de pagamento: {payment_method}. Verifique o status do pagamento antes de processar.', 'category' => 'Pagamento' ),
-				'called'   => array( 'title' => 'Demo: cliente ligou', 'content' => 'O cliente {customer} ligou em {date} sobre o pedido {order_number}. Revise a conversa antes da próxima atualização.', 'category' => 'Atendimento ao cliente' ),
-				'delay'    => array( 'title' => 'Demo: informação de atraso', 'content' => 'Olá {customer}, sentimos que o pedido {order_number} esteja atrasado. Enviaremos outra atualização assim que possível.', 'category' => 'Atendimento ao cliente' ),
+			'hi_IN' => array(
+				'shipping' => array( 'title' => 'डेमो: शिपिंग अपडेट', 'content' => 'नमस्ते {customer}, आपका ऑर्डर {order_number}, {shipping_method} द्वारा भेजने के लिए तैयार किया जा रहा है।', 'category' => 'शिपिंग' ),
+				'payment'  => array( 'title' => 'डेमो: भुगतान अनुस्मारक', 'content' => 'ऑर्डर {order_number} के लिए भुगतान अनुस्मारक। भुगतान विधि: {payment_method}। आगे बढ़ने से पहले भुगतान स्थिति जाँचें।', 'category' => 'भुगतान' ),
+				'called'   => array( 'title' => 'डेमो: ग्राहक का फ़ोन', 'content' => 'ग्राहक {customer} ने {date} को ऑर्डर {order_number} के बारे में फ़ोन किया। अगले अपडेट से पहले बातचीत का विवरण जाँचें।', 'category' => 'ग्राहक सेवा' ),
+				'delay'    => array( 'title' => 'डेमो: डिलीवरी में देरी', 'content' => 'नमस्ते {customer}, हमें खेद है कि ऑर्डर {order_number} में देरी हो रही है। नई जानकारी उपलब्ध होते ही हम आपको सूचित करेंगे।', 'category' => 'ग्राहक सेवा' ),
+			),
+			'zh_CN' => array(
+				'shipping' => array( 'title' => '演示：配送更新', 'content' => '您好 {customer}，您的订单 {order_number} 正在准备通过 {shipping_method} 发出。', 'category' => '配送' ),
+				'payment'  => array( 'title' => '演示：付款提醒', 'content' => '订单 {order_number} 的付款提醒。付款方式：{payment_method}。处理订单前请检查付款状态。', 'category' => '付款' ),
+				'called'   => array( 'title' => '演示：客户来电', 'content' => '客户 {customer} 于 {date} 来电咨询订单 {order_number}。下次更新前请检查沟通记录。', 'category' => '客户服务' ),
+				'delay'    => array( 'title' => '演示：延迟通知', 'content' => '您好 {customer}，很抱歉订单 {order_number} 出现延迟。我们会尽快向您发送进一步通知。', 'category' => '客户服务' ),
+			),
+			'ja' => array(
+				'shipping' => array( 'title' => 'デモ: 配送状況', 'content' => '{customer} 様、ご注文 {order_number} は {shipping_method} での発送準備中です。', 'category' => '配送' ),
+				'payment'  => array( 'title' => 'デモ: 支払いリマインダー', 'content' => 'ご注文 {order_number} のお支払いについてのご案内です。支払い方法: {payment_method}。処理を進める前に支払い状況をご確認ください。', 'category' => '支払い' ),
+				'called'   => array( 'title' => 'デモ: 顧客からの電話', 'content' => '{customer} 様から {date} にご注文 {order_number} について電話がありました。次回の対応前に会話内容を確認してください。', 'category' => 'カスタマーサービス' ),
+				'delay'    => array( 'title' => 'デモ: 配送遅延のお知らせ', 'content' => '{customer} 様、ご注文 {order_number} の配送が遅れており、申し訳ございません。新しい情報が分かり次第、改めてご案内いたします。', 'category' => 'カスタマーサービス' ),
 			),
 			'nl_NL' => array(
 				'shipping' => array( 'title' => 'Demo: verzendupdate', 'content' => 'Hallo {customer}, je bestelling {order_number} wordt voorbereid voor verzending via {shipping_method}.', 'category' => 'Verzending' ),
-				'payment'  => array( 'title' => 'Demo: betalingsherinnering', 'content' => 'Betalingsherinnering voor bestelling {order_number}. Betaalmethode: {payment_method}. Controleer de betaalstatus voordat je verdergaat.', 'category' => 'Betaling' ),
-				'called'   => array( 'title' => 'Demo: klant belde', 'content' => 'Klant {customer} belde op {date} over bestelling {order_number}. Bekijk het gesprek vóór de volgende update.', 'category' => 'Klantenservice' ),
-				'delay'    => array( 'title' => 'Demo: vertragingsinformatie', 'content' => 'Hallo {customer}, het spijt ons dat bestelling {order_number} vertraagd is. We sturen zo snel mogelijk een nieuwe update.', 'category' => 'Klantenservice' ),
+				'payment'  => array( 'title' => 'Demo: betalingsherinnering', 'content' => 'Dit is een herinnering over de betaling van bestelling {order_number}. Betaalmethode: {payment_method}. Controleer de betaalstatus voordat de bestelling verder wordt verwerkt.', 'category' => 'Betaling' ),
+				'called'   => array( 'title' => 'Demo: klant heeft gebeld', 'content' => 'Klant {customer} heeft op {date} gebeld over bestelling {order_number}. Controleer de gespreksnotities vóór de volgende update.', 'category' => 'Klantenservice' ),
+				'delay'    => array( 'title' => 'Demo: melding van vertraging', 'content' => 'Hallo {customer}, onze excuses voor de vertraging van bestelling {order_number}. We sturen je zo snel mogelijk een nieuwe update.', 'category' => 'Klantenservice' ),
 			),
 			'pl_PL' => array(
-				'shipping' => array( 'title' => 'Demo: aktualizacja wysyłki', 'content' => 'Witaj {customer}, zamówienie {order_number} jest przygotowywane do wysyłki przez {shipping_method}.', 'category' => 'Wysyłka' ),
-				'payment'  => array( 'title' => 'Demo: przypomnienie o płatności', 'content' => 'Przypomnienie o płatności dla zamówienia {order_number}. Metoda płatności: {payment_method}. Sprawdź status płatności przed dalszą obsługą.', 'category' => 'Płatność' ),
-				'called'   => array( 'title' => 'Demo: klient dzwonił', 'content' => 'Klient {customer} dzwonił {date} w sprawie zamówienia {order_number}. Sprawdź rozmowę przed kolejną aktualizacją.', 'category' => 'Obsługa klienta' ),
-				'delay'    => array( 'title' => 'Demo: informacja o opóźnieniu', 'content' => 'Witaj {customer}, przepraszamy, że zamówienie {order_number} jest opóźnione. Wyślemy kolejną aktualizację tak szybko, jak to możliwe.', 'category' => 'Obsługa klienta' ),
-			),
-			'ru_RU' => array(
-				'shipping' => array( 'title' => 'Демо: обновление доставки', 'content' => 'Здравствуйте, {customer}. Ваш заказ {order_number} готовится к отправке через {shipping_method}.', 'category' => 'Доставка' ),
-				'payment'  => array( 'title' => 'Демо: напоминание об оплате', 'content' => 'Напоминание об оплате заказа {order_number}. Способ оплаты: {payment_method}. Проверьте статус оплаты перед обработкой.', 'category' => 'Оплата' ),
-				'called'   => array( 'title' => 'Демо: клиент звонил', 'content' => 'Клиент {customer} звонил {date} по поводу заказа {order_number}. Проверьте разговор перед следующим обновлением.', 'category' => 'Служба поддержки' ),
-				'delay'    => array( 'title' => 'Демо: информация о задержке', 'content' => 'Здравствуйте, {customer}. К сожалению, заказ {order_number} задерживается. Мы отправим новое обновление как можно скорее.', 'category' => 'Служба поддержки' ),
-			),
-			'zh_CN' => array(
-				'shipping' => array( 'title' => '演示：发货更新', 'content' => '您好 {customer}，您的订单 {order_number} 正在准备通过 {shipping_method} 发货。', 'category' => '发货' ),
-				'payment'  => array( 'title' => '演示：付款提醒', 'content' => '订单 {order_number} 的付款提醒。付款方式：{payment_method}。处理前请检查付款状态。', 'category' => '付款' ),
-				'called'   => array( 'title' => '演示：客户来电', 'content' => '客户 {customer} 于 {date} 就订单 {order_number} 来电。请在下次更新前查看沟通记录。', 'category' => '客户服务' ),
-				'delay'    => array( 'title' => '演示：延迟信息', 'content' => '您好 {customer}，很抱歉订单 {order_number} 发生延迟。我们会尽快发送新的更新。', 'category' => '客户服务' ),
-			),
-			'ja' => array(
-				'shipping' => array( 'title' => 'デモ: 発送状況', 'content' => '{customer} 様、注文 {order_number} は {shipping_method} での発送準備中です。', 'category' => '発送' ),
-				'payment'  => array( 'title' => 'デモ: 支払いリマインダー', 'content' => '注文 {order_number} の支払いリマインダーです。支払い方法: {payment_method}。処理前に支払い状況を確認してください。', 'category' => '支払い' ),
-				'called'   => array( 'title' => 'デモ: 顧客からの電話', 'content' => '{customer} 様が {date} に注文 {order_number} について電話しました。次回更新前に内容を確認してください。', 'category' => 'カスタマーサービス' ),
-				'delay'    => array( 'title' => 'デモ: 遅延情報', 'content' => '{customer} 様、注文 {order_number} が遅れており申し訳ありません。できるだけ早く次の更新をお送りします。', 'category' => 'カスタマーサービス' ),
-			),
-			'ko_KR' => array(
-				'shipping' => array( 'title' => '데모: 배송 업데이트', 'content' => '안녕하세요 {customer}님, 주문 {order_number}이(가) {shipping_method} 배송을 위해 준비 중입니다.', 'category' => '배송' ),
-				'payment'  => array( 'title' => '데모: 결제 알림', 'content' => '주문 {order_number} 결제 알림입니다. 결제 방법: {payment_method}. 처리 전에 결제 상태를 확인하세요.', 'category' => '결제' ),
-				'called'   => array( 'title' => '데모: 고객 전화', 'content' => '고객 {customer}님이 {date}에 주문 {order_number} 관련으로 전화했습니다. 다음 업데이트 전에 내용을 확인하세요.', 'category' => '고객 서비스' ),
-				'delay'    => array( 'title' => '데모: 지연 안내', 'content' => '안녕하세요 {customer}님, 주문 {order_number}이(가) 지연되어 죄송합니다. 가능한 한 빨리 추가 안내를 보내겠습니다.', 'category' => '고객 서비스' ),
+				'shipping' => array( 'title' => 'Demo: aktualizacja wysyłki', 'content' => 'Dzień dobry {customer}, zamówienie {order_number} jest przygotowywane do wysyłki metodą {shipping_method}.', 'category' => 'Wysyłka' ),
+				'payment' => array( 'title' => 'Demo: przypomnienie o płatności', 'content' => 'Przypomnienie o płatności za zamówienie {order_number}. Metoda płatności: {payment_method}. Przed dalszą realizacją sprawdź status płatności.', 'category' => 'Płatność' ),
+				'called' => array( 'title' => 'Demo: telefon od klienta', 'content' => 'Klient {customer} zadzwonił {date} w sprawie zamówienia {order_number}. Przed kolejną aktualizacją sprawdź notatki z rozmowy.', 'category' => 'Obsługa klienta' ),
+				'delay' => array( 'title' => 'Demo: opóźnienie dostawy', 'content' => 'Dzień dobry {customer}, przepraszamy za opóźnienie zamówienia {order_number}. Przekażemy kolejną informację najszybciej, jak to możliwe.', 'category' => 'Obsługa klienta' ),
 			),
 			'tr_TR' => array(
-				'shipping' => array( 'title' => 'Demo: gönderim güncellemesi', 'content' => 'Merhaba {customer}, {order_number} numaralı siparişiniz {shipping_method} ile gönderim için hazırlanıyor.', 'category' => 'Gönderim' ),
-				'payment'  => array( 'title' => 'Demo: ödeme hatırlatması', 'content' => '{order_number} numaralı sipariş için ödeme hatırlatması. Ödeme yöntemi: {payment_method}. İşleme almadan önce ödeme durumunu kontrol edin.', 'category' => 'Ödeme' ),
-				'called'   => array( 'title' => 'Demo: müşteri aradı', 'content' => 'Müşteri {customer}, {date} tarihinde {order_number} numaralı sipariş hakkında aradı. Sonraki güncellemeden önce görüşmeyi inceleyin.', 'category' => 'Müşteri hizmetleri' ),
-				'delay'    => array( 'title' => 'Demo: gecikme bilgisi', 'content' => 'Merhaba {customer}, {order_number} numaralı siparişin geciktiği için üzgünüz. En kısa sürede yeni bir güncelleme göndereceğiz.', 'category' => 'Müşteri hizmetleri' ),
+				'shipping' => array( 'title' => 'Demo: gönderim güncellemesi', 'content' => 'Merhaba {customer}, {order_number} numaralı siparişiniz {shipping_method} ile gönderilmek üzere hazırlanıyor.', 'category' => 'Gönderim' ),
+				'payment'  => array( 'title' => 'Demo: ödeme hatırlatması', 'content' => '{order_number} numaralı sipariş için ödeme hatırlatması. Ödeme yöntemi: {payment_method}. İşleme devam etmeden önce ödeme durumunu kontrol edin.', 'category' => 'Ödeme' ),
+				'called'   => array( 'title' => 'Demo: müşteri araması', 'content' => 'Müşteri {customer}, {date} tarihinde {order_number} numaralı sipariş hakkında aradı. Sonraki güncellemeden önce görüşme notlarını inceleyin.', 'category' => 'Müşteri hizmetleri' ),
+				'delay'    => array( 'title' => 'Demo: teslimat gecikmesi', 'content' => 'Merhaba {customer}, {order_number} numaralı siparişinizdeki gecikme için üzgünüz. Yeni bilgi oluştuğunda sizi en kısa sürede bilgilendireceğiz.', 'category' => 'Müşteri hizmetleri' ),
 			),
-			'ar' => array(
-				'shipping' => array( 'title' => 'تجريبي: تحديث الشحن', 'content' => 'مرحباً {customer}، يتم تجهيز طلبك {order_number} للشحن عبر {shipping_method}.', 'category' => 'الشحن' ),
-				'payment'  => array( 'title' => 'تجريبي: تذكير بالدفع', 'content' => 'تذكير بالدفع للطلب {order_number}. طريقة الدفع: {payment_method}. يرجى التحقق من حالة الدفع قبل المعالجة.', 'category' => 'الدفع' ),
-				'called'   => array( 'title' => 'تجريبي: اتصال العميل', 'content' => 'اتصل العميل {customer} في {date} بخصوص الطلب {order_number}. يرجى مراجعة المحادثة قبل التحديث التالي.', 'category' => 'خدمة العملاء' ),
-				'delay'    => array( 'title' => 'تجريبي: معلومات التأخير', 'content' => 'مرحباً {customer}، نأسف لتأخر الطلب {order_number}. سنرسل تحديثاً آخر في أقرب وقت ممكن.', 'category' => 'خدمة العملاء' ),
-			),
-			'hi_IN' => array(
-				'shipping' => array( 'title' => 'डेमो: शिपिंग अपडेट', 'content' => 'नमस्ते {customer}, आपका ऑर्डर {order_number} {shipping_method} के माध्यम से भेजने के लिए तैयार किया जा रहा है।', 'category' => 'शिपिंग' ),
-				'payment'  => array( 'title' => 'डेमो: भुगतान अनुस्मारक', 'content' => 'ऑर्डर {order_number} के लिए भुगतान अनुस्मारक। भुगतान विधि: {payment_method}। प्रोसेस करने से पहले भुगतान स्थिति जांचें।', 'category' => 'भुगतान' ),
-				'called'   => array( 'title' => 'डेमो: ग्राहक ने कॉल किया', 'content' => 'ग्राहक {customer} ने {date} को ऑर्डर {order_number} के बारे में कॉल किया। अगले अपडेट से पहले बातचीत की समीक्षा करें।', 'category' => 'ग्राहक सेवा' ),
-				'delay'    => array( 'title' => 'डेमो: देरी की सूचना', 'content' => 'नमस्ते {customer}, हमें खेद है कि ऑर्डर {order_number} में देरी हो रही है। हम जल्द से जल्द एक और अपडेट भेजेंगे।', 'category' => 'ग्राहक सेवा' ),
-			),
-			'id_ID' => array(
-				'shipping' => array( 'title' => 'Demo: pembaruan pengiriman', 'content' => 'Halo {customer}, pesanan Anda {order_number} sedang disiapkan untuk dikirim melalui {shipping_method}.', 'category' => 'Pengiriman' ),
-				'payment'  => array( 'title' => 'Demo: pengingat pembayaran', 'content' => 'Pengingat pembayaran untuk pesanan {order_number}. Metode pembayaran: {payment_method}. Periksa status pembayaran sebelum diproses.', 'category' => 'Pembayaran' ),
-				'called'   => array( 'title' => 'Demo: pelanggan menelepon', 'content' => 'Pelanggan {customer} menelepon pada {date} tentang pesanan {order_number}. Tinjau percakapan sebelum pembaruan berikutnya.', 'category' => 'Layanan pelanggan' ),
-				'delay'    => array( 'title' => 'Demo: informasi keterlambatan', 'content' => 'Halo {customer}, mohon maaf pesanan {order_number} mengalami keterlambatan. Kami akan mengirim pembaruan lagi sesegera mungkin.', 'category' => 'Layanan pelanggan' ),
+			'fa_IR' => array(
+				'shipping' => array( 'title' => 'نمایشی: به‌روزرسانی ارسال', 'content' => 'سلام {customer}، سفارش {order_number} شما برای ارسال با روش {shipping_method} آماده می‌شود.', 'category' => 'حمل‌ونقل' ),
+				'payment'  => array( 'title' => 'نمایشی: یادآوری پرداخت', 'content' => 'یادآوری پرداخت برای سفارش {order_number}. روش پرداخت: {payment_method}. پیش از ادامه پردازش، وضعیت پرداخت را بررسی کنید.', 'category' => 'پرداخت' ),
+				'called'   => array( 'title' => 'نمایشی: تماس مشتری', 'content' => 'مشتری {customer} در تاریخ {date} درباره سفارش {order_number} تماس گرفت. پیش از به‌روزرسانی بعدی، یادداشت‌های گفت‌وگو را بررسی کنید.', 'category' => 'پشتیبانی مشتری' ),
+				'delay'    => array( 'title' => 'نمایشی: تأخیر در تحویل', 'content' => 'سلام {customer}، بابت تأخیر سفارش {order_number} پوزش می‌خواهیم. در سریع‌ترین زمان ممکن اطلاعات تازه‌ای برای شما ارسال خواهیم کرد.', 'category' => 'پشتیبانی مشتری' ),
 			),
 			'vi' => array(
-				'shipping' => array( 'title' => 'Demo: cập nhật vận chuyển', 'content' => 'Xin chào {customer}, đơn hàng {order_number} của bạn đang được chuẩn bị để gửi qua {shipping_method}.', 'category' => 'Vận chuyển' ),
-				'payment'  => array( 'title' => 'Demo: nhắc thanh toán', 'content' => 'Nhắc thanh toán cho đơn hàng {order_number}. Phương thức thanh toán: {payment_method}. Vui lòng kiểm tra trạng thái thanh toán trước khi xử lý.', 'category' => 'Thanh toán' ),
-				'called'   => array( 'title' => 'Demo: khách hàng đã gọi', 'content' => 'Khách hàng {customer} đã gọi vào {date} về đơn hàng {order_number}. Vui lòng xem lại cuộc trao đổi trước lần cập nhật tiếp theo.', 'category' => 'Dịch vụ khách hàng' ),
-				'delay'    => array( 'title' => 'Demo: thông tin chậm trễ', 'content' => 'Xin chào {customer}, chúng tôi xin lỗi vì đơn hàng {order_number} bị chậm trễ. Chúng tôi sẽ gửi cập nhật tiếp theo sớm nhất có thể.', 'category' => 'Dịch vụ khách hàng' ),
+				'shipping' => array( 'title' => 'Minh họa: cập nhật giao hàng', 'content' => 'Xin chào {customer}, đơn hàng {order_number} của bạn đang được chuẩn bị để gửi bằng {shipping_method}.', 'category' => 'Giao hàng' ),
+				'payment'  => array( 'title' => 'Minh họa: nhắc thanh toán', 'content' => 'Nhắc thanh toán cho đơn hàng {order_number}. Phương thức thanh toán: {payment_method}. Vui lòng kiểm tra trạng thái thanh toán trước khi tiếp tục xử lý.', 'category' => 'Thanh toán' ),
+				'called'   => array( 'title' => 'Minh họa: khách hàng đã gọi', 'content' => 'Khách hàng {customer} đã gọi vào {date} về đơn hàng {order_number}. Vui lòng xem lại nội dung cuộc gọi trước lần cập nhật tiếp theo.', 'category' => 'Chăm sóc khách hàng' ),
+				'delay'    => array( 'title' => 'Minh họa: chậm giao hàng', 'content' => 'Xin chào {customer}, chúng tôi rất tiếc vì đơn hàng {order_number} bị chậm. Chúng tôi sẽ gửi thông tin cập nhật ngay khi có thể.', 'category' => 'Chăm sóc khách hàng' ),
 			),
-			'th' => array(
-				'shipping' => array( 'title' => 'ตัวอย่าง: อัปเดตการจัดส่ง', 'content' => 'สวัสดี {customer} คำสั่งซื้อ {order_number} กำลังเตรียมจัดส่งผ่าน {shipping_method}', 'category' => 'การจัดส่ง' ),
-				'payment'  => array( 'title' => 'ตัวอย่าง: แจ้งเตือนการชำระเงิน', 'content' => 'แจ้งเตือนการชำระเงินสำหรับคำสั่งซื้อ {order_number} วิธีชำระเงิน: {payment_method} โปรดตรวจสอบสถานะการชำระเงินก่อนดำเนินการ', 'category' => 'การชำระเงิน' ),
-				'called'   => array( 'title' => 'ตัวอย่าง: ลูกค้าโทรมา', 'content' => 'ลูกค้า {customer} โทรมาเมื่อ {date} เกี่ยวกับคำสั่งซื้อ {order_number} โปรดตรวจสอบการสนทนาก่อนการอัปเดตครั้งถัดไป', 'category' => 'บริการลูกค้า' ),
-				'delay'    => array( 'title' => 'ตัวอย่าง: ข้อมูลความล่าช้า', 'content' => 'สวัสดี {customer} ขออภัยที่คำสั่งซื้อ {order_number} ล่าช้า เราจะส่งอัปเดตเพิ่มเติมโดยเร็วที่สุด', 'category' => 'บริการลูกค้า' ),
+			'cs_CZ' => array(
+				'shipping' => array( 'title' => 'Ukázka: informace o dopravě', 'content' => 'Dobrý den, {customer}, vaši objednávku {order_number} připravujeme k odeslání způsobem {shipping_method}.', 'category' => 'Doprava' ),
+				'payment'  => array( 'title' => 'Ukázka: připomínka platby', 'content' => 'Připomínka platby k objednávce {order_number}. Platební metoda: {payment_method}. Před dalším zpracováním zkontrolujte stav platby.', 'category' => 'Platba' ),
+				'called'   => array( 'title' => 'Ukázka: telefonát zákazníka', 'content' => 'Zákazník {customer} volal dne {date} ohledně objednávky {order_number}. Před další aktualizací zkontrolujte záznam rozhovoru.', 'category' => 'Zákaznická podpora' ),
+				'delay'    => array( 'title' => 'Ukázka: zpoždění dodávky', 'content' => 'Dobrý den, {customer}, omlouváme se za zpoždění objednávky {order_number}. Další informace vám pošleme co nejdříve.', 'category' => 'Zákaznická podpora' ),
 			),
-			'uk' => array(
-				'shipping' => array( 'title' => 'Демо: оновлення доставки', 'content' => 'Вітаємо, {customer}. Ваше замовлення {order_number} готується до відправлення через {shipping_method}.', 'category' => 'Доставка' ),
-				'payment'  => array( 'title' => 'Демо: нагадування про оплату', 'content' => 'Нагадування про оплату замовлення {order_number}. Спосіб оплати: {payment_method}. Перевірте статус оплати перед обробкою.', 'category' => 'Оплата' ),
-				'called'   => array( 'title' => 'Демо: клієнт телефонував', 'content' => 'Клієнт {customer} телефонував {date} щодо замовлення {order_number}. Перегляньте розмову перед наступним оновленням.', 'category' => 'Служба підтримки' ),
-				'delay'    => array( 'title' => 'Демо: інформація про затримку', 'content' => 'Вітаємо, {customer}. Нам шкода, що замовлення {order_number} затримується. Ми надішлемо нове оновлення якомога швидше.', 'category' => 'Служба підтримки' ),
+			'ru_RU' => array(
+				'shipping' => array( 'title' => 'Демо: информация о доставке', 'content' => 'Здравствуйте, {customer}! Ваш заказ {order_number} готовится к отправке способом {shipping_method}.', 'category' => 'Доставка' ),
+				'payment'  => array( 'title' => 'Демо: напоминание об оплате', 'content' => 'Напоминание об оплате заказа {order_number}. Способ оплаты: {payment_method}. Проверьте статус оплаты перед дальнейшей обработкой.', 'category' => 'Оплата' ),
+				'called'   => array( 'title' => 'Демо: звонок клиента', 'content' => 'Клиент {customer} позвонил {date} по поводу заказа {order_number}. Перед следующим обновлением проверьте сведения о разговоре.', 'category' => 'Поддержка клиентов' ),
+				'delay'    => array( 'title' => 'Демо: задержка доставки', 'content' => 'Здравствуйте, {customer}! К сожалению, заказ {order_number} задерживается. Мы сообщим новые сведения, как только они появятся.', 'category' => 'Поддержка клиентов' ),
 			),
-			'sv_SE' => array(
-				'shipping' => array( 'title' => 'Demo: leveransuppdatering', 'content' => 'Hej {customer}, din order {order_number} förbereds för leverans med {shipping_method}.', 'category' => 'Leverans' ),
-				'payment'  => array( 'title' => 'Demo: betalningspåminnelse', 'content' => 'Betalningspåminnelse för order {order_number}. Betalningsmetod: {payment_method}. Kontrollera betalningsstatus innan hantering.', 'category' => 'Betalning' ),
-				'called'   => array( 'title' => 'Demo: kund ringde', 'content' => 'Kund {customer} ringde den {date} angående order {order_number}. Läs igenom samtalet före nästa uppdatering.', 'category' => 'Kundservice' ),
-				'delay'    => array( 'title' => 'Demo: förseningsinformation', 'content' => 'Hej {customer}, vi beklagar att order {order_number} är försenad. Vi skickar en ny uppdatering så snart som möjligt.', 'category' => 'Kundservice' ),
-			),
-			'da_DK' => array(
-				'shipping' => array( 'title' => 'Demo: forsendelsesopdatering', 'content' => 'Hej {customer}, din ordre {order_number} klargøres til forsendelse via {shipping_method}.', 'category' => 'Forsendelse' ),
-				'payment'  => array( 'title' => 'Demo: betalingspåmindelse', 'content' => 'Betalingspåmindelse for ordre {order_number}. Betalingsmetode: {payment_method}. Kontrollér betalingsstatus før behandling.', 'category' => 'Betaling' ),
-				'called'   => array( 'title' => 'Demo: kunde ringede', 'content' => 'Kunden {customer} ringede den {date} vedrørende ordre {order_number}. Gennemgå samtalen før næste opdatering.', 'category' => 'Kundeservice' ),
-				'delay'    => array( 'title' => 'Demo: forsinkelsesinformation', 'content' => 'Hej {customer}, vi beklager, at ordre {order_number} er forsinket. Vi sender en ny opdatering så hurtigt som muligt.', 'category' => 'Kundeservice' ),
+			'pt_BR' => array(
+				'shipping' => array( 'title' => 'Demonstração: atualização da entrega', 'content' => 'Olá {customer}, seu pedido {order_number} está sendo preparado para envio por {shipping_method}.', 'category' => 'Entrega' ),
+				'payment'  => array( 'title' => 'Demonstração: lembrete de pagamento', 'content' => 'Lembrete de pagamento do pedido {order_number}. Método de pagamento: {payment_method}. Verifique o status do pagamento antes de continuar o processamento.', 'category' => 'Pagamento' ),
+				'called'   => array( 'title' => 'Demonstração: ligação do cliente', 'content' => 'O cliente {customer} ligou em {date} sobre o pedido {order_number}. Revise o conteúdo da conversa antes da próxima atualização.', 'category' => 'Atendimento ao cliente' ),
+				'delay'    => array( 'title' => 'Demonstração: atraso na entrega', 'content' => 'Olá {customer}, lamentamos que o pedido {order_number} esteja atrasado. Enviaremos uma nova atualização assim que possível.', 'category' => 'Atendimento ao cliente' ),
 			),
 		);
 	}

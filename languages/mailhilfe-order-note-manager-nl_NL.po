@@ -1,0 +1,631 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 12:00+0200\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: nl_NL\n"
+"Language-Team: Dutch\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d sjabloon gevonden."
+msgstr[1] "%d sjablonen gevonden."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d sjabloon wordt aangemaakt."
+msgstr[1] "%d sjablonen worden aangemaakt."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d sjabloon wordt overgeslagen."
+msgstr[1] "%d sjablonen worden overgeslagen."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d sjabloon wordt bijgewerkt."
+msgstr[1] "%d sjablonen worden bijgewerkt."
+
+msgid "Add New"
+msgstr "Nieuwe toevoegen"
+
+msgid "Add New Category"
+msgstr "Nieuwe categorie toevoegen"
+
+msgid "Add New Template"
+msgstr "Nieuw sjabloon toevoegen"
+
+msgid "Add note to order"
+msgstr "Notitie aan bestelling toevoegen"
+
+msgid "Adding order note..."
+msgstr "Bestelnotitie toevoegen..."
+
+msgid "Admin email"
+msgstr "E-mailadres beheerder"
+
+msgid "All Categories"
+msgstr "Alle categorieën"
+
+msgid "All languages"
+msgstr "Alle talen"
+
+msgid "Allow JSON imports"
+msgstr "JSON-import toestaan"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Veilige HTML-opmaak in notities toestaan"
+
+msgid "Allowed billing countries"
+msgstr "Toegestane factureringslanden"
+
+msgid "Allowed order statuses"
+msgstr "Toegestane bestelstatussen"
+
+msgid "Allowed payment method IDs"
+msgstr "Toegestane ID's van betaalmethoden"
+
+msgid "Allowed shipping method IDs"
+msgstr "Toegestane ID's van verzendmethoden"
+
+msgid "Apply import now"
+msgstr "Import nu uitvoeren"
+
+msgid "Available placeholders:"
+msgstr "Beschikbare plaatshouders:"
+
+msgid "Billing address"
+msgstr "Factuuradres"
+
+msgid "Billing city"
+msgstr "Plaats factuuradres"
+
+msgid "Billing company"
+msgstr "Bedrijf factuuradres"
+
+msgid "Billing country"
+msgstr "Land factuuradres"
+
+msgid "Billing email"
+msgstr "E-mailadres factuuradres"
+
+msgid "Billing phone"
+msgstr "Telefoonnummer factuuradres"
+
+msgid "Billing postcode"
+msgstr "Postcode factuuradres"
+
+msgid "Categories"
+msgstr "Categorieën"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Door komma's gescheiden ISO-landcodes, bijvoorbeeld NL, BE, DE."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Door komma's gescheiden, bijvoorbeeld bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Datum voltooid"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Configureer het standaardgedrag voor sjabloonselectie, klantnotities, imports en de "
+"beheerweergave."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "Kopie van %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Een interne lognotitie maken nadat een klantnotitie is aangemaakt"
+
+msgid "Currency"
+msgstr "Valuta"
+
+msgid "Currency symbol"
+msgstr "Valutasymbool"
+
+msgid "Current admin user"
+msgstr "Huidige beheerder"
+
+msgid "Current date"
+msgstr "Huidige datum"
+
+msgid "Current time"
+msgstr "Huidige tijd"
+
+msgid "Customer custom field by meta key"
+msgstr "Aangepast klantveld op metasleutel"
+
+msgid "Customer first name"
+msgstr "Voornaam klant"
+
+msgid "Customer ID"
+msgstr "Klant-ID"
+
+msgid "Customer last name"
+msgstr "Achternaam klant"
+
+msgid "Customer name"
+msgstr "Klantnaam"
+
+msgid "Customer note"
+msgstr "Klantnotitie"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Klantnotitie aangemaakt op %1$s door %2$s met sjabloon \"%3$s\"."
+
+msgid "Customer order note"
+msgstr "Bestelnotitie voor klant"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Default note type"
+msgstr "Standaard notitietype"
+
+msgid "Demo templates"
+msgstr "Demosjablonen"
+
+msgid "Demo templates installed successfully."
+msgstr "Demosjablonen zijn geïnstalleerd."
+
+msgid "Diagnostics"
+msgstr "Diagnostiek"
+
+msgid "Discount total"
+msgstr "Totale korting"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Download alle gepubliceerde notitiesjablonen, categorieën, favorieten, sorteervolgorden en "
+"gebruikstellers als JSON-bestand."
+
+msgid "Drag to sort"
+msgstr "Sleep om te sorteren"
+
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+msgid "Edit Category"
+msgstr "Categorie bewerken"
+
+msgid "Edit Template"
+msgstr "Sjabloon bewerken"
+
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+msgid "Event"
+msgstr "Gebeurtenis"
+
+msgid "Export JSON"
+msgstr "JSON exporteren"
+
+msgid "Export templates"
+msgstr "Sjablonen exporteren"
+
+msgid "FAQ"
+msgstr "Veelgestelde vragen"
+
+msgid "Favorite"
+msgstr "Favoriet"
+
+msgid "Generate test preview"
+msgstr "Testvoorbeeld genereren"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"Ken sjabloonrechten alleen toe aan vertrouwde rollen. Gebruikers hebben daarnaast de normale "
+"WooCommerce-rechten nodig om bestellingen te bewerken voordat zij een notitie aan een bestelling "
+"kunnen toevoegen."
+
+msgid "Help"
+msgstr "Hulp"
+
+msgid "History"
+msgstr "Geschiedenis"
+
+msgid "Import JSON"
+msgstr "JSON importeren"
+
+msgid "Import preview"
+msgstr "Importvoorbeeld"
+
+msgid "Import templates"
+msgstr "Sjablonen importeren"
+
+msgid "Import usage counters from JSON files"
+msgstr "Gebruikstellers uit JSON-bestanden importeren"
+
+msgid "Insert placeholder"
+msgstr "Plaatshouder invoegen"
+
+msgid "Install demo templates"
+msgstr "Demosjablonen installeren"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Demosjablonen automatisch installeren als er geen sjablonen bestaan"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Installeer praktische demosjablonen voor verzendupdates, betalingsherinneringen en "
+"klantenservicenotities."
+
+msgid "Internal note"
+msgstr "Interne notitie"
+
+msgid "Item count"
+msgstr "Aantal artikelen"
+
+msgid "Last customer note:"
+msgstr "Laatste klantnotitie:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Laat leeg om dit sjabloon voor alle talen te tonen. Taalwaarden van bestellingen uit WPML en "
+"Polylang kunnen hier worden gekoppeld."
+
+msgid "Loading preview..."
+msgstr "Voorbeeld laden..."
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Bestelnotitiebeheer"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Mailhilfe Bestelnotitiebeheer import/export"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Rechten voor Mailhilfe Bestelnotitiebeheer"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Instellingen voor Mailhilfe Bestelnotitiebeheer"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Mailhilfe Bestelnotities"
+
+msgid "Manage templates"
+msgstr "Sjablonen beheren"
+
+msgid "Mark as favorite"
+msgstr "Als favoriet markeren"
+
+msgid "Maximum order total"
+msgstr "Maximaal bestelbedrag"
+
+msgid "Minimum order total"
+msgstr "Minimaal bestelbedrag"
+
+msgid "New Category Name"
+msgstr "Naam nieuwe categorie"
+
+msgid "New Template"
+msgstr "Nieuw sjabloon"
+
+msgid "No history entries found."
+msgstr "Geen geschiedenisvermeldingen gevonden."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "Er is geen sjabloonvolgorde ontvangen."
+
+msgid "No templates are available yet."
+msgstr "Er zijn nog geen sjablonen beschikbaar."
+
+msgid "No templates found in Trash."
+msgstr "Geen sjablonen gevonden in de prullenbak."
+
+msgid "No templates found."
+msgstr "Geen sjablonen gevonden."
+
+msgid "Not favorite"
+msgstr "Geen favoriet"
+
+msgid "Note type"
+msgstr "Notitietype"
+
+msgid "Order"
+msgstr "Bestelling"
+
+msgid "Order could not be loaded."
+msgstr "De bestelling kon niet worden geladen."
+
+msgid "Order custom field by meta key"
+msgstr "Aangepast bestelveld op metasleutel"
+
+msgid "Order date"
+msgstr "Besteldatum"
+
+msgid "Order date and time"
+msgstr "Besteldatum en -tijd"
+
+msgid "Order ID"
+msgstr "Bestelling-ID"
+
+msgid "Order note history"
+msgstr "Geschiedenis van bestelnotities"
+
+msgid "Order number"
+msgstr "Bestelnummer"
+
+msgid "Order status"
+msgstr "Bestelstatus"
+
+msgid "Order subtotal"
+msgstr "Subtotaal bestelling"
+
+msgid "Order time"
+msgstr "Besteltijd"
+
+msgid "Order total"
+msgstr "Besteltotaal"
+
+msgid "Ordered items"
+msgstr "Bestelde artikelen"
+
+msgid "Paid date"
+msgstr "Betaaldatum"
+
+msgid "Payment method"
+msgstr "Betaalmethode"
+
+msgid "Payment method ID"
+msgstr "Betaalmethode-ID"
+
+msgid "Permissions"
+msgstr "Rechten"
+
+msgid "Personal favorite"
+msgstr "Persoonlijke favoriet"
+
+msgid "Personal favorite updated."
+msgstr "Persoonlijke favoriet bijgewerkt."
+
+msgid "Placeholder inserted."
+msgstr "Plaatshouder ingevoegd."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "Geef indien beschikbaar de voorkeur aan de bestel- of klanttaal voor meertalige sjablonen"
+
+msgid "Preview"
+msgstr "Voorbeeld"
+
+msgid "Preview could not be loaded."
+msgstr "Het voorbeeld kon niet worden geladen."
+
+msgid "Recipient"
+msgstr "Ontvanger"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "Controleer de samenvatting voordat je de import uitvoert. Er is nog niets gewijzigd."
+
+msgid "Role"
+msgstr "Rol"
+
+msgid "Save permissions"
+msgstr "Rechten opslaan"
+
+msgid "Save settings"
+msgstr "Instellingen opslaan"
+
+msgid "Search Categories"
+msgstr "Categorieën zoeken"
+
+msgid "Search Templates"
+msgstr "Sjablonen zoeken"
+
+msgid "Search templates"
+msgstr "Sjablonen zoeken"
+
+msgid "Security check failed."
+msgstr "Beveiligingscontrole mislukt."
+
+msgid "Select a template to show the preview."
+msgstr "Selecteer een sjabloon om het voorbeeld te tonen."
+
+msgid "Select template"
+msgstr "Sjabloon selecteren"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Shipping address"
+msgstr "Verzendadres"
+
+msgid "Shipping city"
+msgstr "Plaats verzendadres"
+
+msgid "Shipping company"
+msgstr "Bedrijf verzendadres"
+
+msgid "Shipping country"
+msgstr "Land verzendadres"
+
+msgid "Shipping first name"
+msgstr "Voornaam verzendadres"
+
+msgid "Shipping last name"
+msgstr "Achternaam verzendadres"
+
+msgid "Shipping method"
+msgstr "Verzendmethode"
+
+msgid "Shipping postcode"
+msgstr "Postcode verzendadres"
+
+msgid "Shipping total"
+msgstr "Totale verzendkosten"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Favorieten als eerste tonen in de sjabloonselectie bij bestellingen"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Kolom met gebruiksteller in de sjablonenlijst tonen"
+
+msgid "Site name"
+msgstr "Sitenaam"
+
+msgid "Sort"
+msgstr "Sorteren"
+
+msgid "Sorting saved."
+msgstr "Sortering opgeslagen."
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Tax total"
+msgstr "Totaal belasting"
+
+msgid "Template"
+msgstr "Sjabloon"
+
+msgid "Template conditions"
+msgstr "Sjabloonvoorwaarden"
+
+msgid "Template could not be duplicated."
+msgstr "Het sjabloon kon niet worden gedupliceerd."
+
+msgid "Template could not be found."
+msgstr "Het sjabloon kon niet worden gevonden."
+
+msgid "Template Import/Export"
+msgstr "Sjablonen importeren/exporteren"
+
+msgid "Template language"
+msgstr "Sjabloontaal"
+
+msgid "Template or order could not be found."
+msgstr "Het sjabloon of de bestelling kon niet worden gevonden."
+
+msgid "Template Settings"
+msgstr "Sjablooninstellingen"
+
+msgid "Template text"
+msgstr "Sjabloontekst"
+
+msgid "Templates imported successfully."
+msgstr "Sjablonen zijn geïmporteerd."
+
+msgid "Test order preview"
+msgstr "Voorbeeld met testbestelling"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "De bewerkte notitie is te groot."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"De e-mailstatus registreert of WooCommerce/WordPress het verzendverzoek heeft verwerkt. Dit "
+"bewijst niet dat de ontvanger het bericht heeft ontvangen of geopend."
+
+msgid "The JSON file could not be exported."
+msgstr "Het JSON-bestand kon niet worden geëxporteerd."
+
+msgid "The JSON file could not be imported."
+msgstr "Het JSON-bestand kon niet worden geïmporteerd."
+
+msgid "The order note could not be added."
+msgstr "De bestelnotitie kon niet worden toegevoegd."
+
+msgid "The order note could not be saved."
+msgstr "De bestelnotitie kon niet worden opgeslagen."
+
+msgid "The order note was added successfully."
+msgstr "De bestelnotitie is toegevoegd."
+
+msgid "The selected template is empty."
+msgstr "Het geselecteerde sjabloon is leeg."
+
+msgid "The selected template is not available for this order language."
+msgstr "Het geselecteerde sjabloon is niet beschikbaar voor de taal van deze bestelling."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "De sjabloonvolgorde kon niet worden opgeslagen."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Deze waarde wordt gebruikt wanneer een sjabloon geen eigen notitietype heeft."
+
+msgid "Type to filter templates..."
+msgstr "Typ om sjablonen te filteren..."
+
+msgid "Unknown user"
+msgstr "Onbekende gebruiker"
+
+msgid "Update Category"
+msgstr "Categorie bijwerken"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"Upload een JSON-exportbestand om een voorbeeld te controleren voordat de import wordt uitgevoerd."
+" Bestaande sjablonen met dezelfde titel worden bijgewerkt."
+
+msgid "Usage"
+msgstr "Gebruik"
+
+msgid "Use templates"
+msgstr "Sjablonen gebruiken"
+
+msgid "User"
+msgstr "Gebruiker"
+
+msgid "View Template"
+msgstr "Sjabloon bekijken"
+
+msgid "WooCommerce is required for this action."
+msgstr "WooCommerce is vereist voor deze actie."
+
+msgid "You are not allowed to manage note templates."
+msgstr "Je hebt geen toestemming om notitiesjablonen te beheren."
+
+msgid "You are not allowed to manage permissions."
+msgstr "Je hebt geen toestemming om rechten te beheren."
+
+msgid "You are not allowed to use note templates."
+msgstr "Je hebt geen toestemming om notitiesjablonen te gebruiken."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "Je hebt geen toestemming om de diagnostiek te bekijken."
+
+msgid "You are not allowed to view the history."
+msgstr "Je hebt geen toestemming om de geschiedenis te bekijken."
+

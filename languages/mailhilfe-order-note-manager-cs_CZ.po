@@ -1,0 +1,638 @@
+# Czech translations for Mailhilfe Order Note Manager.
+# Copyright (C) 2026 Mailhilfe.de
+# This file is distributed under the same license as the Mailhilfe Order Note Manager project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 11:23+0000\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: cs_CZ\n"
+"Language-Team: Czech\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "Nalezena %d šablona."
+msgstr[1] "Nalezeny %d šablony."
+msgstr[2] "Nalezeno %d šablon."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "Bude vytvořena %d šablona."
+msgstr[1] "Budou vytvořeny %d šablony."
+msgstr[2] "Bude vytvořeno %d šablon."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "Bude přeskočena %d šablona."
+msgstr[1] "Budou přeskočeny %d šablony."
+msgstr[2] "Bude přeskočeno %d šablon."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "Bude aktualizována %d šablona."
+msgstr[1] "Budou aktualizovány %d šablony."
+msgstr[2] "Bude aktualizováno %d šablon."
+
+msgid "Add New"
+msgstr "Přidat novou"
+
+msgid "Add New Category"
+msgstr "Přidat novou kategorii"
+
+msgid "Add New Template"
+msgstr "Přidat novou šablonu"
+
+msgid "Add note to order"
+msgstr "Přidat poznámku k objednávce"
+
+msgid "Adding order note..."
+msgstr "Přidávání poznámky k objednávce…"
+
+msgid "Admin email"
+msgstr "E-mail administrátora"
+
+msgid "All Categories"
+msgstr "Všechny kategorie"
+
+msgid "All languages"
+msgstr "Všechny jazyky"
+
+msgid "Allow JSON imports"
+msgstr "Povolit importy JSON"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Povolit bezpečné formátování HTML v poznámkách"
+
+msgid "Allowed billing countries"
+msgstr "Povolené fakturační země"
+
+msgid "Allowed order statuses"
+msgstr "Povolené stavy objednávky"
+
+msgid "Allowed payment method IDs"
+msgstr "Povolená ID platebních metod"
+
+msgid "Allowed shipping method IDs"
+msgstr "Povolená ID způsobů dopravy"
+
+msgid "Apply import now"
+msgstr "Provést import nyní"
+
+msgid "Available placeholders:"
+msgstr "Dostupné zástupné symboly:"
+
+msgid "Billing address"
+msgstr "Fakturační adresa"
+
+msgid "Billing city"
+msgstr "Fakturační město"
+
+msgid "Billing company"
+msgstr "Fakturační společnost"
+
+msgid "Billing country"
+msgstr "Fakturační země"
+
+msgid "Billing email"
+msgstr "Fakturační e-mail"
+
+msgid "Billing phone"
+msgstr "Fakturační telefon"
+
+msgid "Billing postcode"
+msgstr "Fakturační PSČ"
+
+msgid "Categories"
+msgstr "Kategorie"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Kódy zemí ISO oddělené čárkami, například DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Hodnoty oddělené čárkami, například bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Datum dokončení"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Nastavte výchozí chování výběru šablon, poznámek pro zákazníky, importů a zobrazení v "
+"administraci."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "Kopie šablony %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Po vytvoření poznámky pro zákazníka vytvořit interní záznam"
+
+msgid "Currency"
+msgstr "Měna"
+
+msgid "Currency symbol"
+msgstr "Symbol měny"
+
+msgid "Current admin user"
+msgstr "Aktuální uživatel administrace"
+
+msgid "Current date"
+msgstr "Aktuální datum"
+
+msgid "Current time"
+msgstr "Aktuální čas"
+
+msgid "Customer custom field by meta key"
+msgstr "Vlastní pole zákazníka podle meta klíče"
+
+msgid "Customer first name"
+msgstr "Jméno zákazníka"
+
+msgid "Customer ID"
+msgstr "ID zákazníka"
+
+msgid "Customer last name"
+msgstr "Příjmení zákazníka"
+
+msgid "Customer name"
+msgstr "Jméno zákazníka"
+
+msgid "Customer note"
+msgstr "Poznámka pro zákazníka"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Poznámku pro zákazníka vytvořil(a) %2$s dne %1$s pomocí šablony „%3$s“."
+
+msgid "Customer order note"
+msgstr "Poznámka k objednávce pro zákazníka"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Default note type"
+msgstr "Výchozí typ poznámky"
+
+msgid "Demo templates"
+msgstr "Ukázkové šablony"
+
+msgid "Demo templates installed successfully."
+msgstr "Ukázkové šablony byly úspěšně nainstalovány."
+
+msgid "Diagnostics"
+msgstr "Diagnostika"
+
+msgid "Discount total"
+msgstr "Celková sleva"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Stáhněte všechny publikované šablony poznámek, kategorie, oblíbené položky, hodnoty řazení a "
+"počítadla použití jako soubor JSON."
+
+msgid "Drag to sort"
+msgstr "Přetažením změnit pořadí"
+
+msgid "Duplicate"
+msgstr "Duplikovat"
+
+msgid "Edit Category"
+msgstr "Upravit kategorii"
+
+msgid "Edit Template"
+msgstr "Upravit šablonu"
+
+msgid "Enabled"
+msgstr "Povoleno"
+
+msgid "Event"
+msgstr "Událost"
+
+msgid "Export JSON"
+msgstr "Exportovat JSON"
+
+msgid "Export templates"
+msgstr "Exportovat šablony"
+
+msgid "FAQ"
+msgstr "Časté dotazy"
+
+msgid "Favorite"
+msgstr "Oblíbená"
+
+msgid "Generate test preview"
+msgstr "Vytvořit testovací náhled"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"Oprávnění k šablonám přidělujte pouze důvěryhodným rolím. Aby mohli uživatelé přidávat poznámky k"
+" objednávce, potřebují také běžné oprávnění WooCommerce k úpravě objednávek."
+
+msgid "Help"
+msgstr "Nápověda"
+
+msgid "History"
+msgstr "Historie"
+
+msgid "Import JSON"
+msgstr "Importovat JSON"
+
+msgid "Import preview"
+msgstr "Náhled importu"
+
+msgid "Import templates"
+msgstr "Importovat šablony"
+
+msgid "Import usage counters from JSON files"
+msgstr "Importovat počítadla použití ze souborů JSON"
+
+msgid "Insert placeholder"
+msgstr "Vložit zástupný symbol"
+
+msgid "Install demo templates"
+msgstr "Nainstalovat ukázkové šablony"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Automaticky nainstalovat ukázkové šablony, pokud žádné šablony neexistují"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Nainstalujte praktické ukázkové šablony pro informace o dopravě, připomínky plateb a poznámky "
+"zákaznické podpory."
+
+msgid "Internal note"
+msgstr "Interní poznámka"
+
+msgid "Item count"
+msgstr "Počet položek"
+
+msgid "Last customer note:"
+msgstr "Poslední poznámka pro zákazníka:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Ponechte prázdné, chcete-li šablonu zobrazovat pro všechny jazyky. Zde lze porovnávat hodnoty "
+"jazyka objednávky z WPML a Polylang."
+
+msgid "Loading preview..."
+msgstr "Načítání náhledu…"
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Import/export Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Oprávnění Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Nastavení Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Poznámky k objednávkám Mailhilfe"
+
+msgid "Manage templates"
+msgstr "Spravovat šablony"
+
+msgid "Mark as favorite"
+msgstr "Označit jako oblíbenou"
+
+msgid "Maximum order total"
+msgstr "Maximální hodnota objednávky"
+
+msgid "Minimum order total"
+msgstr "Minimální hodnota objednávky"
+
+msgid "New Category Name"
+msgstr "Název nové kategorie"
+
+msgid "New Template"
+msgstr "Nová šablona"
+
+msgid "No history entries found."
+msgstr "Nebyly nalezeny žádné záznamy historie."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "Nebylo přijato pořadí šablon."
+
+msgid "No templates are available yet."
+msgstr "Zatím nejsou k dispozici žádné šablony."
+
+msgid "No templates found in Trash."
+msgstr "V koši nebyly nalezeny žádné šablony."
+
+msgid "No templates found."
+msgstr "Nebyly nalezeny žádné šablony."
+
+msgid "Not favorite"
+msgstr "Není oblíbená"
+
+msgid "Note type"
+msgstr "Typ poznámky"
+
+msgid "Order"
+msgstr "Objednávka"
+
+msgid "Order could not be loaded."
+msgstr "Objednávku se nepodařilo načíst."
+
+msgid "Order custom field by meta key"
+msgstr "Vlastní pole objednávky podle meta klíče"
+
+msgid "Order date"
+msgstr "Datum objednávky"
+
+msgid "Order date and time"
+msgstr "Datum a čas objednávky"
+
+msgid "Order ID"
+msgstr "ID objednávky"
+
+msgid "Order note history"
+msgstr "Historie poznámek k objednávkám"
+
+msgid "Order number"
+msgstr "Číslo objednávky"
+
+msgid "Order status"
+msgstr "Stav objednávky"
+
+msgid "Order subtotal"
+msgstr "Mezisoučet objednávky"
+
+msgid "Order time"
+msgstr "Čas objednávky"
+
+msgid "Order total"
+msgstr "Celková hodnota objednávky"
+
+msgid "Ordered items"
+msgstr "Objednané položky"
+
+msgid "Paid date"
+msgstr "Datum zaplacení"
+
+msgid "Payment method"
+msgstr "Platební metoda"
+
+msgid "Payment method ID"
+msgstr "ID platební metody"
+
+msgid "Permissions"
+msgstr "Oprávnění"
+
+msgid "Personal favorite"
+msgstr "Osobní oblíbená položka"
+
+msgid "Personal favorite updated."
+msgstr "Osobní oblíbená položka byla aktualizována."
+
+msgid "Placeholder inserted."
+msgstr "Zástupný symbol byl vložen."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "Pokud je to možné, upřednostnit pro vícejazyčné šablony jazyk objednávky nebo zákazníka"
+
+msgid "Preview"
+msgstr "Náhled"
+
+msgid "Preview could not be loaded."
+msgstr "Náhled se nepodařilo načíst."
+
+msgid "Recipient"
+msgstr "Příjemce"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "Před provedením importu zkontrolujte souhrn. Zatím nebyly provedeny žádné změny."
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Save permissions"
+msgstr "Uložit oprávnění"
+
+msgid "Save settings"
+msgstr "Uložit nastavení"
+
+msgid "Search Categories"
+msgstr "Hledat kategorie"
+
+msgid "Search Templates"
+msgstr "Hledat šablony"
+
+msgid "Search templates"
+msgstr "Hledat šablony"
+
+msgid "Security check failed."
+msgstr "Bezpečnostní kontrola se nezdařila."
+
+msgid "Select a template to show the preview."
+msgstr "Výběrem šablony zobrazíte náhled."
+
+msgid "Select template"
+msgstr "Vybrat šablonu"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Shipping address"
+msgstr "Dodací adresa"
+
+msgid "Shipping city"
+msgstr "Město dodání"
+
+msgid "Shipping company"
+msgstr "Společnost pro dodání"
+
+msgid "Shipping country"
+msgstr "Země dodání"
+
+msgid "Shipping first name"
+msgstr "Jméno pro dodání"
+
+msgid "Shipping last name"
+msgstr "Příjmení pro dodání"
+
+msgid "Shipping method"
+msgstr "Způsob dopravy"
+
+msgid "Shipping postcode"
+msgstr "PSČ dodání"
+
+msgid "Shipping total"
+msgstr "Cena dopravy celkem"
+
+msgid "Show favorites first in the order template selector"
+msgstr "V nabídce šablon objednávky zobrazovat oblíbené položky jako první"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Zobrazit sloupec s počtem použití v seznamu šablon"
+
+msgid "Site name"
+msgstr "Název webu"
+
+msgid "Sort"
+msgstr "Pořadí"
+
+msgid "Sorting saved."
+msgstr "Pořadí bylo uloženo."
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Tax total"
+msgstr "Daň celkem"
+
+msgid "Template"
+msgstr "Šablona"
+
+msgid "Template conditions"
+msgstr "Podmínky šablony"
+
+msgid "Template could not be duplicated."
+msgstr "Šablonu se nepodařilo duplikovat."
+
+msgid "Template could not be found."
+msgstr "Šablonu se nepodařilo najít."
+
+msgid "Template Import/Export"
+msgstr "Import/export šablon"
+
+msgid "Template language"
+msgstr "Jazyk šablony"
+
+msgid "Template or order could not be found."
+msgstr "Šablonu nebo objednávku se nepodařilo najít."
+
+msgid "Template Settings"
+msgstr "Nastavení šablony"
+
+msgid "Template text"
+msgstr "Text šablony"
+
+msgid "Templates imported successfully."
+msgstr "Šablony byly úspěšně importovány."
+
+msgid "Test order preview"
+msgstr "Náhled testovací objednávky"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "Upravená poznámka je příliš dlouhá."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"Stav e-mailu zaznamenává, zda WooCommerce/WordPress zpracoval požadavek na odeslání. Neprokazuje,"
+" že příjemce zprávu otevřel nebo obdržel."
+
+msgid "The JSON file could not be exported."
+msgstr "Soubor JSON se nepodařilo exportovat."
+
+msgid "The JSON file could not be imported."
+msgstr "Soubor JSON se nepodařilo importovat."
+
+msgid "The order note could not be added."
+msgstr "Poznámku k objednávce se nepodařilo přidat."
+
+msgid "The order note could not be saved."
+msgstr "Poznámku k objednávce se nepodařilo uložit."
+
+msgid "The order note was added successfully."
+msgstr "Poznámka k objednávce byla úspěšně přidána."
+
+msgid "The selected template is empty."
+msgstr "Vybraná šablona je prázdná."
+
+msgid "The selected template is not available for this order language."
+msgstr "Vybraná šablona není pro jazyk této objednávky dostupná."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "Pořadí šablon se nepodařilo uložit."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Tato hodnota se použije, pokud šablona neurčuje vlastní typ poznámky."
+
+msgid "Type to filter templates..."
+msgstr "Pište a filtrujte šablony…"
+
+msgid "Unknown user"
+msgstr "Neznámý uživatel"
+
+msgid "Update Category"
+msgstr "Aktualizovat kategorii"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"Nahrajte exportní soubor JSON a před provedením importu zkontrolujte náhled. Existující šablony "
+"se stejným názvem budou aktualizovány."
+
+msgid "Usage"
+msgstr "Použití"
+
+msgid "Use templates"
+msgstr "Používat šablony"
+
+msgid "User"
+msgstr "Uživatel"
+
+msgid "View Template"
+msgstr "Zobrazit šablonu"
+
+msgid "WooCommerce is required for this action."
+msgstr "Pro tuto akci je vyžadován WooCommerce."
+
+msgid "You are not allowed to manage note templates."
+msgstr "Nemáte oprávnění spravovat šablony poznámek."
+
+msgid "You are not allowed to manage permissions."
+msgstr "Nemáte oprávnění spravovat oprávnění."
+
+msgid "You are not allowed to use note templates."
+msgstr "Nemáte oprávnění používat šablony poznámek."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "Nemáte oprávnění zobrazit diagnostiku."
+
+msgid "You are not allowed to view the history."
+msgstr "Nemáte oprávnění zobrazit historii."
+

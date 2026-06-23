@@ -2,613 +2,611 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
-"Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
 "POT-Creation-Date: 2026-06-23 00:00+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2026-06-23 09:00+0200\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. translators: %d: number of templates found.
 #: includes/class-mhont-import-export.php:239
 #, python-format
 msgid "%d template found."
 msgid_plural "%d templates found."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 个模板已找到。"
 
 #. translators: %d: number of templates that will be created.
 #: includes/class-mhont-import-export.php:246
 #, python-format
 msgid "%d template will be created."
 msgid_plural "%d templates will be created."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "将创建 %d 个模板。"
 
 #. translators: %d: number of templates that will be skipped.
 #: includes/class-mhont-import-export.php:260
 #, python-format
 msgid "%d template will be skipped."
 msgid_plural "%d templates will be skipped."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "将跳过 %d 个模板。"
 
 #. translators: %d: number of templates that will be updated.
 #: includes/class-mhont-import-export.php:253
 #, python-format
 msgid "%d template will be updated."
 msgid_plural "%d templates will be updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "将更新 %d 个模板。"
 
 msgid "Add New"
-msgstr ""
+msgstr "新建"
 
 msgid "Add New Category"
-msgstr ""
+msgstr "添加新分类"
 
 msgid "Add New Template"
-msgstr ""
+msgstr "添加新模板"
 
 msgid "Add note to order"
-msgstr ""
+msgstr "向订单添加备注"
 
 msgid "Adding order note..."
-msgstr ""
+msgstr "正在添加订单备注…"
 
 msgid "Admin email"
-msgstr ""
+msgstr "管理员电子邮件"
 
 msgid "All Categories"
-msgstr ""
+msgstr "所有分类"
 
 msgid "All languages"
-msgstr ""
+msgstr "所有语言"
 
 msgid "Allow JSON imports"
-msgstr ""
+msgstr "允许导入 JSON"
 
 msgid "Allow safe HTML formatting in notes"
-msgstr ""
+msgstr "允许在备注中使用安全的 HTML 格式"
 
 msgid "Allowed billing countries"
-msgstr ""
+msgstr "允许的账单国家/地区"
 
 msgid "Allowed order statuses"
-msgstr ""
+msgstr "允许的订单状态"
 
 msgid "Allowed payment method IDs"
-msgstr ""
+msgstr "允许的付款方式 ID"
 
 msgid "Allowed shipping method IDs"
-msgstr ""
+msgstr "允许的配送方式 ID"
 
 msgid "Apply import now"
-msgstr ""
+msgstr "立即执行导入"
 
 msgid "Available placeholders:"
-msgstr ""
+msgstr "可用占位符："
 
 msgid "Billing address"
-msgstr ""
+msgstr "账单地址"
 
 msgid "Billing city"
-msgstr ""
+msgstr "账单城市"
 
 msgid "Billing company"
-msgstr ""
+msgstr "账单公司"
 
 msgid "Billing country"
-msgstr ""
+msgstr "账单国家/地区"
 
 msgid "Billing email"
-msgstr ""
+msgstr "账单电子邮件"
 
 msgid "Billing phone"
-msgstr ""
+msgstr "账单电话"
 
 msgid "Billing postcode"
-msgstr ""
+msgstr "账单邮政编码"
 
 msgid "Categories"
-msgstr ""
+msgstr "分类"
 
 msgid "Category"
-msgstr ""
+msgstr "分类"
 
 msgid "Comma-separated ISO country codes, for example DE, AT, CH."
-msgstr ""
+msgstr "使用逗号分隔的 ISO 国家/地区代码，例如 DE、AT、CH。"
 
 msgid "Comma-separated, for example bacs, paypal, stripe."
-msgstr ""
+msgstr "使用逗号分隔，例如 bacs、paypal、stripe。"
 
 msgid "Completed date"
-msgstr ""
+msgstr "完成日期"
 
 msgid "Configure default behavior for template selection, customer notes, imports and admin display."
-msgstr ""
+msgstr "配置模板选择、客户备注、导入和后台显示的默认行为。"
 
 #, python-format
 msgid "Copy of %s"
-msgstr ""
+msgstr "%s 的副本"
 
 msgid "Create an internal log note after a customer note is created"
-msgstr ""
+msgstr "创建客户备注后添加一条内部日志备注"
 
 msgid "Currency"
-msgstr ""
+msgstr "货币"
 
 msgid "Currency symbol"
-msgstr ""
+msgstr "货币符号"
 
 msgid "Current admin user"
-msgstr ""
+msgstr "当前管理员用户"
 
 msgid "Current date"
-msgstr ""
+msgstr "当前日期"
 
 msgid "Current time"
-msgstr ""
+msgstr "当前时间"
 
 msgid "Customer custom field by meta key"
-msgstr ""
+msgstr "按元数据键获取客户自定义字段"
 
 msgid "Customer first name"
-msgstr ""
+msgstr "客户名字"
 
 msgid "Customer ID"
-msgstr ""
+msgstr "客户 ID"
 
 msgid "Customer last name"
-msgstr ""
+msgstr "客户姓氏"
 
 msgid "Customer name"
-msgstr ""
+msgstr "客户姓名"
 
 msgid "Customer note"
-msgstr ""
+msgstr "客户备注"
 
 msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
-msgstr ""
+msgstr "%2$s 于 %1$s 使用模板“%3$s”创建了客户备注。"
 
 msgid "Customer order note"
-msgstr ""
+msgstr "客户订单备注"
 
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 msgid "Default note type"
-msgstr ""
+msgstr "默认备注类型"
 
 msgid "Demo templates"
-msgstr ""
+msgstr "演示模板"
 
 msgid "Demo templates installed successfully."
-msgstr ""
+msgstr "演示模板安装成功。"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "诊断"
 
 msgid "Discount total"
-msgstr ""
+msgstr "折扣总额"
 
 msgid ""
 "Download all published note templates, categories, favorites, sorting values and usage counters "
 "as a JSON file."
-msgstr ""
+msgstr "将所有已发布的备注模板、分类、收藏、排序值和使用次数下载为 JSON 文件。"
 
 msgid "Drag to sort"
-msgstr ""
+msgstr "拖动排序"
 
 msgid "Duplicate"
-msgstr ""
+msgstr "复制"
 
 msgid "Edit Category"
-msgstr ""
+msgstr "编辑分类"
 
 msgid "Edit Template"
-msgstr ""
+msgstr "编辑模板"
 
 msgid "Enabled"
-msgstr ""
+msgstr "已启用"
 
 msgid "Event"
-msgstr ""
+msgstr "事件"
 
 msgid "Export JSON"
-msgstr ""
+msgstr "导出 JSON"
 
 msgid "Export templates"
-msgstr ""
+msgstr "导出模板"
 
 msgid "FAQ"
-msgstr ""
+msgstr "常见问题"
 
 msgid "Favorite"
-msgstr ""
+msgstr "收藏"
 
 msgid "Generate test preview"
-msgstr ""
+msgstr "生成测试预览"
 
 msgid ""
 "Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
 "permission to edit orders before they can add notes to an order."
-msgstr ""
+msgstr "仅向受信任的角色授予模板权限。用户还需要具备 WooCommerce 的常规订单编辑权限，才能向订单添加备注。"
 
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 msgid "History"
-msgstr ""
+msgstr "历史记录"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "导入 JSON"
 
 msgid "Import preview"
-msgstr ""
+msgstr "导入预览"
 
 msgid "Import templates"
-msgstr ""
+msgstr "导入模板"
 
 msgid "Import usage counters from JSON files"
-msgstr ""
+msgstr "从 JSON 文件导入使用次数"
 
 msgid "Insert placeholder"
-msgstr ""
+msgstr "插入占位符"
 
 msgid "Install demo templates"
-msgstr ""
+msgstr "安装演示模板"
 
 msgid "Install demo templates automatically when no templates exist"
-msgstr ""
+msgstr "没有模板时自动安装演示模板"
 
 msgid ""
 "Install practical demo templates for shipping updates, payment reminders and customer service "
 "notes."
-msgstr ""
+msgstr "安装用于配送更新、付款提醒和客户服务备注的实用演示模板。"
 
 msgid "Internal note"
-msgstr ""
+msgstr "内部备注"
 
 msgid "Item count"
-msgstr ""
+msgstr "商品数量"
 
 msgid "Last customer note:"
-msgstr ""
+msgstr "最近一条客户备注："
 
 msgid ""
 "Leave empty to show this template for all languages. WPML and Polylang order language values can "
 "be matched here."
-msgstr ""
+msgstr "留空可在所有语言中显示此模板。可在此匹配 WPML 和 Polylang 的订单语言值。"
 
 msgid "Loading preview..."
-msgstr ""
+msgstr "正在加载预览…"
 
 msgid "Mailhilfe Order Note Manager"
-msgstr ""
+msgstr "Mailhilfe 订单备注管理器"
 
 msgid "Mailhilfe Order Note Manager Import/Export"
-msgstr ""
+msgstr "Mailhilfe 订单备注管理器导入/导出"
 
 msgid "Mailhilfe Order Note Manager Permissions"
-msgstr ""
+msgstr "Mailhilfe 订单备注管理器权限"
 
 msgid "Mailhilfe Order Note Manager Settings"
-msgstr ""
+msgstr "Mailhilfe 订单备注管理器设置"
 
 msgid "Mailhilfe Order Notes"
-msgstr ""
+msgstr "Mailhilfe 订单备注"
 
 msgid "Manage templates"
-msgstr ""
+msgstr "管理模板"
 
 msgid "Mark as favorite"
-msgstr ""
+msgstr "标记为收藏"
 
 msgid "Maximum order total"
-msgstr ""
+msgstr "订单最高金额"
 
 msgid "Minimum order total"
-msgstr ""
+msgstr "订单最低金额"
 
 msgid "New Category Name"
-msgstr ""
+msgstr "新分类名称"
 
 msgid "New Template"
-msgstr ""
+msgstr "新模板"
 
 msgid "No history entries found."
-msgstr ""
+msgstr "未找到历史记录。"
 
 #: includes/class-mhont-post-types.php:1
 msgid "No template order was received."
-msgstr ""
+msgstr "未收到模板排序数据。"
 
 msgid "No templates are available yet."
-msgstr ""
+msgstr "目前没有可用模板。"
 
 msgid "No templates found in Trash."
-msgstr ""
+msgstr "回收站中未找到模板。"
 
 msgid "No templates found."
-msgstr ""
+msgstr "未找到模板。"
 
 msgid "Not favorite"
-msgstr ""
+msgstr "未收藏"
 
 msgid "Note type"
-msgstr ""
+msgstr "备注类型"
 
 msgid "Order"
-msgstr ""
+msgstr "订单"
 
 msgid "Order could not be loaded."
-msgstr ""
+msgstr "无法加载订单。"
 
 msgid "Order custom field by meta key"
-msgstr ""
+msgstr "按元数据键获取订单自定义字段"
 
 msgid "Order date"
-msgstr ""
+msgstr "订单日期"
 
 msgid "Order date and time"
-msgstr ""
+msgstr "订单日期和时间"
 
 msgid "Order ID"
-msgstr ""
+msgstr "订单 ID"
 
 msgid "Order note history"
-msgstr ""
+msgstr "订单备注历史"
 
 msgid "Order number"
-msgstr ""
+msgstr "订单编号"
 
 msgid "Order status"
-msgstr ""
+msgstr "订单状态"
 
 msgid "Order subtotal"
-msgstr ""
+msgstr "订单小计"
 
 msgid "Order time"
-msgstr ""
+msgstr "下单时间"
 
 msgid "Order total"
-msgstr ""
+msgstr "订单总额"
 
 msgid "Ordered items"
-msgstr ""
+msgstr "已订购商品"
 
 msgid "Paid date"
-msgstr ""
+msgstr "付款日期"
 
 msgid "Payment method"
-msgstr ""
+msgstr "付款方式"
 
 msgid "Payment method ID"
-msgstr ""
+msgstr "付款方式 ID"
 
 msgid "Permissions"
-msgstr ""
+msgstr "权限"
 
 msgid "Personal favorite"
-msgstr ""
+msgstr "个人收藏"
 
 msgid "Personal favorite updated."
-msgstr ""
+msgstr "个人收藏已更新。"
 
 msgid "Placeholder inserted."
-msgstr ""
+msgstr "占位符已插入。"
 
 msgid "Prefer the order/customer language for multilingual templates when available"
-msgstr ""
+msgstr "可用时优先使用订单/客户语言匹配多语言模板"
 
 msgid "Preview"
-msgstr ""
+msgstr "预览"
 
 msgid "Preview could not be loaded."
-msgstr ""
+msgstr "无法加载预览。"
 
 msgid "Recipient"
-msgstr ""
+msgstr "收件人"
 
 msgid "Review the summary before applying the import. Nothing has been changed yet."
-msgstr ""
+msgstr "执行导入前请检查摘要。目前尚未进行任何更改。"
 
 msgid "Role"
-msgstr ""
+msgstr "角色"
 
 msgid "Save permissions"
-msgstr ""
+msgstr "保存权限"
 
 msgid "Save settings"
-msgstr ""
+msgstr "保存设置"
 
 msgid "Search Categories"
-msgstr ""
+msgstr "搜索分类"
 
 msgid "Search Templates"
-msgstr ""
+msgstr "搜索模板"
 
 msgid "Search templates"
-msgstr ""
+msgstr "搜索模板"
 
 msgid "Security check failed."
-msgstr ""
+msgstr "安全检查失败。"
 
 msgid "Select a template to show the preview."
-msgstr ""
+msgstr "选择一个模板以显示预览。"
 
 msgid "Select template"
-msgstr ""
+msgstr "选择模板"
 
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 msgid "Shipping address"
-msgstr ""
+msgstr "配送地址"
 
 msgid "Shipping city"
-msgstr ""
+msgstr "配送城市"
 
 msgid "Shipping company"
-msgstr ""
+msgstr "配送公司"
 
 msgid "Shipping country"
-msgstr ""
+msgstr "配送国家/地区"
 
 msgid "Shipping first name"
-msgstr ""
+msgstr "收货人名字"
 
 msgid "Shipping last name"
-msgstr ""
+msgstr "收货人姓氏"
 
 msgid "Shipping method"
-msgstr ""
+msgstr "配送方式"
 
 msgid "Shipping postcode"
-msgstr ""
+msgstr "配送邮政编码"
 
 msgid "Shipping total"
-msgstr ""
+msgstr "配送费用总额"
 
 msgid "Show favorites first in the order template selector"
-msgstr ""
+msgstr "在订单模板选择器中优先显示收藏"
 
 msgid "Show the usage counter column in the template list"
-msgstr ""
+msgstr "在模板列表中显示使用次数列"
 
 msgid "Site name"
-msgstr ""
+msgstr "站点名称"
 
 msgid "Sort"
-msgstr ""
+msgstr "排序"
 
 msgid "Sorting saved."
-msgstr ""
+msgstr "排序已保存。"
 
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 msgid "Tax total"
-msgstr ""
+msgstr "税费总额"
 
 msgid "Template"
-msgstr ""
+msgstr "模板"
 
 msgid "Template conditions"
-msgstr ""
+msgstr "模板条件"
 
 msgid "Template could not be duplicated."
-msgstr ""
+msgstr "无法复制模板。"
 
 msgid "Template could not be found."
-msgstr ""
+msgstr "找不到模板。"
 
 msgid "Template Import/Export"
-msgstr ""
+msgstr "模板导入/导出"
 
 msgid "Template language"
-msgstr ""
+msgstr "模板语言"
 
 msgid "Template or order could not be found."
-msgstr ""
+msgstr "找不到模板或订单。"
 
 msgid "Template Settings"
-msgstr ""
+msgstr "模板设置"
 
 msgid "Template text"
-msgstr ""
+msgstr "模板文本"
 
 msgid "Templates imported successfully."
-msgstr ""
+msgstr "模板导入成功。"
 
 msgid "Test order preview"
-msgstr ""
+msgstr "测试订单预览"
 
 #: includes/class-mhont-order-ui.php
 msgid "The edited note is too large."
-msgstr ""
+msgstr "编辑后的备注过大。"
 
 msgid ""
 "The email status records whether WooCommerce/WordPress processed the send request. It is not "
 "proof that the recipient opened or received the message."
-msgstr ""
+msgstr "电子邮件状态记录 WooCommerce/WordPress 是否处理了发送请求，但不能证明收件人已打开或收到邮件。"
 
 msgid "The JSON file could not be exported."
-msgstr ""
+msgstr "无法导出 JSON 文件。"
 
 msgid "The JSON file could not be imported."
-msgstr ""
+msgstr "无法导入 JSON 文件。"
 
 msgid "The order note could not be added."
-msgstr ""
+msgstr "无法添加订单备注。"
 
 msgid "The order note could not be saved."
-msgstr ""
+msgstr "无法保存订单备注。"
 
 msgid "The order note was added successfully."
-msgstr ""
+msgstr "订单备注添加成功。"
 
 msgid "The selected template is empty."
-msgstr ""
+msgstr "所选模板为空。"
 
 msgid "The selected template is not available for this order language."
-msgstr ""
+msgstr "所选模板不适用于此订单语言。"
 
 #: includes/class-mhont-post-types.php:1
 msgid "The template order could not be saved."
-msgstr ""
+msgstr "无法保存模板排序。"
 
 msgid "This value is used when a template does not define its own note type."
-msgstr ""
+msgstr "当模板未定义自己的备注类型时使用此值。"
 
 msgid "Type to filter templates..."
-msgstr ""
+msgstr "输入内容以筛选模板…"
 
 msgid "Unknown user"
-msgstr ""
+msgstr "未知用户"
 
 msgid "Update Category"
-msgstr ""
+msgstr "更新分类"
 
 msgid ""
 "Upload a JSON export file to review a preview before the import is applied. Existing templates "
 "with the same title will be updated."
-msgstr ""
+msgstr "上传 JSON 导出文件，在执行导入前查看预览。标题相同的现有模板将被更新。"
 
 msgid "Usage"
-msgstr ""
+msgstr "使用次数"
 
 msgid "Use templates"
-msgstr ""
+msgstr "使用模板"
 
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 msgid "View Template"
-msgstr ""
+msgstr "查看模板"
 
 msgid "WooCommerce is required for this action."
-msgstr ""
+msgstr "此操作需要 WooCommerce。"
 
 msgid "You are not allowed to manage note templates."
-msgstr ""
+msgstr "您无权管理备注模板。"
 
 msgid "You are not allowed to manage permissions."
-msgstr ""
+msgstr "您无权管理权限。"
 
 msgid "You are not allowed to use note templates."
-msgstr ""
+msgstr "您无权使用备注模板。"
 
 msgid "You are not allowed to view diagnostics."
-msgstr ""
+msgstr "您无权查看诊断信息。"
 
 msgid "You are not allowed to view the history."
-msgstr ""
+msgstr "您无权查看历史记录。"
 

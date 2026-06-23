@@ -1,0 +1,626 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 00:00+0200\n"
+"Last-Translator: Mailhilfe <info@mailhilfe.de>\n"
+"Language: hi_IN\n"
+"Language-Team: Hindi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d टेम्पलेट मिला।"
+msgstr[1] "%d टेम्पलेट मिले।"
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d टेम्पलेट बनाया जाएगा।"
+msgstr[1] "%d टेम्पलेट बनाए जाएंगे।"
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d टेम्पलेट छोड़ दिया जाएगा।"
+msgstr[1] "%d टेम्पलेट छोड़ दिए जाएंगे।"
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d टेम्पलेट अपडेट किया जाएगा।"
+msgstr[1] "%d टेम्पलेट अपडेट किए जाएंगे।"
+
+msgid "Add New"
+msgstr "नया जोड़ें"
+
+msgid "Add New Category"
+msgstr "नई श्रेणी जोड़ें"
+
+msgid "Add New Template"
+msgstr "नया टेम्पलेट जोड़ें"
+
+msgid "Add note to order"
+msgstr "ऑर्डर में नोट जोड़ें"
+
+msgid "Adding order note..."
+msgstr "ऑर्डर नोट जोड़ा जा रहा है…"
+
+msgid "Admin email"
+msgstr "एडमिन ईमेल"
+
+msgid "All Categories"
+msgstr "सभी श्रेणियाँ"
+
+msgid "All languages"
+msgstr "सभी भाषाएँ"
+
+msgid "Allow JSON imports"
+msgstr "JSON आयात की अनुमति दें"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "नोट्स में सुरक्षित HTML फ़ॉर्मेटिंग की अनुमति दें"
+
+msgid "Allowed billing countries"
+msgstr "अनुमत बिलिंग देश"
+
+msgid "Allowed order statuses"
+msgstr "अनुमत ऑर्डर स्थितियाँ"
+
+msgid "Allowed payment method IDs"
+msgstr "अनुमत भुगतान विधि ID"
+
+msgid "Allowed shipping method IDs"
+msgstr "अनुमत शिपिंग विधि ID"
+
+msgid "Apply import now"
+msgstr "अब आयात लागू करें"
+
+msgid "Available placeholders:"
+msgstr "उपलब्ध प्लेसहोल्डर:"
+
+msgid "Billing address"
+msgstr "बिलिंग पता"
+
+msgid "Billing city"
+msgstr "बिलिंग शहर"
+
+msgid "Billing company"
+msgstr "बिलिंग कंपनी"
+
+msgid "Billing country"
+msgstr "बिलिंग देश"
+
+msgid "Billing email"
+msgstr "बिलिंग ईमेल"
+
+msgid "Billing phone"
+msgstr "बिलिंग फ़ोन"
+
+msgid "Billing postcode"
+msgstr "बिलिंग पिन कोड"
+
+msgid "Categories"
+msgstr "श्रेणियाँ"
+
+msgid "Category"
+msgstr "श्रेणी"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "अल्पविराम से अलग किए गए ISO देश कोड, उदाहरण: DE, AT, CH।"
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "अल्पविराम से अलग किए गए मान, उदाहरण: bacs, paypal, stripe।"
+
+msgid "Completed date"
+msgstr "पूर्ण होने की तारीख"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr "टेम्पलेट चयन, ग्राहक नोट्स, आयात और एडमिन प्रदर्शन के लिए डिफ़ॉल्ट व्यवहार कॉन्फ़िगर करें।"
+
+#, python-format
+msgid "Copy of %s"
+msgstr "%s की प्रति"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "ग्राहक नोट बनने के बाद एक आंतरिक लॉग नोट बनाएँ"
+
+msgid "Currency"
+msgstr "मुद्रा"
+
+msgid "Currency symbol"
+msgstr "मुद्रा चिह्न"
+
+msgid "Current admin user"
+msgstr "वर्तमान एडमिन उपयोगकर्ता"
+
+msgid "Current date"
+msgstr "वर्तमान तारीख"
+
+msgid "Current time"
+msgstr "वर्तमान समय"
+
+msgid "Customer custom field by meta key"
+msgstr "मेटा कुंजी द्वारा ग्राहक कस्टम फ़ील्ड"
+
+msgid "Customer first name"
+msgstr "ग्राहक का प्रथम नाम"
+
+msgid "Customer ID"
+msgstr "ग्राहक ID"
+
+msgid "Customer last name"
+msgstr "ग्राहक का उपनाम"
+
+msgid "Customer name"
+msgstr "ग्राहक का नाम"
+
+msgid "Customer note"
+msgstr "ग्राहक नोट"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "टेम्पलेट “%3$s” का उपयोग करके %2$s द्वारा %1$s को ग्राहक नोट बनाया गया।"
+
+msgid "Customer order note"
+msgstr "ग्राहक ऑर्डर नोट"
+
+msgid "Date"
+msgstr "तारीख"
+
+msgid "Default note type"
+msgstr "डिफ़ॉल्ट नोट प्रकार"
+
+msgid "Demo templates"
+msgstr "डेमो टेम्पलेट"
+
+msgid "Demo templates installed successfully."
+msgstr "डेमो टेम्पलेट सफलतापूर्वक इंस्टॉल किए गए।"
+
+msgid "Diagnostics"
+msgstr "निदान"
+
+msgid "Discount total"
+msgstr "कुल छूट"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"सभी प्रकाशित नोट टेम्पलेट, श्रेणियाँ, पसंदीदा, क्रम मान और उपयोग काउंटर JSON फ़ाइल के रूप में "
+"डाउनलोड करें।"
+
+msgid "Drag to sort"
+msgstr "क्रम बदलने के लिए खींचें"
+
+msgid "Duplicate"
+msgstr "प्रतिलिपि बनाएँ"
+
+msgid "Edit Category"
+msgstr "श्रेणी संपादित करें"
+
+msgid "Edit Template"
+msgstr "टेम्पलेट संपादित करें"
+
+msgid "Enabled"
+msgstr "सक्षम"
+
+msgid "Event"
+msgstr "घटना"
+
+msgid "Export JSON"
+msgstr "JSON निर्यात करें"
+
+msgid "Export templates"
+msgstr "टेम्पलेट निर्यात करें"
+
+msgid "FAQ"
+msgstr "अक्सर पूछे जाने वाले प्रश्न"
+
+msgid "Favorite"
+msgstr "पसंदीदा"
+
+msgid "Generate test preview"
+msgstr "परीक्षण पूर्वावलोकन बनाएँ"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"टेम्पलेट अनुमतियाँ केवल विश्वसनीय भूमिकाओं को दें। किसी ऑर्डर में नोट जोड़ने से पहले उपयोगकर्ताओं"
+" के पास ऑर्डर संपादित करने की सामान्य WooCommerce अनुमति भी होनी चाहिए।"
+
+msgid "Help"
+msgstr "सहायता"
+
+msgid "History"
+msgstr "इतिहास"
+
+msgid "Import JSON"
+msgstr "JSON आयात करें"
+
+msgid "Import preview"
+msgstr "आयात पूर्वावलोकन"
+
+msgid "Import templates"
+msgstr "टेम्पलेट आयात करें"
+
+msgid "Import usage counters from JSON files"
+msgstr "JSON फ़ाइलों से उपयोग काउंटर आयात करें"
+
+msgid "Insert placeholder"
+msgstr "प्लेसहोल्डर डालें"
+
+msgid "Install demo templates"
+msgstr "डेमो टेम्पलेट इंस्टॉल करें"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "कोई टेम्पलेट न होने पर डेमो टेम्पलेट अपने-आप इंस्टॉल करें"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr "शिपिंग अपडेट, भुगतान अनुस्मारक और ग्राहक सेवा नोट्स के लिए उपयोगी डेमो टेम्पलेट इंस्टॉल करें।"
+
+msgid "Internal note"
+msgstr "आंतरिक नोट"
+
+msgid "Item count"
+msgstr "आइटम संख्या"
+
+msgid "Last customer note:"
+msgstr "अंतिम ग्राहक नोट:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"इस टेम्पलेट को सभी भाषाओं में दिखाने के लिए खाली छोड़ें। यहाँ WPML और Polylang के ऑर्डर भाषा मान "
+"मिलाए जा सकते हैं।"
+
+msgid "Loading preview..."
+msgstr "पूर्वावलोकन लोड हो रहा है…"
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Mailhilfe Order Note Manager"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Mailhilfe Order Note Manager आयात/निर्यात"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Mailhilfe Order Note Manager अनुमतियाँ"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Mailhilfe Order Note Manager सेटिंग्स"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Mailhilfe ऑर्डर नोट्स"
+
+msgid "Manage templates"
+msgstr "टेम्पलेट प्रबंधित करें"
+
+msgid "Mark as favorite"
+msgstr "पसंदीदा के रूप में चिह्नित करें"
+
+msgid "Maximum order total"
+msgstr "अधिकतम ऑर्डर कुल"
+
+msgid "Minimum order total"
+msgstr "न्यूनतम ऑर्डर कुल"
+
+msgid "New Category Name"
+msgstr "नई श्रेणी का नाम"
+
+msgid "New Template"
+msgstr "नया टेम्पलेट"
+
+msgid "No history entries found."
+msgstr "इतिहास की कोई प्रविष्टि नहीं मिली।"
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "टेम्पलेट क्रम प्राप्त नहीं हुआ।"
+
+msgid "No templates are available yet."
+msgstr "अभी कोई टेम्पलेट उपलब्ध नहीं है।"
+
+msgid "No templates found in Trash."
+msgstr "ट्रैश में कोई टेम्पलेट नहीं मिला।"
+
+msgid "No templates found."
+msgstr "कोई टेम्पलेट नहीं मिला।"
+
+msgid "Not favorite"
+msgstr "पसंदीदा नहीं"
+
+msgid "Note type"
+msgstr "नोट प्रकार"
+
+msgid "Order"
+msgstr "ऑर्डर"
+
+msgid "Order could not be loaded."
+msgstr "ऑर्डर लोड नहीं किया जा सका।"
+
+msgid "Order custom field by meta key"
+msgstr "मेटा कुंजी द्वारा ऑर्डर कस्टम फ़ील्ड"
+
+msgid "Order date"
+msgstr "ऑर्डर की तारीख"
+
+msgid "Order date and time"
+msgstr "ऑर्डर की तारीख और समय"
+
+msgid "Order ID"
+msgstr "ऑर्डर ID"
+
+msgid "Order note history"
+msgstr "ऑर्डर नोट इतिहास"
+
+msgid "Order number"
+msgstr "ऑर्डर संख्या"
+
+msgid "Order status"
+msgstr "ऑर्डर स्थिति"
+
+msgid "Order subtotal"
+msgstr "ऑर्डर उप-योग"
+
+msgid "Order time"
+msgstr "ऑर्डर समय"
+
+msgid "Order total"
+msgstr "ऑर्डर कुल"
+
+msgid "Ordered items"
+msgstr "ऑर्डर किए गए आइटम"
+
+msgid "Paid date"
+msgstr "भुगतान की तारीख"
+
+msgid "Payment method"
+msgstr "भुगतान विधि"
+
+msgid "Payment method ID"
+msgstr "भुगतान विधि ID"
+
+msgid "Permissions"
+msgstr "अनुमतियाँ"
+
+msgid "Personal favorite"
+msgstr "व्यक्तिगत पसंदीदा"
+
+msgid "Personal favorite updated."
+msgstr "व्यक्तिगत पसंदीदा अपडेट किया गया।"
+
+msgid "Placeholder inserted."
+msgstr "प्लेसहोल्डर डाला गया।"
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "उपलब्ध होने पर बहुभाषी टेम्पलेट के लिए ऑर्डर/ग्राहक की भाषा को प्राथमिकता दें"
+
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+msgid "Preview could not be loaded."
+msgstr "पूर्वावलोकन लोड नहीं किया जा सका।"
+
+msgid "Recipient"
+msgstr "प्राप्तकर्ता"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "आयात लागू करने से पहले सारांश की समीक्षा करें। अभी कोई बदलाव नहीं किया गया है।"
+
+msgid "Role"
+msgstr "भूमिका"
+
+msgid "Save permissions"
+msgstr "अनुमतियाँ सहेजें"
+
+msgid "Save settings"
+msgstr "सेटिंग्स सहेजें"
+
+msgid "Search Categories"
+msgstr "श्रेणियाँ खोजें"
+
+msgid "Search Templates"
+msgstr "टेम्पलेट खोजें"
+
+msgid "Search templates"
+msgstr "टेम्पलेट खोजें"
+
+msgid "Security check failed."
+msgstr "सुरक्षा जाँच विफल रही।"
+
+msgid "Select a template to show the preview."
+msgstr "पूर्वावलोकन दिखाने के लिए एक टेम्पलेट चुनें।"
+
+msgid "Select template"
+msgstr "टेम्पलेट चुनें"
+
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+msgid "Shipping address"
+msgstr "शिपिंग पता"
+
+msgid "Shipping city"
+msgstr "शिपिंग शहर"
+
+msgid "Shipping company"
+msgstr "शिपिंग कंपनी"
+
+msgid "Shipping country"
+msgstr "शिपिंग देश"
+
+msgid "Shipping first name"
+msgstr "शिपिंग प्रथम नाम"
+
+msgid "Shipping last name"
+msgstr "शिपिंग उपनाम"
+
+msgid "Shipping method"
+msgstr "शिपिंग विधि"
+
+msgid "Shipping postcode"
+msgstr "शिपिंग पिन कोड"
+
+msgid "Shipping total"
+msgstr "कुल शिपिंग शुल्क"
+
+msgid "Show favorites first in the order template selector"
+msgstr "ऑर्डर टेम्पलेट चयन में पसंदीदा पहले दिखाएँ"
+
+msgid "Show the usage counter column in the template list"
+msgstr "टेम्पलेट सूची में उपयोग काउंटर कॉलम दिखाएँ"
+
+msgid "Site name"
+msgstr "साइट का नाम"
+
+msgid "Sort"
+msgstr "क्रमबद्ध करें"
+
+msgid "Sorting saved."
+msgstr "क्रम सहेजा गया।"
+
+msgid "Status"
+msgstr "स्थिति"
+
+msgid "Tax total"
+msgstr "कुल कर"
+
+msgid "Template"
+msgstr "टेम्पलेट"
+
+msgid "Template conditions"
+msgstr "टेम्पलेट शर्तें"
+
+msgid "Template could not be duplicated."
+msgstr "टेम्पलेट की प्रतिलिपि नहीं बनाई जा सकी।"
+
+msgid "Template could not be found."
+msgstr "टेम्पलेट नहीं मिला।"
+
+msgid "Template Import/Export"
+msgstr "टेम्पलेट आयात/निर्यात"
+
+msgid "Template language"
+msgstr "टेम्पलेट भाषा"
+
+msgid "Template or order could not be found."
+msgstr "टेम्पलेट या ऑर्डर नहीं मिला।"
+
+msgid "Template Settings"
+msgstr "टेम्पलेट सेटिंग्स"
+
+msgid "Template text"
+msgstr "टेम्पलेट टेक्स्ट"
+
+msgid "Templates imported successfully."
+msgstr "टेम्पलेट सफलतापूर्वक आयात किए गए।"
+
+msgid "Test order preview"
+msgstr "परीक्षण ऑर्डर पूर्वावलोकन"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "संपादित नोट बहुत बड़ा है।"
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"ईमेल स्थिति यह दर्ज करती है कि WooCommerce/WordPress ने भेजने के अनुरोध को संसाधित किया या नहीं। "
+"यह प्रमाण नहीं है कि प्राप्तकर्ता ने संदेश खोला या प्राप्त किया।"
+
+msgid "The JSON file could not be exported."
+msgstr "JSON फ़ाइल निर्यात नहीं की जा सकी।"
+
+msgid "The JSON file could not be imported."
+msgstr "JSON फ़ाइल आयात नहीं की जा सकी।"
+
+msgid "The order note could not be added."
+msgstr "ऑर्डर नोट जोड़ा नहीं जा सका।"
+
+msgid "The order note could not be saved."
+msgstr "ऑर्डर नोट सहेजा नहीं जा सका।"
+
+msgid "The order note was added successfully."
+msgstr "ऑर्डर नोट सफलतापूर्वक जोड़ दिया गया।"
+
+msgid "The selected template is empty."
+msgstr "चयनित टेम्पलेट खाली है।"
+
+msgid "The selected template is not available for this order language."
+msgstr "चयनित टेम्पलेट इस ऑर्डर की भाषा के लिए उपलब्ध नहीं है।"
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "टेम्पलेट क्रम सहेजा नहीं जा सका।"
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "यह मान तब उपयोग होता है जब टेम्पलेट अपना नोट प्रकार निर्धारित नहीं करता।"
+
+msgid "Type to filter templates..."
+msgstr "टेम्पलेट फ़िल्टर करने के लिए टाइप करें…"
+
+msgid "Unknown user"
+msgstr "अज्ञात उपयोगकर्ता"
+
+msgid "Update Category"
+msgstr "श्रेणी अपडेट करें"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"आयात लागू होने से पहले पूर्वावलोकन की समीक्षा करने के लिए JSON निर्यात फ़ाइल अपलोड करें। समान "
+"शीर्षक वाले मौजूदा टेम्पलेट अपडेट किए जाएंगे।"
+
+msgid "Usage"
+msgstr "उपयोग"
+
+msgid "Use templates"
+msgstr "टेम्पलेट उपयोग करें"
+
+msgid "User"
+msgstr "उपयोगकर्ता"
+
+msgid "View Template"
+msgstr "टेम्पलेट देखें"
+
+msgid "WooCommerce is required for this action."
+msgstr "इस क्रिया के लिए WooCommerce आवश्यक है।"
+
+msgid "You are not allowed to manage note templates."
+msgstr "आपको नोट टेम्पलेट प्रबंधित करने की अनुमति नहीं है।"
+
+msgid "You are not allowed to manage permissions."
+msgstr "आपको अनुमतियाँ प्रबंधित करने की अनुमति नहीं है।"
+
+msgid "You are not allowed to use note templates."
+msgstr "आपको नोट टेम्पलेट उपयोग करने की अनुमति नहीं है।"
+
+msgid "You are not allowed to view diagnostics."
+msgstr "आपको निदान देखने की अनुमति नहीं है।"
+
+msgid "You are not allowed to view the history."
+msgstr "आपको इतिहास देखने की अनुमति नहीं है।"
+

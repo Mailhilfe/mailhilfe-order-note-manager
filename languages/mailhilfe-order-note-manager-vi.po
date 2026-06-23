@@ -1,0 +1,630 @@
+# Vietnamese translations for Mailhilfe Order Note Manager.
+# Copyright (C) 2026 Mailhilfe.de
+# This file is distributed under the same license as the Mailhilfe Order Note Manager project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 16:00+0000\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: vi\n"
+"Language-Team: Vietnamese\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "Đã tìm thấy %d mẫu."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "Sẽ tạo %d mẫu."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "Sẽ bỏ qua %d mẫu."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "Sẽ cập nhật %d mẫu."
+
+msgid "Add New"
+msgstr "Thêm mới"
+
+msgid "Add New Category"
+msgstr "Thêm danh mục mới"
+
+msgid "Add New Template"
+msgstr "Thêm mẫu mới"
+
+msgid "Add note to order"
+msgstr "Thêm ghi chú vào đơn hàng"
+
+msgid "Adding order note..."
+msgstr "Đang thêm ghi chú đơn hàng..."
+
+msgid "Admin email"
+msgstr "Email quản trị viên"
+
+msgid "All Categories"
+msgstr "Tất cả danh mục"
+
+msgid "All languages"
+msgstr "Tất cả ngôn ngữ"
+
+msgid "Allow JSON imports"
+msgstr "Cho phép nhập JSON"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "Cho phép định dạng HTML an toàn trong ghi chú"
+
+msgid "Allowed billing countries"
+msgstr "Quốc gia thanh toán được phép"
+
+msgid "Allowed order statuses"
+msgstr "Trạng thái đơn hàng được phép"
+
+msgid "Allowed payment method IDs"
+msgstr "ID phương thức thanh toán được phép"
+
+msgid "Allowed shipping method IDs"
+msgstr "ID phương thức giao hàng được phép"
+
+msgid "Apply import now"
+msgstr "Áp dụng nhập ngay"
+
+msgid "Available placeholders:"
+msgstr "Các biến giữ chỗ có sẵn:"
+
+msgid "Billing address"
+msgstr "Địa chỉ thanh toán"
+
+msgid "Billing city"
+msgstr "Thành phố thanh toán"
+
+msgid "Billing company"
+msgstr "Công ty thanh toán"
+
+msgid "Billing country"
+msgstr "Quốc gia thanh toán"
+
+msgid "Billing email"
+msgstr "Email thanh toán"
+
+msgid "Billing phone"
+msgstr "Điện thoại thanh toán"
+
+msgid "Billing postcode"
+msgstr "Mã bưu chính thanh toán"
+
+msgid "Categories"
+msgstr "Danh mục"
+
+msgid "Category"
+msgstr "Danh mục"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "Các mã quốc gia ISO, phân tách bằng dấu phẩy, ví dụ DE, AT, CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "Phân tách bằng dấu phẩy, ví dụ bacs, paypal, stripe."
+
+msgid "Completed date"
+msgstr "Ngày hoàn tất"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr ""
+"Cấu hình hành vi mặc định cho việc chọn mẫu, ghi chú cho khách hàng, nhập dữ liệu và hiển thị "
+"quản trị."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "Bản sao của %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "Tạo ghi chú nhật ký nội bộ sau khi tạo ghi chú cho khách hàng"
+
+msgid "Currency"
+msgstr "Tiền tệ"
+
+msgid "Currency symbol"
+msgstr "Ký hiệu tiền tệ"
+
+msgid "Current admin user"
+msgstr "Quản trị viên hiện tại"
+
+msgid "Current date"
+msgstr "Ngày hiện tại"
+
+msgid "Current time"
+msgstr "Thời gian hiện tại"
+
+msgid "Customer custom field by meta key"
+msgstr "Trường tùy chỉnh của khách hàng theo khóa meta"
+
+msgid "Customer first name"
+msgstr "Tên khách hàng"
+
+msgid "Customer ID"
+msgstr "ID khách hàng"
+
+msgid "Customer last name"
+msgstr "Họ khách hàng"
+
+msgid "Customer name"
+msgstr "Tên khách hàng"
+
+msgid "Customer note"
+msgstr "Ghi chú cho khách hàng"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "Ghi chú cho khách hàng được tạo lúc %1$s bởi %2$s bằng mẫu “%3$s”."
+
+msgid "Customer order note"
+msgstr "Ghi chú đơn hàng cho khách hàng"
+
+msgid "Date"
+msgstr "Ngày"
+
+msgid "Default note type"
+msgstr "Loại ghi chú mặc định"
+
+msgid "Demo templates"
+msgstr "Mẫu minh họa"
+
+msgid "Demo templates installed successfully."
+msgstr "Đã cài đặt mẫu minh họa thành công."
+
+msgid "Diagnostics"
+msgstr "Chẩn đoán"
+
+msgid "Discount total"
+msgstr "Tổng giảm giá"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"Tải xuống tất cả mẫu ghi chú đã xuất bản, danh mục, mục yêu thích, giá trị sắp xếp và bộ đếm sử "
+"dụng dưới dạng tệp JSON."
+
+msgid "Drag to sort"
+msgstr "Kéo để sắp xếp"
+
+msgid "Duplicate"
+msgstr "Nhân bản"
+
+msgid "Edit Category"
+msgstr "Sửa danh mục"
+
+msgid "Edit Template"
+msgstr "Sửa mẫu"
+
+msgid "Enabled"
+msgstr "Đã bật"
+
+msgid "Event"
+msgstr "Sự kiện"
+
+msgid "Export JSON"
+msgstr "Xuất JSON"
+
+msgid "Export templates"
+msgstr "Xuất mẫu"
+
+msgid "FAQ"
+msgstr "Câu hỏi thường gặp"
+
+msgid "Favorite"
+msgstr "Yêu thích"
+
+msgid "Generate test preview"
+msgstr "Tạo bản xem trước thử nghiệm"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"Chỉ cấp quyền đối với mẫu cho các vai trò đáng tin cậy. Người dùng cũng cần quyền WooCommerce "
+"thông thường để sửa đơn hàng trước khi có thể thêm ghi chú vào đơn hàng."
+
+msgid "Help"
+msgstr "Trợ giúp"
+
+msgid "History"
+msgstr "Lịch sử"
+
+msgid "Import JSON"
+msgstr "Nhập JSON"
+
+msgid "Import preview"
+msgstr "Xem trước dữ liệu nhập"
+
+msgid "Import templates"
+msgstr "Nhập mẫu"
+
+msgid "Import usage counters from JSON files"
+msgstr "Nhập bộ đếm sử dụng từ tệp JSON"
+
+msgid "Insert placeholder"
+msgstr "Chèn biến giữ chỗ"
+
+msgid "Install demo templates"
+msgstr "Cài đặt mẫu minh họa"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "Tự động cài đặt mẫu minh họa khi chưa có mẫu nào"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"Cài đặt các mẫu minh họa thực tế cho cập nhật giao hàng, nhắc thanh toán và ghi chú chăm sóc "
+"khách hàng."
+
+msgid "Internal note"
+msgstr "Ghi chú nội bộ"
+
+msgid "Item count"
+msgstr "Số lượng mặt hàng"
+
+msgid "Last customer note:"
+msgstr "Ghi chú cho khách hàng gần nhất:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"Để trống để hiển thị mẫu này cho mọi ngôn ngữ. Giá trị ngôn ngữ đơn hàng của WPML và Polylang có "
+"thể được đối chiếu tại đây."
+
+msgid "Loading preview..."
+msgstr "Đang tải bản xem trước..."
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "Trình quản lý ghi chú đơn hàng Mailhilfe"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "Nhập/Xuất Trình quản lý ghi chú đơn hàng Mailhilfe"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "Quyền của Trình quản lý ghi chú đơn hàng Mailhilfe"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "Cài đặt Trình quản lý ghi chú đơn hàng Mailhilfe"
+
+msgid "Mailhilfe Order Notes"
+msgstr "Ghi chú đơn hàng Mailhilfe"
+
+msgid "Manage templates"
+msgstr "Quản lý mẫu"
+
+msgid "Mark as favorite"
+msgstr "Đánh dấu yêu thích"
+
+msgid "Maximum order total"
+msgstr "Tổng đơn hàng tối đa"
+
+msgid "Minimum order total"
+msgstr "Tổng đơn hàng tối thiểu"
+
+msgid "New Category Name"
+msgstr "Tên danh mục mới"
+
+msgid "New Template"
+msgstr "Mẫu mới"
+
+msgid "No history entries found."
+msgstr "Không tìm thấy mục lịch sử nào."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "Không nhận được thứ tự mẫu."
+
+msgid "No templates are available yet."
+msgstr "Chưa có mẫu nào khả dụng."
+
+msgid "No templates found in Trash."
+msgstr "Không tìm thấy mẫu nào trong Thùng rác."
+
+msgid "No templates found."
+msgstr "Không tìm thấy mẫu nào."
+
+msgid "Not favorite"
+msgstr "Không yêu thích"
+
+msgid "Note type"
+msgstr "Loại ghi chú"
+
+msgid "Order"
+msgstr "Đơn hàng"
+
+msgid "Order could not be loaded."
+msgstr "Không thể tải đơn hàng."
+
+msgid "Order custom field by meta key"
+msgstr "Trường tùy chỉnh của đơn hàng theo khóa meta"
+
+msgid "Order date"
+msgstr "Ngày đặt hàng"
+
+msgid "Order date and time"
+msgstr "Ngày và giờ đặt hàng"
+
+msgid "Order ID"
+msgstr "ID đơn hàng"
+
+msgid "Order note history"
+msgstr "Lịch sử ghi chú đơn hàng"
+
+msgid "Order number"
+msgstr "Số đơn hàng"
+
+msgid "Order status"
+msgstr "Trạng thái đơn hàng"
+
+msgid "Order subtotal"
+msgstr "Tạm tính đơn hàng"
+
+msgid "Order time"
+msgstr "Giờ đặt hàng"
+
+msgid "Order total"
+msgstr "Tổng đơn hàng"
+
+msgid "Ordered items"
+msgstr "Mặt hàng đã đặt"
+
+msgid "Paid date"
+msgstr "Ngày thanh toán"
+
+msgid "Payment method"
+msgstr "Phương thức thanh toán"
+
+msgid "Payment method ID"
+msgstr "ID phương thức thanh toán"
+
+msgid "Permissions"
+msgstr "Quyền"
+
+msgid "Personal favorite"
+msgstr "Yêu thích cá nhân"
+
+msgid "Personal favorite updated."
+msgstr "Đã cập nhật mục yêu thích cá nhân."
+
+msgid "Placeholder inserted."
+msgstr "Đã chèn biến giữ chỗ."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "Ưu tiên ngôn ngữ của đơn hàng/khách hàng cho mẫu đa ngôn ngữ khi có thể"
+
+msgid "Preview"
+msgstr "Xem trước"
+
+msgid "Preview could not be loaded."
+msgstr "Không thể tải bản xem trước."
+
+msgid "Recipient"
+msgstr "Người nhận"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "Kiểm tra phần tóm tắt trước khi áp dụng dữ liệu nhập. Chưa có thay đổi nào được thực hiện."
+
+msgid "Role"
+msgstr "Vai trò"
+
+msgid "Save permissions"
+msgstr "Lưu quyền"
+
+msgid "Save settings"
+msgstr "Lưu cài đặt"
+
+msgid "Search Categories"
+msgstr "Tìm danh mục"
+
+msgid "Search Templates"
+msgstr "Tìm mẫu"
+
+msgid "Search templates"
+msgstr "Tìm mẫu"
+
+msgid "Security check failed."
+msgstr "Kiểm tra bảo mật không thành công."
+
+msgid "Select a template to show the preview."
+msgstr "Chọn một mẫu để hiển thị bản xem trước."
+
+msgid "Select template"
+msgstr "Chọn mẫu"
+
+msgid "Settings"
+msgstr "Cài đặt"
+
+msgid "Shipping address"
+msgstr "Địa chỉ giao hàng"
+
+msgid "Shipping city"
+msgstr "Thành phố giao hàng"
+
+msgid "Shipping company"
+msgstr "Công ty giao hàng"
+
+msgid "Shipping country"
+msgstr "Quốc gia giao hàng"
+
+msgid "Shipping first name"
+msgstr "Tên người nhận"
+
+msgid "Shipping last name"
+msgstr "Họ người nhận"
+
+msgid "Shipping method"
+msgstr "Phương thức giao hàng"
+
+msgid "Shipping postcode"
+msgstr "Mã bưu chính giao hàng"
+
+msgid "Shipping total"
+msgstr "Tổng phí giao hàng"
+
+msgid "Show favorites first in the order template selector"
+msgstr "Hiển thị mục yêu thích trước trong bộ chọn mẫu đơn hàng"
+
+msgid "Show the usage counter column in the template list"
+msgstr "Hiển thị cột bộ đếm sử dụng trong danh sách mẫu"
+
+msgid "Site name"
+msgstr "Tên trang web"
+
+msgid "Sort"
+msgstr "Sắp xếp"
+
+msgid "Sorting saved."
+msgstr "Đã lưu thứ tự sắp xếp."
+
+msgid "Status"
+msgstr "Trạng thái"
+
+msgid "Tax total"
+msgstr "Tổng thuế"
+
+msgid "Template"
+msgstr "Mẫu"
+
+msgid "Template conditions"
+msgstr "Điều kiện mẫu"
+
+msgid "Template could not be duplicated."
+msgstr "Không thể nhân bản mẫu."
+
+msgid "Template could not be found."
+msgstr "Không tìm thấy mẫu."
+
+msgid "Template Import/Export"
+msgstr "Nhập/Xuất mẫu"
+
+msgid "Template language"
+msgstr "Ngôn ngữ của mẫu"
+
+msgid "Template or order could not be found."
+msgstr "Không tìm thấy mẫu hoặc đơn hàng."
+
+msgid "Template Settings"
+msgstr "Cài đặt mẫu"
+
+msgid "Template text"
+msgstr "Nội dung mẫu"
+
+msgid "Templates imported successfully."
+msgstr "Đã nhập mẫu thành công."
+
+msgid "Test order preview"
+msgstr "Xem trước với đơn hàng thử nghiệm"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "Ghi chú đã sửa quá lớn."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"Trạng thái email ghi lại việc WooCommerce/WordPress có xử lý yêu cầu gửi hay không. Đây không "
+"phải là bằng chứng rằng người nhận đã mở hoặc nhận được thư."
+
+msgid "The JSON file could not be exported."
+msgstr "Không thể xuất tệp JSON."
+
+msgid "The JSON file could not be imported."
+msgstr "Không thể nhập tệp JSON."
+
+msgid "The order note could not be added."
+msgstr "Không thể thêm ghi chú đơn hàng."
+
+msgid "The order note could not be saved."
+msgstr "Không thể lưu ghi chú đơn hàng."
+
+msgid "The order note was added successfully."
+msgstr "Đã thêm ghi chú đơn hàng thành công."
+
+msgid "The selected template is empty."
+msgstr "Mẫu đã chọn đang trống."
+
+msgid "The selected template is not available for this order language."
+msgstr "Mẫu đã chọn không khả dụng cho ngôn ngữ của đơn hàng này."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "Không thể lưu thứ tự mẫu."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "Giá trị này được dùng khi mẫu không xác định loại ghi chú riêng."
+
+msgid "Type to filter templates..."
+msgstr "Nhập để lọc mẫu..."
+
+msgid "Unknown user"
+msgstr "Người dùng không xác định"
+
+msgid "Update Category"
+msgstr "Cập nhật danh mục"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"Tải lên tệp JSON đã xuất để xem trước trước khi áp dụng dữ liệu nhập. Các mẫu hiện có cùng tiêu "
+"đề sẽ được cập nhật."
+
+msgid "Usage"
+msgstr "Lượt sử dụng"
+
+msgid "Use templates"
+msgstr "Sử dụng mẫu"
+
+msgid "User"
+msgstr "Người dùng"
+
+msgid "View Template"
+msgstr "Xem mẫu"
+
+msgid "WooCommerce is required for this action."
+msgstr "Hành động này yêu cầu WooCommerce."
+
+msgid "You are not allowed to manage note templates."
+msgstr "Bạn không được phép quản lý mẫu ghi chú."
+
+msgid "You are not allowed to manage permissions."
+msgstr "Bạn không được phép quản lý quyền."
+
+msgid "You are not allowed to use note templates."
+msgstr "Bạn không được phép sử dụng mẫu ghi chú."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "Bạn không được phép xem chẩn đoán."
+
+msgid "You are not allowed to view the history."
+msgstr "Bạn không được phép xem lịch sử."
+

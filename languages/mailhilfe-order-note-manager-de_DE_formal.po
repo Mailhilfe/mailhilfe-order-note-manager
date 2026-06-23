@@ -2,10 +2,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailhilfe Order Note Manager for WooCommerce 2.0.6\n"
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
 "Report-Msgid-Bugs-To: https://www.mailhilfe.de/\n"
 "POT-Creation-Date: 2026-06-19 13:45+0000\n"
-"PO-Revision-Date: 2026-06-19 13:45+0000\n"
+"PO-Revision-Date: 2026-06-23 00:00+0200\n"
 "Last-Translator: Mailhilfe <info@mailhilfe.de>\n"
 "Language: de_DE_formal\n"
 "Language-Team: Mailhilfe\n"
@@ -18,21 +18,37 @@ msgstr ""
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
 #, python-format
-msgid "%d templates found."
-msgstr "%d Vorlagen gefunden."
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d Vorlage gefunden."
+msgstr[1] "%d Vorlagen gefunden."
 
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
 #, python-format
-msgid "%d templates will be created."
-msgstr "%d Vorlagen werden erstellt."
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d Vorlage wird erstellt."
+msgstr[1] "%d Vorlagen werden erstellt."
 
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
 #, python-format
-msgid "%d templates will be skipped."
-msgstr "%d Vorlagen werden übersprungen."
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d Vorlage wird übersprungen."
+msgstr[1] "%d Vorlagen werden übersprungen."
 
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
 #, python-format
-msgid "%d templates will be updated."
-msgstr "%d Vorlagen werden aktualisiert."
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d Vorlage wird aktualisiert."
+msgstr[1] "%d Vorlagen werden aktualisiert."
 
 msgid "Add New"
 msgstr "Neu hinzufügen"
@@ -50,7 +66,7 @@ msgid "Adding order note..."
 msgstr "Bestellnotiz wird hinzugefügt …"
 
 msgid "Admin email"
-msgstr "Admin-E-Mail"
+msgstr "E-Mail-Adresse des Administrators"
 
 msgid "All Categories"
 msgstr "Alle Kategorien"
@@ -59,22 +75,22 @@ msgid "All languages"
 msgstr "Alle Sprachen"
 
 msgid "Allow JSON imports"
-msgstr "JSON-Importe erlauben"
+msgstr "JSON-Importe zulassen"
 
 msgid "Allow safe HTML formatting in notes"
 msgstr "Sichere HTML-Formatierung in Notizen erlauben"
 
 msgid "Allowed billing countries"
-msgstr "Erlaubte Rechnungsländer"
+msgstr "Zulässige Rechnungsländer"
 
 msgid "Allowed order statuses"
-msgstr "Erlaubte Bestellstatus"
+msgstr "Zulässige Bestellstatus"
 
 msgid "Allowed payment method IDs"
-msgstr "Erlaubte Zahlungsarten-IDs"
+msgstr "IDs der zulässigen Zahlungsarten"
 
 msgid "Allowed shipping method IDs"
-msgstr "Erlaubte Versandarten-IDs"
+msgstr "IDs der zulässigen Versandarten"
 
 msgid "Apply import now"
 msgstr "Import jetzt ausführen"
@@ -86,22 +102,22 @@ msgid "Billing address"
 msgstr "Rechnungsadresse"
 
 msgid "Billing city"
-msgstr "Rechnungsort"
+msgstr "Ort (Rechnungsadresse)"
 
 msgid "Billing company"
-msgstr "Rechnungsfirma"
+msgstr "Firma (Rechnungsadresse)"
 
 msgid "Billing country"
-msgstr "Rechnungsland"
+msgstr "Land (Rechnungsadresse)"
 
 msgid "Billing email"
-msgstr "Rechnungs-E-Mail"
+msgstr "E-Mail-Adresse (Rechnungsadresse)"
 
 msgid "Billing phone"
-msgstr "Rechnungstelefon"
+msgstr "Telefonnummer (Rechnungsadresse)"
 
 msgid "Billing postcode"
-msgstr "Rechnungs-Postleitzahl"
+msgstr "Postleitzahl (Rechnungsadresse)"
 
 msgid "Categories"
 msgstr "Kategorien"
@@ -120,15 +136,15 @@ msgstr "Abschlussdatum"
 
 msgid "Configure default behavior for template selection, customer notes, imports and admin display."
 msgstr ""
-"Konfigurieren Sie das Standardverhalten für Vorlagenauswahl, Kundennotizen, Importe und Admin-"
-"Anzeige."
+"Konfigurieren Sie das Standardverhalten für die Vorlagenauswahl, Kundennotizen, Importe und die "
+"Admin-Anzeige."
 
 #, python-format
 msgid "Copy of %s"
 msgstr "Kopie von %s"
 
 msgid "Create an internal log note after a customer note is created"
-msgstr "Interne Protokollnotiz erstellen, nachdem eine Kundennotiz erstellt wurde"
+msgstr "Nach dem Erstellen einer Kundennotiz eine interne Protokollnotiz anlegen"
 
 msgid "Currency"
 msgstr "Währung"
@@ -137,7 +153,7 @@ msgid "Currency symbol"
 msgstr "Währungssymbol"
 
 msgid "Current admin user"
-msgstr "Aktueller Admin-Benutzer"
+msgstr "Aktuell angemeldeter Benutzer"
 
 msgid "Current date"
 msgstr "Aktuelles Datum"
@@ -145,14 +161,14 @@ msgstr "Aktuelles Datum"
 msgid "Current time"
 msgstr "Aktuelle Uhrzeit"
 
-msgid "Customer ID"
-msgstr "Kunden-ID"
-
 msgid "Customer custom field by meta key"
-msgstr "Kunden-Benutzerfeld nach Meta-Schlüssel"
+msgstr "Benutzerdefiniertes Kundenfeld nach Meta-Schlüssel"
 
 msgid "Customer first name"
 msgstr "Vorname des Kunden"
+
+msgid "Customer ID"
+msgstr "Kunden-ID"
 
 msgid "Customer last name"
 msgstr "Nachname des Kunden"
@@ -164,10 +180,10 @@ msgid "Customer note"
 msgstr "Kundennotiz"
 
 msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
-msgstr "Kundennotiz am %1$s von %2$s mit der Vorlage „%3$s“ erstellt."
+msgstr "Kundennotiz wurde am %1$s von %2$s mit der Vorlage „%3$s“ erstellt."
 
 msgid "Customer order note"
-msgstr "Kundenhinweis zur Bestellung"
+msgstr "Kundennotiz zur Bestellung"
 
 msgid "Date"
 msgstr "Datum"
@@ -179,13 +195,13 @@ msgid "Demo templates"
 msgstr "Demo-Vorlagen"
 
 msgid "Demo templates installed successfully."
-msgstr "Demo-Vorlagen erfolgreich installiert."
+msgstr "Demo-Vorlagen wurden erfolgreich installiert."
 
 msgid "Diagnostics"
 msgstr "Diagnose"
 
 msgid "Discount total"
-msgstr "Rabatt gesamt"
+msgstr "Gesamtrabatt"
 
 msgid ""
 "Download all published note templates, categories, favorites, sorting values and usage counters "
@@ -231,9 +247,9 @@ msgid ""
 "Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
 "permission to edit orders before they can add notes to an order."
 msgstr ""
-"Vergeben Sie Vorlagenrechte nur an vertrauenswürdige Rollen. Benutzer benötigen zusätzlich die "
-"normale WooCommerce-Berechtigung zum Bearbeiten von Bestellungen, bevor sie Notizen hinzufügen "
-"können."
+"Vergeben Sie Vorlagenberechtigungen nur an vertrauenswürdige Rollen. Benutzer benötigen "
+"zusätzlich die normale WooCommerce-Berechtigung zum Bearbeiten von Bestellungen, bevor sie einer "
+"Bestellung Notizen hinzufügen können."
 
 msgid "Help"
 msgstr "Hilfe"
@@ -266,8 +282,8 @@ msgid ""
 "Install practical demo templates for shipping updates, payment reminders and customer service "
 "notes."
 msgstr ""
-"Installiert praktische Demo-Vorlagen für Versandupdates, Zahlungserinnerungen und "
-"Kundendienstnotizen."
+"Praktische Demo-Vorlagen für Versandinformationen, Zahlungserinnerungen und Kundendienstnotizen "
+"installieren."
 
 msgid "Internal note"
 msgstr "Interne Notiz"
@@ -286,13 +302,13 @@ msgstr ""
 "Bestellung können hier abgeglichen werden."
 
 msgid "Loading preview..."
-msgstr "Vorschau wird geladen ..."
+msgstr "Vorschau wird geladen …"
 
 msgid "Mailhilfe Order Note Manager"
 msgstr "Bestellnotiz-Vorlage"
 
 msgid "Mailhilfe Order Note Manager Import/Export"
-msgstr "Bestellnotiz-Vorlagen Import/Export"
+msgstr "Import/Export von Bestellnotiz-Vorlagen"
 
 msgid "Mailhilfe Order Note Manager Permissions"
 msgstr "Berechtigungen für Bestellnotiz-Vorlagen"
@@ -310,10 +326,10 @@ msgid "Mark as favorite"
 msgstr "Als Favorit markieren"
 
 msgid "Maximum order total"
-msgstr "Höchstbestellwert"
+msgstr "Maximaler Bestellwert"
 
 msgid "Minimum order total"
-msgstr "Mindestbestellwert"
+msgstr "Minimaler Bestellwert"
 
 msgid "New Category Name"
 msgstr "Name der neuen Kategorie"
@@ -326,7 +342,7 @@ msgstr "Keine Verlaufseinträge gefunden."
 
 #: includes/class-mhont-post-types.php:1
 msgid "No template order was received."
-msgstr "Es wurde keine Vorlagenreihenfolge übermittelt."
+msgstr "Es wurde keine Vorlagensortierung übermittelt."
 
 msgid "No templates are available yet."
 msgstr "Es sind noch keine Vorlagen vorhanden."
@@ -346,20 +362,20 @@ msgstr "Notiztyp"
 msgid "Order"
 msgstr "Bestellung"
 
-msgid "Order ID"
-msgstr "Bestell-ID"
-
 msgid "Order could not be loaded."
 msgstr "Bestellung konnte nicht geladen werden."
 
 msgid "Order custom field by meta key"
-msgstr "Bestell-Benutzerfeld nach Meta-Schlüssel"
+msgstr "Benutzerdefiniertes Bestellfeld nach Meta-Schlüssel"
 
 msgid "Order date"
 msgstr "Bestelldatum"
 
 msgid "Order date and time"
-msgstr "Bestelldatum und Uhrzeit"
+msgstr "Bestelldatum und -uhrzeit"
+
+msgid "Order ID"
+msgstr "Bestell-ID"
 
 msgid "Order note history"
 msgstr "Bestellnotiz-Verlauf"
@@ -374,7 +390,7 @@ msgid "Order subtotal"
 msgstr "Zwischensumme der Bestellung"
 
 msgid "Order time"
-msgstr "Bestellzeit"
+msgstr "Uhrzeit der Bestellung"
 
 msgid "Order total"
 msgstr "Bestellsumme"
@@ -389,7 +405,7 @@ msgid "Payment method"
 msgstr "Zahlungsart"
 
 msgid "Payment method ID"
-msgstr "Zahlungsart-ID"
+msgstr "ID der Zahlungsart"
 
 msgid "Permissions"
 msgstr "Berechtigungen"
@@ -398,13 +414,13 @@ msgid "Personal favorite"
 msgstr "Persönlicher Favorit"
 
 msgid "Personal favorite updated."
-msgstr "Persönlicher Favorit aktualisiert."
+msgstr "Persönlicher Favorit wurde aktualisiert."
 
 msgid "Placeholder inserted."
-msgstr "Platzhalter eingefügt."
+msgstr "Platzhalter wurde eingefügt."
 
 msgid "Prefer the order/customer language for multilingual templates when available"
-msgstr "Bestell-/Kundensprache für mehrsprachige Vorlagen bevorzugen, wenn verfügbar"
+msgstr "Bestell- oder Kundensprache für mehrsprachige Vorlagen bevorzugen, sofern verfügbar"
 
 msgid "Preview"
 msgstr "Vorschau"
@@ -416,7 +432,7 @@ msgid "Recipient"
 msgstr "Empfänger"
 
 msgid "Review the summary before applying the import. Nothing has been changed yet."
-msgstr "Prüfen Sie die Zusammenfassung, bevor der Import ausgeführt wird. Es wurde noch nichts geändert."
+msgstr "Prüfen Sie die Zusammenfassung, bevor Sie den Import ausführen. Es wurde noch nichts geändert."
 
 msgid "Role"
 msgstr "Rolle"
@@ -452,58 +468,52 @@ msgid "Shipping address"
 msgstr "Versandadresse"
 
 msgid "Shipping city"
-msgstr "Versandort"
+msgstr "Ort (Versandadresse)"
 
 msgid "Shipping company"
-msgstr "Versandfirma"
+msgstr "Firma (Versandadresse)"
 
 msgid "Shipping country"
-msgstr "Versandland"
+msgstr "Land (Versandadresse)"
 
 msgid "Shipping first name"
-msgstr "Versand-Vorname"
+msgstr "Vorname (Versandadresse)"
 
 msgid "Shipping last name"
-msgstr "Versand-Nachname"
+msgstr "Nachname (Versandadresse)"
 
 msgid "Shipping method"
 msgstr "Versandart"
 
 msgid "Shipping postcode"
-msgstr "Versand-Postleitzahl"
+msgstr "Postleitzahl (Versandadresse)"
 
 msgid "Shipping total"
 msgstr "Versandkosten"
 
 msgid "Show favorites first in the order template selector"
-msgstr "Favoriten in der Vorlagenauswahl der Bestellung zuerst anzeigen"
+msgstr "Favoriten in der Vorlagenauswahl für Bestellungen zuerst anzeigen"
 
 msgid "Show the usage counter column in the template list"
-msgstr "Spalte für Nutzungszähler in der Vorlagenliste anzeigen"
+msgstr "Nutzungszähler in der Vorlagenliste anzeigen"
 
 msgid "Site name"
-msgstr "Websitename"
+msgstr "Website-Name"
 
 msgid "Sort"
 msgstr "Sortierung"
 
 msgid "Sorting saved."
-msgstr "Sortierung gespeichert."
+msgstr "Sortierung wurde gespeichert."
 
 msgid "Status"
 msgstr "Status"
 
 msgid "Tax total"
-msgstr "Steuer gesamt"
+msgstr "Steuerbetrag"
 
 msgid "Template"
 msgstr "Vorlage"
-
-msgid "Template Import/Export"
-msgstr "Vorlagen Import/Export"
-
-msgid "Template Settings"
-msgstr "Vorlageneinstellungen"
 
 msgid "Template conditions"
 msgstr "Vorlagenbedingungen"
@@ -514,26 +524,26 @@ msgstr "Vorlage konnte nicht dupliziert werden."
 msgid "Template could not be found."
 msgstr "Vorlage konnte nicht gefunden werden."
 
+msgid "Template Import/Export"
+msgstr "Vorlagen importieren/exportieren"
+
 msgid "Template language"
 msgstr "Vorlagensprache"
 
 msgid "Template or order could not be found."
 msgstr "Vorlage oder Bestellung konnte nicht gefunden werden."
 
+msgid "Template Settings"
+msgstr "Vorlageneinstellungen"
+
 msgid "Template text"
 msgstr "Vorlagentext"
 
 msgid "Templates imported successfully."
-msgstr "Vorlagen erfolgreich importiert."
+msgstr "Vorlagen wurden erfolgreich importiert."
 
 msgid "Test order preview"
-msgstr "Testbestellungs-Vorschau"
-
-msgid "The JSON file could not be exported."
-msgstr "Die JSON-Datei konnte nicht exportiert werden."
-
-msgid "The JSON file could not be imported."
-msgstr "Die JSON-Datei konnte nicht importiert werden."
+msgstr "Vorschau mit Testbestellung"
 
 #: includes/class-mhont-order-ui.php
 msgid "The edited note is too large."
@@ -546,11 +556,17 @@ msgstr ""
 "Der E-Mail-Status protokolliert, ob WooCommerce/WordPress den Versandauftrag verarbeitet hat. Er "
 "ist kein Nachweis dafür, dass der Empfänger die Nachricht erhalten oder geöffnet hat."
 
+msgid "The JSON file could not be exported."
+msgstr "Die JSON-Datei konnte nicht exportiert werden."
+
+msgid "The JSON file could not be imported."
+msgstr "Die JSON-Datei konnte nicht importiert werden."
+
 msgid "The order note could not be added."
 msgstr "Die Bestellnotiz konnte nicht hinzugefügt werden."
 
 msgid "The order note could not be saved."
-msgstr "Die Bestellanmerkung konnte nicht gespeichert werden."
+msgstr "Die Bestellnotiz konnte nicht gespeichert werden."
 
 msgid "The order note was added successfully."
 msgstr "Die Bestellnotiz wurde erfolgreich hinzugefügt."
@@ -563,13 +579,13 @@ msgstr "Die ausgewählte Vorlage ist für diese Bestellsprache nicht verfügbar.
 
 #: includes/class-mhont-post-types.php:1
 msgid "The template order could not be saved."
-msgstr "Die Vorlagenreihenfolge konnte nicht gespeichert werden."
+msgstr "Die Vorlagensortierung konnte nicht gespeichert werden."
 
 msgid "This value is used when a template does not define its own note type."
 msgstr "Dieser Wert wird verwendet, wenn eine Vorlage keinen eigenen Notiztyp festlegt."
 
 msgid "Type to filter templates..."
-msgstr "Zum Filtern der Vorlagen eingeben ..."
+msgstr "Text eingeben, um Vorlagen zu filtern …"
 
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
@@ -581,8 +597,8 @@ msgid ""
 "Upload a JSON export file to review a preview before the import is applied. Existing templates "
 "with the same title will be updated."
 msgstr ""
-"Laden Sie eine JSON-Exportdatei hoch, um vor dem Import eine Vorschau zu prüfen. Bestehende "
-"Vorlagen mit gleichem Titel werden aktualisiert."
+"Laden Sie eine JSON-Exportdatei hoch, um vor dem Import eine Vorschau zu prüfen. Vorhandene "
+"Vorlagen mit demselben Titel werden aktualisiert."
 
 msgid "Usage"
 msgstr "Nutzung"
@@ -609,8 +625,8 @@ msgid "You are not allowed to use note templates."
 msgstr "Sie dürfen keine Notizvorlagen verwenden."
 
 msgid "You are not allowed to view diagnostics."
-msgstr "Du darfst die Diagnose nicht anzeigen."
+msgstr "Sie dürfen die Diagnose nicht anzeigen."
 
 msgid "You are not allowed to view the history."
-msgstr "Du darfst den Verlauf nicht anzeigen."
+msgstr "Sie dürfen den Verlauf nicht anzeigen."
 

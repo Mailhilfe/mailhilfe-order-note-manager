@@ -98,17 +98,7 @@ final class MHONT_Admin {
 	 * @return string
 	 */
 	private static function localized_help_label() {
-		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
-		$locale = is_string( $locale ) ? str_replace( '-', '_', $locale ) : 'en_US';
-		$lang   = strtolower( strtok( $locale, '_' ) );
-		$labels = array(
-			'de' => 'Hilfe', 'fr' => 'Aide', 'es' => 'Ayuda', 'it' => 'Aiuto', 'pt' => 'Ajuda',
-			'nl' => 'Hulp', 'pl' => 'Pomoc', 'ru' => 'Справка', 'zh' => '帮助', 'ja' => 'ヘルプ',
-			'ko' => '도움말', 'tr' => 'Yardım', 'ar' => 'المساعدة', 'hi' => 'सहायता', 'id' => 'Bantuan',
-			'vi' => 'Trợ giúp', 'th' => 'วิธีใช้', 'uk' => 'Довідка', 'sv' => 'Hjälp', 'da' => 'Hjælp',
-		);
-
-		return isset( $labels[ $lang ] ) ? $labels[ $lang ] : 'Help';
+		return __( 'Help', 'mailhilfe-order-note-manager' );
 	}
 	/**
 	 * Returns localized FAQ label for the plugin action link.
@@ -116,17 +106,7 @@ final class MHONT_Admin {
 	 * @return string
 	 */
 	private static function localized_faq_label() {
-		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
-		$locale = is_string( $locale ) ? str_replace( '-', '_', $locale ) : 'en_US';
-		$lang   = strtolower( strtok( $locale, '_' ) );
-		$labels = array(
-			'de' => 'FAQ', 'fr' => 'FAQ', 'es' => 'FAQ', 'it' => 'FAQ', 'pt' => 'FAQ',
-			'nl' => 'FAQ', 'pl' => 'FAQ', 'ru' => 'FAQ', 'zh' => 'FAQ', 'ja' => 'FAQ',
-			'ko' => 'FAQ', 'tr' => 'SSS', 'ar' => 'الأسئلة الشائعة', 'hi' => 'FAQ', 'id' => 'FAQ',
-			'vi' => 'FAQ', 'th' => 'FAQ', 'uk' => 'FAQ', 'sv' => 'FAQ', 'da' => 'FAQ',
-		);
-
-		return isset( $labels[ $lang ] ) ? $labels[ $lang ] : 'FAQ';
+		return __( 'FAQ', 'mailhilfe-order-note-manager' );
 	}
 
 }

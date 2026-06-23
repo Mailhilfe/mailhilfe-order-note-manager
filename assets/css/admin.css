@@ -153,11 +153,18 @@ body.mhont-order-note-screen #wpbody-content {
 
 .mhont-help-card ul {
 	list-style: disc;
-	margin-left: 20px;
+	margin-inline-start: 20px;
 }
 
 .mhont-help-card code {
 	white-space: nowrap;
+}
+
+.rtl .mhont-help-card code,
+.rtl .mhont-placeholders code {
+	direction: ltr;
+	display: inline-block;
+	unicode-bidi: embed;
 }
 
 .mhont-editable-preview {

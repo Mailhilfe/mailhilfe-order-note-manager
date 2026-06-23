@@ -1,0 +1,632 @@
+# Persian (Iran) translations for Mailhilfe Order Note Manager.
+# Copyright (C) 2026 Mailhilfe.de
+# This file is distributed under the same license as the Mailhilfe Order Note Manager project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mailhilfe Order Note Manager 2.0.19\n"
+"Report-Msgid-Bugs-To: https://github.com/Mailhilfe/mailhilfe-order-note-manager/issues\n"
+"POT-Creation-Date: 2026-06-23 00:00+0200\n"
+"PO-Revision-Date: 2026-06-23 14:00+0000\n"
+"Last-Translator: Mailhilfe.de\n"
+"Language: fa_IR\n"
+"Language-Team: Persian\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. translators: %d: number of templates found.
+#: includes/class-mhont-import-export.php:239
+#, python-format
+msgid "%d template found."
+msgid_plural "%d templates found."
+msgstr[0] "%d الگو یافت شد."
+msgstr[1] "%d الگو یافت شد."
+
+#. translators: %d: number of templates that will be created.
+#: includes/class-mhont-import-export.php:246
+#, python-format
+msgid "%d template will be created."
+msgid_plural "%d templates will be created."
+msgstr[0] "%d الگو ایجاد خواهد شد."
+msgstr[1] "%d الگو ایجاد خواهند شد."
+
+#. translators: %d: number of templates that will be skipped.
+#: includes/class-mhont-import-export.php:260
+#, python-format
+msgid "%d template will be skipped."
+msgid_plural "%d templates will be skipped."
+msgstr[0] "%d الگو نادیده گرفته خواهد شد."
+msgstr[1] "%d الگو نادیده گرفته خواهند شد."
+
+#. translators: %d: number of templates that will be updated.
+#: includes/class-mhont-import-export.php:253
+#, python-format
+msgid "%d template will be updated."
+msgid_plural "%d templates will be updated."
+msgstr[0] "%d الگو به‌روزرسانی خواهد شد."
+msgstr[1] "%d الگو به‌روزرسانی خواهند شد."
+
+msgid "Add New"
+msgstr "افزودن"
+
+msgid "Add New Category"
+msgstr "افزودن دسته تازه"
+
+msgid "Add New Template"
+msgstr "افزودن الگوی تازه"
+
+msgid "Add note to order"
+msgstr "افزودن یادداشت به سفارش"
+
+msgid "Adding order note..."
+msgstr "در حال افزودن یادداشت سفارش..."
+
+msgid "Admin email"
+msgstr "ایمیل مدیر"
+
+msgid "All Categories"
+msgstr "همه دسته‌ها"
+
+msgid "All languages"
+msgstr "همه زبان‌ها"
+
+msgid "Allow JSON imports"
+msgstr "اجازه درون‌ریزی JSON"
+
+msgid "Allow safe HTML formatting in notes"
+msgstr "اجازه قالب‌بندی امن HTML در یادداشت‌ها"
+
+msgid "Allowed billing countries"
+msgstr "کشورهای مجاز صورتحساب"
+
+msgid "Allowed order statuses"
+msgstr "وضعیت‌های مجاز سفارش"
+
+msgid "Allowed payment method IDs"
+msgstr "شناسه‌های مجاز روش پرداخت"
+
+msgid "Allowed shipping method IDs"
+msgstr "شناسه‌های مجاز روش حمل‌ونقل"
+
+msgid "Apply import now"
+msgstr "اجرای درون‌ریزی"
+
+msgid "Available placeholders:"
+msgstr "جای‌نگهدارهای در دسترس:"
+
+msgid "Billing address"
+msgstr "نشانی صورتحساب"
+
+msgid "Billing city"
+msgstr "شهر صورتحساب"
+
+msgid "Billing company"
+msgstr "شرکت صورتحساب"
+
+msgid "Billing country"
+msgstr "کشور صورتحساب"
+
+msgid "Billing email"
+msgstr "ایمیل صورتحساب"
+
+msgid "Billing phone"
+msgstr "تلفن صورتحساب"
+
+msgid "Billing postcode"
+msgstr "کد پستی صورتحساب"
+
+msgid "Categories"
+msgstr "دسته‌ها"
+
+msgid "Category"
+msgstr "دسته"
+
+msgid "Comma-separated ISO country codes, for example DE, AT, CH."
+msgstr "کدهای ISO کشور را با ویرگول جدا کنید؛ برای نمونه DE، AT، CH."
+
+msgid "Comma-separated, for example bacs, paypal, stripe."
+msgstr "مقادیر را با ویرگول جدا کنید؛ برای نمونه bacs، paypal، stripe."
+
+msgid "Completed date"
+msgstr "تاریخ تکمیل"
+
+msgid "Configure default behavior for template selection, customer notes, imports and admin display."
+msgstr "رفتار پیش‌فرض انتخاب الگو، یادداشت‌های مشتری، درون‌ریزی و نمایش مدیریتی را تنظیم کنید."
+
+#, python-format
+msgid "Copy of %s"
+msgstr "رونوشت %s"
+
+msgid "Create an internal log note after a customer note is created"
+msgstr "پس از ایجاد یادداشت مشتری، یک یادداشت داخلی برای ثبت رویداد ایجاد شود"
+
+msgid "Currency"
+msgstr "واحد پول"
+
+msgid "Currency symbol"
+msgstr "نماد واحد پول"
+
+msgid "Current admin user"
+msgstr "کاربر مدیر فعلی"
+
+msgid "Current date"
+msgstr "تاریخ فعلی"
+
+msgid "Current time"
+msgstr "زمان فعلی"
+
+msgid "Customer custom field by meta key"
+msgstr "فیلد سفارشی مشتری بر اساس کلید متا"
+
+msgid "Customer first name"
+msgstr "نام مشتری"
+
+msgid "Customer ID"
+msgstr "شناسه مشتری"
+
+msgid "Customer last name"
+msgstr "نام خانوادگی مشتری"
+
+msgid "Customer name"
+msgstr "نام مشتری"
+
+msgid "Customer note"
+msgstr "یادداشت مشتری"
+
+msgid "Customer note created on %1$s by %2$s using template \"%3$s\"."
+msgstr "یادداشت مشتری در %1$s به‌دست %2$s با استفاده از الگوی «%3$s» ایجاد شد."
+
+msgid "Customer order note"
+msgstr "یادداشت سفارش برای مشتری"
+
+msgid "Date"
+msgstr "تاریخ"
+
+msgid "Default note type"
+msgstr "نوع پیش‌فرض یادداشت"
+
+msgid "Demo templates"
+msgstr "الگوهای نمایشی"
+
+msgid "Demo templates installed successfully."
+msgstr "الگوهای نمایشی با موفقیت نصب شدند."
+
+msgid "Diagnostics"
+msgstr "عیب‌یابی"
+
+msgid "Discount total"
+msgstr "مجموع تخفیف"
+
+msgid ""
+"Download all published note templates, categories, favorites, sorting values and usage counters "
+"as a JSON file."
+msgstr ""
+"همه الگوهای منتشرشده، دسته‌ها، برگزیده‌ها، مقادیر مرتب‌سازی و شمارنده‌های استفاده را به‌صورت فایل"
+" JSON دریافت کنید."
+
+msgid "Drag to sort"
+msgstr "برای مرتب‌سازی بکشید"
+
+msgid "Duplicate"
+msgstr "تکثیر"
+
+msgid "Edit Category"
+msgstr "ویرایش دسته"
+
+msgid "Edit Template"
+msgstr "ویرایش الگو"
+
+msgid "Enabled"
+msgstr "فعال"
+
+msgid "Event"
+msgstr "رویداد"
+
+msgid "Export JSON"
+msgstr "برون‌بری JSON"
+
+msgid "Export templates"
+msgstr "برون‌بری الگوها"
+
+msgid "FAQ"
+msgstr "پرسش‌های متداول"
+
+msgid "Favorite"
+msgstr "برگزیده"
+
+msgid "Generate test preview"
+msgstr "ایجاد پیش‌نمایش آزمایشی"
+
+msgid ""
+"Grant template permissions only to trusted roles. Users also need the normal WooCommerce "
+"permission to edit orders before they can add notes to an order."
+msgstr ""
+"دسترسی‌های الگو را فقط به نقش‌های مورد اعتماد بدهید. کاربران برای افزودن یادداشت به سفارش، به "
+"مجوز معمول ووکامرس برای ویرایش سفارش‌ها نیز نیاز دارند."
+
+msgid "Help"
+msgstr "راهنما"
+
+msgid "History"
+msgstr "تاریخچه"
+
+msgid "Import JSON"
+msgstr "درون‌ریزی JSON"
+
+msgid "Import preview"
+msgstr "پیش‌نمایش درون‌ریزی"
+
+msgid "Import templates"
+msgstr "درون‌ریزی الگوها"
+
+msgid "Import usage counters from JSON files"
+msgstr "درون‌ریزی شمارنده‌های استفاده از فایل‌های JSON"
+
+msgid "Insert placeholder"
+msgstr "درج جای‌نگهدار"
+
+msgid "Install demo templates"
+msgstr "نصب الگوهای نمایشی"
+
+msgid "Install demo templates automatically when no templates exist"
+msgstr "اگر الگویی وجود ندارد، الگوهای نمایشی به‌صورت خودکار نصب شوند"
+
+msgid ""
+"Install practical demo templates for shipping updates, payment reminders and customer service "
+"notes."
+msgstr ""
+"الگوهای نمایشی کاربردی برای به‌روزرسانی حمل‌ونقل، یادآوری پرداخت و یادداشت‌های پشتیبانی مشتری نصب"
+" کنید."
+
+msgid "Internal note"
+msgstr "یادداشت داخلی"
+
+msgid "Item count"
+msgstr "تعداد اقلام"
+
+msgid "Last customer note:"
+msgstr "آخرین یادداشت مشتری:"
+
+msgid ""
+"Leave empty to show this template for all languages. WPML and Polylang order language values can "
+"be matched here."
+msgstr ""
+"برای نمایش این الگو در همه زبان‌ها، این بخش را خالی بگذارید. مقدار زبان سفارش در WPML و Polylang "
+"می‌تواند در اینجا تطبیق داده شود."
+
+msgid "Loading preview..."
+msgstr "در حال بارگذاری پیش‌نمایش..."
+
+msgid "Mailhilfe Order Note Manager"
+msgstr "مدیریت یادداشت سفارش Mailhilfe"
+
+msgid "Mailhilfe Order Note Manager Import/Export"
+msgstr "درون‌ریزی/برون‌بری مدیریت یادداشت سفارش Mailhilfe"
+
+msgid "Mailhilfe Order Note Manager Permissions"
+msgstr "دسترسی‌های مدیریت یادداشت سفارش Mailhilfe"
+
+msgid "Mailhilfe Order Note Manager Settings"
+msgstr "تنظیمات مدیریت یادداشت سفارش Mailhilfe"
+
+msgid "Mailhilfe Order Notes"
+msgstr "یادداشت‌های سفارش Mailhilfe"
+
+msgid "Manage templates"
+msgstr "مدیریت الگوها"
+
+msgid "Mark as favorite"
+msgstr "افزودن به برگزیده‌ها"
+
+msgid "Maximum order total"
+msgstr "حداکثر مبلغ سفارش"
+
+msgid "Minimum order total"
+msgstr "حداقل مبلغ سفارش"
+
+msgid "New Category Name"
+msgstr "نام دسته تازه"
+
+msgid "New Template"
+msgstr "الگوی تازه"
+
+msgid "No history entries found."
+msgstr "هیچ موردی در تاریخچه یافت نشد."
+
+#: includes/class-mhont-post-types.php:1
+msgid "No template order was received."
+msgstr "ترتیب الگوها دریافت نشد."
+
+msgid "No templates are available yet."
+msgstr "هنوز الگویی در دسترس نیست."
+
+msgid "No templates found in Trash."
+msgstr "هیچ الگویی در زباله‌دان یافت نشد."
+
+msgid "No templates found."
+msgstr "هیچ الگویی یافت نشد."
+
+msgid "Not favorite"
+msgstr "برگزیده نیست"
+
+msgid "Note type"
+msgstr "نوع یادداشت"
+
+msgid "Order"
+msgstr "سفارش"
+
+msgid "Order could not be loaded."
+msgstr "سفارش بارگذاری نشد."
+
+msgid "Order custom field by meta key"
+msgstr "فیلد سفارشی سفارش بر اساس کلید متا"
+
+msgid "Order date"
+msgstr "تاریخ سفارش"
+
+msgid "Order date and time"
+msgstr "تاریخ و زمان سفارش"
+
+msgid "Order ID"
+msgstr "شناسه سفارش"
+
+msgid "Order note history"
+msgstr "تاریخچه یادداشت سفارش"
+
+msgid "Order number"
+msgstr "شماره سفارش"
+
+msgid "Order status"
+msgstr "وضعیت سفارش"
+
+msgid "Order subtotal"
+msgstr "جمع جزء سفارش"
+
+msgid "Order time"
+msgstr "زمان سفارش"
+
+msgid "Order total"
+msgstr "مبلغ کل سفارش"
+
+msgid "Ordered items"
+msgstr "اقلام سفارش"
+
+msgid "Paid date"
+msgstr "تاریخ پرداخت"
+
+msgid "Payment method"
+msgstr "روش پرداخت"
+
+msgid "Payment method ID"
+msgstr "شناسه روش پرداخت"
+
+msgid "Permissions"
+msgstr "دسترسی‌ها"
+
+msgid "Personal favorite"
+msgstr "برگزیده شخصی"
+
+msgid "Personal favorite updated."
+msgstr "برگزیده شخصی به‌روزرسانی شد."
+
+msgid "Placeholder inserted."
+msgstr "جای‌نگهدار درج شد."
+
+msgid "Prefer the order/customer language for multilingual templates when available"
+msgstr "در صورت امکان، زبان سفارش/مشتری برای الگوهای چندزبانه ترجیح داده شود"
+
+msgid "Preview"
+msgstr "پیش‌نمایش"
+
+msgid "Preview could not be loaded."
+msgstr "پیش‌نمایش بارگذاری نشد."
+
+msgid "Recipient"
+msgstr "گیرنده"
+
+msgid "Review the summary before applying the import. Nothing has been changed yet."
+msgstr "پیش از اجرای درون‌ریزی، خلاصه را بررسی کنید. هنوز هیچ تغییری انجام نشده است."
+
+msgid "Role"
+msgstr "نقش"
+
+msgid "Save permissions"
+msgstr "ذخیره دسترسی‌ها"
+
+msgid "Save settings"
+msgstr "ذخیره تنظیمات"
+
+msgid "Search Categories"
+msgstr "جست‌وجوی دسته‌ها"
+
+msgid "Search Templates"
+msgstr "جست‌وجوی الگوها"
+
+msgid "Search templates"
+msgstr "جست‌وجوی الگوها"
+
+msgid "Security check failed."
+msgstr "بررسی امنیتی ناموفق بود."
+
+msgid "Select a template to show the preview."
+msgstr "برای نمایش پیش‌نمایش، یک الگو انتخاب کنید."
+
+msgid "Select template"
+msgstr "انتخاب الگو"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Shipping address"
+msgstr "نشانی حمل‌ونقل"
+
+msgid "Shipping city"
+msgstr "شهر حمل‌ونقل"
+
+msgid "Shipping company"
+msgstr "شرکت حمل‌ونقل"
+
+msgid "Shipping country"
+msgstr "کشور حمل‌ونقل"
+
+msgid "Shipping first name"
+msgstr "نام گیرنده"
+
+msgid "Shipping last name"
+msgstr "نام خانوادگی گیرنده"
+
+msgid "Shipping method"
+msgstr "روش حمل‌ونقل"
+
+msgid "Shipping postcode"
+msgstr "کد پستی حمل‌ونقل"
+
+msgid "Shipping total"
+msgstr "هزینه حمل‌ونقل"
+
+msgid "Show favorites first in the order template selector"
+msgstr "در انتخابگر الگوی سفارش، برگزیده‌ها ابتدا نمایش داده شوند"
+
+msgid "Show the usage counter column in the template list"
+msgstr "ستون شمارنده استفاده در فهرست الگوها نمایش داده شود"
+
+msgid "Site name"
+msgstr "نام سایت"
+
+msgid "Sort"
+msgstr "مرتب‌سازی"
+
+msgid "Sorting saved."
+msgstr "ترتیب ذخیره شد."
+
+msgid "Status"
+msgstr "وضعیت"
+
+msgid "Tax total"
+msgstr "مجموع مالیات"
+
+msgid "Template"
+msgstr "الگو"
+
+msgid "Template conditions"
+msgstr "شرایط الگو"
+
+msgid "Template could not be duplicated."
+msgstr "الگو تکثیر نشد."
+
+msgid "Template could not be found."
+msgstr "الگو یافت نشد."
+
+msgid "Template Import/Export"
+msgstr "درون‌ریزی/برون‌بری الگو"
+
+msgid "Template language"
+msgstr "زبان الگو"
+
+msgid "Template or order could not be found."
+msgstr "الگو یا سفارش یافت نشد."
+
+msgid "Template Settings"
+msgstr "تنظیمات الگو"
+
+msgid "Template text"
+msgstr "متن الگو"
+
+msgid "Templates imported successfully."
+msgstr "الگوها با موفقیت درون‌ریزی شدند."
+
+msgid "Test order preview"
+msgstr "پیش‌نمایش سفارش آزمایشی"
+
+#: includes/class-mhont-order-ui.php
+msgid "The edited note is too large."
+msgstr "یادداشت ویرایش‌شده بیش از حد بزرگ است."
+
+msgid ""
+"The email status records whether WooCommerce/WordPress processed the send request. It is not "
+"proof that the recipient opened or received the message."
+msgstr ""
+"وضعیت ایمیل ثبت می‌کند که آیا ووکامرس/وردپرس درخواست ارسال را پردازش کرده‌اند یا نه. این وضعیت "
+"ثابت نمی‌کند که گیرنده پیام را دریافت یا باز کرده است."
+
+msgid "The JSON file could not be exported."
+msgstr "فایل JSON برون‌بری نشد."
+
+msgid "The JSON file could not be imported."
+msgstr "فایل JSON درون‌ریزی نشد."
+
+msgid "The order note could not be added."
+msgstr "یادداشت سفارش افزوده نشد."
+
+msgid "The order note could not be saved."
+msgstr "یادداشت سفارش ذخیره نشد."
+
+msgid "The order note was added successfully."
+msgstr "یادداشت سفارش با موفقیت افزوده شد."
+
+msgid "The selected template is empty."
+msgstr "الگوی انتخاب‌شده خالی است."
+
+msgid "The selected template is not available for this order language."
+msgstr "الگوی انتخاب‌شده برای زبان این سفارش در دسترس نیست."
+
+#: includes/class-mhont-post-types.php:1
+msgid "The template order could not be saved."
+msgstr "ترتیب الگوها ذخیره نشد."
+
+msgid "This value is used when a template does not define its own note type."
+msgstr "این مقدار زمانی استفاده می‌شود که الگو نوع یادداشت خود را مشخص نکرده باشد."
+
+msgid "Type to filter templates..."
+msgstr "برای پالایش الگوها تایپ کنید..."
+
+msgid "Unknown user"
+msgstr "کاربر ناشناس"
+
+msgid "Update Category"
+msgstr "به‌روزرسانی دسته"
+
+msgid ""
+"Upload a JSON export file to review a preview before the import is applied. Existing templates "
+"with the same title will be updated."
+msgstr ""
+"یک فایل برون‌بری JSON بارگذاری کنید تا پیش از اجرای درون‌ریزی، پیش‌نمایش آن را بررسی کنید. "
+"الگوهای موجود با عنوان یکسان به‌روزرسانی می‌شوند."
+
+msgid "Usage"
+msgstr "میزان استفاده"
+
+msgid "Use templates"
+msgstr "استفاده از الگوها"
+
+msgid "User"
+msgstr "کاربر"
+
+msgid "View Template"
+msgstr "مشاهده الگو"
+
+msgid "WooCommerce is required for this action."
+msgstr "برای انجام این کار، ووکامرس لازم است."
+
+msgid "You are not allowed to manage note templates."
+msgstr "شما اجازه مدیریت الگوهای یادداشت را ندارید."
+
+msgid "You are not allowed to manage permissions."
+msgstr "شما اجازه مدیریت دسترسی‌ها را ندارید."
+
+msgid "You are not allowed to use note templates."
+msgstr "شما اجازه استفاده از الگوهای یادداشت را ندارید."
+
+msgid "You are not allowed to view diagnostics."
+msgstr "شما اجازه مشاهده عیب‌یابی را ندارید."
+
+msgid "You are not allowed to view the history."
+msgstr "شما اجازه مشاهده تاریخچه را ندارید."
+

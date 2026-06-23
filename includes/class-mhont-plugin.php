@@ -304,39 +304,15 @@ final class MHONT_Plugin {
 	}
 
 	/**
-	 * Returns bundled locale fallbacks for supported translation files.
+	 * Returns fallbacks for the bundled German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech translation files.
 	 *
-	 * This also covers locale variants such as de_DE_formal, de_AT,
-	 * fr_BE, es_MX or pt_PT when only one bundled plugin translation
-	 * for that language is shipped.
+	 * This covers German variants such as de_AT and de_CH and Spanish variants such as es_MX or es_AR and French variants such as fr_CA or fr_BE, Italian variants such as it_CH, Hindi variants such as hi, Russian variants such as ru_UA or ru_KZ, Portuguese variants such as pt_PT, and Simplified Chinese variants such as zh_SG or zh_Hans when no exact bundled catalog is available. Traditional Chinese locales are not mapped to the Simplified Chinese catalog. Japanese locales use the bundled `ja` catalog. Persian locales use the bundled `fa_IR` catalog. Vietnamese locales use the bundled `vi` catalog. Czech locales use the bundled `cs_CZ` catalog.
 	 *
 	 * @param array $locales Detected locale values.
 	 * @return array
 	 */
 	private static function get_locale_fallbacks( $locales ) {
 		$fallbacks = array();
-		$map       = array(
-			'de' => 'de_DE',
-			'fr' => 'fr_FR',
-			'es' => 'es_ES',
-			'it' => 'it_IT',
-			'pt' => 'pt_BR',
-			'nl' => 'nl_NL',
-			'pl' => 'pl_PL',
-			'ru' => 'ru_RU',
-			'zh' => 'zh_CN',
-			'ja' => 'ja',
-			'ko' => 'ko_KR',
-			'tr' => 'tr_TR',
-			'ar' => 'ar',
-			'hi' => 'hi_IN',
-			'id' => 'id_ID',
-			'vi' => 'vi',
-			'th' => 'th',
-			'uk' => 'uk',
-			'sv' => 'sv_SE',
-			'da' => 'da_DK',
-		);
 
 		foreach ( $locales as $locale ) {
 			if ( ! is_string( $locale ) || '' === $locale ) {
@@ -345,9 +321,50 @@ final class MHONT_Plugin {
 
 			$normalized = str_replace( '-', '_', $locale );
 			$language   = strtolower( strtok( $normalized, '_' ) );
-
-			if ( isset( $map[ $language ] ) ) {
-				$fallbacks[] = $map[ $language ];
+			if ( 'de' === $language ) {
+				$fallbacks[] = 'de_DE';
+			}
+			if ( 'es' === $language ) {
+				$fallbacks[] = 'es_ES';
+			}
+			if ( 'fr' === $language ) {
+				$fallbacks[] = 'fr_FR';
+			}
+			if ( 'it' === $language ) {
+				$fallbacks[] = 'it_IT';
+			}
+			if ( 'hi' === $language ) {
+				$fallbacks[] = 'hi_IN';
+			}
+			if ( 'zh' === $language && in_array( strtolower( $normalized ), array( 'zh', 'zh_cn', 'zh_sg', 'zh_hans' ), true ) ) {
+				$fallbacks[] = 'zh_CN';
+			}
+			if ( 'ja' === $language ) {
+				$fallbacks[] = 'ja';
+			}
+			if ( 'nl' === $language ) {
+				$fallbacks[] = 'nl_NL';
+			}
+			if ( 'pl' === $language ) {
+				$fallbacks[] = 'pl_PL';
+			}
+			if ( 'tr' === $language ) {
+				$fallbacks[] = 'tr_TR';
+			}
+			if ( 'fa' === $language ) {
+				$fallbacks[] = 'fa_IR';
+			}
+			if ( 'vi' === $language ) {
+				$fallbacks[] = 'vi';
+			}
+			if ( 'cs' === $language ) {
+				$fallbacks[] = 'cs_CZ';
+			}
+			if ( 'ru' === $language ) {
+				$fallbacks[] = 'ru_RU';
+			}
+			if ( 'pt' === $language ) {
+				$fallbacks[] = 'pt_BR';
 			}
 		}
 
@@ -364,7 +381,7 @@ final class MHONT_Plugin {
 		MHONT_Post_Types::register();
 		MHONT_Capabilities::add_caps();
 		MHONT_History::install();
-		if ( ! class_exists( 'MHONT_Settings' ) || MHONT_Settings::enabled( 'install_demo_on_activation' ) ) {
+		if ( MHONT_Settings::enabled( 'install_demo_on_activation' ) ) {
 			self::load_optional_admin_class( 'class-mhont-import-export.php', 'MHONT_Import_Export' );
 			MHONT_Import_Export::maybe_install_demo_templates();
 		}
