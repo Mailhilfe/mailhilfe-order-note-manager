@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Mailhilfe Order Note Manager for WooCommerce
  * Description:       Create reusable WooCommerce order note templates with categories, placeholders, preview, role permissions and HPOS compatibility.
- * Version:           2.0.6
+ * Version:           2.0.19
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            Mailhilfe.de
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MHONT_VERSION', '2.0.6' );
+define( 'MHONT_VERSION', '2.0.19' );
 define( 'MHONT_FILE', __FILE__ );
 define( 'MHONT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MHONT_URL', plugin_dir_url( __FILE__ ) );

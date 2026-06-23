@@ -20,7 +20,7 @@ Im entpackten Repository-Ordner:
 git init
 git branch -M main
 git add .
-git commit -m "Release 2.0.6"
+git commit -m "Release 2.0.19"
 git remote add origin https://github.com/DEIN-BENUTZERNAME/mailhilfe-order-note-manager.git
 git push -u origin main
 ```
@@ -40,14 +40,14 @@ Unter Windows PowerShell:
 Anschließend liegt die installierbare Datei unter:
 
 ```text
-build/mailhilfe-order-note-manager-2.0.6.zip
+build/mailhilfe-order-note-manager-2.0.19.zip
 ```
 
 ## 4. GitHub-Release anlegen
 
 1. Auf GitHub **Releases → Draft a new release** öffnen.
-2. Tag `2.0.6` anlegen.
-3. Titel `Mailhilfe Order Note Manager 2.0.6` verwenden.
+2. Tag `2.0.19` anlegen. Der Tag muss der Versionsnummer im Plugin-Header und dem `Stable tag` in `readme.txt` entsprechen.
+3. Titel `Mailhilfe Order Note Manager 2.0.19` verwenden.
 4. Die Release-ZIP aus dem Ordner `build` hochladen.
 5. Die wichtigsten Änderungen aus `CHANGELOG.md` übernehmen.
 
@@ -71,3 +71,5 @@ Der Workflow `.github/workflows/quality.yml` prüft bei Pushes und Pull Requests
 - Release-Build
 - ZIP-Integrität
 - Ausschluss typischer Entwicklungsdateien aus dem Release
+
+Der Workflow `.github/workflows/deploy-wordpress-org.yml` veröffentlicht Tags, die mit einer Ziffer beginnen, beispielsweise `2.0.19`, automatisch im WordPress.org-SVN. Dafür müssen in GitHub die Repository-Secrets `SVN_USERNAME` und `SVN_PASSWORD` hinterlegt sein.

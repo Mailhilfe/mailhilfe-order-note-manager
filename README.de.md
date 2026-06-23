@@ -20,7 +20,7 @@ Mehrsprachige Vorlagen für WooCommerce-Bestellnotizen mit Bedingungen, Platzhal
 - Rollen- und Rechteverwaltung.
 - Diagnose-Seite für WordPress, WooCommerce, HPOS, E-Mailstatus, Sprache und Cache.
 - HPOS-kompatible WooCommerce-APIs und serverseitige Berechtigungsprüfungen.
-- Integrierte Hilfe, FAQ und Sprachdateien für 20 häufig genutzte Sprachen sowie Deutsch formal.
+- Integrierte Hilfe und FAQ auf Englisch, Deutsch, Spanisch, Französisch, Italienisch, Hindi, Russisch, brasilianischem Portugiesisch, vereinfachtem Chinesisch, Japanisch, Niederländisch, Polnisch, Türkisch, Persisch und Vietnamesisch sowie gebündelte Sprachdateien für diese Sprachen und formelles Deutsch.
 - Hooks und Filter für eigene Erweiterungen.
 
 ## Installation
@@ -62,3 +62,9 @@ Die für WordPress.org vorgesehene Beschreibung sowie der vollständige Änderun
 ## Lizenz
 
 GPL-2.0-or-later. Siehe [LICENSE](LICENSE).
+
+- [日本語](README.ja.md)
+
+- [Nederlands](README.nl.md)
+- [Polski](README.pl.md)
+- [Türkçe](README.tr.md)

@@ -4,7 +4,7 @@ Tags: woocommerce, order notes, templates, hpos, admin
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.0.6
+Stable tag: 2.0.19
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Reusable WooCommerce order note templates with placeholders, categories, preview
 * Developer hooks and filters for placeholders, content, conditions, history and diagnostics
 
 
-Multilingual built-in help is available directly inside the WordPress admin area.
+Built-in help is available in English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech directly inside the WordPress admin area.
 
 Mailhilfe Order Note Manager for WooCommerce helps shop administrators and shop managers add consistent internal or customer-facing WooCommerce order notes from reusable templates.
 
@@ -43,7 +43,7 @@ Features:
 * Track a usage counter for each template.
 * Role capabilities for managing and using templates.
 * HPOS compatible.
-* Fully translatable with included POT file and translation files for 20 widely used languages.
+* Fully translatable with an included POT file and bundled translations for German, formal German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech.
 * WordPress.org-oriented security: nonces, capability checks, escaping and sanitization.
 
 Available placeholders include:
@@ -151,11 +151,11 @@ The template admin area can exist in WordPress, but the main purpose of the plug
 
 = Are translations included? =
 
-Yes. The plugin uses the `mailhilfe-order-note-manager` text domain and includes a POT file as well as bundled PO/MO files for 20 widely used languages.
+Yes. The plugin uses the `mailhilfe-order-note-manager` text domain and includes a POT file plus bundled PO/MO files for standard German, formal German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech. Other languages should be provided through reviewed WordPress.org language packs.
 
 = Why do I still see English texts? =
 
-First check Settings > General > Site Language and your user profile language. If a WordPress.org language pack is installed, WordPress may prefer that language pack. For direct ZIP installations, the plugin also includes bundled translation fallbacks.
+First check Settings > General > Site Language and your user profile language. If a WordPress.org language pack is installed, WordPress may prefer that language pack. For direct ZIP installations, the plugin includes bundled fallback translations for standard German, formal German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech.
 
 = Can I change the wording of translations? =
 
@@ -211,7 +211,7 @@ When a template is added as a customer note, the plugin also adds an internal lo
 
 = How do template languages work? =
 
-Each template can be assigned to all languages or to a specific bundled language. In multilingual shops the plugin tries to prefer templates matching the order language, user language or site language.
+Each template can be assigned to all languages or to a specific supported locale. In multilingual shops the plugin tries to prefer templates matching the order language, user language or site language.
 
 = Can I use custom order or customer meta fields? =
 
@@ -304,336 +304,78 @@ The plugin provides extension points for placeholders, placeholder values, allow
 
 == Changelog ==
 
+= 2.0.19 =
+* Added a complete Czech (cs_CZ) translation for the interface, built-in help, FAQ and demo templates.
+* Added Czech locale fallback handling, template-language selection and a Czech repository guide.
+* Updated all release and translation metadata for version 2.0.19.
+* Marked the Czech catalog for additional native-speaker review before submission to translate.wordpress.org.
+
+= 2.0.18 =
+* Added a complete Vietnamese (vi) translation for the interface, built-in help, FAQ and demo templates.
+* Added Vietnamese locale fallback handling and a Vietnamese repository guide.
+* Updated all release and translation metadata for version 2.0.18.
+* Marked the Vietnamese catalog for additional native-speaker review before submission to translate.wordpress.org.
+
+= 2.0.17 =
+* Added a complete Persian (fa_IR) translation for the interface, built-in help, FAQ and demo templates.
+* Added Persian locale fallback handling, template-language selection and a Persian repository guide.
+* Improved RTL presentation for help lists and technical placeholder examples.
+* Updated all release and translation metadata for version 2.0.17.
+* Marked the Persian catalog for additional native-speaker review before submission to translate.wordpress.org.
+
+= 2.0.16 =
+* Added a complete Turkish (tr_TR) translation for the interface, built-in help, FAQ and demo templates.
+* Added Turkish locale fallback handling and a Turkish repository guide.
+* Updated all release and translation metadata for version 2.0.16.
+* Marked the Turkish catalog for additional native-speaker review before submission to translate.wordpress.org.
+
+= 2.0.15 =
+* Added a complete Polish (pl_PL) translation for the interface, built-in help, FAQ and demo templates.
+* Added Polish locale fallback handling and a Polish repository guide.
+* Updated all release and translation metadata for version 2.0.15.
+
+= 2.0.14 =
+* Added a complete Dutch (nl_NL) translation for the interface, built-in help, FAQ and demo templates.
+* Added Dutch locale fallback handling and a Dutch template-language option.
+* Updated all release and translation metadata for version 2.0.14.
+
+= 2.0.13 =
+* Added a complete Japanese (ja) translation for the interface, built-in help, FAQ and demo templates.
+* Added Japanese locale fallback handling.
+* Updated all release and translation metadata for version 2.0.13.
+
+= 2.0.12 =
+* Added a complete Simplified Chinese (zh_CN) translation for the interface, built-in help, FAQ and demo templates.
+* Added Simplified Chinese locale fallback handling while keeping Traditional Chinese locales separate.
+* Updated all release and translation metadata for version 2.0.12.
+
+= 2.0.11 =
+* Added a complete Hindi (hi_IN) translation for the interface, built-in help, FAQ and demo templates.
+* Added Hindi locale fallback handling.
+* Updated all release and translation metadata for version 2.0.11.
+
+= 2.0.10 =
+* Added a complete Italian translation for the interface, built-in help, FAQ and demo templates.
+* Added Italian locale fallbacks for variants such as it_CH.
+* Updated all release and translation metadata for version 2.0.10.
+
+= 2.0.9 =
+* Added a complete Brazilian Portuguese translation for the interface, built-in help, FAQ and demo templates.
+* Added Portuguese locale fallbacks for variants such as pt_PT.
+* Updated translation documentation and release metadata.
+
+= 2.0.8 =
+* Added a complete Russian translation for the interface, built-in help, FAQ and demo templates.
+* Added Russian locale fallback handling.
+* Updated translation documentation and release metadata.
+
+= 2.0.7 =
+* Added a complete French translation for the interface, built-in help, FAQ and demo templates.
+* Added French locale fallback handling.
+* Updated release metadata and WordPress.org asset deployment configuration.
+
 = 2.0.6 =
-* Fixed template revision restoration so restored text is used by the plugin.
-* Hardened placeholder, preview, note-content and diagnostics extension filters against invalid return values.
-* Corrected the combined order date/time placeholder and custom placeholder value validation.
-* Prevented duplicate email-failure history entries, verified history-table creation and improved history-query performance.
-* Improved drag-and-drop validation with rollback protection if a database update fails midway.
-* Fixed Visual/Text editor handling for placeholder insertion and test-order previews.
-* Corrected zero-value maximum-total conditions and shipping-method instance IDs such as `flat_rate:1`.
-* Hardened JSON import/export for malformed values, invalid UTF-8 and failed export encoding.
-* Improved duplicate-template redirects, template-content limits and revision synchronization.
-* Corrected multisite cleanup, language-filter cleanup and persistent object-cache removal during uninstall.
-* Synchronized the POT, PO and MO catalogs with all current source strings and corrected multilingual help/FAQ documentation.
+* Added complete Spanish and reviewed German translations.
+* Added built-in localized help, FAQ and demo templates.
+* Added deployment, diagnostics, history, conditions, favorites and developer hooks.
 
-= 2.0.5 =
-* Prepared a GitHub-ready development repository with documentation, screenshots, contribution guides, security policy, issue templates, automated lint checks and a reproducible release-build script.
-
-= 2.0.4 =
-* Removed the extra “Sent to customer” label from customer notes inserted into the WooCommerce order-notes list.
-
-= 2.0.3 =
-* Added direct HPOS-compatible links from order IDs on the central history page to the corresponding WooCommerce order.
-
-= 2.0.2 =
-* Removed the inline customer-note warning and WooCommerce email-status notices from the order screen.
-* Redesigned the order-note meta box with consistent spacing and a scrollable placeholder area.
-* Moved the meta box to the main order column and contained the order-screen layout to prevent the admin footer from overlapping fields.
-* Removed the obsolete customer-warning setting.
-
-= 2.0.1 =
-* Expanded the built-in help and FAQ for all bundled languages.
-* Added documentation for conditions, email processing history, central history, test-order previews, personal favorites, diagnostics and developer hooks.
-* Removed untranslated English fallback FAQ entries from non-English built-in FAQ sets.
-
-
-
-= 2.0.0 =
-* Added template conditions.
-* Added central note, usage and email processing history.
-* Added test-order previews, personal favorites and recently used templates.
-* Added diagnostics page and documented developer extension hooks.
-
-
-= 1.6.8 =
-* Fix: Newly created order notes now appear immediately in the WooCommerce order notes box without reloading the order screen.
-* Improvement: Customer-note audit entries are inserted immediately together with the customer note.
-
-= 1.6.7 =
-* Fixed drag-and-drop template sorting persistence and default admin list ordering.
-* Added explicit AJAX error handling and template-cache invalidation after sorting.
-
-= 1.6.6 =
-* Removed a duplicate AJAX preview response key.
-* Demo and import lookups now include trashed and other registered template statuses, preventing accidental duplicate templates.
-* The published-template transient is removed during uninstall.
-* Corrected duplicate historical version headings in the changelog.
-
-= 1.6.5 =
-* Fixed HPOS order permission checks by using WooCommerce's `edit_shop_orders` capability with the order ID.
-* Removed the overly broad `manage_woocommerce` permission fallback.
-* Applied the configured default note type to new templates and the initial order selector.
-* Removed a duplicated documentation line in the order integration class.
-
-= 1.6.4 =
-* Performance: Load order-screen and placeholder classes only on WooCommerce order and template screens.
-* Performance: Load plugin action-link helpers only on the Plugins screen.
-* Performance: Persistently cache published template IDs and invalidate the cache on template changes.
-* Performance: Do not load the admin JavaScript on settings, permissions, help, FAQ or import/export pages when it is not needed.
-
-
-= 1.6.3 =
-* Performance: Help, FAQ and import/export classes are now loaded only when their pages or actions are requested.
-* Performance: Reduced PHP parsing and memory use on unrelated WordPress admin screens.
-
-= 1.6.2 =
-* Fixed template metadata cache priming to avoid repeated database queries in the order selector.
-* Existing draft, private or trashed templates keep their status when updated through JSON import.
-* Completed missing translation entries and rebuilt bundled MO files.
-
-= 1.6.1 =
-* Fixed language-aware JSON import so templates with the same title in different languages no longer overwrite each other.
-* Existing template fields are preserved when optional JSON properties are omitted.
-* Reduced AJAX memory usage by not loading large help, FAQ and import/export classes for admin AJAX callbacks.
-* Improved JSON upload compatibility on hosts that report JSON files as text/plain while still requiring a valid .json extension and valid JSON content.
-* Removed a duplicate demo-locale mapping entry.
-
-= 1.6.0 =
-* Performance: Plugin admin classes are no longer loaded on normal frontend requests.
-* Performance: Settings are cached for the duration of each request.
-* Performance: Published template IDs are cached and invalidated automatically after template changes.
-* Performance: Order language detection is performed once per order request.
-* Performance: Template favorite sorting no longer performs repeated metadata lookups inside the sort comparator.
-* Performance: jQuery UI Sortable is loaded only on the template list screen.
-* Performance: Template queries skip pagination counts and unnecessary term caches.
-
-
-= 1.5.25 =
-* Removed database-meta sorting from the usage column to avoid slow admin queries.
-* Added server-side enforcement of template-language availability for preview and note creation.
-
-= 1.5.24 =
-* Fixed multilingual JSON exports and template lookups being narrowed by third-party language query filters.
-* Prevented stale AJAX preview requests from clearing the active request handle.
-* Hid customer-email status notices until Customer note is selected.
-* Hardened drag-and-drop sorting against duplicate and oversized ID payloads.
-
-= 1.5.23 =
-* Preserved existing usage counters when JSON imports do not explicitly import a valid counter value.
-* Preserved paragraph and line breaks when HTML formatting is disabled.
-* Fixed custom meta placeholders for valid keys containing dots or colons.
-* Loaded all templates before applying the plugin's own order-language filter, improving multilingual compatibility.
-
-= 1.5.22 =
-* Hardened plain-text preview and note sanitization so encoded markup cannot be restored after tag removal.
-* Plain-text previews are now sent to the server as text instead of serialized HTML.
-
-= 1.5.21 =
-* Fixed plain-text preview rendering so encoded markup cannot be interpreted as HTML.
-* Uninstall now also removes templates in Trash and other registered post statuses.
-
-= 1.5.20 =
-* Re-enable note submission after inserting a placeholder into an already submitted preview.
-* Harden order meta-box access with an explicit per-order edit permission check.
-* Normalize imported boolean and numeric JSON values safely.
-
-= 1.5.19 =
-* Fixed uninstall cleanup so templates, categories, plugin options and role capabilities are actually removed as documented.
-* Fixed multilingual filtering so templates assigned to unrelated languages are no longer shown when order-language matching is enabled.
-
-= 1.5.18 =
-* Prevented early translation loading that could trigger WordPress debug notices.
-* Hardened JSON imports against arrays and objects in scalar fields to avoid PHP 8 type errors.
-* Added safe handling for array-valued custom metadata placeholders.
-
-
-= 1.5.17 =
-* Recompiled all bundled MO files from the current PO sources.
-* Added the missing translated oversized-note error in all bundled languages.
-* Corrected the JSON export filename.
-
-= 1.5.16 =
-* Show the WooCommerce customer-note email status only when Customer note is selected.
-* Prevent accidental duplicate submission of the same successfully added note until the template, note type, or edited content changes.
-
-= 1.5.15 =
-* Prevented failed or stale previews from being submitted as order notes.
-* Prevented out-of-order AJAX preview responses from replacing the currently selected template preview.
-* Placeholder buttons used in the editable order preview are now resolved before the note is saved.
-* Disabled drag-and-drop sorting on paginated or filtered template lists to prevent conflicting menu-order values.
-
-
-= 1.5.14 =
-* Fixed placeholder insertion when the browser selection was outside the editable preview.
-* Added a server-side size limit for edited order notes.
-* Import previews now detect updates by demo key and legacy title consistently.
-* Importing an explicit empty category list now correctly removes existing template categories.
-
-= 1.5.13 =
-* Prevented automatic page reload after adding a note, so unsaved WooCommerce order changes are not discarded.
-* Added an inline success/error message for AJAX note creation.
-* Improved HPOS exception handling and corrected outdated customer-note warning documentation.
-
-= 1.5.12 =
-* Added WooCommerce availability guards to prevent fatal errors when WooCommerce is unavailable.
-* Improved AJAX error handling so auxiliary customer-notification logging cannot cause duplicate note retries.
-* Made plain-text previews and edited notes consistent when HTML formatting is disabled.
-* Removed obsolete popup-oriented JavaScript text and clarified the customer-note warning setting.
-
-= 1.5.11 =
-* Fixed template-language validation so locale values such as de_DE, en_US and fr_FR are stored correctly.
-* Normalized older lowercase locale values when templates are edited, displayed or imported.
-
-= 1.5.10 =
-* Fixed HTTP response codes on duplicate-template errors.
-* Template language is now copied when duplicating a template.
-* Corrected the timezone handling of customer-notification audit timestamps.
-
-= 1.5.9 =
-* Corrected HTTP 403 responses for protected admin pages and actions.
-* The customer-note warning setting is now respected on order screens.
-* Rechecked AJAX, order-screen fields, translations, PHP syntax and package structure.
-
-= 1.5.8 =
-* Fixed the note-type label association on the order screen.
-* Restored the add-note button label after failed AJAX requests.
-* Removed an obsolete customer-note confirmation localization string.
-* Rechecked AJAX security, order-screen form isolation, PHP syntax, and package integrity.
-
-= 1.5.7 =
-* Removed the browser confirmation popup before adding customer notes. The inline customer-note warning and WooCommerce email status remain visible.
-
-= 1.5.6 =
-* Prevented the plugin metabox fields from being submitted with the WooCommerce order form.
-* Fixed redirects to edit.php when changing or saving an order status.
-* Order-note data is now passed only through the secured AJAX request.
-
-= 1.5.5 =
-* Fixed adding notes on WooCommerce order screens by replacing an invalid nested form with a secure AJAX action.
-* Prevented redirects to edit.php when adding internal or customer notes.
-
-= 1.5.4 =
-* Fixed customer-note logging so the internal order note is created reliably.
-* Added a persistent last-customer-notification timestamp to the order screen.
-* Added an explicit error when an order note cannot be saved.
-
-
-= 1.5.3 =
-* Changed the WordPress.org contributor username to schaum.
-* Removed the .wordpress-org development assets directory from the production plugin package.
-
-= 1.5.2 =
-* Expanded the built-in FAQ page in all bundled languages.
-* Added additional FAQ topics for editable previews, customer notification logs, template languages, custom meta placeholders, privacy checks, HTML handling, import preview, duplicate templates, permissions, revisions, staging use and uninstall behavior.
-* Expanded the WordPress.org readme FAQ with the same additional guidance.
-
-= 1.5.1 =
-* Updated the built-in multilingual help page for all bundled languages after the plugin rename.
-* Added help sections for settings, template language selection, custom meta placeholders, duplicate templates, revisions, permissions, import preview, customer-note email status and the recommended workflow.
-* Updated help page titles to consistently use the new Mailhilfe Order Note Manager for WooCommerce name.
-
-= 1.5.0 =
-* Renamed the plugin to Mailhilfe Order Note Manager for WooCommerce.
-* Updated the plugin slug and text domain to mailhilfe-order-note-manager.
-* Updated plugin headers, readme title, bundled language files and internal labels to use the new distinctive name.
-
-= 1.4.1 =
-* Added and compiled missing translations for the new settings, permissions and import preview screens.
-
-= 1.4.0 =
-* Added a central settings page for default behavior, customer-note safety, HTML handling, demo installation, usage counters and JSON imports.
-* Added a permissions page for managing template capabilities by role.
-* Added one-click placeholder insertion in the template editor and editable order preview.
-* Added generic custom-field placeholders for order meta and customer meta with sensitive-key blocking.
-* Added a duplicate action for templates and enabled revisions by storing template content in post revisions.
-* Added JSON import preview with create/update/skip summary before applying changes.
-* Added multilingual template language matching with WPML/Polylang-aware order language detection.
-* Added WooCommerce customer-note email status notice in the order screen.
-* Improved WordPress.org presentation text and feature descriptions.
-
-= 1.3.1 =
-* Security hardening: Explicitly disabled public queries, REST exposure, query vars and rewrites for the internal template post type and taxonomy.
-* Security hardening: Strengthened JSON import validation with upload error checks, WordPress file extension/type verification, JSON depth limiting and category-count limiting.
-
-= 1.3.0 =
-* Added an automatic internal order log note for customer notes created from templates.
-* The log records the date, time, user and template used for the customer note.
-
-= 1.2.9 =
-* Made the replaced order note preview editable before adding the note.
-* Added server-side handling for edited preview content with WordPress-safe HTML sanitization.
-
-= 1.2.8 =
-* Added a built-in multilingual FAQ page for all bundled languages.
-* Added an FAQ link on the WordPress plugins page.
-
-= 1.2.7 =
-* Updated the readme.txt `Tested up to` value to WordPress 7.0 after compatibility review.
-
-
-= 1.2.6 =
-* Security review: Added explicit per-order edit permission checks before previewing order data or adding order notes.
-* Security review: Restricted template use in order screens to published templates.
-* Security review: Added JSON import limits for template count and template content length.
-* Security review: Removed unused success query parameter from note creation redirect.
-
-= 1.2.5 =
-* Removed the author URI header to avoid an additional external author link on the WordPress plugins page.
-
-= 1.2.4 =
-* Removed post-meta query usage from demo template lookup to avoid PluginCheck slow query warnings.
-* Demo template IDs are now stored in a small option-based lookup map.
-
-= 1.2.2 =
-* Expanded the WordPress.org FAQ section with detailed answers about usage, placeholders, customer notes, translations, roles, HPOS, import/export, demo templates and security.
-
-= 1.2.0 =
-* Added a built-in multilingual help page for all bundled languages.
-* Added a Help link on the WordPress plugins page.
-* Added help sections for templates, placeholders, order usage, customer note warnings, JSON import/export, permissions and HPOS.
-
-= 1.1.9 =
-* Added many additional placeholders for order data, customer data, billing/shipping addresses, totals, items and shop/admin information.
-* Added a structured placeholder overview in the template editor.
-
-= 1.1.8 =
-* Added rich text formatting for template content using the WordPress editor.
-* Preview and created order notes now keep safe HTML formatting.
-
-* Demo templates are now generated in the active admin language for all bundled locales.
-* Added stable demo keys so existing English demo templates can be updated to the current language.
-
-
-= 1.1.6 =
-* Improved bundled translation loading for all included language files and locale variants.
-
-= 1.1.4 =
-* Added bundled translation fallback for direct ZIP installations without using the discouraged plugin textdomain loader.
-
-= 1.1.3 =
-* Added a visible left admin menu item for Mailhilfe Order Notes.
-* Added a Settings link on the WordPress plugins page.
-* Moved import/export tools under the plugin menu.
-
-= 1.1.0 =
-* Added favorites.
-* Added template search/filtering in orders.
-* Added drag-and-drop template sorting.
-* Added JSON import/export.
-* Added demo templates.
-* Added customer note warning and confirmation.
-* Added usage counter and usage column.
-
-= 1.0.1 =
-* Removed the discouraged manual plugin textdomain loader because WordPress.org loads plugin translations automatically since WordPress 4.6.
-
-
-= 1.0.0 =
-* Initial release.
-
-== Developer hooks ==
-
-The plugin provides extension hooks for integrations:
-
-* `mailhilfe_order_note_placeholders`
-* `mailhilfe_order_note_placeholder_values`
-* `mailhilfe_order_note_allowed_meta_keys`
-* `mailhilfe_order_note_template_results`
-* `mailhilfe_order_note_conditions_match`
-* `mailhilfe_order_note_preview_content`
-* `mailhilfe_order_note_content`
-* `mailhilfe_order_note_before_add`
-* `mailhilfe_order_note_after_add`
-* `mailhilfe_order_note_history_recorded`
-* `mailhilfe_order_note_diagnostics`

@@ -6,7 +6,7 @@
 
 Reusable, multilingual WooCommerce order-note templates with conditions, placeholders, editable previews, history, permissions and HPOS compatibility.
 
-![Version](https://img.shields.io/badge/version-2.0.6-2271b1)
+![Version](https://img.shields.io/badge/version-2.0.19-2271b1)
 ![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-21759b)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-777bb4)
 ![WooCommerce](https://img.shields.io/badge/WooCommerce-8.2%2B-96588a)
@@ -30,7 +30,7 @@ Mailhilfe Order Note Manager helps WooCommerce teams create consistent internal 
 - Role and capability management.
 - Diagnostics page for WordPress, WooCommerce, HPOS, email, locale and cache status.
 - HPOS-compatible WooCommerce APIs and server-side permission checks.
-- Bundled help, FAQ and translations for 20 widely used languages plus formal German.
+- Built-in help and FAQ in English, German, Spanish, French, Italian, Hindi, Russian, Brazilian Portuguese, Simplified Chinese, Japanese, Dutch, Polish, Turkish, Persian, Vietnamese and Czech.
 - Developer hooks and filters for custom integrations.
 
 ## Screenshots
@@ -73,7 +73,7 @@ The screenshots contain example data and are intended as documentation previews 
 2. In WordPress, open **Plugins → Add New Plugin → Upload Plugin**.
 3. Upload the ZIP and activate it.
 4. Open **Mailhilfe Order Notes** in the WordPress admin menu.
-5. Create a template or install the localized demo templates.
+5. Create a template or install the bundled multilingual demo templates, including Vietnamese and Czech.
 6. Open a WooCommerce order and use the **Order-note template** box.
 
 For development, clone this repository into `wp-content/plugins/mailhilfe-order-note-manager`.
@@ -118,3 +118,11 @@ Please do not disclose security vulnerabilities in public issues. Follow the pro
 ## License
 
 GPL-2.0-or-later. See [LICENSE](LICENSE).
+
+- [日本語](README.ja.md)
+
+- [Nederlands](README.nl.md)
+- [Polski](README.pl.md)
+- [Türkçe](README.tr.md)
+- [Tiếng Việt](README.vi.md)
+- [Čeština](README.cs.md)
